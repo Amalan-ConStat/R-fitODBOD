@@ -1,0 +1,426 @@
+#' Alcohol data
+#'
+#' Lemmens , Knibbe and Tan(1988) described a study of self reported alcohol frequencies.
+#' The no of alcohol consumption data in two reference weeks is separately self reported
+#' by a randomly selected sample of 399 respondents in the Netherlands in 1983.
+#' Number of days a  given individual consumes alcohol out of 7 days a week can be treated as a binomial
+#' variable.
+#' The collection of all such variables from all respondents would be defined as "Binomial Outcome Data".
+#'
+#' @format A data frame with 3 variables and 8 observations
+#' \describe{
+#' \item{\code{Days}}{No of Days Drunk}
+#' \item{\code{week1}}{Observed frequencies for week1}
+#' \item{\code{week2}}{Observed frequencies for week2}
+#' }
+#'
+#' @examples
+#' Alcohol_data$Days          # extracting the binomial random variables
+#' sum(Alcohol_data$week2)       # summing all the frequencies in week2
+#'
+#' @source
+#' Extracted from
+#'
+#' Manoj, C., Wijekoon, P. & Yapa, R.D., 2013. The McDonald Generalized Beta-Binomial Distribution: A New
+#' Binomial Mixture Distribution and Simulation Based Comparison with Its Nested Distributions in Handling
+#' Overdispersion. International Journal of Statistics and Probability, 2(2), pp.24-41.
+#'
+#' Available at: \url{http://www.ccsenet.org/journal/index.php/ijsp/article/view/23491}
+#'
+ "Alcohol_data"
+
+
+#' Plant Disease Incidence data
+#'
+#' Cochran(1936) provided a data that comprise the number of tomato spotted wilt virus(TSWV) infected
+#' tomato plants in the field trials in Australia. The field map was divided into 160 'quadrats'.
+#' 9 tomato plants in each quadrat. then the numbers of TSWV infected tomato plants were counted in each
+#' quadrat.
+#' Number of infected plants out of 9 plants per quadrat can be treated as a binomial variable.
+#' the collection of all such responses from all 160 quadrats would form "binomial outcome data"
+#' below provided is a data set similar to Cochran plant disease incidence data.
+#' Marcus R(1984). orange trees infected with citrus tristeza virus (CTV) in an orchard in central
+#' Israel.
+#' We divided the field map into 84 "quadrats" of 4 rows x 3 columns and counted the total number
+#' (1981 + 1982) of infected trees out of a maximum of n = 12 in each quadrat
+#'
+#' @format A data frame with 2 variables and 10 observations
+#' \describe{
+#' \item{\code{Dis.plant}}{Diseased Plants}
+#' \item{\code{fre}}{Observed frequencies}
+#' }
+#'
+#' @examples
+#' Plant_DiseaseData$Dis.plant      # extracting the binomial random variables
+#' sum(Plant_DiseaseData$fre)       # summing all the frequencies
+#'
+#' @source
+#' Extracted from
+#'
+#' Hughes, G., 1993. Using the Beta-Binomial Distribution to Describe Aggregated Patterns of Disease Incidence.
+#' Phytopathology, 83(9), p.759.
+#'
+#' Available at: \url{http://www.apsnet.org/publications/phytopathology/backissues/Documents/1993Abstracts/Phyto_83_759.htm}.
+#'
+"Plant_DiseaseData"
+
+
+#' Course Data
+#'
+#' The data refer to the numbers of courses taken by a class of 65 students from the first year of the
+#' Department of Statistics of Athens University of Economics. The students enrolled in this class
+#' attended 8 courses during the first year of their study. The total numbers of successful
+#' examinations (including resits) were recorded.
+#'
+#' @format A data frame with 2 variables and 9 observations
+#' \describe{
+#' \item{\code{sub.pass}}{subjects passed}
+#' \item{\code{fre}}{Observed frequencies}
+#' }
+#'
+#' @examples
+#' Course_data$sub.pass             # extracting the binomial random variables
+#' sum(Course_data$fre)             # summing all the frequencies
+#'
+#' @source
+#' Extracted from
+#'
+#' Karlis, D. & Xekalaki, E., 2008. The Polygonal Distribution. In Advances in Mathematical and Statistical
+#' Modeling. Boston: Birkhuser Boston, pp. 21-33.
+#'
+#' Available at: \url{http://dx.doi.org/10.1007/978-0-8176-4626-4_2}.
+#'
+"Course_data"
+
+
+#' Chromosome Data
+#'
+#' Data in this example refer to 337 observations on the secondary
+#' association of chromosomes in Brassika; n , which is now the number of
+#' chromosomes, equals 3 and X is the number of pairs of bivalents showing association.
+#'
+#' @format A data frame with 2 variables and 4 observations
+#' \describe{
+#' \item{\code{No.of.Asso}}{No of Associations}
+#' \item{\code{fre}}{Observed frequencies}
+#' }
+#'
+#' @examples
+#' Chromosome_data$No.of.Asso          #extracting the binomial random variables
+#' sum(Chromosome_data$fre)            #summing all the frequencies
+#'
+#' @source
+#' Extracted from
+#'
+#' Paul, S.R., 1985. A three-parameter generalization of the binomial distribution. Communications in
+#' Statistics - Theory and Methods, 14(6), pp.1497-1506.
+#'
+#' Available at: \url{http://www.tandfonline.com/doi/abs/10.1080/03610928508828990}.
+"Chromosome_data"
+
+
+#' Exam Data
+#'
+#' In an examination, there were 9 questions set on a particular
+#' topic. Each question is marked out of a total of 20 and in assessing the
+#' final class of a candidate, particular attention is paid to the total
+#' number of questions for which he has an "alpha", i.e., at least 15 out of 20,
+#' as well as his total number of marks. His number of alpha's is a rough
+#' indication of the "quality" of his exam performance. Thus, the distribution
+#' of alpha's over the candidates is of interest. There were 209 candidates
+#' attempting questions from this section of 9 questions and a total of 326 alpha's
+#' was awarded. So we treat 9 as the "litter size", and the dichotomous response
+#' is whether or not he got an alpha on the question.
+#'
+#' @format A data frame with 2 variables and 10 observations
+#' \describe{
+#' \item{\code{No.of.alpha}}{No of Alphas}
+#' \item{\code{fre}}{Observed frequencies}
+#' }
+#'
+#' @examples
+#' Exam_data$No.of.alpha              #extracting the binomial random variables
+#' sum(Exam_data$fre)                 #summing all the frequencies
+#'
+#' @source
+#' Extracted from
+#'
+#' Paul, S.R., 1985. A three-parameter generalization of the binomial distribution. Communications in
+#' Statistics - Theory and Methods, 14(6), pp.1497-1506.
+#'
+#' Available at: \url{http://www.tandfonline.com/doi/abs/10.1080/03610928508828990}
+#'
+"Exam_data"
+
+
+#' Terror Data USA
+#'
+#' Jenkins and Johnson (1975) compiled a chronology of incidents of international terrorism from 1/1968
+#' through 04/1974. During this period 507 incidents are recorded in the world, where 64 incidents occurred
+#' in the United States and 65 ones in Argentina.
+#'
+#' @format A data frame with 2 variables and 9 observations
+#' \describe{
+#' \item{\code{Incidents}}{No of Incidents Occurred}
+#' \item{\code{fre}}{Observed frequencies}
+#' }
+#'
+#' @examples
+#' Terror_data_USA$Incidents         #extracting the binomial random variables
+#' sum(Terror_data_USA$fre)              #summing all the frequencies
+#'
+#' @source
+#' Extracted from
+#'
+#' Li, X. H., Huang, Y. Y., & Zhao, X. Y. (2011). The Kumaraswamy Binomial Distribution. Chinese Journal
+#' of Applied Probability and Statistics, 27(5), 511-521.
+#'
+"Terror_data_USA"
+
+
+#' Terror Data ARG
+#'
+#' Jenkins and Johnson (1975) compiled a chronology of incidents of international terrorism from 1/1968
+#' through 04/1974. During this period 507 incidents are recorded in the world, where 64 incidents occurred
+#' in the United States and 65 ones in Argentina.
+#'
+#' @format A data frame with 2 variables and 9 observations
+#' \describe{
+#' \item{\code{Incidents}}{No of Incidents Occurred}
+#' \item{\code{fre}}{Observed frequencies}
+#' }
+#'
+#' @examples
+#' Terror_data_ARG$Incidents        #extracting the binomial random variables
+#' sum(Terror_data_ARG$fre)              #summing all the frequencies
+#'
+#' @source
+#' Extracted from
+#'
+#' Li, X. H., Huang, Y. Y., & Zhao, X. Y. (2011). The Kumaraswamy Binomial Distribution. Chinese Journal
+#' of Applied Probability and Statistics, 27(5), 511-521.
+#'
+"Terror_data_ARG"
+
+
+#' Binomial Data Extraction from Raw data
+#'
+#' The below function has the ability to extract from the raw data to Binomial Outcome Data. This
+#' function simplifies the data into more presentable way to the user.
+#'
+#' @usage
+#' BODextract(data)
+#'
+#' @param data                vector of observations
+#'
+#' @details
+#' \strong{NOTE} : If input parameters are not in given domain conditions
+#' necessary error messages will be provided to go further
+#'
+#' @return
+#' The output of \code{BODextract} gives a list format consisting
+#'
+#' \code{RV} binomial random variables in vector form
+#'
+#' \code{Freq}  corresponding frequencies in vector form
+#'
+#' @examples
+#' datapoints=sample(0:10,340,replace=TRUE) #creating a sample set of observations
+#' BODextract(datapoints)                   #extracting binomial outcome data from observations
+#' Random.variable=BODextract(datapoints)$RV #extracting the binomial random variables
+#'
+#' @export
+BODextract<-function(data)
+{
+  #checking if inputs consist NA(not assigned)values, infinite values or NAN(not a number)values
+  #if so cleaning the data set and removing all NA,infinite and NAN values
+  if(any(is.na(data)) | any(is.infinite(data)) |any(is.nan(data)) )
+  {
+    data1<-data[!is.nan(data)]
+    data2<-data1[!is.na(data1)]
+    data3<-data2[!is.infinite(data2)]
+    #assigning the cleaned data into value variable
+    value<-table(data3)
+    #converting value variable into a matrix
+    mat.tab<-as.matrix(value)
+    #assigning the binomial random variables from the row names of the matrix
+    BOD.Random.variable<-as.integer(row.names(mat.tab))
+    #removing the dimension names
+    mat.tab<-unname(mat.tab)
+    #assigning the frequencies for the corresponding binomial random variables
+    BOD.Frequency<-mat.tab[,1]
+    # generating an output in list format consisting Random variable and corresponding frequency
+    output<-list("RV"=BOD.Random.variable,"Freq"=BOD.Frequency)
+    return(output)
+  }
+  else
+  {
+    #assigning the data into value variable
+    value<-table(data)
+    #converting value variable into a matrix
+    mat.tab<-as.matrix(value)
+    #assigning the binomial random variables from the row names of the matrix
+    BOD.Random.variable<-as.integer(row.names(mat.tab))
+    #removing the dimension names
+    mat.tab<-unname(mat.tab)
+    #assigning the frequencies for the corresponding binomial random variables
+    BOD.Frequency<-mat.tab[,1]
+    #generating an output in list format consisting Random variable and corresponding frequency
+    output<-list("RV"=BOD.Random.variable,"Freq"=BOD.Frequency)
+    return(output)
+  }
+}
+
+#' Fitting the Binomial Distribution when binomial random variable, frequency and probability
+#' value are given
+#'
+#' The function will fit the binomial distribution when random variables, corresponding
+#' frequencies and probability value are given. It will provide the expected frequencies, chi-squared
+#' test statistics value, p value and degree of freedom  so that it can be
+#' seen if this distribution fits the data.
+#'
+#' @usage fitBin(x,obs.freq,p=0,print=T)
+#'
+#' @param x                  vector of binomial random variables
+#' @param obs.freq           vector of frequencies
+#' @param p                  single value for probability
+#' @param print              logical value for print or not
+#'
+#' @details
+#' \deqn{x = 0,1,2,...}
+#' \deqn{0 \le p \le 1}
+#' \deqn{obs.freq \ge 0}
+#'
+#' \strong{NOTE} : If input parameters are not in given domain conditions
+#' necessary error messages will be provided to go further.
+#'
+#' @return
+#' The output of \code{fitBin} gives a list format consisting
+#'
+#' \code{bin.ran.var} binomial random variables
+#'
+#' \code{obs.freq} corresponding observed frequencies
+#'
+#' \code{exp.freq} corresponding expected frequencies
+#'
+#' \code{statistic} chi-squared test statistics value
+#'
+#' \code{df} degree of freedom
+#'
+#' \code{p.value} probability value by chi-squared test statistic
+#'
+#' @examples
+#' No.D.D=0:7      #assigning the random variables
+#' Obs.fre.1=c(47,54,43,40,40,41,39,95)  #assigning the corresponding frequencies
+#'
+#' #fitting when the random variable,frequencies,probability value are given.
+#' fitBin(No.D.D,Obs.fre.1,p=0.7)
+#'
+#' fitBin(No.D.D,Obs.fre.1,p=0.7,FALSE)$exp.freq  #extracting the expected frequencies
+#'
+#' #fitting when the random variable,frequencies are given.
+#' fitBin(No.D.D,Obs.fre.1)
+#'
+#' @export
+fitBin<-function(x,obs.freq,p=0,print=T)
+{
+  #checking if inputs consist NA(not assigned)values, infinite values or NAN(not a number)values if so
+  #creating an error message as well as stopping the function progress.
+  if(any(is.na(c(x,obs.freq,p))) | any(is.infinite(c(x,obs.freq,p))) |
+     any(is.nan(c(x,obs.freq,p))) )
+  {
+    stop("NA or Infinite or NAN values in the Input")
+  }
+  else
+  {
+    #checking if the probability value is less than or equal to zero and greater than one,
+    #if so creating an error message as well as stopping the function progress.
+    if(p<=0 && p>1)
+    {
+      stop("Probability value cannot be less than zero or greater than one")
+    }
+    else
+    {
+      if(p==0)
+      {
+        i<-1:length(x)
+        #estimating the probability value when it is not given
+        p.hat<-(sum(x[i]*obs.freq[i]))/(max(x)*sum(obs.freq))
+        #estimating the probability values for the given binomial random variables
+        est.prob<-stats::dbinom(x,max(x),p.hat)
+        #calculating the expected frequencies
+        exp.freq<-round((sum(obs.freq)*est.prob),2)
+        #chi-squared test statistics is calculated with observed frequency and expected frequency
+        statistic<-sum(((obs.freq-exp.freq)^2)/exp.freq)
+        #degree of freedom is calculated
+        df<-length(x)-2
+        #p value of chi-squared test statistic is calculated
+        p.value<-1-stats::pchisq(statistic,df)
+        #all the above information is mentioned as a message below
+        #and if the user wishes they can print or not to
+        if(print==TRUE)
+        {
+          cat("\nChi-squared test for Binomial Distribution\n\n
+                Observed Frequency : ",obs.freq,"\n
+                expected Frequency : ",exp.freq,"\n
+                X-squared =",round(statistic,4),"df =",df,"p-value =",round(p.value,4),"\n")
+        }
+        #checking if any of the expected frequencies are less than five and greater than zero, if so
+        #a warning message is provided in interpreting the results
+        if(min(exp.freq)<5 && min(exp.freq) > 0)
+        {
+          warning("Chi-squared approximation may be doubtful because expected frequency is less than 5")
+        }
+        #checking if expected frequency is zero, if so providing a warning message in interpreting
+        #the results
+        if(min(exp.freq)==0)
+        {
+          warning("Chi-squared approximation is not suitable because expected frequency approximates to zero")
+        }
+        #the final output is in a list format containing the calculated values
+        final<-list("bin.ran.var"=x,"obs.freq"=obs.freq,"exp.freq"=exp.freq,"statistic"=round(statistic,4),
+                    "df"=df,"p.value"=round(p.value,4))
+      }
+      else
+      {
+        #estimating the probability values for the given binomial random variables
+        est.prob<-stats::dbinom(x,max(x),p)
+        #calculating the expected frequencies
+        exp.freq<-round((sum(obs.freq)*est.prob),2)
+        #applying the chi squared test
+        ans<-stats::chisq.test(x=obs.freq,p=est.prob)
+        #all the above information is mentioned as a message below
+        #and if the user wishes they can print or not to
+        if(print==TRUE)
+        {
+          cat("\nChi-squared test for Binomial Distribution\n\n
+              Observed Frequency : ",obs.freq,"\n
+              expected Frequency : ",exp.freq,"\n
+              X-squared =",round(ans$statistic,4),"df =",ans$parameter,
+              "p-value =",round(ans$p.value,4),"\n")
+        }
+
+        #checking if any of the expected frequencies are less than five and greater than zero, if so
+        #a warning message is provided in interpreting the results
+        if(min(exp.freq)<5 && min(exp.freq) > 0)
+        {
+          warning("Chi-squared approximation may be doubtful because expected frequency is less than 5")
+        }
+        #checking if expected frequency is zero, if so providing a warning message in interpreting
+        #the results
+        if(min(exp.freq)==0)
+        {
+          warning("Chi-squared approximation is not suitable because expected frequency approximates to zero")
+        }
+        #the final output is in a list format containing the calculated values
+        final<-list("bin.ran.var"=x,"obs.freq"=obs.freq,"exp.freq"=exp.freq,
+                    "statistic"=round(ans$statistic,4),"df"=ans$parameter,
+                    "p.value"=round(ans$p.value,4))
+      }
+    }
+  }
+}
+
+#' @importFrom stats dbinom
+#' @importFrom stats chisq.test
+#' @importFrom stats pchisq
