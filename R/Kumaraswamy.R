@@ -785,11 +785,11 @@ NegLLKumBin<-function(x,freq,a,b,it=25000)
 #' No.D.D=0:7     #assigning the random variables
 #' Obs.fre.1=c(47,54,43,40,40,41,39,95)  #assigning the corresponding frequencies
 #' #estimating the parameters using maximum log likelihood value and assigning it
-#'
+#' \dontrun{
 #' parameters1=suppressWarnings(bbmle::mle2(EstMLEKumBin,start = list(a=10.1,b=1.1,it=10000),
 #' data = list(x=No.D.D,freq=Obs.fre.1)))
 #' bbmle::coef(parameters1)   #extracting the parameters
-#'
+#' }
 #'
 #' @export
 EstMLEKumBin<-function(x,freq,a,b,it)
@@ -868,8 +868,8 @@ EstMLEKumBin<-function(x,freq,a,b,it)
 #' No.D.D=0:7   #assigning the random variables
 #' Obs.fre.1=c(47,54,43,40,40,41,39,95)   #assigning the corresponding frequencies
 #' #estimating the parameters using maximum log likelihood value and assigning it
-#'
-#' parameters=suppressWarnings(bbmle::mle2(EstMLEKumBin,start = list(a=10.1,b=1.1,it=15000),
+#' \dontrun{
+#' parameters=suppressWarnings(bbmle::mle2(EstMLEKumBin,start = list(a=10.1,b=1.1,it=10000),
 #'           data = list(x=No.D.D,freq=Obs.fre.1)))
 #' bbmle::coef(parameters)    #extracting the parameters
 #' aKumBin=bbmle::coef(parameters)[1] #assigning the estimated a
@@ -878,7 +878,7 @@ EstMLEKumBin<-function(x,freq,a,b,it)
 #'
 #' #fitting when the random variable,frequencies,shape parameter values are given.
 #' fitKumBin(No.D.D,Obs.fre.1,aKumBin,bKumBin,itKumBin*100)
-#'
+#' }
 #'
 #' @export
 fitKumBin<-function(x,obs.freq,a,b,it,print=T)
