@@ -611,6 +611,11 @@ fitCorrBin<-function(x,obs.freq,p,cov,print=T)
     {
       warning("Chi-squared approximation may be doubtful because expected frequency is less than 5")
     }
+    #checking if df is less than or equal to zero
+    if(df<0 | df==0)
+    {
+      warning("Degrees of freedom cannot be less than or equal to zero")
+    }
     #checking if expected frequency is zero, if so providing a warning message in interpreting
     #the results
     if(min(exp.freq)==0)

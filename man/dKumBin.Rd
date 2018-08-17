@@ -65,7 +65,7 @@ col<-rainbow(5)
 a<-c(1,2,5,10,.85)
 plot(0,0,main="Kumaraswamy binomial probability function graph",xlab="Binomial random variable",
 ylab="Probability function values",xlim = c(0,10),ylim = c(0,0.5))
-\dontrun{
+
 for (i in 1:5)
 {
 lines(0:10,dKumBin(0:10,10,a[i],a[i])$pdf,col = col[i],lwd=2.85)
@@ -87,7 +87,6 @@ lines(0:10,pKumBin(0:10,10,a[i],a[i]),col = col[i])
 points(0:10,pKumBin(0:10,10,a[i],a[i]),col = col[i])
 }
 pKumBin(0:10,10,4,2)    #acquiring the cumulative probability values
-}
 
 }
 \references{

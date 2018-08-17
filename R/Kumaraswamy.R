@@ -433,7 +433,7 @@ mazKUM<-function(r,a,b)
 #' a<-c(1,2,5,10,.85)
 #' plot(0,0,main="Kumaraswamy binomial probability function graph",xlab="Binomial random variable",
 #' ylab="Probability function values",xlim = c(0,10),ylim = c(0,0.5))
-#' \dontrun{
+#'
 #' for (i in 1:5)
 #' {
 #' lines(0:10,dKumBin(0:10,10,a[i],a[i])$pdf,col = col[i],lwd=2.85)
@@ -455,7 +455,6 @@ mazKUM<-function(r,a,b)
 #' points(0:10,pKumBin(0:10,10,a[i],a[i]),col = col[i])
 #' }
 #' pKumBin(0:10,10,4,2)    #acquiring the cumulative probability values
-#' }
 #'
 #' @export
 dKumBin<-function(x,n,a,b,it=25000)
@@ -596,7 +595,7 @@ dKumBin<-function(x,n,a,b,it=25000)
 #' a<-c(1,2,5,10,.85)
 #' plot(0,0,main="Kumaraswamy binomial probability function graph",xlab="Binomial random variable",
 #' ylab="Probability function values",xlim = c(0,10),ylim = c(0,0.5))
-#' \dontrun{
+#'
 #' for (i in 1:5)
 #' {
 #' lines(0:10,dKumBin(0:10,10,a[i],a[i])$pdf,col = col[i],lwd=2.85)
@@ -618,7 +617,7 @@ dKumBin<-function(x,n,a,b,it=25000)
 #' points(0:10,pKumBin(0:10,10,a[i],a[i]),col = col[i])
 #' }
 #' pKumBin(0:10,10,4,2)    #acquiring the cumulative probability values
-#' }
+#'
 #' @export
 pKumBin<-function(x,n,a,b,it=25000)
 {
@@ -669,9 +668,9 @@ pKumBin<-function(x,n,a,b,it=25000)
 #' @examples
 #' No.D.D=0:7          #assigning the random variables
 #' Obs.fre.1=c(47,54,43,40,40,41,39,95)  #assigning the corresponding frequencies
-#' \dontrun{
+#'
 #' NegLLKumBin(No.D.D,Obs.fre.1,1.3,4.4) #acquiring the negative log likelihood value
-#' }
+#'
 #' @export
 NegLLKumBin<-function(x,freq,a,b,it=25000)
 {
@@ -786,15 +785,12 @@ NegLLKumBin<-function(x,freq,a,b,it=25000)
 #' No.D.D=0:7     #assigning the random variables
 #' Obs.fre.1=c(47,54,43,40,40,41,39,95)  #assigning the corresponding frequencies
 #' #estimating the parameters using maximum log likelihood value and assigning it
-#' \dontrun{
-#' parameters1=suppressWarnings(bbmle::mle2(EstMLEKumBin,start = list(a=10.1,b=1.1,it=1000),
+#'
+#' parameters1=suppressWarnings(bbmle::mle2(EstMLEKumBin,start = list(a=10.1,b=1.1,it=10000),
 #' data = list(x=No.D.D,freq=Obs.fre.1)))
 #' bbmle::coef(parameters1)   #extracting the parameters
 #'
-#' parameters2=suppressWarnings(bbmle::mle2(EstMLEKumBin,start = list(a=10.1,b=1.1,it=5000),
-#' data = list(x=No.D.D,freq=Obs.fre.1)))
-#' bbmle::coef(parameters2)   #extracting the parameters
-#' }
+#'
 #' @export
 EstMLEKumBin<-function(x,freq,a,b,it)
 {
@@ -872,8 +868,8 @@ EstMLEKumBin<-function(x,freq,a,b,it)
 #' No.D.D=0:7   #assigning the random variables
 #' Obs.fre.1=c(47,54,43,40,40,41,39,95)   #assigning the corresponding frequencies
 #' #estimating the parameters using maximum log likelihood value and assigning it
-#' \dontrun{
-#' parameters=suppressWarnings(bbmle::mle2(EstMLEKumBin,start = list(a=10.1,b=1.1,it=5000),
+#'
+#' parameters=suppressWarnings(bbmle::mle2(EstMLEKumBin,start = list(a=10.1,b=1.1,it=15000),
 #'           data = list(x=No.D.D,freq=Obs.fre.1)))
 #' bbmle::coef(parameters)    #extracting the parameters
 #' aKumBin=bbmle::coef(parameters)[1] #assigning the estimated a
@@ -881,11 +877,9 @@ EstMLEKumBin<-function(x,freq,a,b,it)
 #' itKumBin=bbmle::coef(parameters)[3] #assigning the estimated iterations
 #'
 #' #fitting when the random variable,frequencies,shape parameter values are given.
-#' fitKumBin(No.D.D,Obs.fre.1,aKumBin,bKumBin,itKumBin*1000)
+#' fitKumBin(No.D.D,Obs.fre.1,aKumBin,bKumBin,itKumBin*10)
 #'
-#' #extracting the expected frequencies
-#' fitKumBin(No.D.D,Obs.fre.1,aKumBin,bKumBin,itKumBin*1000,FALSE)$exp.freq
-#' }
+#'
 #' @export
 fitKumBin<-function(x,obs.freq,a,b,it,print=T)
 {
@@ -917,6 +911,11 @@ fitKumBin<-function(x,obs.freq,a,b,it,print=T)
                  expected Frequency : ",exp.freq,"\n
                  X-squared =",round(statistic,4),"df =",df,"  p-value =",round(p.value,4),"\n
                 over dispersion =",dKumBin(x,max(x),a,b,it)$over.dis.para,"\n")
+    }
+    #checking if df is less than or equal to zero
+    if(df<0 | df==0)
+    {
+      warning("Degrees of freedom cannot be less than or equal to zero")
     }
     #checking if any of the expected frequencies are less than five and greater than zero, if so
     #a warning message is provided in interpreting the results

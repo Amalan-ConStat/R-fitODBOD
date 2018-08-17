@@ -2,7 +2,7 @@
 % Please edit documentation in R/BetaCorrBin.R
 \name{EstMLEBetaCorrBin}
 \alias{EstMLEBetaCorrBin}
-\title{Estimating the probability of success and correlation for Beta-Correlated Binomial
+\title{Estimating the covariance, alph and beta parameter values for Beta-Correlated Binomial
 Distribution}
 \usage{
 EstMLEBetaCorrBin(x,freq,cov,a,b)
@@ -23,7 +23,7 @@ EstMLEBetaCorrBin(x,freq,cov,a,b)
 therefore output is of class of mle2.
 }
 \description{
-The function will estimate the probability of success and correlation using the maximum log
+The function will estimate the covariance, alph and beta parameter values using the maximum log
 likelihood method for the Beta-Correlated Binomial distribution when the binomial random
 variables and corresponding frequencies are given
 }

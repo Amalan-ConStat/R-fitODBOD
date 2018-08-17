@@ -993,6 +993,11 @@ fitGHGBB<-function(x,obs.freq,a,b,c,print=T)
                  X-squared =",round(statistic,4),"df =",df,"  p-value =",round(p.value,4),"\n
                  over dispersion =",dGHGBB(x,max(x),a,b,c)$over.dis.para,"\n")
     }
+    #checking if df is less than or equal to zero
+    if(df<0 | df==0)
+    {
+      warning("Degrees of freedom cannot be less than or equal to zero")
+    }
     #checking if any of the expected frequencies are less than five and greater than zero, if so
     #a warning message is provided in interpreting the results
     if(min(exp.freq)<5 && min(exp.freq) > 0)

@@ -21,3 +21,13 @@ test_that("Chi-squared approximation issues",{
           expect_that(fitMcGBB(0:6,c(2,5,4,40,40,4,3),0.1,3,0.9),
           gives_warning("Chi-squared approximation may be doubtful because expected frequency is less than 5"))
           })
+
+context("Degree of Freedom")
+test_that("Degree of freedom less than zero",{
+          expect_that(fitMcGBB(1,2,0.1,0.03,6),
+          gives_warning("Degrees of freedom cannot be less than or equal to zero"))
+          })
+test_that("Degree of freedom equal to zero",{
+          expect_that(fitMcGBB(c(0,1,2,3),c(10,11,12,12),0.1,0.03,5),
+          gives_warning("Degrees of freedom cannot be less than or equal to zero"))
+          })

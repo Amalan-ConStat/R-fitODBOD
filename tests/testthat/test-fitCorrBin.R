@@ -21,3 +21,13 @@ test_that("Chi-squared approximation issues",{
           expect_that(fitCorrBin(0:7,c(47,54,43,40,40,41,39,95),0.2,0.03),
           gives_warning("Chi-squared approximation may be doubtful because expected frequency is less than 5"))
           })
+
+context("Degree of Freedom")
+test_that("Degree of freedom less than zero",{
+          expect_that(fitCorrBin(1,2,0.1,0.03),
+          gives_warning("Degrees of freedom cannot be less than or equal to zero"))
+          })
+test_that("Degree of freedom equal to zero",{
+          expect_that(fitCorrBin(c(0,1,2),c(11,12,12),0.1,0.03),
+          gives_warning("Degrees of freedom cannot be less than or equal to zero"))
+          })

@@ -40,3 +40,12 @@ test_that("Probability issues",{
           throws_error("Probability or alpha value doesnot satisfy conditions"))
           })
 
+context("Alpha value issues")
+test_that("Alpha value greater than right side",{
+          expect_that(NegLLAddBin(5,1,0.2,0.4),
+          throws_error("alpha parameter doesnot satisfy the conditions"))
+          })
+test_that("Alpha value greater than left side",{
+          expect_that(NegLLAddBin(5,1,0.2,-0.4),
+          throws_error("alpha parameter doesnot satisfy the conditions"))
+          })

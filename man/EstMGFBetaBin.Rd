@@ -2,7 +2,7 @@
 % Please edit documentation in R/Beta.R
 \name{EstMGFBetaBin}
 \alias{EstMGFBetaBin}
-\title{Estimating the shape parameters a and b for Beta-Binomial Distributon}
+\title{Estimating the shape parameters a and b for Beta-Binomial Distribution}
 \usage{
 EstMGFBetaBin(x,freq)
 }

@@ -13,7 +13,7 @@ NegLLBetaCorrBin(x,freq,cov,a,b)
 
 \item{cov}{single value for covariance}
 
-\item{a}{single value for alph parameter}
+\item{a}{single value for alpha parameter}
 
 \item{b}{single value for beta parameter}
 }

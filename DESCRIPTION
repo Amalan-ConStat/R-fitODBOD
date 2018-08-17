@@ -1,11 +1,11 @@
 Package: fitODBOD
 Type: Package
 Title: Modeling Over Dispersed Binomial Outcome Data Using BMD and ABD
-Description: Contains probability mass functions, cumulative mass functions, negative log likelihood value, parameter estimation and modeling data using Binomial Mixture distributions (BMD) (Manoj et al (2013) <doi:10.5539/ijsp.v2n2p24>) (Amalan et al (2018) ) and Alternate Binomial distributions (ABD) (Amalan et al (2018) ).
-URL: http://
+Description: Contains Probability Mass Functions, Cumulative Mass Functions, Negative Log Likelihood value, parameter estimation and modeling data using Binomial Mixture Distributions (BMD)() and Alternate Binomial Distributions (ABD)().
+URL: https://github.com/Amalan-ConStat/R-fitODBOD
 Version: 1.2.0
 Authors@R: c(
-          person("Amalan", "Mahendran", email = "amalan0595@gmail.com", role = c("aut","cre")),
+          person("Mahendran","Amalan", email = "amalan0595@gmail.com", role = c("aut","cre")),
           person("Pushpakanthie", "Wijekoon", role = c("aut","ctb")))
 Depends: R (>= 3.5.0)
 License: GPL-2

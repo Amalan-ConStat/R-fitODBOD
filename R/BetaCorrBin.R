@@ -310,7 +310,7 @@ pBetaCorrBin<-function(x,n,cov,a,b)
 #' @param x                 vector of binomial random variables
 #' @param freq              vector of frequencies
 #' @param cov               single value for covariance
-#' @param a                 single value for alph parameter
+#' @param a                 single value for alpha parameter
 #' @param b                 single value for beta parameter
 #'
 #' @details
@@ -439,10 +439,10 @@ NegLLBetaCorrBin<-function(x,freq,cov,a,b)
   }
 }
 
-#' Estimating the probability of success and correlation for Beta-Correlated Binomial
+#' Estimating the covariance, alph and beta parameter values for Beta-Correlated Binomial
 #' Distribution
 #'
-#' The function will estimate the probability of success and correlation using the maximum log
+#' The function will estimate the covariance, alph and beta parameter values using the maximum log
 #' likelihood method for the Beta-Correlated Binomial distribution when the binomial random
 #' variables and corresponding frequencies are given
 #'
@@ -522,7 +522,7 @@ EstMLEBetaCorrBin<-function(x,freq,cov,a,b)
 }
 
 #' Fitting the Beta-Correlated Binomial Distribution when binomial
-#' random variable, frequency, covariance, alph and beta parameters are given
+#' random variable, frequency, covariance, alpha and beta parameters are given
 #'
 #' The function will fit the Beta-Correlated binomial Distribution
 #' when random variables, corresponding frequencies, covariance, alpha and beta parameters are given.
@@ -582,7 +582,7 @@ EstMLEBetaCorrBin<-function(x,freq,cov,a,b)
 #' covBetaCorrBin=bbmle::coef(parameters)[1]
 #' aBetaCorrBin=bbmle::coef(parameters)[2]
 #' bBetaCorrBin=bbmle::coef(parameters)[3]
-#' #fitting when the random variable,frequencies,probability and covariance are given
+#' #fitting when the random variable,frequencies,covariance, a and b are given
 #' fitBetaCorrBin(No.D.D,Obs.fre.1,covBetaCorrBin,aBetaCorrBin,bBetaCorrBin)
 #' #extracting the expected frequencies
 #' fitBetaCorrBin(No.D.D,Obs.fre.1,covBetaCorrBin,aBetaCorrBin,bBetaCorrBin,FALSE)$exp.freq
@@ -617,6 +617,11 @@ fitBetaCorrBin<-function(x,obs.freq,cov,a,b,print=T)
           expected Frequency : ",exp.freq,"\n
           X-squared =",round(statistic,4),"df =",df,"  p-value =",round(p.value,4),"\n
           Correlation  =",dBetaCorrBin(x,max(x),cov,a,b)$corr,"\n")
+    }
+    #checking if df is less than or equal to zero
+    if(df<0 | df==0)
+    {
+      warning("Degrees of freedom cannot be less than or equal to zero")
     }
     #checking if any of the expected frequencies are less than five and greater than zero, if so
     #a warning message is provided in interpreting the results

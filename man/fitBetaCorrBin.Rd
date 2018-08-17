@@ -3,7 +3,7 @@
 \name{fitBetaCorrBin}
 \alias{fitBetaCorrBin}
 \title{Fitting the Beta-Correlated Binomial Distribution when binomial
-random variable, frequency, covariance, alph and beta parameters are given}
+random variable, frequency, covariance, alpha and beta parameters are given}
 \usage{
 fitBetaCorrBin(x,obs.freq,cov,a,b,print)
 }
@@ -62,7 +62,7 @@ parameters=suppressWarnings(bbmle::mle2(EstMLEBetaCorrBin,start = list(cov=0.005
 covBetaCorrBin=bbmle::coef(parameters)[1]
 aBetaCorrBin=bbmle::coef(parameters)[2]
 bBetaCorrBin=bbmle::coef(parameters)[3]
-#fitting when the random variable,frequencies,probability and covariance are given
+#fitting when the random variable,frequencies,covariance, a and b are given
 fitBetaCorrBin(No.D.D,Obs.fre.1,covBetaCorrBin,aBetaCorrBin,bBetaCorrBin)
 #extracting the expected frequencies
 fitBetaCorrBin(No.D.D,Obs.fre.1,covBetaCorrBin,aBetaCorrBin,bBetaCorrBin,FALSE)$exp.freq
