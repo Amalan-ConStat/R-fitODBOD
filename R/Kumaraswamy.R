@@ -877,7 +877,7 @@ EstMLEKumBin<-function(x,freq,a,b,it)
 #' itKumBin=bbmle::coef(parameters)[3] #assigning the estimated iterations
 #'
 #' #fitting when the random variable,frequencies,shape parameter values are given.
-#' fitKumBin(No.D.D,Obs.fre.1,aKumBin,bKumBin,itKumBin*10)
+#' fitKumBin(No.D.D,Obs.fre.1,aKumBin,bKumBin,itKumBin*100)
 #'
 #'
 #' @export

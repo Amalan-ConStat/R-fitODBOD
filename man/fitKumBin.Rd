@@ -66,7 +66,7 @@ bKumBin=bbmle::coef(parameters)[2] #assigning the estimated b
 itKumBin=bbmle::coef(parameters)[3] #assigning the estimated iterations
 
 #fitting when the random variable,frequencies,shape parameter values are given.
-fitKumBin(No.D.D,Obs.fre.1,aKumBin,bKumBin,itKumBin)
+fitKumBin(No.D.D,Obs.fre.1,aKumBin,bKumBin,itKumBin*100)
 
 
 }
