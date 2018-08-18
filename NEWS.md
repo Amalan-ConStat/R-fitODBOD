@@ -1,12 +1,7 @@
-# fitODBOD 1.2.0
-
 ### Version 1.1.0 was submitted on 27th February 2018. 
-* There were a few typos and they will corrected in the next version.
-* Two Journal articles related to the package have been submitted and under review, 
-they will be refferred in the Description file.
-* New distribution Beta-Correlated Binomial distribution will be added. 
-* Maintainer will provide a github blog to make functions and distributions more 
-simple.
-* New Version updates will occur twice an year to make this package more useful.
-* Future progress includes GUI and Rshiny ability for several tasks.  
-* GitHub will be constantly updated for the progress of fitODBOD.
+
+### Version 1.2.0 was submitted on 1st September 2018.
+* Few spelling mistakes in examples are cleared
+* Possibility of Degree of freedom being less than or equal to zero is considered in "fitXXX" functions.
+* Beta-Correlated Binomial distribution is added as a new Alternate Binomial Distributions. 
+* A GitHub blog explaining how functions work with examples.
