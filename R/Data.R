@@ -29,6 +29,7 @@
 #'
  "Alcohol_data"
 
+
 #' Male children data
 #'
 #' The number of male children among the first 12 children of family size 13 in 6115 families taken
@@ -56,6 +57,7 @@
 #' Available at: \url{http://conteudo.icmc.usp.br/CMS/Arquivos/arquivos_enviados/BIBLIOTECA_113_NSE_90.pdf}
 #'
  "Male_Children"
+
 
 #' Plant Disease Incidence data
 #'
