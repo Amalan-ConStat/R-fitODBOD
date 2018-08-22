@@ -7,7 +7,7 @@
 #' variable.
 #' The collection of all such variables from all respondents would be defined as "Binomial Outcome Data".
 #'
-#' @format A data frame with 3 variables and 8 observations
+#' @format A data frame with 3 columns and 8 rows.
 #' \describe{
 #' \item{\code{Days}}{No of Days Drunk}
 #' \item{\code{week1}}{Observed frequencies for week1}
@@ -29,6 +29,33 @@
 #'
  "Alcohol_data"
 
+#' Male children data
+#'
+#' The number of male children among the first 12 children of family size 13 in 6115 families taken
+#' from the hospital records in the nineteenth century Saxony (Sokal & Rohlf(1994), Lindsey (1995),
+#' p. 59). The thirteenth child is ignored to assuage the effect of families non-randomly stopping
+#' when a desired gender is reached.
+#'
+#'@format A data frame with 2 columns and 13 rows.
+#'\describe{
+#'\item{\code{No_of_males}}{No of Male children among first 12 children of family size 13}
+#'\item{\code{freq}}{Observed frequencies for corresponding male children}
+#'}
+#'
+#'@examples
+#'Male_Children$No_of_males   # extracting the binomial random variables
+#'sum(Male_Children$freq)     # summing all the frequencies
+#'
+#'@source
+#'Extracted from
+#'
+#'Borges, P., Rodrigues, J., Balakrishnan, N. and Bazán, J., 2014. A COM-Poisson type
+#'generalization of the binomial distribution and its properties and applications.
+#'Statistics & Probability Letters, 87, pp.158-166.
+#'
+#'Available at: \url{http://conteudo.icmc.usp.br/CMS/Arquivos/arquivos_enviados/BIBLIOTECA_113_NSE_90.pdf}
+#'
+"Male_Children"
 
 #' Plant Disease Incidence data
 #'
