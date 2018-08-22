@@ -54,6 +54,8 @@ lines(0:10,dMultiBin(0:10,10,a[i],1+b[i])$pdf,col = col[i],lwd=2.85)
 points(0:10,dMultiBin(0:10,10,a[i],1+b[i])$pdf,col = col[i],pch=16)
 }
 dMultiBin(0:10,10,.58,10.022)$pdf   #extracting the pdf values
+dMultiBin(0:10,10,.58,10.022)$mean   #extracting the mean
+dMultiBin(0:10,10,.58,10.022)$var   #extracting the variance
 
 #plotting random variables and cumulative probability values
 col<-rainbow(5)
