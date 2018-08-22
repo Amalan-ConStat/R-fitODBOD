@@ -116,7 +116,7 @@ dAddBin<-function(x,n,p,alpha)
     {
       #checking the probability value is inbetween zero and one or alpha value is inbetween negative one
       #and positive one
-      if( p < 0 | p > 1| alpha > 1 | alpha < -1)
+      if( p <= 0 | p >= 1| alpha > 1 | alpha < -1)
       {
         stop("Probability or alpha value doesnot satisfy conditions")
       }
@@ -332,7 +332,7 @@ NegLLAddBin<-function(x,freq,p,alpha)
     }
     #checking the probability value is inbetween zero and one or alpha value is inbetween negative one
     #and positive one
-    else if( p < 0 | p > 1 | alpha > 1 | alpha < -1)
+    else if( p <= 0 | p >= 1 | alpha > 1 | alpha < -1)
     {
       stop("Probability or alpha value doesnot satisfy conditions")
     }

@@ -124,7 +124,7 @@ dBetaCorrBin<-function(x,n,cov,a,b)
       shi<-1/(a+b)
       correlation<-cov/(p*(1-p))
       #checking the probability value is inbetween zero and one
-      if( p < 0 | p > 1 )
+      if( p <= 0 | p >= 1 )
       {
         stop("Probability value doesnot satisfy conditions")
       }
@@ -363,7 +363,7 @@ NegLLBetaCorrBin<-function(x,freq,cov,a,b)
       stop("Binomial random variable or frequency values cannot be negative")
     }
     #checking the probability value is inbetween zero and one or covariance is greater than zero
-    else if( p < 0 | p > 1)
+    else if( p <= 0 | p >= 1)
     {
       stop("Probability value doesnot satisfy conditions")
     }

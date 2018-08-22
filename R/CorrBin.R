@@ -128,7 +128,7 @@ dCorrBin<-function(x,n,p,cov)
     {
       correlation<-cov/(p*(1-p))
      #checking the probability value is inbetween zero and one
-      if( p < 0 | p > 1 )
+      if( p <= 0 | p >= 1 )
       {
         stop("Probability value doesnot satisfy conditions")
       }
@@ -363,7 +363,7 @@ NegLLCorrBin<-function(x,freq,p,cov)
       stop("Binomial random variable or frequency values cannot be negative")
     }
     #checking the probability value is inbetween zero and one or covariance is greater than zero
-    else if( p < 0 | p > 1)
+    else if( p <= 0 | p >= 1)
     {
       stop("Probability value doesnot satisfy conditions")
     }

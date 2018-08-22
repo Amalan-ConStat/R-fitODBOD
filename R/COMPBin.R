@@ -1,24 +1,24 @@
-dCOMPBin<-function()
+dCOMPBin<-function(x,n,p,v)
 {
 
 }
 
-pCOMPBin<-function()
+pCOMPBin<-function(x,n,p,v)
 {
 
 }
 
-NegLLCOMPBin<-function()
+NegLLCOMPBin<-function(x,freq,p,v)
 {
 
 }
 
-EstMLECOMPBin<-function()
+EstMLECOMPBin<-function(x,freq,p,v)
 {
 
 }
 
-fitCOMPBin<-function()
+fitCOMPBin<-function(x,obs.freq,p,v,print=T)
 {
 
 }

@@ -105,7 +105,7 @@ dMultiBin<-function(x,n,p,theta)
     {
       #checking the probability value is inbetween zero and one if so providig an error message
       #and stopping the function progress
-      if( p < 0 | p > 1)
+      if( p <= 0 | p >= 1)
       {
         stop("Probability value doesnot satisfy conditions")
       }
@@ -318,7 +318,7 @@ NegLLMultiBin<-function(x,freq,p,theta)
     #checking if probability value is less than zero or greater than one and
     #theta value greater than zero or equal to zero
     #if so creating an error message as well as stopping the function progress
-    else if( p < 0 | p > 1 | theta <= 0)
+    else if( p <= 0 | p >= 1 | theta <= 0)
     {
       stop("Probability or Theta parameter value doesnot satisfy conditions")
     }
