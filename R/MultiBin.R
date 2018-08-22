@@ -34,7 +34,11 @@
 #' @return
 #' The output of \code{dMultiBin} gives a list format consisting
 #'
-#' \code{pdf} probability function values in vector form
+#' \code{pdf}         probability function values in vector form
+#'
+#' \code{mean}        mean of Multiplicative Binomial Distribution
+#'
+#' \code{var}        variance of Multiplicative Binomial Distribution
 #'
 #' @references
 #' Johnson, N. L., Kemp, A. W., & Kotz, S. (2005). Univariate discrete distributions (Vol. 444).
@@ -63,6 +67,9 @@
 #' points(0:10,dMultiBin(0:10,10,a[i],1+b[i])$pdf,col = col[i],pch=16)
 #' }
 #' dMultiBin(0:10,10,.58,10.022)$pdf   #extracting the pdf values
+#' dMultiBin(0:10,10,.58,10.022)$mean   #extracting the mean
+#' dMultiBin(0:10,10,.58,10.022)$var   #extracting the variance
+#'
 #'
 #' #plotting random variables and cumulative probability values
 #' col<-rainbow(5)
@@ -142,8 +149,10 @@ dMultiBin<-function(x,n,p,theta)
           {
             value[i]<-choose(n,x[i])*(p^x[i])*((1-p)^(n-x[i]))*(theta^(x[i]*(n-x[i])))/func1
           }
-          # generating an output in list format consisting pdf
-          output<-list("pdf"=value)
+          # generating an output in list format consisting pdf,mean and variance
+          mean<-sum((0:n)*value1)
+          variance<-sum(((0:n)^2)*value1)-mean^2
+          output<-list("pdf"=value,"mean"=mean,"var"=variance)
           return(output)
         }
       }
@@ -214,6 +223,8 @@ dMultiBin<-function(x,n,p,theta)
 #' points(0:10,dMultiBin(0:10,10,a[i],1+b[i])$pdf,col = col[i],pch=16)
 #' }
 #' dMultiBin(0:10,10,.58,10.022)$pdf   #extracting the pdf values
+#' dMultiBin(0:10,10,.58,10.022)$mean   #extracting the mean
+#' dMultiBin(0:10,10,.58,10.022)$var   #extracting the variance
 #'
 #' #plotting random variables and cumulative probability values
 #' col<-rainbow(5)
