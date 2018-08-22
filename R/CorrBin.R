@@ -585,7 +585,7 @@ fitCorrBin<-function(x,obs.freq,p,cov,print=T)
   }
   else
   {
-    #for given random variables and mode parameter calculating the estimated probability values
+    #for given random variables and parameters calculating the estimated probability values
     est.prob<-dCorrBin(x,max(x),p,cov)$pdf
     #using the estimated probability values the expected frequencies are calculated
     exp.freq<-round((sum(obs.freq)*est.prob),2)

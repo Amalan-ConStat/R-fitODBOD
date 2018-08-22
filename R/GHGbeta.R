@@ -973,7 +973,7 @@ fitGHGBB<-function(x,obs.freq,a,b,c,print=T)
   }
   else
   {
-    #for given random variables and mode parameter calculating the estimated probability values
+    #for given random variables and parameters calculating the estimated probability values
     est.prob<-dGHGBB(x,max(x),a,b,c)$pdf
     #using the estimated probability values the expected frequencies are calculated
     exp.freq<-round((sum(obs.freq)*est.prob),2)

@@ -508,7 +508,7 @@ fitMultiBin<-function(x,obs.freq,p,theta,print=T)
   }
   else
   {
-    #for given random variables and mode parameter calculating the estimated probability values
+    #for given random variables and parameters calculating the estimated probability values
     est.prob<-dMultiBin(x,max(x),p,theta)$pdf
     #using the estimated probability values the expected frequencies are calculated
     exp.freq<-round((sum(obs.freq)*est.prob),2)

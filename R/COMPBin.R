@@ -397,7 +397,119 @@ EstMLECOMPBin<-function(x,freq,p,v)
   return(-COMPBinLL)
 }
 
+#' Fitting the COM Poisson Binomial Distribution when binomial
+#' random variable, frequency, probability of success and v parameter are given
+#'
+#' The function will fit the COM Poisson binomial Distribution
+#' when random variables, corresponding frequencies, probability of success and v parameter are given.
+#' It will provide the expected frequencies, chi-squared test statistics value, p value,
+#' and degree of freedom so that it can be seen if this distribution fits the data.
+#'
+#' @usage
+#' fitCorrBin(x,obs.freq,p,v,print)
+#'
+#' @param x                  vector of binomial random variables
+#' @param obs.freq           vector of frequencies
+#' @param p                  single value for probability of success
+#' @param v                  single value for v
+#' @param print              logical value for print or not
+#'
+#' @details
+#' \deqn{obs.freq \ge 0}
+#' \deqn{x = 0,1,2,..}
+#' \deqn{0 < p < 1}
+#' \deqn{-\infty < v < +\infty}
+#'
+#' \strong{NOTE} : If input parameters are not in given domain conditions
+#' necessary error messages will be provided to go further
+#'
+#' @return
+#' The output of \code{fitCOMPBin} gives a list format consisting
+#'
+#' \code{bin.ran.var} binomial random variables
+#'
+#' \code{obs.freq} corresponding observed frequencies
+#'
+#' \code{exp.freq} corresponding expected frequencies
+#'
+#' \code{statistic} chi-squared test statistics
+#'
+#' \code{df} degree of freedom
+#'
+#' \code{p.value} probability value by chi-squared test statistic
+#'
+#'
+#' @references
+#' Borges, P., Rodrigues, J., Balakrishnan, N. and Bazan, J., 2014. A COM-Poisson type
+#' generalization of the binomial distribution and its properties and applications.
+#' Statistics & Probability Letters, 87, pp.158-166.
+#'
+#' Available at: \url{http://conteudo.icmc.usp.br/CMS/Arquivos/arquivos_enviados/BIBLIOTECA_113_NSE_90.pdf}
+#'
+#'
+#' @examples
+#' No.D.D=0:7                    #assigning the random variables
+#' Obs.fre.1=c(47,54,43,40,40,41,39,95)      #assigning the corresponding frequencies
+#'
+#' #estimating the parameters using maximum log likelihood value and assigning it
+#' parameters=suppressWarnings(bbmle::mle2(EstMLECOMPBin,start = list(p=0.5,v=0.050),
+#'            data = list(x=No.D.D,freq=Obs.fre.1)))
+#' pCOMPBin=bbmle::coef(parameters)[1]
+#' vCOMPBin=bbmle::coef(parameters)[2]
+#' #fitting when the random variable,frequencies,probability and v parameter are given
+#' fitCOMPBin(No.D.D,Obs.fre.1,pCOMPBin,vCOMPBin)
+#' #extracting the expected frequencies
+#' fitCOMPBin(No.D.D,Obs.fre.1,pCOMPBin,vCOMPBin,FALSE)$exp.freq
+#' @export
 fitCOMPBin<-function(x,obs.freq,p,v,print=T)
 {
-
+  #checking if inputs consist NA(not assigned)values, infinite values or NAN(not a number)values
+  #if so creating an error message as well as stopping the function progress.
+  if(any(is.na(c(x,obs.freq,p,v))) | any(is.infinite(c(x,obs.freq,p,v))) |
+     any(is.nan(c(x,obs.freq,p,v))) )
+  {
+    stop("NA or Infinite or NAN values in the Input")
+  }
+  else
+  {
+    #for given random variables and parameters calculating the estimated probability values
+    est.prob<-dCOMPBin(x,max(x),p,v)$pdf
+    #using the estimated probability values the expected frequencies are calculated
+    exp.freq<-round((sum(obs.freq)*est.prob),2)
+    #chi-squared test statistics is calculated with observed frequency and expected frequency
+    statistic<-sum(((obs.freq-exp.freq)^2)/exp.freq)
+    #degree of freedom is calculated
+    df<-length(x)-3
+    #p value of chi-squared test statistic is calculated
+    p.value<-1-stats::pchisq(statistic,df)
+    #all the above information is mentioned as a message below
+    #and if the user wishes they can print or not to
+    if(print==TRUE)
+    {
+      cat("\nChi-squared test for COM Poisson Binomial Distribution\n\n
+                 Observed Frequency : ",obs.freq,"\n
+                 expected Frequency : ",exp.freq,"\n
+                 X-squared =",round(statistic,4),"df =",df,"  p-value =",round(p.value,4),"\n")
+    }
+    #checking if any of the expected frequencies are less than five and greater than zero, if so
+    #a warning message is provided in interpreting the results
+    if(min(exp.freq)<5 && min(exp.freq) > 0)
+    {
+      warning("Chi-squared approximation may be doubtful because expected frequency is less than 5")
+    }
+    #checking if df is less than or equal to zero
+    if(df<0 | df==0)
+    {
+      warning("Degrees of freedom cannot be less than or equal to zero")
+    }
+    #checking if expected frequency is zero, if so providing a warning message in interpreting
+    #the results
+    if(min(exp.freq)==0)
+    {
+      warning("Chi-squared approximation is not suitable because expected frequency approximates to zero")
+    }
+    #the final output is in a list format containing the calculated values
+    final<-list("bin.ran.var"=x,"obs.freq"=obs.freq,"exp.freq"=exp.freq,"statistic"=round(statistic,4),
+                "df"=df,"p.value"=round(p.value,4))
+  }
 }
