@@ -234,14 +234,167 @@ pCOMPBin<-function(x,n,p,v)
   return(ans)
 }
 
+#' Negative Log Likelihood value of COM Poisson Binomial distribution
+#'
+#' This function will calculate the negative log likelihood value when the vector of binomial random
+#' variables and vector of corresponding frequencies are given with the input parameters.
+#'
+#' @usage
+#' NegLLCOMPBin(x,freq,p,v)
+#'
+#' @param x                 vector of binomial random variables
+#' @param freq              vector of frequencies
+#' @param p                 single value for probability of success
+#' @param v                 single value for  v
+#'
+#' @details
+#' \deqn{freq \ge 0}
+#' \deqn{x = 0,1,2,..}
+#' \deqn{0 < p < 1}
+#' \deqn{-\infty < v < +\infty}
+#'
+#' \strong{NOTE} : If input parameters are not in given domain conditions
+#' necessary error messages will be provided to go further
+#'
+#' @return
+#' The output of \code{NegLLCOMPBin} will produce a single numeric value
+#'
+#' @references
+#' Borges, P., Rodrigues, J., Balakrishnan, N. and Bazan, J., 2014. A COM-Poisson type
+#' generalization of the binomial distribution and its properties and applications.
+#' Statistics & Probability Letters, 87, pp.158-166.
+#'
+#' Available at: \url{http://conteudo.icmc.usp.br/CMS/Arquivos/arquivos_enviados/BIBLIOTECA_113_NSE_90.pdf}
+#'
+#' @examples
+#' No.D.D=0:7         #assigning the random variables
+#' Obs.fre.1=c(47,54,43,40,40,41,39,95)      #assigning the corresponding frequencies
+#' NegLLCOMPBin(No.D.D,Obs.fre.1,.5,.03)     #acquiring the negative log likelihood value
+#'
+#' @export
 NegLLCOMPBin<-function(x,freq,p,v)
 {
+  #constructing the data set using the random variables vector and frequency vector
+  n<-max(x)
+  data<-rep(x,freq)
+  #checking if inputs consist NA(not assigned)values, infinite values or NAN(not a number)values
+  #if so creating an error message as well as stopping the function progress.
+  if(any(is.na(c(x,freq,p,v))) | any(is.infinite(c(x,freq,p,v))) |
+     any(is.nan(c(x,freq,p,v))) )
+  {
+    stop("NA or Infinite or NAN values in the Input")
+  }
+  else
+  {
+    #checking if any of the random variables of frequencies are less than zero if so
+    #creating a error message as well as stopping the function progress
+    if(any(c(x,freq) < 0) )
+    {
+      stop("Binomial random variable or frequency values cannot be negative")
+    }
+    #checking the probability value is inbetween zero and one or covariance is greater than zero
+    else if( p <= 0 | p >= 1)
+    {
+      stop("Probability value doesnot satisfy conditions")
+    }
+    else
+    {
+      value<-NULL
+      #constructing the probability values for all random variables
+      y<-0:n
+      value1<-NULL
+      for(i in 1:length(y))
+      {
+        value1[i]<-(((choose(n,y[i]))^v)*(p^y[i])*((1-p)^(n-y[i])))/
+                       (sum(((choose(n,y))^v)*(p^y)*((1-p)^(n-y))))
+      }
+      check1<-sum(value1)
 
+      #checking if the sum of all probability values leads upto one
+      #if not providing an error message and stopping the function progress
+      if(check1 < 0.9999 | check1 >1.0001 | any(value1 < 0) | any(value1 >1))
+      {
+        stop("Input parameter combinations of probability of success and covariance does
+             not create proper probability function")
+      }
+      else
+      {
+        j<-1:sum(freq)
+        term1<-v*sum(log(choose(n,data[j])))
+        term2<-log(p)*sum(data[j])
+        term3<-log(1-p)*sum(n-data[j])
+        term4<-sum(freq)*log(sum(((choose(n,y))^v)*(p^y)*((1-p)^(n-y))))
+        COMPBinLL<-term1+term2+term3-term4
+        #calculating the negative log likelihood value and representing as a single output value
+        return(-COMPBinLL)
+      }
+    }
+  }
 }
 
+#' Estimating the probability of success and v parameter for COM Poisson Binomial
+#' Distribution
+#'
+#' The function will estimate the probability of success and v parameter using the maximum log
+#' likelihood method for the COM Poisson Binomial distribution when the binomial random
+#' variables and corresponding frequencies are given
+#'
+#' @usage
+#' EstMLECorrBin(x,freq,p,v)
+#'
+#'
+#' @param x       vector of binomial random variables
+#' @param freq    vector of frequencies
+#' @param p       single value for probability of success
+#' @param v       single value for v
+#'
+#' @details
+#' \deqn{x = 0,1,2,...}
+#' \deqn{freq \ge 0}
+#' \deqn{0 < p < 1}
+#' \deqn{-\infty < v < +\infty}
+#'
+#' \strong{NOTE} : If input parameters are not in given domain conditions
+#' necessary error messages will be provided to go further
+#'
+#' @return
+#' \code{EstMLECOMPBin} here is used as a input parameter for the \code{mle2} function of \pkg{bbmle} package
+#' therefore output is of class of mle2.
+#'
+#' @references
+#' Borges, P., Rodrigues, J., Balakrishnan, N. and Bazan, J., 2014. A COM-Poisson type
+#' generalization of the binomial distribution and its properties and applications.
+#' Statistics & Probability Letters, 87, pp.158-166.
+#'
+#' Available at: \url{http://conteudo.icmc.usp.br/CMS/Arquivos/arquivos_enviados/BIBLIOTECA_113_NSE_90.pdf}
+#'
+#'
+#' @examples
+#' No.D.D=0:7               #assigning the random variables
+#' Obs.fre.1=c(47,54,43,40,40,41,39,95)     #assigning the corresponding frequencies
+#'
+#' #estimating the parameters using maximum log likelihood value and assigning it
+#' parameters=suppressWarnings(bbmle::mle2(EstMLECOMPBin,start = list(p=0.5,v=0.1),
+#'                        data = list(x=No.D.D,freq=Obs.fre.1)))
+#' bbmle::coef(parameters)           #extracting the parameters
+#'
+#' @export
 EstMLECOMPBin<-function(x,freq,p,v)
 {
-
+  #with respective to using bbmle package function mle2 there is no need impose any restrictions
+  #therefor the output is directly a single numeric value for the negative log likelihood value of
+  #COM Poisson Binomial distribution
+  value<-NULL
+  n<-max(x)
+  y<-0:n
+  data<-rep(x,freq)
+  j<-1:sum(freq)
+  term1<-v*sum(log(choose(n,data[j])))
+  term2<-log(p)*sum(data[j])
+  term3<-log(1-p)*sum(n-data[j])
+  term4<-sum(freq)*log(sum(((choose(n,y))^v)*(p^y)*((1-p)^(n-y))))
+  COMPBinLL<-term1+term2+term3-term4
+  return(-COMPBinLL)
 }
 
 fitCOMPBin<-function(x,obs.freq,p,v,print=T)
