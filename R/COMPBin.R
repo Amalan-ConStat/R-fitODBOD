@@ -77,7 +77,70 @@
 #' @export
 dCOMPBin<-function(x,n,p,v)
 {
+  #checking if inputs consist NA(not assigned)values, infinite values or NAN(not a number)values
+  #if so creating an error message as well as stopping the function progress.
+  if(any(is.na(c(x,n,p,v))) | any(is.infinite(c(x,n,p,v))) | any(is.nan(c(x,n,p,v))) )
+  {
+    stop("NA or Infinite or NAN values in the Input")
+  }
+  else
+  {
+    #checking if at any chance the binomial random variable is greater than binomial trial value
+    #if so providing an error message and stopping the function progress
+    if(max(x) > n )
+    {
+      stop("Binomial random variable cannot be greater than binomial trial value")
+    }
+    #checking if any random variable or trial value is negative if so providig an error message
+    #and stopping the function progress
+    else if(any(x<0) | n<0)
+    {
+      stop("Binomial random variable or binomial trial value cannot be negative")
+    }
+    else
+    {
+      #checking the probability value is inbetween zero and one
+      if( p <= 0 | p >= 1 )
+      {
+        stop("Probability value doesnot satisfy conditions")
+      }
+      else
+      {
+        value<-NULL
+        #constructing the probability values for all random variables
+        y<-0:n
+        value1<-NULL
+        for(i in 1:length(y))
+        {
+          value1[i]<-(((choose(n,y[i]))^v)*(p^y[i])*((1-p)^(n-y[i])))/
+                        (sum(((choose(n,y))^v)*(p^y)*((1-p)^(n-y))))
+        }
+        check1<-sum(value1)
 
+        #checking if the sum of all probability values leads upto one
+        #if not providing an error message and stopping the function progress
+        if(check1 < 0.9999 | check1 >1.0001 | any(value1 < 0) | any(value1 >1))
+        {
+          stop("Input parameter combinations of probability of success and covariance does
+               not create proper probability function")
+        }
+        else
+        {
+          #for each random variable in the input vector below calculations occur
+          for (i in 1:length(x))
+          {
+            value[i]<-(((choose(n,x[i]))^v)*(p^x[i])*((1-p)^(n-x[i])))/
+                              (sum(((choose(n,y))^v)*(p^y)*((1-p)^(n-y))))
+          }
+          mean<-sum(value1*y)
+          variance<-sum((y^2)*value1)-mean^2
+          # generating an output in list format consisting pdf,mean and variance
+          output<-list("pdf"=value,"mean"=mean,"var"=variance)
+          return(output)
+        }
+      }
+    }
+  }
 }
 
 #' COM Poisson Binomial Distribution
