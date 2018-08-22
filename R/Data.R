@@ -36,26 +36,26 @@
 #' p. 59). The thirteenth child is ignored to assuage the effect of families non-randomly stopping
 #' when a desired gender is reached.
 #'
-#'@format A data frame with 2 columns and 13 rows.
-#'\describe{
-#'\item{\code{No_of_males}}{No of Male children among first 12 children of family size 13}
-#'\item{\code{freq}}{Observed frequencies for corresponding male children}
-#'}
+#' @format A data frame with 2 columns and 13 rows.
+#' \describe{
+#' \item{\code{No_of_males}}{No of Male children among first 12 children of family size 13}
+#' \item{\code{freq}}{Observed frequencies for corresponding male children}
+#' }
 #'
-#'@examples
-#'Male_Children$No_of_males   # extracting the binomial random variables
-#'sum(Male_Children$freq)     # summing all the frequencies
+#' @examples
+#' Male_Children$No_of_males   # extracting the binomial random variables
+#' sum(Male_Children$freq)     # summing all the frequencies
 #'
-#'@source
-#'Extracted from
+#' @source
+#' Extracted from
 #'
-#'Borges, P., Rodrigues, J., Balakrishnan, N. and Bazán, J., 2014. A COM-Poisson type
-#'generalization of the binomial distribution and its properties and applications.
-#'Statistics & Probability Letters, 87, pp.158-166.
+#' Borges, P., Rodrigues, J., Balakrishnan, N. and Bazan, J., 2014. A COM-Poisson type
+#' generalization of the binomial distribution and its properties and applications.
+#' Statistics & Probability Letters, 87, pp.158-166.
 #'
-#'Available at: \url{http://conteudo.icmc.usp.br/CMS/Arquivos/arquivos_enviados/BIBLIOTECA_113_NSE_90.pdf}
+#' Available at: \url{http://conteudo.icmc.usp.br/CMS/Arquivos/arquivos_enviados/BIBLIOTECA_113_NSE_90.pdf}
 #'
-"Male_Children"
+ "Male_Children"
 
 #' Plant Disease Incidence data
 #'
@@ -71,7 +71,7 @@
 #' We divided the field map into 84 "quadrats" of 4 rows x 3 columns and counted the total number
 #' (1981 + 1982) of infected trees out of a maximum of n = 12 in each quadrat
 #'
-#' @format A data frame with 2 variables and 10 observations
+#' @format A data frame with 2 columns and 10 rows
 #' \describe{
 #' \item{\code{Dis.plant}}{Diseased Plants}
 #' \item{\code{fre}}{Observed frequencies}
@@ -99,7 +99,7 @@
 #' attended 8 courses during the first year of their study. The total numbers of successful
 #' examinations (including resits) were recorded.
 #'
-#' @format A data frame with 2 variables and 9 observations
+#' @format A data frame with 2 columns and 9 rows
 #' \describe{
 #' \item{\code{sub.pass}}{subjects passed}
 #' \item{\code{fre}}{Observed frequencies}
@@ -126,7 +126,7 @@
 #' association of chromosomes in Brassika; n , which is now the number of
 #' chromosomes, equals 3 and X is the number of pairs of bivalents showing association.
 #'
-#' @format A data frame with 2 variables and 4 observations
+#' @format A data frame with 2 columns and 4 rows
 #' \describe{
 #' \item{\code{No.of.Asso}}{No of Associations}
 #' \item{\code{fre}}{Observed frequencies}
@@ -159,7 +159,7 @@
 #' was awarded. So we treat 9 as the "litter size", and the dichotomous response
 #' is whether or not he got an alpha on the question.
 #'
-#' @format A data frame with 2 variables and 10 observations
+#' @format A data frame with 2 columns and 10 rows
 #' \describe{
 #' \item{\code{No.of.alpha}}{No of Alphas}
 #' \item{\code{fre}}{Observed frequencies}
@@ -186,7 +186,7 @@
 #' through 04/1974. During this period 507 incidents are recorded in the world, where 64 incidents occurred
 #' in the United States and 65 ones in Argentina.
 #'
-#' @format A data frame with 2 variables and 9 observations
+#' @format A data frame with 2 columns and 9 rows
 #' \describe{
 #' \item{\code{Incidents}}{No of Incidents Occurred}
 #' \item{\code{fre}}{Observed frequencies}
@@ -211,7 +211,7 @@
 #' through 04/1974. During this period 507 incidents are recorded in the world, where 64 incidents occurred
 #' in the United States and 65 ones in Argentina.
 #'
-#' @format A data frame with 2 variables and 9 observations
+#' @format A data frame with 2 columns and 9 rows
 #' \describe{
 #' \item{\code{Incidents}}{No of Incidents Occurred}
 #' \item{\code{fre}}{Observed frequencies}

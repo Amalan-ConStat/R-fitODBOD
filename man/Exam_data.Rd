@@ -4,7 +4,7 @@
 \name{Exam_data}
 \alias{Exam_data}
 \title{Exam Data}
-\format{A data frame with 2 variables and 10 observations
+\format{A data frame with 2 columns and 10 rows
 \describe{
 \item{\code{No.of.alpha}}{No of Alphas}
 \item{\code{fre}}{Observed frequencies}

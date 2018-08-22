@@ -4,7 +4,7 @@
 \name{Alcohol_data}
 \alias{Alcohol_data}
 \title{Alcohol data}
-\format{A data frame with 3 variables and 8 observations
+\format{A data frame with 3 columns and 8 rows.
 \describe{
 \item{\code{Days}}{No of Days Drunk}
 \item{\code{week1}}{Observed frequencies for week1}

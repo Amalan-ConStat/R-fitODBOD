@@ -4,7 +4,7 @@
 \name{Chromosome_data}
 \alias{Chromosome_data}
 \title{Chromosome Data}
-\format{A data frame with 2 variables and 4 observations
+\format{A data frame with 2 columns and 4 rows
 \describe{
 \item{\code{No.of.Asso}}{No of Associations}
 \item{\code{fre}}{Observed frequencies}

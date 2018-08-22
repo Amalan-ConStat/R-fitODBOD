@@ -4,7 +4,7 @@
 \name{Plant_DiseaseData}
 \alias{Plant_DiseaseData}
 \title{Plant Disease Incidence data}
-\format{A data frame with 2 variables and 10 observations
+\format{A data frame with 2 columns and 10 rows
 \describe{
 \item{\code{Dis.plant}}{Diseased Plants}
 \item{\code{fre}}{Observed frequencies}
