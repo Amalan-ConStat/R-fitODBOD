@@ -30,4 +30,4 @@ test_that("Degree of freedom less than zero",{
 test_that("Degree of freedom equal to zero",{
           expect_that(fitAddBin(c(0,1,2),c(11,12,12),0.1,0.03),
           gives_warning("Degrees of freedom cannot be less than or equal to zero"))
-})
+        })
