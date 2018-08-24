@@ -4,7 +4,7 @@
 \alias{pCOMPBin}
 \title{COM Poisson Binomial Distribution}
 \usage{
-dCOMPBin(x,n,p,v)
+pCOMPBin(x,n,p,v)
 }
 \arguments{
 \item{x}{vector of binomial random variables}
@@ -16,13 +16,7 @@ dCOMPBin(x,n,p,v)
 \item{v}{single value for  v}
 }
 \value{
-The output of \code{dCOMPBin} gives a list format consisting
-
-\code{pdf}           probability function values in vector form
-
-\code{mean}          mean of COM Poisson  Binomial Distribution
-
-\code{var}           variance of COM Poisson  Binomial Distribution
+The output of \code{pCOMPBin} gives  cumulative probability  values in vector form.
 }
 \description{
 These functions provide the ability for generating probability function values and

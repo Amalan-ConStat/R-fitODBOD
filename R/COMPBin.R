@@ -149,7 +149,7 @@ dCOMPBin<-function(x,n,p,v)
 #' cumulative probability function values for the COM Poisson  Binomial Distribution.
 #'
 #' @usage
-#' dCOMPBin(x,n,p,v)
+#' pCOMPBin(x,n,p,v)
 #'
 #' @param x        vector of binomial random variables
 #' @param n        single value for no of binomial trials
@@ -172,13 +172,7 @@ dCOMPBin<-function(x,n,p,v)
 #' necessary error messages will be provided to go further
 #'
 #' @return
-#' The output of \code{dCOMPBin} gives a list format consisting
-#'
-#' \code{pdf}           probability function values in vector form
-#'
-#' \code{mean}          mean of COM Poisson  Binomial Distribution
-#'
-#' \code{var}           variance of COM Poisson  Binomial Distribution
+#' The output of \code{pCOMPBin} gives  cumulative probability  values in vector form.
 #'
 #'
 #' @references
@@ -340,7 +334,7 @@ NegLLCOMPBin<-function(x,freq,p,v)
 #' variables and corresponding frequencies are given
 #'
 #' @usage
-#' EstMLECorrBin(x,freq,p,v)
+#' EstMLECOMPBin(x,freq,p,v)
 #'
 #'
 #' @param x       vector of binomial random variables
@@ -406,7 +400,7 @@ EstMLECOMPBin<-function(x,freq,p,v)
 #' and degree of freedom so that it can be seen if this distribution fits the data.
 #'
 #' @usage
-#' fitCorrBin(x,obs.freq,p,v,print)
+#' fitCOMPBin(x,obs.freq,p,v,print)
 #'
 #' @param x                  vector of binomial random variables
 #' @param obs.freq           vector of frequencies

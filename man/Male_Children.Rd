@@ -6,7 +6,7 @@
 \title{Male children data}
 \format{A data frame with 2 columns and 13 rows.
 \describe{
-\item{\code{No_of_males}}{No of Male children among first 12 children of family size 13}
+\item{\code{No_of_Males}}{No of Male children among first 12 children of family size 13}
 \item{\code{freq}}{Observed frequencies for corresponding male children}
 }}
 \source{
@@ -28,7 +28,7 @@ p. 59). The thirteenth child is ignored to assuage the effect of families non-ra
 when a desired gender is reached.
 }
 \examples{
-Male_Children$No_of_males   # extracting the binomial random variables
+Male_Children$No_of_Males   # extracting the binomial random variables
 sum(Male_Children$freq)     # summing all the frequencies
 
 }
