@@ -5,7 +5,7 @@
 \title{Estimating the probability of success and v parameter for COM Poisson Binomial
 Distribution}
 \usage{
-EstMLECorrBin(x,freq,p,v)
+EstMLECOMPBin(x,freq,p,v)
 }
 \arguments{
 \item{x}{vector of binomial random variables}

@@ -5,7 +5,7 @@
 \title{Fitting the COM Poisson Binomial Distribution when binomial
 random variable, frequency, probability of success and v parameter are given}
 \usage{
-fitCorrBin(x,obs.freq,p,v,print)
+fitCOMPBin(x,obs.freq,p,v,print)
 }
 \arguments{
 \item{x}{vector of binomial random variables}
