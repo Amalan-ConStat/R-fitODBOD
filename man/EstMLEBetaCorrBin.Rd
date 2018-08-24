@@ -23,7 +23,7 @@ EstMLEBetaCorrBin(x,freq,cov,a,b)
 therefore output is of class of mle2.
 }
 \description{
-The function will estimate the covariance, alph and beta parameter values using the maximum log
+The function will estimate the covariance, alpha and beta parameter values using the maximum log
 likelihood method for the Beta-Correlated Binomial distribution when the binomial random
 variables and corresponding frequencies are given
 }
