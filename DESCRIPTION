@@ -15,5 +15,6 @@ Imports: hypergeo,
     stats
 Suggests: testthat, 
       bbmle,
-      devtools
+      devtools,
+    covr
 Encoding: UTF-8
