@@ -6,12 +6,10 @@ How to engage with "fitODBOD" the first time ?
 
 ``` r
 ## Installing the package from GitHub
-#devtools::install_github("Amalan-ConStat/R-fitODBOD")
+devtools::install_github("Amalan-ConStat/R-fitODBOD")
 
 ## Installing the package from CRAN
-#install.packages("fitODBOD")
-
-library(fitODBOD)
+install.packages("fitODBOD")
 ```
 
 Key Phrases
@@ -33,10 +31,10 @@ You can understand BMD & ABD with PMF & CPMF. Further, BOD can be modeled using 
 Distributions
 -------------
 
-<table style="width:85%;">
+<table style="width:93%;">
 <colgroup>
-<col width="34%" />
-<col width="50%" />
+<col width="47%" />
+<col width="45%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -63,7 +61,7 @@ Distributions
 </tr>
 <tr class="odd">
 <td align="left">5.Multiplicative Binomial Distribution</td>
-<td align="left">5. Gaussian Hypergeometric Generalized Beta-Binomial Distribution</td>
+<td align="left">5.Gaussian Hypergeometric Generalized Beta-Binomial Distribution</td>
 </tr>
 <tr class="even">
 <td align="left"></td>
@@ -78,6 +76,8 @@ Just an example
 ### Modelling BOD using Beta-Binomial Distribution
 
 ``` r
+library(fitODBOD)
+
 #Looking at the BOD
 Alcohol_data
 ```
@@ -116,14 +116,12 @@ fitBin(Alcohol_data$Days,Alcohol_data$week2)
     ## Warning in fitBin(Alcohol_data$Days, Alcohol_data$week2): Chi-squared
     ## approximation may be doubtful because expected frequency is less than 5
 
-According to *p* − *v**a**l**u**e* = 0, *H*<sub>0</sub> is rejected at 5% significance level.
+According to p-value=0, *H*<sub>0</sub> is rejected at 5% significance level.
 
 ``` r
 #Estimating the parameters a and b using bbmle package mle2 function
-BetaBin=suppressWarnings(
-                        bbmle::mle2(EstMLEBetaBin,data=list(x=Alcohol_data$Days,
+BetaBin=bbmle::mle2(EstMLEBetaBin,data=list(x=Alcohol_data$Days,
                         freq=Alcohol_data$week2), start=list(a=100.1,b=100.1))
-                        )
 a_est=bbmle::coef(BetaBin)[1]                    
 b_est=bbmle::coef(BetaBin)[2]
 ```
@@ -151,7 +149,7 @@ fitBetaBin(Alcohol_data$Days,Alcohol_data$week2,a_est,b_est)
     ## 
     ##                  over dispersion = 0.390885
 
-*p* − *v**a**l**u**e* = 0.1524 indicates *H*<sub>0</sub> is not rejected at 5% significance level. Clearly Beta-Binomial Distribution is a better suit for the Alcohol BOD.
+p-value=0.1524 indicates *H*<sub>0</sub> is not rejected at 5% significance level. Clearly Beta-Binomial Distribution is a better suit for the Alcohol BOD.
 
 Further
 
