@@ -57,7 +57,44 @@ You can understand BMD & ABD with PMF & CPMF. Further, BOD can be modeled using 
 Distributions
 -------------
 
-|-----------------------|----------------------------------| | Alternate Binomial Distrbutions | Binomial Mixture Distributions| |1.Additive Binomial Distribution|1.Uniform Binomial Distribution | |2.Beta-Correlated Binomial Distribution|2.Triangular Binomial Distribution| |3.COM Poisson Binoial Distribution|3.Beta-Binomial Distribution| |4.Correlated Binomial Distribution|4.Kumaraswamy Binomial Distribution| |5.Multiplicative Binomial Distribution|5. Gaussian Hypergeometric Generalized Beta-Binomial Distribution| ||6.McDonald Generalized Beta-Binomial Distribution|
+<table style="width:85%;">
+<colgroup>
+<col width="34%" />
+<col width="50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Alternate Binomial Distrbutions</th>
+<th align="left">Binomial Mixture Distributions</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">1.Additive Binomial Distribution</td>
+<td align="left">1.Uniform Binomial Distribution</td>
+</tr>
+<tr class="even">
+<td align="left">2.Beta-Correlated Binomial Distribution</td>
+<td align="left">2.Triangular Binomial Distribution</td>
+</tr>
+<tr class="odd">
+<td align="left">3.COM Poisson Binomial Distribution</td>
+<td align="left">3.Beta-Binomial Distribution</td>
+</tr>
+<tr class="even">
+<td align="left">4.Correlated Binomial Distribution</td>
+<td align="left">4.Kumaraswamy Binomial Distribution</td>
+</tr>
+<tr class="odd">
+<td align="left">5.Multiplicative Binomial Distribution</td>
+<td align="left">5. Gaussian Hypergeometric Generalized Beta-Binomial Distribution</td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="left">6.McDonald Generalized Beta-Binomial Distribution</td>
+</tr>
+</tbody>
+</table>
 
 Just an example
 ---------------
@@ -106,11 +143,11 @@ fitBin(Alcohol_data$Days,Alcohol_data$week2)
 According to *p* − *v**a**l**u**e* = 0, *H*<sub>0</sub> is rejected at 5% significance level.
 
 ``` r
+#Estimating the parameters a and b using bbmle package mle2 function
 BetaBin=suppressWarnings(
                         bbmle::mle2(EstMLEBetaBin,data=list(x=Alcohol_data$Days,
                         freq=Alcohol_data$week2), start=list(a=100.1,b=100.1))
                         )
-
 a_est=bbmle::coef(BetaBin)[1]                    
 b_est=bbmle::coef(BetaBin)[2]
 ```
@@ -122,7 +159,7 @@ Now, Checking if above data follows Beta-Binomial Distribution
 *H*<sub>1</sub> : The Data does not follow the Beta-Binomial Distribution.
 
 ``` r
-#Checking if the above data follows Binomial Distribution
+#Checking if the above data follows Beta-Binomial Distribution
 fitBetaBin(Alcohol_data$Days,Alcohol_data$week2,a_est,b_est)
 ```
 
@@ -144,23 +181,24 @@ Further
 
 ``` r
 #Actual Variance
-var(rep(Alcohol_data$Days,Alcohol_data$week2))
-```
-
-    ## [1] 5.787333
-
-``` r
+Act_Var<-var(rep(Alcohol_data$Days,Alcohol_data$week2))
 #Estimated Variance of Binomial Distribution
-var(rep(Alcohol_data$Days,c(1.66,13.79,49.19,97.48,115.89,82.67,32.76,5.56)))
-```
-
-    ## [1] 1.694534
-
-``` r
+Est_Var_Bin<-var(rep(Alcohol_data$Days,c(1.66,13.79,49.19,97.48,115.89,82.67,32.76,5.56)))
 #Estimated Variance of Beta-Binomial Distribution
-var(rep(Alcohol_data$Days,c(47.91,42.92,41.95,42.5,44.3,47.81,54.89,76.73)))
+Est_Var_BetaBin<-var(rep(Alcohol_data$Days,c(47.91,42.92,41.95,42.5,44.3,47.81,54.89,76.73)))
 ```
 
-    ## [1] 5.804344
+| Type of Variance                                                  |    Values|
+|:------------------------------------------------------------------|---------:|
+| Actual                                                            |  5.787333|
+| From Expected frequencies of estimated Binomial Distribution      |  1.694534|
+| From Expected frequencies of estimated Beta-Binomial Distribution |  5.804344|
+
+![](README_files/figure-markdown_github/Printing%20variance%20and%20plotting%20frequencies-1.png)
 
 Variance(5.8043) from Beta-Binomial Distribution's estimated frequencies is closer to the Actual Variance(5.7873) of Alcohol BOD week 2 than variance(1.6945) of expected frequencies by Binomial Distribution.
+
+According to the plot, it is clearly seen that Beta-Binomial estimated frequencies behave very close to actual frequency values than the estimate frequencies from Binomial distribution. Or the Red line is very similar and close to the Blue line than the Green line.
+
+Thank You
+---------
