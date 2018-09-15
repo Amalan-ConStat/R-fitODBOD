@@ -47,8 +47,6 @@
 #' L. L. Kupper, J.K.H., 1978. The Use of a Correlated Binomial Model for the Analysis of Certain Toxicological
 #' Experiments. Biometrics, 34(1), pp.69-76.
 #'
-#' Available at: \url{http://www.jstor.org/stable/2529589} .
-#'
 #' Paul, S.R., 1985. A three-parameter generalization of the binomial distribution. Communications in Statistics
 #' - Theory and Methods, 14(6), pp.1497-1506.
 #'
@@ -203,8 +201,6 @@ dMultiBin<-function(x,n,p,theta)
 #' L. L. Kupper, J.K.H., 1978. The Use of a Correlated Binomial Model for the Analysis of Certain Toxicological
 #' Experiments. Biometrics, 34(1), pp.69-76.
 #'
-#' Available at: \url{http://www.jstor.org/stable/2529589} .
-#'
 #' Paul, S.R., 1985. A three-parameter generalization of the binomial distribution. Communications in Statistics
 #' - Theory and Methods, 14(6), pp.1497-1506.
 #'
@@ -282,8 +278,6 @@ pMultiBin<-function(x,n,p,theta)
 #'
 #' L. L. Kupper, J.K.H., 1978. The Use of a Correlated Binomial Model for the Analysis of Certain Toxicological
 #' Experiments. Biometrics, 34(1), pp.69-76.
-#'
-#' Available at: \url{http://www.jstor.org/stable/2529589} .
 #'
 #' Paul, S.R., 1985. A three-parameter generalization of the binomial distribution. Communications in Statistics
 #' - Theory and Methods, 14(6), pp.1497-1506.
@@ -388,8 +382,6 @@ NegLLMultiBin<-function(x,freq,p,theta)
 #' L. L. Kupper, J.K.H., 1978. The Use of a Correlated Binomial Model for the Analysis of Certain Toxicological
 #' Experiments. Biometrics, 34(1), pp.69-76.
 #'
-#' Available at: \url{http://www.jstor.org/stable/2529589} .
-#'
 #' Paul, S.R., 1985. A three-parameter generalization of the binomial distribution. Communications in Statistics
 #' - Theory and Methods, 14(6), pp.1497-1506.
 #'
@@ -470,8 +462,6 @@ EstMLEMultiBin<-function(x,freq,p,theta)
 #'
 #' L. L. Kupper, J.K.H., 1978. The Use of a Correlated Binomial Model for the Analysis of Certain Toxicological
 #' Experiments. Biometrics, 34(1), pp.69-76.
-#'
-#' Available at: \url{http://www.jstor.org/stable/2529589} .
 #'
 #' Paul, S.R., 1985. A three-parameter generalization of the binomial distribution. Communications in Statistics
 #' - Theory and Methods, 14(6), pp.1497-1506.
