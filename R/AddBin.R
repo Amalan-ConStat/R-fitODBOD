@@ -421,13 +421,13 @@ NegLLAddBin<-function(x,freq,p,alpha)
 #' @examples
 #' No.D.D=0:7         #assigning the random variables
 #' Obs.fre.1=c(47,54,43,40,40,41,39,95)     #assigning the corresponding frequencies
-#'
+#' \dontrun{
 #' #estimating the probability value and alpha value
 #' suppressWarnings(EstMLEAddBin(No.D.D,Obs.fre.1))
 #'
 #' #extracting the estimated probability value
 #' suppressWarnings(EstMLEAddBin(No.D.D,Obs.fre.1)$p)
-#'
+#' }
 #' @export
 EstMLEAddBin<-function(x,freq)
 {
@@ -592,6 +592,7 @@ EstMLEAddBin<-function(x,freq)
 #' No.D.D=0:7         #assigning the random variables
 #' Obs.fre.1=c(47,54,43,40,40,41,39,95)            #assigning the corresponding the frequencies
 #' #assigning the estimated probability value
+#' \dontrun{
 #' paddbin=suppressWarnings(EstMLEAddBin(No.D.D,Obs.fre.1)$p)
 #' #assigning the estimated alpha value
 #' alphaaddbin=suppressWarnings(EstMLEAddBin(No.D.D,Obs.fre.1)$alpha)
@@ -601,7 +602,7 @@ EstMLEAddBin<-function(x,freq)
 #'
 #' #extracting the expected frequencies
 #' fitAddBin(No.D.D,Obs.fre.1,paddbin,alphaaddbin,FALSE)$exp.freq
-#'
+#' }
 #' @export
 fitAddBin<-function(x,obs.freq,p,alpha,print=T)
 {
