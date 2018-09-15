@@ -1,30 +1,6 @@
 R-fitODBOD
 ================
 
-badge for code coverage
-=======================
-
-badge from license for github or CRAN
-=====================================
-
-badge for downloads
-===================
-
-badge for size
-==============
-
-badge for twitter and follow
-============================
-
-badge for commits for year
-==========================
-
-badge for No of contributors
-============================
-
-badge for github release date
-=============================
-
 How to engage with "fitODBOD" the first time ?
 ----------------------------------------------
 
