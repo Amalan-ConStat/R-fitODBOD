@@ -5,7 +5,7 @@ Description: Contains Probability Mass Functions, Cumulative Mass Functions, Neg
 URL: https://github.com/Amalan-ConStat/R-fitODBOD
 Version: 1.2.0
 Authors@R: c(
-          person("Mahendran","Amalan", email = "amalan0595@gmail.com", role = c("aut","cre")),
+          person("Amalan","Mahendran", email = "amalan0595@gmail.com", role = c("aut","cre")),
           person("Pushpakanthie", "Wijekoon", role = c("aut","ctb")))
 Depends: R (>= 3.5.0)
 License: GPL-2
