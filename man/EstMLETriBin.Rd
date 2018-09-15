@@ -34,8 +34,9 @@ are given
 \examples{
 No.D.D=0:7   #assigning the random variables
 Obs.fre.1=c(47,54,43,40,40,41,39,95)   #assigning the corresponding frequencies
+\dontrun{
 EstMLETriBin(No.D.D,Obs.fre.1)$mode    #estimating the mode value and extracting the mode value
-
+}
 
 }
 \references{
