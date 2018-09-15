@@ -2,7 +2,7 @@
 % Please edit documentation in R/BetaCorrBin.R
 \name{EstMLEBetaCorrBin}
 \alias{EstMLEBetaCorrBin}
-\title{Estimating the covariance, alph and beta parameter values for Beta-Correlated Binomial
+\title{Estimating the covariance, alpha and beta parameter values for Beta-Correlated Binomial
 Distribution}
 \usage{
 EstMLEBetaCorrBin(x,freq,cov,a,b)

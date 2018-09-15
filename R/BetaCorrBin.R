@@ -439,7 +439,7 @@ NegLLBetaCorrBin<-function(x,freq,cov,a,b)
   }
 }
 
-#' Estimating the covariance, alph and beta parameter values for Beta-Correlated Binomial
+#' Estimating the covariance, alpha and beta parameter values for Beta-Correlated Binomial
 #' Distribution
 #'
 #' The function will estimate the covariance, alpha and beta parameter values using the maximum log
