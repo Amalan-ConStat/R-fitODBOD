@@ -798,7 +798,8 @@ EstMLEBetaBin<-function(x,freq,a,b)
 #' \deqn{freq \ge 0}
 #'
 #' \strong{NOTE} : If input parameters are not in given domain conditions necessary error
-#' messages will be provided to go further
+#' messages will be provided to go further. We can use the functions summary, coef
+#' and AIC to extract information.
 #'
 #' @return
 #'
@@ -807,6 +808,12 @@ EstMLEBetaBin<-function(x,freq,a,b)
 #' \code{a} shape parameter of beta distribution representing for alpha
 #'
 #' \code{b} shape parameter of beta distribution representing for beta
+#'
+#' \code{min} Negative loglikelihood value
+#'
+#' \code{AIC} AIC value
+#'
+#' \code{call} the inputs for x and freq
 #'
 #' @references
 #' Young-Xu, Y. & Chan, K.A., 2008. Pooling overdispersed binomial data to estimate event rate. BMC medical
@@ -827,7 +834,6 @@ EstMLEBetaBin<-function(x,freq,a,b)
 #' \code{\link[bbmle]{mle2}}
 #'
 #'
-#'
 #' @examples
 #' No.D.D=0:7        #assigning the random variables
 #' Obs.fre.1=c(47,54,43,40,40,41,39,95)   #assigning the corresponding frequencies
@@ -837,7 +843,10 @@ EstMLEBetaBin<-function(x,freq,a,b)
 #' bbmle::coef(parameters)   #extracting the parameters
 #'
 #' #estimating the parameters using moment generating function methods
-#' EstMGFBetaBin(No.D.D,Obs.fre.1)
+#' results<-EstMGFBetaBin(No.D.D,Obs.fre.1)
+#' coef(results)
+#' summary(results)
+#' AIC(results)
 #'
 #' @export
 EstMGFBetaBin<-function(x,freq)
@@ -860,10 +869,58 @@ EstMGFBetaBin<-function(x,freq)
     a<-((n*m1-m2)*m1)/(n*(m2-m1-m1^2)+m1^2)
     b<-((n*m1-m2)*(n-m1))/(n*(m2-m1-m1^2)+m1^2)
     #generating an output of list for shape parameters a(alpha) and b(beta)
-    ans<-list("a"=a,"b"=b)
+    NegLL<-NegLLBetaBin(x,freq,a,b)
+    AICvalue<-2*2+(2*NegLL)
+    argument<-match.call()
+    ans<-list("a"=a,"b"=b,"min"=NegLL,"AIC"=AICvalue,"call"=argument)
+    class(ans)<-"mgf"
     return(ans)
   }
 }
+
+#' @method EstMGFBetaBin default
+#' @export
+EstMGFBetaBin.default<-function(x,freq)
+{
+  est<-EstMGFBetaBin(x,freq)
+  return(est)
+}
+
+#' @method print mgf
+#' @export
+print.mgf<-function(x,...)
+{
+  cat("Call: \n")
+  print(x$call)
+  cat("\nCoefficients: \n")
+  coeff<-c(x$a,x$b)
+  names(coeff)<-c("a","b")
+  print(coeff)
+}
+
+#' @method summary mgf
+#' @export
+summary.mgf<-function(object,...)
+{
+  cat("Coefficients: \n a \t  b \n", object$a,object$b)
+  cat("\n\nNegative Log-likelihood : ",object$min)
+  cat("\n\nAIC : ",object$AIC)
+}
+
+#' @method coef mgf
+#' @export
+coef.mgf<-function(object,...)
+{
+  cat(" \t  a \t  b \n", object$a,object$b)
+}
+
+#' @method AIC mgf
+#' @export
+AIC.mgf<-function(object,...)
+{
+  return(object$AIC)
+}
+
 
 #' Fitting the Beta-Binomial Distribution when binomial random variable, frequency and shape
 #' parameters a and b are given
@@ -873,13 +930,12 @@ EstMGFBetaBin<-function(x,freq)
 #' test statistics value, p value, degree of freedom and over dispersion value so that it can be
 #' seen if this distribution fits the data.
 #'
-#' @usage fitBetaBin(x,obs.freq,a,b,print)
+#' @usage fitBetaBin(x,obs.freq,a,b)
 #'
 #' @param x                  vector of binomial random variables
 #' @param obs.freq           vector of frequencies
 #' @param a                  single value for shape parameter alpha representing as a
 #' @param b                  single value for shape parameter beta representing as b
-#' @param print              logical value for print or not
 #'
 #' @details
 #' \deqn{0 < a,b}
@@ -887,10 +943,11 @@ EstMGFBetaBin<-function(x,freq)
 #' \deqn{obs.freq \ge 0}
 #'
 #' \strong{NOTE} : If input parameters are not in given domain conditions
-#' necessary error messages will be provided to go further.
+#' necessary error messages will be provided to go further.Use the functions
+#' summary,fitted,AIC,coef and residuals to extract information.
 #'
 #' @return
-#' The output of \code{fitBetaBin} gives a list format consisting
+#' The output of \code{fitBetaBin} gives a class format \code{fitBB} consisting a list
 #'
 #' \code{bin.ran.var} binomial random variables
 #'
@@ -904,7 +961,19 @@ EstMGFBetaBin<-function(x,freq)
 #'
 #' \code{p.value} probability value by chi-squared test statistic
 #'
+#' \code{fitBB} fitted values of \code{dBetaBin}.
+#'
+#' \code{NegLL} Negative Log Likelihood value.
+#'
+#' \code{a} estimated value for alpha parameter as a.
+#'
+#' \code{b} estimated value for alpha parameter as b.
+#'
+#' \code{AIC} AIC value.
+#'
 #' \code{over.dis.para} over dispersion value.
+#'
+#' \code{call} the inputs x,obs.freq,a,b of the function.
 #'
 #' @references
 #' Young-Xu, Y. & Chan, K.A., 2008. Pooling overdispersed binomial data to estimate event rate. BMC medical
@@ -934,19 +1003,30 @@ EstMGFBetaBin<-function(x,freq)
 #' bbmle::coef(parameters)   #extracting the parameters a and b
 #' aBetaBin=bbmle::coef(parameters)[1]  #assigning the parameter a
 #' bBetaBin=bbmle::coef(parameters)[2]  #assigning the parameter b
+#'
 #' #fitting when the random variable,frequencies,shape parameter values are given.
 #' fitBetaBin(No.D.D,Obs.fre.1,aBetaBin,bBetaBin)
 #'
 #' #estimating the parameters using moment generating function methods
-#' EstMGFBetaBin(No.D.D,Obs.fre.1)
-#' aBetaBin1=EstMGFBetaBin(No.D.D,Obs.fre.1)$a  #assigning the estimated a
-#' bBetaBin1=EstMGFBetaBin(No.D.D,Obs.fre.1)$b  #assigning the estimated b
+#' results<-EstMGFBetaBin(No.D.D,Obs.fre.1)
+#' results
+#' aBetaBin1=results$a  #assigning the estimated a
+#' bBetaBin1=results$b  #assigning the estimated b
+#'
 #' #fitting when the random variable,frequencies,shape parameter values are given.
-#' fitBetaBin(No.D.D,Obs.fre.1,aBetaBin1,bBetaBin1)
+#' BB<-fitBetaBin(No.D.D,Obs.fre.1,aBetaBin1,bBetaBin1)
+#'
 #' #extracting the expected frequencies
-#' fitBetaBin(No.D.D,Obs.fre.1,aBetaBin1,bBetaBin1,FALSE)$exp.freq
+#' fitted(BB)
+#'
+#' #extracting the coefficients a and b
+#' coef(BB)
+#'
+#' #extracting the residuals
+#' residuals(BB)
+#'
 #' @export
-fitBetaBin<-function(x,obs.freq,a,b,print=T)
+fitBetaBin<-function(x,obs.freq,a,b)
 {
   #checking if inputs consist NA(not assigned)values, infinite values or NAN(not a number)values
   #if so creating an error message as well as stopping the function progress.
@@ -957,8 +1037,9 @@ fitBetaBin<-function(x,obs.freq,a,b,print=T)
   }
   else
   {
+    est<-dBetaBin(x,max(x),a,b)
     #for given random variables and parameters calculating the estimated probability values
-    est.prob<-dBetaBin(x,max(x),a,b)$pdf
+    est.prob<-est$pdf
     #using the estimated probability values the expected frequencies are calculated
     exp.freq<-round((sum(obs.freq)*est.prob),2)
     #chi-squared test statistics is calculated with observed frequency and expected frequency
@@ -969,14 +1050,7 @@ fitBetaBin<-function(x,obs.freq,a,b,print=T)
     p.value<-1-stats::pchisq(statistic,df)
     #all the above information is mentioned as a message below
     #and if the user wishes they can print or not to
-    if(print==TRUE)
-    {
-    cat("\nChi-squared test for Beta-Binomial Distribution \n\n
-                 Observed Frequency : ",obs.freq,"\n
-                 expected Frequency : ",exp.freq,"\n
-                 X-squared =",round(statistic,4),"df =",df,"  p-value =",round(p.value,4),"\n
-                 over dispersion =",dBetaBin(x,max(x),a,b)$over.dis.para,"\n")
-    }
+
     #checking if df is less than or equal to zero
     if(df<0 | df==0)
     {
@@ -994,12 +1068,85 @@ fitBetaBin<-function(x,obs.freq,a,b,print=T)
     {
       warning("Chi-squared approximation is not suitable because expected frequency approximates to zero")
     }
+    #calculating Negative Log Likelihood value and AIC
+    NegLL<-NegLLBetaBin(x,obs.freq,a,b)
+    AICvalue<-2*2+NegLL
     #the final output is in a list format containing the calculated values
     final<-list("bin.ran.var"=x,"obs.freq"=obs.freq,"exp.freq"=exp.freq,
                 "statistic"=round(statistic,4),"df"=df,"p.value"=round(p.value,4),
-                "over.dis.para"=dBetaBin(x,max(x),a,b)$over.dis.para)
+                "fitBB"=est,"NegLL"=NegLL,"a"=a,"b"=b, "AIC"=AICvalue,
+                "over.dis.para"=est$over.dis.para,"call"=match.call())
+    class(final)<-"fitBB"
+    return(final)
     }
   }
+
+#' @method fitBetaBin default
+#' @export
+fitBetaBin.default<-function(x,obs.freq,a,b)
+{
+  est<-fitBetaBin(x,obs.freq,a,b)
+  return(est)
+}
+
+#' @method print fitBB
+#' @export
+print.fitBB<-function(x,...)
+{
+  cat("Call: \n")
+  print(x$call)
+  cat("\nChi-squared test for Beta-Binomial Distribution \n\t
+          Observed Frequency : ",x$obs.freq,"\n\t
+          expected Frequency : ",x$exp.freq,"\n\t
+          estimated a parameter :",x$a, "  ,estimated b parameter :",x$b,"\n\t
+          X-squared :",x$statistic,"  ,df :",x$df,"  ,p-value :",x$p.value,"\n\t
+          over dispersion :",x$over.dis.para,"\n")
+}
+
+#' @method summary fitBB
+#' @export
+summary.fitBB<-function(object,...)
+{
+  cat("Call: \n")
+  print(object$call)
+  cat("\nChi-squared test for Beta-Binomial Distribution \n\t
+      Observed Frequency : ",object$obs.freq,"\n\t
+      expected Frequency : ",object$exp.freq,"\n\t
+      estimated a parameter :",object$a,"  ,estimated b parameter :",object$b,"\n\t
+      X-squared :",object$statistic,"  ,df :",object$df,"  ,p-value :",object$p.value,"\n\t
+      over dispersion :",object$over.dis.para,"\n\t
+      Negative Loglikehood value :",object$NegLL,"\n\t
+      AIC value :",object$AIC,"\n")
+}
+
+#' @method coef fitBB
+#' @export
+coef.fitBB<-function(object,...)
+{
+  return(c(object$a,object$b))
+}
+
+#' @method AIC fitBB
+#' @export
+AIC.fitBB<-function(object,...)
+{
+  return(object$AIC)
+}
+
+#' @method residuals fitBB
+#' @export
+residuals.fitBB<-function(object,...)
+{
+  return(object$obs.freq-object$exp.freq)
+}
+
+#' @method fitted fitBB
+#' @export
+fitted.fitBB<-function(object,...)
+{
+  return(object$exp.freq)
+}
+
 #' @importFrom bbmle mle2
 #' @importFrom stats integrate
 #' @importFrom stats pchisq

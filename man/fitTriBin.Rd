@@ -13,11 +13,9 @@ fitTriBin(x,obs.freq,mode,print)
 \item{obs.freq}{vector of frequencies}
 
 \item{mode}{single value for mode}
-
-\item{print}{logical value for print or not}
 }
 \value{
-The output of \code{fitTriBin} gives a list format consisting
+The output of \code{fitTriBin} gives a class format \code{fitTB} consisting a list
 
 \code{bin.ran.var} binomial random variables
 
@@ -31,7 +29,17 @@ The output of \code{fitTriBin} gives a list format consisting
 
 \code{p.value} probability value by chi-squared test statistic
 
+\code{fitTB} fitted values of \code{dTriBin}.
+
+\code{NegLL} Negative Log Likelihood value.
+
+\code{mode} estimated mode value.
+
+\code{AIC} AIC value.
+
 \code{over.dis.para} over dispersion value.
+
+\code{call} the inputs x,obs.freq,mode of the function.
 }
 \description{
 The function will fit the triangular binomial distribution when random variables, corresponding
@@ -46,18 +54,30 @@ seen if this distribution fits the data.
 \deqn{obs.freq \ge 0}
 
 \strong{NOTE} : If input parameters are not in given domain conditions
-necessary error messages will be provided to go further.
+necessary error messages will be provided to go further. Use the functions
+summary,fitted,AIC,coef and residuals to extract information.
 }
 \examples{
 No.D.D=0:7      #assigning the random variables
 Obs.fre.1=c(47,54,43,40,40,41,39,95)  #assigning the corresponding frequencies
 \dontrun{
 modeTriBin=EstMLETriBin(No.D.D,Obs.fre.1)$mode  #assigning the extracted the mode value
-#fitting when the random variable,frequencies,mode value are given.
-fitTriBin(No.D.D,Obs.fre.1,modeTriBin)
 
-fitTriBin(No.D.D,Obs.fre.1,modeTriBin,FALSE)$exp.freq  #extracting the expected frequencies
+#fitting when the random variable,frequencies,mode value are given.
+results<-fitTriBin(No.D.D,Obs.fre.1,modeTriBin)
+
+results
 }
+
+#extract coefficient mode
+coef(results)
+
+extract AIC value
+AIC(results)
+
+extract fitted values
+fitted(results)
+
 }
 \references{
 Horsnell, G. (1957). Economic acceptance sampling schemes. Journal of the Royal Statistical Society,

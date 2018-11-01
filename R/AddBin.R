@@ -395,14 +395,21 @@ NegLLAddBin<-function(x,freq,p,alpha)
 #' \deqn{x = 0,1,2,..}
 #'
 #' \strong{NOTE} : If input parameters are not in given domain conditions
-#' necessary error messages will be provided to go further
+#' necessary error messages will be provided to go further. We can use the functions summary, coef
+#' and AIC to extract information.
 #'
 #' @return
 #' The output of \code{EstMLEAddBin} will produce a list consisting
 #'
+#' \code{min} Negative Log Likelihood value
+#'
 #' \code{p} probability of success
 #'
 #' \code{alpha} alpha
+#'
+#' \code{AIC}  AIC value
+#'
+#' \code{call} the inputs for x and freq
 #'
 #' @references
 #' Johnson, N. L., Kemp, A. W., & Kotz, S. (2005). Univariate discrete distributions (Vol. 444).
@@ -423,10 +430,13 @@ NegLLAddBin<-function(x,freq,p,alpha)
 #' Obs.fre.1=c(47,54,43,40,40,41,39,95)     #assigning the corresponding frequencies
 #' \dontrun{
 #' #estimating the probability value and alpha value
-#' suppressWarnings(EstMLEAddBin(No.D.D,Obs.fre.1))
+#' results<-suppressWarnings(EstMLEAddBin(No.D.D,Obs.fre.1))
 #'
-#' #extracting the estimated probability value
-#' suppressWarnings(EstMLEAddBin(No.D.D,Obs.fre.1)$p)
+#' #printing the summary of results
+#' summary(results)
+#'
+#' #extracting the estimated parameters
+#' coef(results)
 #' }
 #' @export
 EstMLEAddBin<-function(x,freq)
@@ -531,10 +541,57 @@ EstMLEAddBin<-function(x,freq)
     #generate the output as the list format where NegLLAddBin is the minimum negative loglikelihood
     #value and alpha and probability are the corresponding estimated alpha and probability
     #value
-    output<-list("NegLLAddBin"=NegLLAddBinfin,"p"=pfin,"alpha"=alphafin)
+    AICvalue<-2*2+(2*NegLLAddBinfin)
+    argument<-match.call()
+    output<-list("min"=NegLLAddBinfin,"p"=pfin,"alpha"=alphafin,"AIC"=AICvalue,"call"=argument)
+    class(output)<-"mlAB"
     return(output)
 
   }
+}
+
+#' @method EstMLEAddBin default
+#' @export
+EstMLEAddBin.default<-function(x,freq)
+{
+  est<-EstMLEAddBin(x,freq)
+  #class(est)<-"mlAB"
+  return(est)
+}
+
+#' @method print mlAB
+#' @export
+print.mlAB<-function(x,...)
+{
+  cat("Call: \n")
+  print(x$call)
+  cat("\nCoefficients: \n")
+  coeff<-c(x$p,x$alpha)
+  names(coeff)<-c("p","alpha")
+  print(coeff)
+}
+
+#' @method summary mlAB
+#' @export
+summary.mlAB<-function(object,...)
+{
+  cat("Coefficients: \n \t p \t alpha \n", object$p,object$alpha)
+  cat("\n\nNegative Log-likelihood : ",object$min)
+  cat("\n\nAIC : ",object$AIC)
+}
+
+#' @method coef mlAB
+#' @export
+coef.mlAB<-function(object,...)
+{
+  cat(" \t p  \t alpha  \n", object$p, object$alpha)
+}
+
+#' @method AIC mlAB
+#' @export
+AIC.mlAB<-function(object,...)
+{
+  return(object$AIC)
 }
 
 #' Fitting the Additive Binomial Distribution when binomial

@@ -505,7 +505,6 @@ dMcGBB<-function(x,n,a,b,c)
   # generating an output in list format consisting pdf,mean,variance and overdispersion value
   output<-list("pdf"=final,"mean"=mean,"var"=variance,
                "over.dis.para"=ove.dis.par)
-
   return(output)
 }
 
@@ -776,14 +775,13 @@ EstMLEMcGBB<-function(x,freq,a,b,c)
 #' the expected frequencies, chi-squared test statistics value, p value, degree of freedom
 #' and over dispersion value so that it can be seen if this distribution fits the data.
 #'
-#' @usage fitMcGBB(x,obs.freq,a,b,c,print)
+#' @usage fitMcGBB(x,obs.freq,a,b,c)
 #'
 #' @param x                  vector of binomial random variables
 #' @param obs.freq           vector of frequencies
 #' @param a                  single value for shape parameter alpha representing a
 #' @param b                  single value for shape parameter beta representing b
 #' @param c                  single value for shape parameter gamma representing c
-#' @param print              logical value for print or not
 #'
 #' @details
 #' \deqn{0 < a,b,c}
@@ -791,10 +789,11 @@ EstMLEMcGBB<-function(x,freq,a,b,c)
 #' \deqn{obs.freq \ge 0}
 #'
 #' \strong{NOTE} : If input parameters are not in given domain conditions necessary
-#' error messages will be provided to go further.
+#' error messages will be provided to go further. Use the functions
+#' summary,fitted,AIC,coef and residuals to extract information.
 #'
 #' @return
-#' The output of \code{fitGHGBB} gives a list format consisting
+#' The output of \code{fitGHGBB} gives a class format \code{fitMB} consisting a list
 #'
 #' \code{bin.ran.var} binomial random variables
 #'
@@ -808,7 +807,21 @@ EstMLEMcGBB<-function(x,freq,a,b,c)
 #'
 #' \code{p.value} probability value by chi-squared test statistic
 #'
+#' \code{fitMB} fitted values of \code{dMcGBB}
+#'
+#' \code{NegLL} Negative Log Likelihood value.
+#'
+#' \code{a} estimated value for alpha parameter as a.
+#'
+#' \code{b} estimated value for beta parameter as b.
+#'
+#' \code{c} estimated value for gamma parameter as c.
+#'
+#' \code{AIC} AIC value.
+#'
 #' \code{over.dis.para} over dispersion value.
+#'
+#' \code{call} the inputs x,obs.freq,a,b,c of the function.
 #'
 #' @references
 #' Manoj, C., Wijekoon, P. & Yapa, R.D., 2013. The McDonald Generalized Beta-Binomial Distribution: A New
@@ -841,12 +854,20 @@ EstMLEMcGBB<-function(x,freq,a,b,c)
 #' cMcGBB=bbmle::coef(parameters)[3]         #assigning the estimated c
 #'
 #' #fitting when the random variable,frequencies,shape parameter values are given.
-#' fitMcGBB(No.D.D,Obs.fre.1,aMcGBB,bMcGBB,cMcGBB)
+#' results<-fitMcGBB(No.D.D,Obs.fre.1,aMcGBB,bMcGBB,cMcGBB)
+#' results
+#'
 #' #extracting the expected frequencies
-#' fitMcGBB(No.D.D,Obs.fre.1,aMcGBB,bMcGBB,cMcGBB,FALSE)$exp.freq
+#' fitted(results)
+#'
+#' #extracting the coefficients a,b and c
+#' coef(results)
+#'
+#' #extracting the residuals
+#' residuals(results)
 #' }
 #' @export
-fitMcGBB<-function(x,obs.freq,a,b,c,print=T)
+fitMcGBB<-function(x,obs.freq,a,b,c)
 {
   #checking if inputs consist NA(not assigned)values, infinite values or NAN(not a number)values
   #if so creating an error message as well as stopping the function progress.
@@ -857,8 +878,9 @@ fitMcGBB<-function(x,obs.freq,a,b,c,print=T)
   }
   else
   {
+    est<-dMcGBB(x,max(x),a,b,c)
     #for given random variables and parameters calculating the estimated probability values
-    est.prob<-dMcGBB(x,max(x),a,b,c)$pdf
+    est.prob<-est$pdf
     #using the estimated probability values the expected frequencies are calculated
     exp.freq<-round((sum(obs.freq)*est.prob),2)
     #chi-squared test statistics is calculated with observed frequency and expected frequency
@@ -869,14 +891,7 @@ fitMcGBB<-function(x,obs.freq,a,b,c,print=T)
     p.value<-1-stats::pchisq(statistic,df)
     #all the above information is mentioned as a message below
     #and if the user wishes they can print or not to
-    if(print==TRUE)
-    {
-    cat("\nChi-squared test for McGBB Distribution\n\n
-                 Observed Frequency : ",obs.freq,"\n
-                 expected Frequency : ",exp.freq,"\n
-                 X-squared =",round(statistic,4),"df =",df,"  p-value =",round(p.value,4),"\n
-                 over dispersion =",dMcGBB(x,max(x),a,b,c)$over.dis.par,"\n")
-    }
+
     #checking if df is less than or equal to zero
     if(df<0 | df==0)
     {
@@ -894,12 +909,85 @@ fitMcGBB<-function(x,obs.freq,a,b,c,print=T)
     {
       warning("Chi-squared approximation is not suitable because expected frequency approximates to zero")
     }
+    #calculating Negative Loglikelihood value and AIC
+    NegLL<-NegLLMcGBB(x,obs.freq,a,b,c)
+    AICvalue<-2*3+NegLL
     #the final output is in a list format containing the calculated values
     final<-list("bin.ran.var"=x,"obs.freq"=obs.freq,"exp.freq"=exp.freq,
                 "statistic"=round(statistic,4),"df"=df,"p.value"=round(p.value,4),
-                "over.dis.para"=dMcGBB(x,max(x),a,b,c)$over.dis.para)
+                "fitMB"=est,"NegLL"=NegLL,"a"=a,"b"=b,"c"=c,"AIC"=AICvalue,
+                "over.dis.para"=est$over.dis.para,"call"=match.call())
+    class(final)<-"fitMB"
+    return(final)
     }
-  }
+}
+
+#' @method fitMcGBB default
+#' @export
+fitMcGBB.default<-function(x,obs.freq,a,b,c)
+{
+  est<-fitMcGBB(x,obs.freq,a,b,c)
+  return(est)
+}
+
+#' @method print fitMB
+#' @export
+print.fitMB<-function(x,...)
+{
+  cat("Call: \n")
+  print(x$call)
+  cat("\nChi-squared test for Mc-Donald Generalized Beta-Binomial Distribution \n\t
+      Observed Frequency : ",x$obs.freq,"\n\t
+      expected Frequency : ",x$exp.freq,"\n\t
+      estimated a parameter :",x$a, "  ,estimated b parameter :",x$b," ,estimated c parameter :",x$c,"\n\t
+      X-squared :",x$statistic,"  ,df :",x$df,"  ,p-value :",x$p.value,"\n\t
+      over dispersion :",x$over.dis.para,"\n")
+}
+
+#' @method summary fitMB
+#' @export
+summary.fitMB<-function(object,...)
+{
+  cat("Call: \n")
+  print(object$call)
+  cat("\nChi-squared test for Mc-Donald Generalized Beta-Binomial Distribution \n\t
+      Observed Frequency : ",object$obs.freq,"\n\t
+      expected Frequency : ",object$exp.freq,"\n\t
+      estimated a parameter :",object$a,"  ,estimated b parameter :",object$b," ,estimated c value :",object$it,"\n\t
+      X-squared :",object$statistic,"  ,df :",object$df,"  ,p-value :",object$p.value,"\n\t
+      over dispersion :",object$over.dis.para,"\n\t
+      Negative Loglikehood value :",object$NegLL,"\n\t
+      AIC value :",object$AIC,"\n")
+}
+
+#' @method coef fitMB
+#' @export
+coef.fitMB<-function(object,...)
+{
+  return(c(object$a,object$b,object$c))
+}
+
+#' @method AIC fitMB
+#' @export
+AIC.fitMB<-function(object,...)
+{
+  return(object$AIC)
+}
+
+#' @method residuals fitMB
+#' @export
+residuals.fitMB<-function(object,...)
+{
+  return(object$obs.freq-object$exp.freq)
+}
+
+#' @method fitted fitMB
+#' @export
+fitted.fitMB<-function(object,...)
+{
+  return(object$exp.freq)
+}
+
 #' @importFrom bbmle mle2
 #' @import hypergeo
 #' @importFrom stats pchisq

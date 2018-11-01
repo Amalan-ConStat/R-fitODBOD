@@ -15,9 +15,15 @@ EstMLEAddBin(x,freq)
 \value{
 The output of \code{EstMLEAddBin} will produce a list consisting
 
+\code{min} Negative Log Likelihood value
+
 \code{p} probability of success
 
 \code{alpha} alpha
+
+\code{AIC}  AIC value
+
+\code{call} the inputs for x and freq
 }
 \description{
 The function will estimate the probability of success and alpha using the maximum log likelihood method
@@ -29,17 +35,21 @@ variables and corresponding frequencies are given
 \deqn{x = 0,1,2,..}
 
 \strong{NOTE} : If input parameters are not in given domain conditions
-necessary error messages will be provided to go further
+necessary error messages will be provided to go further. We can use the functions summary, coef
+and AIC to extract information.
 }
 \examples{
 No.D.D=0:7         #assigning the random variables
 Obs.fre.1=c(47,54,43,40,40,41,39,95)     #assigning the corresponding frequencies
 \dontrun{
 #estimating the probability value and alpha value
-suppressWarnings(EstMLEAddBin(No.D.D,Obs.fre.1))
+results<-suppressWarnings(EstMLEAddBin(No.D.D,Obs.fre.1))
 
-#extracting the estimated probability value
-suppressWarnings(EstMLEAddBin(No.D.D,Obs.fre.1)$p)
+#printing the summary of results
+summary(results)
+
+#extracting the estimated parameters
+coef(results)
 }
 }
 \references{

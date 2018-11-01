@@ -824,14 +824,19 @@ NegLLTriBin<-function(x,freq,mode)
 #' \deqn{freq \ge 0}
 #'
 #' \strong{NOTE} : If input parameters are not in given domain conditions necessary error
-#'  messages will be provided to go further
+#'  messages will be provided to go further. We can use the functions summary, coef
+#'  and AIC to extract information.
 #'
 #' @return
 #' The output of \code{EstMLETriBin} will produce a list format consisting
 #'
-#' \code{NegLLTriBin}  Negative log likelihood value for Triangular Binomial Distribution
+#' \code{min}  Negative log likelihood value
 #'
-#' \code{mode}         Estimated mode value
+#' \code{mode}  Estimated mode value
+#'
+#' \code{AIC}   AIC value
+#'
+#' \code{call} the inputs for x and freq
 #'
 #' @references
 #' Horsnell, G. (1957). Economic acceptance sampling schemes. Journal of the Royal Statistical Society,
@@ -852,7 +857,11 @@ NegLLTriBin<-function(x,freq,mode)
 #' No.D.D=0:7   #assigning the random variables
 #' Obs.fre.1=c(47,54,43,40,40,41,39,95)   #assigning the corresponding frequencies
 #' \dontrun{
-#' EstMLETriBin(No.D.D,Obs.fre.1)$mode    #estimating the mode value and extracting the mode value
+#' results<-EstMLETriBin(No.D.D,Obs.fre.1)    #estimating the mode value and extracting the mode value
+#'
+#' # extract teh mode value and summary
+#' coef(results)
+#' summary(results)
 #' }
 #'
 #' @export
@@ -925,9 +934,55 @@ EstMLETriBin<-function(x,freq)
     modefin<-answerfin$mode ;  TriBinNegLLfin<-answerfin$TriBinNegLL
     #generate the output as a list format where TriBinNegLL is the minimum negative loglikelihood
     #value and mode is the corresponding estimated mode parameter value.
-    output<-list("NegLLTriBin"=TriBinNegLLfin,"mode"=modefin)
+    AICvalue<-2*1+(2*TriBinNegLLfin)
+    argument<-match.call()
+    output<-list("min"=TriBinNegLLfin,"mode"=modefin,"AIC"=AICvalue,"call"=argument)
+    class(output)<-"mlTRI"
     return(output)
   }
+}
+
+#' @method EstMLETriBin default
+#' @export
+EstMLETriBin.default<-function(x,freq)
+{
+  est<-EstMLETriBin(x,freq)
+  return(est)
+}
+
+#' @method print mlTRI
+#' @export
+print.mlTRI<-function(x,...)
+{
+  cat("Call: \n")
+  print(x$call)
+  cat("\nCoefficient :\n")
+  coeff<-x$mode
+  names(coeff)<-"mode"
+  print(coeff)
+}
+
+#' @method summary mlTRI
+#' @export
+summary.mlTRI<-function(object,...)
+{
+  cat("Coefficients: \n mode \n", object$mode)
+  cat("\n\nNegative Log-likelihood : ",object$min)
+  cat("\n\nAIC : ",object$AIC)
+}
+
+#' @method coef mlTRI
+#' @export
+coef.mlTRI<-function(object,...)
+{
+  cat(" mode \n", object$mode)
+}
+
+#' @method AIC mlTRI
+#' @export
+AIC.mlTRI<-function(object,...)
+{
+  return(object$AIC)
 }
 
 #' Fitting the Triangular Binomial Distribution when binomial random variable, frequency and mode
@@ -943,7 +998,6 @@ EstMLETriBin<-function(x,freq)
 #' @param x                  vector of binomial random variables
 #' @param obs.freq           vector of frequencies
 #' @param mode               single value for mode
-#' @param print              logical value for print or not
 #'
 #' @details
 #' \deqn{0 < mode=c < 1}
@@ -952,10 +1006,11 @@ EstMLETriBin<-function(x,freq)
 #' \deqn{obs.freq \ge 0}
 #'
 #' \strong{NOTE} : If input parameters are not in given domain conditions
-#' necessary error messages will be provided to go further.
+#' necessary error messages will be provided to go further. Use the functions
+#' summary,fitted,AIC,coef and residuals to extract information.
 #'
 #' @return
-#' The output of \code{fitTriBin} gives a list format consisting
+#' The output of \code{fitTriBin} gives a class format \code{fitTB} consisting a list
 #'
 #' \code{bin.ran.var} binomial random variables
 #'
@@ -969,7 +1024,17 @@ EstMLETriBin<-function(x,freq)
 #'
 #' \code{p.value} probability value by chi-squared test statistic
 #'
+#' \code{fitTB} fitted values of \code{dTriBin}.
+#'
+#' \code{NegLL} Negative Log Likelihood value.
+#'
+#' \code{mode} estimated mode value.
+#'
+#' \code{AIC} AIC value.
+#'
 #' \code{over.dis.para} over dispersion value.
+#'
+#' \code{call} the inputs x,obs.freq,mode of the function.
 #'
 #' @references
 #' Horsnell, G. (1957). Economic acceptance sampling schemes. Journal of the Royal Statistical Society,
@@ -991,13 +1056,24 @@ EstMLETriBin<-function(x,freq)
 #' Obs.fre.1=c(47,54,43,40,40,41,39,95)  #assigning the corresponding frequencies
 #' \dontrun{
 #' modeTriBin=EstMLETriBin(No.D.D,Obs.fre.1)$mode  #assigning the extracted the mode value
-#' #fitting when the random variable,frequencies,mode value are given.
-#' fitTriBin(No.D.D,Obs.fre.1,modeTriBin)
 #'
-#' fitTriBin(No.D.D,Obs.fre.1,modeTriBin,FALSE)$exp.freq  #extracting the expected frequencies
+#' #fitting when the random variable,frequencies,mode value are given.
+#' results<-fitTriBin(No.D.D,Obs.fre.1,modeTriBin)
+#'
+#' results
 #' }
+#'
+#' #extract coefficient mode
+#' coef(results)
+#'
+#' extract AIC value
+#' AIC(results)
+#'
+#' extract fitted values
+#' fitted(results)
+#'
 #' @export
-fitTriBin<-function(x,obs.freq,mode,print=T)
+fitTriBin<-function(x,obs.freq,mode)
 {
   #checking if inputs consist NA(not assigned)values, infinite values or NAN(not a number)values if so
   #creating an error message as well as stopping the function progress.
@@ -1008,8 +1084,9 @@ fitTriBin<-function(x,obs.freq,mode,print=T)
   }
   else
   {
+    est<-dTriBin(x,max(x),mode)
     #for given random variables and mode parameter calculating the estimated probability values
-    est.prob<-dTriBin(x,max(x),mode)$pdf
+    est.prob<-est$pdf
     #using the estimated probability values the expected frequencies are calculated
     exp.freq<-round((sum(obs.freq)*est.prob),2)
     #chi-squared test statistics is calculated with observed frequency and expected frequency
@@ -1018,16 +1095,7 @@ fitTriBin<-function(x,obs.freq,mode,print=T)
     df<-length(x)-2
     #p value of chi-squared test statistic is calculated
     p.value<-1-stats::pchisq(statistic,df)
-    #all the above information is mentioned as a message below
-    #and if the user wishes they can print or not to
-    if(print==TRUE)
-    {
-      cat("\nChi-squared test for Triangular Binomial Distribution \n\n
-          Observed Frequency : ",obs.freq,"\n
-          expected Frequency : ",exp.freq,"\n
-          X-squared =",round(statistic,4),"df =",df,"  p-value =",round(p.value,4),"\n
-          over dispersion =",dTriBin(x,max(x),mode)$over.dis.para,"\n")
-    }
+
     #checking if df is less than or equal to zero
     if(df<0 | df==0)
     {
@@ -1045,10 +1113,82 @@ fitTriBin<-function(x,obs.freq,mode,print=T)
     {
       warning("Chi-squared approximation is not suitable because expected frequency approximates to zero")
     }
+    #calculating Negative log likelihood value and AIC
+    NegLL<-NegLLTriBin(x,obs.freq,mode)
+    AICvalue<-2*1+NegLL
     #the final output is in a list format containing the calculated values
     final<-list("bin.ran.var"=x,"obs.freq"=obs.freq,"exp.freq"=exp.freq,
                 "statistic"=round(statistic,4),"df"=df,"p.value"=round(p.value,4),
-                "over.dis.para"=dTriBin(x,max(x),mode)$over.dis.para)
-
+                "fitTB"=est,"NegLL"=NegLL,"mode"=mode,"AIC"=AICvalue,
+                "over.dis.para"=est$over.dis.para,"call"=match.call())
+    class(final)<-"fitTB"
+    return(final)
     }
   }
+
+#' @method fitTriBin default
+#' @export
+fitTriBin.default<-function(x,obs.freq,mode)
+{
+  est<-fitTriBin(x,obs.freq,mode)
+  return(est)
+}
+
+#' @method print fitTB
+#' @export
+print.fitTB<-function(x,...)
+{
+  cat("Call: \n")
+  print(x$call)
+  cat("\nChi-squared test for Triangular Binomial Distribution \n\t
+      Observed Frequency : ",x$obs.freq,"\n\t
+      expected Frequency : ",x$exp.freq,"\n\t
+      estimated Mode value:",x$mode,"\n\t
+      X-squared :",x$statistic,"  ,df :",x$df,"  ,p-value :",x$p.value,"\n\t
+      over dispersion :",x$over.dis.para,"\n")
+}
+
+#' @method summary fitTB
+#' @export
+summary.fitTB<-function(object,...)
+{
+  cat("Call: \n")
+  print(object$call)
+  cat("\nChi-squared test for Triangular Binomial Distribution \n\t
+      Observed Frequency : ",object$obs.freq,"\n\t
+      expected Frequency : ",object$exp.freq,"\n\t
+      estimated Mode value:",object$mode,"\n\t
+      X-squared :",object$statistic,"  ,df :",object$df,"  ,p-value :",object$p.value,"\n\t
+      over dispersion :",object$over.dis.para,"\n\t
+      Negative Loglikehood value :",object$NegLL,"\n\t
+      AIC value :",object$AIC,"\n")
+}
+
+#' @method coef fitTB
+#' @export
+coef.fitTB<-function(object,...)
+{
+  return(object$mode)
+}
+
+#' @method AIC fitTB
+#' @export
+AIC.fitTB<-function(object,...)
+{
+  return(object$AIC)
+}
+
+#' @method residuals fitTB
+#' @export
+residuals.fitTB<-function(object,...)
+{
+  return(object$obs.freq-object$exp.freq)
+}
+
+#' @method fitted fitTB
+#' @export
+fitted.fitTB<-function(object,...)
+{
+  return(object$exp.freq)
+}
+

@@ -17,6 +17,12 @@ The output of \code{EstMGFBetaBin} will produce a list format consisting
 \code{a} shape parameter of beta distribution representing for alpha
 
 \code{b} shape parameter of beta distribution representing for beta
+
+\code{min} Negative loglikelihood value
+
+\code{AIC} AIC value
+
+\code{call} the inputs for x and freq
 }
 \description{
 The functions will estimate the shape parameters using the maximum log likelihood method and
@@ -29,7 +35,8 @@ random variables and corresponding frequencies are given
 \deqn{freq \ge 0}
 
 \strong{NOTE} : If input parameters are not in given domain conditions necessary error
-messages will be provided to go further
+messages will be provided to go further. We can use the functions summary, coef
+and AIC to extract information.
 }
 \examples{
 No.D.D=0:7        #assigning the random variables
@@ -40,7 +47,10 @@ data = list(x=No.D.D,freq=Obs.fre.1)))
 bbmle::coef(parameters)   #extracting the parameters
 
 #estimating the parameters using moment generating function methods
-EstMGFBetaBin(No.D.D,Obs.fre.1)
+results<-EstMGFBetaBin(No.D.D,Obs.fre.1)
+coef(results)
+summary(results)
+AIC(results)
 
 }
 \references{

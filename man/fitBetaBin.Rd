@@ -5,7 +5,7 @@
 \title{Fitting the Beta-Binomial Distribution when binomial random variable, frequency and shape
 parameters a and b are given}
 \usage{
-fitBetaBin(x,obs.freq,a,b,print)
+fitBetaBin(x,obs.freq,a,b)
 }
 \arguments{
 \item{x}{vector of binomial random variables}
@@ -15,11 +15,9 @@ fitBetaBin(x,obs.freq,a,b,print)
 \item{a}{single value for shape parameter alpha representing as a}
 
 \item{b}{single value for shape parameter beta representing as b}
-
-\item{print}{logical value for print or not}
 }
 \value{
-The output of \code{fitBetaBin} gives a list format consisting
+The output of \code{fitBetaBin} gives a class format \code{fitBB} consisting a list
 
 \code{bin.ran.var} binomial random variables
 
@@ -33,7 +31,19 @@ The output of \code{fitBetaBin} gives a list format consisting
 
 \code{p.value} probability value by chi-squared test statistic
 
+\code{fitBB} fitted values of \code{dBetaBin}.
+
+\code{NegLL} Negative Log Likelihood value.
+
+\code{a} estimated value for alpha parameter as a.
+
+\code{b} estimated value for alpha parameter as b.
+
+\code{AIC} AIC value.
+
 \code{over.dis.para} over dispersion value.
+
+\code{call} the inputs x,obs.freq,a,b of the function.
 }
 \description{
 The function will fit the beta-binomial distribution when random variables, corresponding
@@ -47,7 +57,8 @@ seen if this distribution fits the data.
 \deqn{obs.freq \ge 0}
 
 \strong{NOTE} : If input parameters are not in given domain conditions
-necessary error messages will be provided to go further.
+necessary error messages will be provided to go further.Use the functions
+summary,fitted,AIC,coef and residuals to extract information.
 }
 \examples{
 No.D.D=0:7    #assigning the random variables
@@ -58,17 +69,28 @@ data = list(x=No.D.D,freq=Obs.fre.1)))
 bbmle::coef(parameters)   #extracting the parameters a and b
 aBetaBin=bbmle::coef(parameters)[1]  #assigning the parameter a
 bBetaBin=bbmle::coef(parameters)[2]  #assigning the parameter b
+
 #fitting when the random variable,frequencies,shape parameter values are given.
 fitBetaBin(No.D.D,Obs.fre.1,aBetaBin,bBetaBin)
 
 #estimating the parameters using moment generating function methods
-EstMGFBetaBin(No.D.D,Obs.fre.1)
-aBetaBin1=EstMGFBetaBin(No.D.D,Obs.fre.1)$a  #assigning the estimated a
-bBetaBin1=EstMGFBetaBin(No.D.D,Obs.fre.1)$b  #assigning the estimated b
+results<-EstMGFBetaBin(No.D.D,Obs.fre.1)
+results
+aBetaBin1=results$a  #assigning the estimated a
+bBetaBin1=results$b  #assigning the estimated b
+
 #fitting when the random variable,frequencies,shape parameter values are given.
-fitBetaBin(No.D.D,Obs.fre.1,aBetaBin1,bBetaBin1)
+BB<-fitBetaBin(No.D.D,Obs.fre.1,aBetaBin1,bBetaBin1)
+
 #extracting the expected frequencies
-fitBetaBin(No.D.D,Obs.fre.1,aBetaBin1,bBetaBin1,FALSE)$exp.freq
+fitted(BB)
+
+#extracting the coefficients a and b
+coef(BB)
+
+#extracting the residuals
+residuals(BB)
+
 }
 \references{
 Young-Xu, Y. & Chan, K.A., 2008. Pooling overdispersed binomial data to estimate event rate. BMC medical

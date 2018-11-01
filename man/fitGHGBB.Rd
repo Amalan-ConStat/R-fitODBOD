@@ -5,7 +5,7 @@
 \title{Fitting the Gaussian Hypergeometric Generalized Beta  Binomial Distribution when binomial
 random variable, frequency and shape parameters a,b and c are given}
 \usage{
-fitGHGBB(x,obs.freq,a,b,c,print)
+fitGHGBB(x,obs.freq,a,b,c)
 }
 \arguments{
 \item{x}{vector of binomial random variables}
@@ -17,11 +17,9 @@ fitGHGBB(x,obs.freq,a,b,c,print)
 \item{b}{single value for shape parameter beta representing b}
 
 \item{c}{single value for shape parameter lambda representing c}
-
-\item{print}{logical value for print or not}
 }
 \value{
-The output of \code{fitGHGBB} gives a list format consisting
+The output of \code{fitGHGBB} gives a class format \code{fitGB} consisting a list
 
 \code{bin.ran.var} binomial random variables
 
@@ -35,7 +33,21 @@ The output of \code{fitGHGBB} gives a list format consisting
 
 \code{p.value} probability value by chi-squared test statistic
 
+\code{fitGB} fitted values of \code{dGHGBB}.
+
+\code{NegLL} Negative Loglikelihood value.
+
+\code{a} estimated value for alpha parameter as a.
+
+\code{b} estimated value for beta parameter as b.
+
+\code{c} estimated value for gamma parameter as c.
+
+\code{AIC} AIC value.
+
 \code{over.dis.para} over dispersion value.
+
+\code{call} the inputs x,obs.freq,a,b,c of the function.
 }
 \description{
 The function will fit the Gaussian Hypergeometric Generalized Beta Binomial Distribution
@@ -49,7 +61,8 @@ and over dispersion value so that it can be seen if this distribution fits the d
 \deqn{obs.freq \ge 0}
 
 \strong{NOTE} : If input parameters are not in given domain conditions necessary
-error messages will be provided to go further.
+error messages will be provided to go further. Use the functions
+summary,fitted,AIC,coef and residuals to extract information.
 }
 \examples{
 No.D.D=0:7        #assigning the random variables
@@ -63,9 +76,18 @@ bGHGBB=bbmle::coef(parameters)[2]  #assigning the estimated b
 cGHGBB=bbmle::coef(parameters)[3]  #assigning the estimated c
 
 #fitting when the random variable,frequencies,shape parameter values are given.
-fitGHGBB(No.D.D,Obs.fre.1,aGHGBB,bGHGBB,cGHGBB)
+results<-fitGHGBB(No.D.D,Obs.fre.1,aGHGBB,bGHGBB,cGHGBB)
+results
+
 #extracting the expected frequencies
-fitGHGBB(No.D.D,Obs.fre.1,aGHGBB,bGHGBB,cGHGBB,FALSE)$exp.freq
+fitted(results)
+
+#extracting the coefficients a,b and c
+coef(results)
+
+#extracting the residuals
+residuals(results)
+
 }
 \references{
 Rodriguez-Avi, J., Conde-Sanchez, A., Saez-Castillo, A. J., & Olmo-Jimenez, M. J. (2007). A generalization

@@ -829,7 +829,7 @@ EstMLEKumBin<-function(x,freq,a,b,it)
 #' frequencies, chi-squared test statistics value, p value, degree of freedom and
 #' over dispersion value so that it can be seen if this distribution fits the data.
 #'
-#' @usage fitKumBin(x,obs.freq,a,b,it,print)
+#' @usage fitKumBin(x,obs.freq,a,b,it)
 #'
 #' @param x                  vector of binomial random variables
 #' @param obs.freq           vector of frequencies
@@ -837,7 +837,6 @@ EstMLEKumBin<-function(x,freq,a,b,it)
 #' @param b                  single value for shape parameter beta representing b
 #' @param it                 number of iterations to converge as a proper probability
 #'                           function replacing infinity
-#' @param print              logical value for print or not
 #'
 #' @details
 #' \deqn{0 < a,b}
@@ -846,10 +845,11 @@ EstMLEKumBin<-function(x,freq,a,b,it)
 #' \deqn{it > 0}
 #'
 #' \strong{NOTE} : If input parameters are not in given domain conditions
-#' necessary error messages will be provided to go further.
+#' necessary error messages will be provided to go further. Use the functions
+#' summary,fitted,AIC,coef and residuals to extract information.
 #'
 #' @return
-#' The output of \code{fitKumBin} gives a list format consisting
+#' The output of \code{fitKumBin} gives a class format \code{fitKB} consisting a list
 #'
 #' \code{bin.ran.var} binomial random variables
 #'
@@ -863,7 +863,21 @@ EstMLEKumBin<-function(x,freq,a,b,it)
 #'
 #' \code{p.value} probability value by chi-squared test statistic
 #'
+#' \code{fitKB} fitted values of \code{dKumBin}.
+#'
+#' \code{NegLL} Negative Log Likelihood value.
+#'
+#' \code{a} estimated value for alpha parameter as a.
+#'
+#' \code{b} estimated value for beta parameter as b.
+#'
+#' \code{it} estimated it value for iterations
+#'
+#' \code{AIC} AIC value.
+#'
 #' \code{over.dis.para} over dispersion value.
+#'
+#' \code{call} the inputs x,obs.freq,a,b,it of the function.
 #'
 #' @references
 #' Li, X. H., Huang, Y. Y., & Zhao, X. Y. (2011). The Kumaraswamy Binomial Distribution. Chinese Journal
@@ -886,11 +900,21 @@ EstMLEKumBin<-function(x,freq,a,b,it)
 #' itKumBin=bbmle::coef(parameters)[3] #assigning the estimated iterations
 #'
 #' #fitting when the random variable,frequencies,shape parameter values are given.
-#' fitKumBin(No.D.D,Obs.fre.1,aKumBin,bKumBin,itKumBin*100)
+#' results<-fitKumBin(No.D.D,Obs.fre.1,aKumBin,bKumBin,itKumBin*100)
+#' results
+#'
+#' #extracting the expected frequencies
+#' fitted(results)
+#'
+#' #extracting the coefficients a, b and it
+#' coef(results)
+#'
+#' #extracting the residuals
+#' residuals(results)
 #' }
 #'
 #' @export
-fitKumBin<-function(x,obs.freq,a,b,it,print=T)
+fitKumBin<-function(x,obs.freq,a,b,it)
 {
   #checking if inputs consist NA(not assigned)values, infinite values or NAN(not a number)values
   #if so creating an error message as well as stopping the function progress.
@@ -901,8 +925,9 @@ fitKumBin<-function(x,obs.freq,a,b,it,print=T)
   }
   else
   {
+    est<-dKumBin(x,max(x),a,b,it)
     #for given random variables and parameters calculating the estimated probability values
-    est.prob<-dKumBin(x,max(x),a,b,it)$pdf
+    est.prob<-est$pdf
     #using the estimated probability values the expected frequencies are calculated
     exp.freq<-round((sum(obs.freq)*est.prob),2)
     #chi-squared test statistics is calculated with observed frequency and expected frequency
@@ -913,14 +938,7 @@ fitKumBin<-function(x,obs.freq,a,b,it,print=T)
     p.value<-1-stats::pchisq(statistic,df)
     #all the above information is mentioned as a message below
     #and if the user wishes they can print or not to
-    if(print==T)
-    {
-    cat("\nChi-squared test for Kumaraswamy Binomial Distribution\n\n
-                 Observed Frequency : ",obs.freq,"\n
-                 expected Frequency : ",exp.freq,"\n
-                 X-squared =",round(statistic,4),"df =",df,"  p-value =",round(p.value,4),"\n
-                over dispersion =",dKumBin(x,max(x),a,b,it)$over.dis.para,"\n")
-    }
+
     #checking if df is less than or equal to zero
     if(df<0 | df==0)
     {
@@ -938,12 +956,84 @@ fitKumBin<-function(x,obs.freq,a,b,it,print=T)
     {
       warning("Chi-squared approximation is not suitable because expected frequency approximates to zero")
     }
+    #calculating Negative Loglikelihood value and AIC
+    NegLL<-NegLLKumBin(x,obs.freq,a,b,it)
+    AICvalue<-2*2+NegLL
     #the final output is in a list format containing the calculated values
     final<-list("bin.ran.var"=x,"obs.freq"=obs.freq,"exp.freq"=exp.freq,
                 "statistic"=round(statistic,4),"df"=df,"p.value"=round(p.value,4),
-                "over.dis.para"=dKumBin(x,max(x),a,b,it)$over.dis.para)
+                "fitBB"=est,"NegLL"=NegLL,"a"=a,"b"=b,"it"=it,"AIC"=AICvalue,
+                "over.dis.para"=est$over.dis.para,"call"=match.call())
+    class(final)<-"fitKB"
+    return(final)
   }
 }
+
+#' @method fitKumBin default
+#' @export
+fitKumBin.default<-function(x,obs.freq,a,b,it)
+{
+  est<-fitKumBin(x,obs.freq,a,b,it)
+  return(est)
+}
+
+#' @method print fitKB
+#' @export
+print.fitKB<-function(x,...)
+{
+  cat("Call: \n")
+  print(x$call)
+  cat("\nChi-squared test for Kumaraswamy Binomial Distribution \n\t
+      Observed Frequency : ",x$obs.freq,"\n\t
+      expected Frequency : ",x$exp.freq,"\n\t
+      estimated a parameter :",x$a, "  ,estimated b parameter :",x$b," ,estimated it value :",x$it,"\n\t
+      X-squared :",x$statistic,"  ,df :",x$df,"  ,p-value :",x$p.value,"\n\t
+      over dispersion :",x$over.dis.para,"\n")
+}
+
+#' @method summary fitKB
+#' @export
+summary.fitKB<-function(object,...)
+{
+  cat("Call: \n")
+  print(object$call)
+  cat("\nChi-squared test for Kumaraswamy Binomial Distribution \n\t
+      Observed Frequency : ",object$obs.freq,"\n\t
+      expected Frequency : ",object$exp.freq,"\n\t
+      estimated a parameter :",object$a,"  ,estimated b parameter :",object$b," ,estimated it value :",object$it,"\n\t
+      X-squared :",object$statistic,"  ,df :",object$df,"  ,p-value :",object$p.value,"\n\t
+      over dispersion :",object$over.dis.para,"\n\t
+      Negative Loglikehood value :",object$NegLL,"\n\t
+      AIC value :",object$AIC,"\n")
+}
+
+#' @method coef fitKB
+#' @export
+coef.fitKB<-function(object,...)
+{
+  return(c(object$a,object$b,object$it))
+}
+
+#' @method AIC fitKB
+#' @export
+AIC.fitKB<-function(object,...)
+{
+  return(object$AIC)
+}
+
+#' @method residuals fitKB
+#' @export
+residuals.fitKB<-function(object,...)
+{
+  return(object$obs.freq-object$exp.freq)
+}
+
+#' @method fitted fitKB
+#' @export
+fitted.fitKB<-function(object,...)
+{
+  return(object$exp.freq)
+}
+
 #' @importFrom bbmle mle2
 #' @importFrom stats pchisq
-#'
