@@ -597,13 +597,12 @@ coef.mlAB<-function(object,...)
 #' It will provide the expected frequencies, chi-squared test statistics value, p value,
 #' and degree of freedom value so that it can be seen if this distribution fits the data.
 #'
-#' @usage fitAddBin(x,obs.freq,p,alpha,print)
+#' @usage fitAddBin(x,obs.freq,p,alpha)
 #'
 #' @param x                  vector of binomial random variables
 #' @param obs.freq           vector of frequencies
 #' @param p                  single value for probability of success
-#' @param alpha               single value for alpha
-#' @param print              logical value for print or not
+#' @param alpha              single value for alpha
 #'
 #' @details
 #' \deqn{obs.freq \ge 0}
@@ -612,7 +611,7 @@ coef.mlAB<-function(object,...)
 #' \deqn{-1 < alpha < 1}
 #'
 #' @return
-#' The output of \code{fitAddBin} gives a list format consisting
+#' The output of \code{fitAddBin} gives the class format \code{fitAB} and \code{fit} consisting a list
 #'
 #' \code{bin.ran.var} binomial random variables
 #'
@@ -665,13 +664,18 @@ coef.mlAB<-function(object,...)
 #' alphaaddbin=suppressWarnings(EstMLEAddBin(No.D.D,Obs.fre.1)$alpha)
 #'
 #' #fitting when the random variable,frequencies,probability and alpha are given
-#' fitAddBin(No.D.D,Obs.fre.1,paddbin,alphaaddbin)
+#' results<-fitAddBin(No.D.D,Obs.fre.1,paddbin,alphaaddbin)
+#' results
 #'
-#' #extracting the expected frequencies
-#' fitAddBin(No.D.D,Obs.fre.1,paddbin,alphaaddbin,FALSE)$exp.freq
+#' #extracting the AIC value
+#' AIC(results)
+#'
+#' #extrac fitted values
+#' fitted(results)
+#'
 #' }
 #' @export
-fitAddBin<-function(x,obs.freq,p,alpha,print=T)
+fitAddBin<-function(x,obs.freq,p,alpha)
 {
   #checking if inputs consist NA(not assigned)values, infinite values or NAN(not a number)values
   #if so creating an error message as well as stopping the function progress.
@@ -725,5 +729,40 @@ fitAddBin<-function(x,obs.freq,p,alpha,print=T)
     }
   }
 
+#' @method fitAddBin default
+#' @export
+fitAddBin.default<-function(x,obs.freq,p,alpha)
+{
+  est<-fitAddBin(x,obs.freq,p,alpha)
+  return(est)
+}
+
+#' @method print fitAB
+#' @export
+print.fitAB<-function(x,...)
+{
+  cat("Call: \n")
+  print(x$call)
+  cat("\nChi-squared test for Additive Binomial Distribution \n\t
+      Observed Frequency : ",x$obs.freq,"\n\t
+      expected Frequency : ",x$exp.freq,"\n\t
+      estimated p value:",x$p," ,estimated alpha value:",x$alpha,"\n\t
+      X-squared :",x$statistic,"  ,df :",x$df,"  ,p-value :",x$p.value,"\n")
+}
+
+#' @method summary fitAB
+#' @export
+summary.fitAB<-function(object,...)
+{
+  cat("Call: \n")
+  print(object$call)
+  cat("\nChi-squared test for Additive Binomial Distribution \n\t
+      Observed Frequency : ",object$obs.freq,"\n\t
+      expected Frequency : ",object$exp.freq,"\n\t
+      estimated p value:",object$p," ,estimated alpha value:",x$alpha,"\n\t
+      X-squared :",object$statistic,"  ,df :",object$df,"  ,p-value :",object$p.value,"\n\t
+      Negative Loglikehood value :",object$NegLL,"\n\t
+      AIC value :",object$AIC,"\n")
+}
 
 #' @importFrom stats pchisq

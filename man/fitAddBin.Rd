@@ -5,7 +5,7 @@
 \title{Fitting the Additive Binomial Distribution when binomial
 random variable, frequency, probability of success and alpha are given}
 \usage{
-fitAddBin(x,obs.freq,p,alpha,print)
+fitAddBin(x,obs.freq,p,alpha)
 }
 \arguments{
 \item{x}{vector of binomial random variables}
@@ -15,11 +15,9 @@ fitAddBin(x,obs.freq,p,alpha,print)
 \item{p}{single value for probability of success}
 
 \item{alpha}{single value for alpha}
-
-\item{print}{logical value for print or not}
 }
 \value{
-The output of \code{fitAddBin} gives a list format consisting
+The output of \code{fitAddBin} gives the class format \code{fitAB} and \code{fit} consisting a list
 
 \code{bin.ran.var} binomial random variables
 
@@ -70,10 +68,15 @@ paddbin=suppressWarnings(EstMLEAddBin(No.D.D,Obs.fre.1)$p)
 alphaaddbin=suppressWarnings(EstMLEAddBin(No.D.D,Obs.fre.1)$alpha)
 
 #fitting when the random variable,frequencies,probability and alpha are given
-fitAddBin(No.D.D,Obs.fre.1,paddbin,alphaaddbin)
+results<-fitAddBin(No.D.D,Obs.fre.1,paddbin,alphaaddbin)
+results
 
-#extracting the expected frequencies
-fitAddBin(No.D.D,Obs.fre.1,paddbin,alphaaddbin,FALSE)$exp.freq
+#extracting the AIC value
+AIC(results)
+
+#extrac fitted values
+fitted(results)
+
 }
 }
 \references{
