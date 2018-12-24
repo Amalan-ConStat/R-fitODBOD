@@ -724,7 +724,7 @@ fitAddBin<-function(x,obs.freq,p,alpha)
     final<-list("bin.ran.var"=x,"obs.freq"=obs.freq,"exp.freq"=exp.freq,
                 "statistic"=round(statistic,4),"df"=df,"p.value"=round(p.value,4),
                 "fitAB"=est,"NegLL"=NegLL,"p"=p,"alpha"=alpha,"AIC"=AICvalue,
-                "over.dis.para"=est$over.dis.para,"call"=match.call())
+                "call"=match.call())
     class(final)<-c("fitAB","fit")
     return(final)
     }
@@ -747,7 +747,7 @@ print.fitAB<-function(x,...)
   cat("\nChi-squared test for Additive Binomial Distribution \n\t
       Observed Frequency : ",x$obs.freq,"\n\t
       expected Frequency : ",x$exp.freq,"\n\t
-      estimated p value:",x$p," ,estimated alpha value:",x$alpha,"\n\t
+      estimated p value :",x$p," ,estimated alpha parameter :",x$alpha,"\n\t
       X-squared :",x$statistic,"  ,df :",x$df,"  ,p-value :",x$p.value,"\n")
 }
 
@@ -760,7 +760,7 @@ summary.fitAB<-function(object,...)
   cat("\nChi-squared test for Additive Binomial Distribution \n\t
       Observed Frequency : ",object$obs.freq,"\n\t
       expected Frequency : ",object$exp.freq,"\n\t
-      estimated p value:",object$p," ,estimated alpha value:",x$alpha,"\n\t
+      estimated p value :",object$p," ,estimated alpha parameter :",x$alpha,"\n\t
       X-squared :",object$statistic,"  ,df :",object$df,"  ,p-value :",object$p.value,"\n\t
       Negative Loglikehood value :",object$NegLL,"\n\t
       AIC value :",object$AIC,"\n")

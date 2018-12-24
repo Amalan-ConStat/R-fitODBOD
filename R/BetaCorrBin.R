@@ -530,14 +530,13 @@ EstMLEBetaCorrBin<-function(x,freq,cov,a,b)
 #' and degree of freedom so that it can be seen if this distribution fits the data.
 #'
 #' @usage
-#' fitBetaCorrBin(x,obs.freq,cov,a,b,print)
+#' fitBetaCorrBin(x,obs.freq,cov,a,b)
 #'
 #' @param x                  vector of binomial random variables
 #' @param obs.freq           vector of frequencies
 #' @param cov                single value for covariance
 #' @param a                  single value for alpha parameter
 #' @param b                  single value for beta parameter
-#' @param print              logical value for print or not
 #'
 #' @details
 #' \deqn{obs.freq \ge 0}
@@ -549,7 +548,7 @@ EstMLEBetaCorrBin<-function(x,freq,cov,a,b)
 #' necessary error messages will be provided to go further
 #'
 #' @return
-#' The output of \code{fitBetaCorrBin} gives a list format consisting
+#' The output of \code{fitBetaCorrBin} gives the class format \code{fitBCB} and \code{fit} consisting a list
 #'
 #' \code{bin.ran.var} binomial random variables
 #'
@@ -564,6 +563,23 @@ EstMLEBetaCorrBin<-function(x,freq,cov,a,b)
 #' \code{p.value} probability value by chi-squared test statistic
 #'
 #' \code{corr}    Correlation value
+#'
+#' \code{fitBCB} fitted probability values of \code{dBetaCorrBin}
+#'
+#' \code{NegLL} Negative Log Likelihood value
+#'
+#' \code{a} estimated shape parameter value a
+#'
+#' \code{b} estiamted shape parameter value b
+#'
+#' \code{cov} estimated covariance value
+#'
+#' \code{AIC} AIC value.
+#'
+#' \code{call} the inputs of the function
+#'
+#' Methods \code{summary}, \code{print}, \code{AIC}, \code{residuals} and \code{fitted}
+#' can be used to extract specific outputs.
 #'
 #' @references
 #'
@@ -582,12 +598,19 @@ EstMLEBetaCorrBin<-function(x,freq,cov,a,b)
 #' covBetaCorrBin=bbmle::coef(parameters)[1]
 #' aBetaCorrBin=bbmle::coef(parameters)[2]
 #' bBetaCorrBin=bbmle::coef(parameters)[3]
+#'
 #' #fitting when the random variable,frequencies,covariance, a and b are given
-#' fitBetaCorrBin(No.D.D,Obs.fre.1,covBetaCorrBin,aBetaCorrBin,bBetaCorrBin)
-#' #extracting the expected frequencies
-#' fitBetaCorrBin(No.D.D,Obs.fre.1,covBetaCorrBin,aBetaCorrBin,bBetaCorrBin,FALSE)$exp.freq
+#' results<-fitBetaCorrBin(No.D.D,Obs.fre.1,covBetaCorrBin,aBetaCorrBin,bBetaCorrBin)
+#' results
+#'
+#' #extract AIC value
+#' AIC(results)
+#'
+#' #extract fitted values
+#' fitted(results)
+#'
 #' @export
-fitBetaCorrBin<-function(x,obs.freq,cov,a,b,print=T)
+fitBetaCorrBin<-function(x,obs.freq,cov,a,b)
 {
   #checking if inputs consist NA(not assigned)values, infinite values or NAN(not a number)values
   #if so creating an error message as well as stopping the function progress.
@@ -598,8 +621,9 @@ fitBetaCorrBin<-function(x,obs.freq,cov,a,b,print=T)
   }
   else
   {
+    est<-dBetaCorrBin(x,max(x),cov,a,b)
     #for given random variables and parameters calculating the estimated probability values
-    est.prob<-dBetaCorrBin(x,max(x),cov,a,b)$pdf
+    est.prob<-est$pdf
     #using the estimated probability values the expected frequencies are calculated
     exp.freq<-round((sum(obs.freq)*est.prob),2)
     #chi-squared test statistics is calculated with observed frequency and expected frequency
@@ -608,16 +632,7 @@ fitBetaCorrBin<-function(x,obs.freq,cov,a,b,print=T)
     df<-length(x)-4
     #p value of chi-squared test statistic is calculated
     p.value<-1-stats::pchisq(statistic,df)
-    #all the above information is mentioned as a message below
-    #and if the user wishes they can print or not to
-    if(print==TRUE)
-    {
-      cat("\nChi-squared test for Beta-Correlated Binomial Distribution\n\n
-          Observed Frequency : ",obs.freq,"\n
-          expected Frequency : ",exp.freq,"\n
-          X-squared =",round(statistic,4),"df =",df,"  p-value =",round(p.value,4),"\n
-          Correlation  =",dBetaCorrBin(x,max(x),cov,a,b)$corr,"\n")
-    }
+
     #checking if df is less than or equal to zero
     if(df<0 | df==0)
     {
@@ -635,10 +650,55 @@ fitBetaCorrBin<-function(x,obs.freq,cov,a,b,print=T)
     {
       warning("Chi-squared approximation is not suitable because expected frequency approximates to zero")
     }
+    #calculating Negative log likelihood value and AIC
+    NegLL<-NegLLBetaCorrBin(x,obs.freq,cov,a,b)
+    AICvalue<-2*3+NegLL
     #the final output is in a list format containing the calculated values
     final<-list("bin.ran.var"=x,"obs.freq"=obs.freq,"exp.freq"=exp.freq,"statistic"=round(statistic,4),
-                "df"=df,"p.value"=round(p.value,4),"corr"=dBetaCorrBin(x,max(x),cov,a,b)$corr)
+                "df"=df,"p.value"=round(p.value,4),"cov"=cov,"a"=a,"b"=b,"corr"=est$corr,"fitBCB"=est,"NegLL"=NegLL,
+                "AIC"=AICvalue,"call"=match.call())
+    class(final)<-c("fitBCB","fit")
+    return(final)
     }
   }
+
+#' @method fitBetaCorrBin default
+#' @export
+fitBetaCorrBin.default<-function(x,obs.freq,cov,a,b)
+{
+  est<-fitTriBin(x,obs.freq,cov,a,b)
+  return(est)
+}
+
+#' @method print fitBCB
+#' @export
+print.fitBCB<-function(x,...)
+{
+  cat("Call: \n")
+  print(x$call)
+  cat("\nChi-squared test for Beta-Correlated Binomial Distribution \n\t
+      Observed Frequency : ",x$obs.freq,"\n\t
+      expected Frequency : ",x$exp.freq,"\n\t
+      estimated covariance value:",x$cov,"\n\t
+      estimated a parameter :",x$a," , estimated b parameter :",x$b,"\n\t
+      X-squared :",x$statistic,"  ,df :",x$df,"  ,p-value :",x$p.value,"\n")
+}
+
+#' @method summary fitBCB
+#' @export
+summary.fitBCB<-function(object,...)
+{
+  cat("Call: \n")
+  print(object$call)
+  cat("\nChi-squared test for Beta-Correlated Binomial Distribution \n\t
+      Observed Frequency : ",object$obs.freq,"\n\t
+      expected Frequency : ",object$exp.freq,"\n\t
+      estimated covariance value:",object$cov,"\n\t
+      estimated a parameter :",object$a," , estimated b parameter :",object$b,"\n\t
+      X-squared :",object$statistic,"  ,df :",object$df,"  ,p-value :",object$p.value,"\n\t
+      Negative Loglikehood value :",object$NegLL,"\n\t
+      AIC value :",object$AIC,"\n")
+}
+
 #' @importFrom bbmle mle2
 #' @importFrom stats pchisq

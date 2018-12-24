@@ -5,7 +5,7 @@
 \title{Fitting the Beta-Correlated Binomial Distribution when binomial
 random variable, frequency, covariance, alpha and beta parameters are given}
 \usage{
-fitBetaCorrBin(x,obs.freq,cov,a,b,print)
+fitBetaCorrBin(x,obs.freq,cov,a,b)
 }
 \arguments{
 \item{x}{vector of binomial random variables}
@@ -17,11 +17,9 @@ fitBetaCorrBin(x,obs.freq,cov,a,b,print)
 \item{a}{single value for alpha parameter}
 
 \item{b}{single value for beta parameter}
-
-\item{print}{logical value for print or not}
 }
 \value{
-The output of \code{fitBetaCorrBin} gives a list format consisting
+The output of \code{fitBetaCorrBin} gives the class format \code{fitBCB} and \code{fit} consisting a list
 
 \code{bin.ran.var} binomial random variables
 
@@ -36,6 +34,23 @@ The output of \code{fitBetaCorrBin} gives a list format consisting
 \code{p.value} probability value by chi-squared test statistic
 
 \code{corr}    Correlation value
+
+\code{fitBCB} fitted probability values of \code{dBetaCorrBin}
+
+\code{NegLL} Negative Log Likelihood value
+
+\code{a} estimated shape parameter value a
+
+\code{b} estiamted shape parameter value b
+
+\code{cov} estimated covariance value
+
+\code{AIC} AIC value.
+
+\code{call} the inputs of the function
+
+Methods \code{summary}, \code{print}, \code{AIC}, \code{residuals} and \code{fitted}
+can be used to extract specific outputs.
 }
 \description{
 The function will fit the Beta-Correlated binomial Distribution
@@ -62,10 +77,17 @@ parameters=suppressWarnings(bbmle::mle2(EstMLEBetaCorrBin,start = list(cov=0.005
 covBetaCorrBin=bbmle::coef(parameters)[1]
 aBetaCorrBin=bbmle::coef(parameters)[2]
 bBetaCorrBin=bbmle::coef(parameters)[3]
+
 #fitting when the random variable,frequencies,covariance, a and b are given
-fitBetaCorrBin(No.D.D,Obs.fre.1,covBetaCorrBin,aBetaCorrBin,bBetaCorrBin)
-#extracting the expected frequencies
-fitBetaCorrBin(No.D.D,Obs.fre.1,covBetaCorrBin,aBetaCorrBin,bBetaCorrBin,FALSE)$exp.freq
+results<-fitBetaCorrBin(No.D.D,Obs.fre.1,covBetaCorrBin,aBetaCorrBin,bBetaCorrBin)
+results
+
+#extract AIC value
+AIC(results)
+
+#extract fitted values
+fitted(results)
+
 }
 \references{
 Paul, S.R., 1985. A three-parameter generalization of the binomial distribution. Communications in Statistics
