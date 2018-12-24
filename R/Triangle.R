@@ -937,7 +937,7 @@ EstMLETriBin<-function(x,freq)
     AICvalue<-2*1+(2*TriBinNegLLfin)
     argument<-match.call()
     output<-list("min"=TriBinNegLLfin,"mode"=modefin,"AIC"=AICvalue,"call"=argument)
-    class(output)<-"mlTRI"
+    class(output)<-c("ml","mlTRI")
     return(output)
   }
 }
@@ -978,13 +978,6 @@ coef.mlTRI<-function(object,...)
   cat(" mode \n", object$mode)
 }
 
-#' @method AIC mlTRI
-#' @export
-AIC.mlTRI<-function(object,...)
-{
-  return(object$AIC)
-}
-
 #' Fitting the Triangular Binomial Distribution when binomial random variable, frequency and mode
 #' value are given
 #'
@@ -993,7 +986,7 @@ AIC.mlTRI<-function(object,...)
 #' test statistics value, p value, degree of freedom and over dispersion value so that it can be
 #' seen if this distribution fits the data.
 #'
-#' @usage fitTriBin(x,obs.freq,mode,print)
+#' @usage fitTriBin(x,obs.freq,mode)
 #'
 #' @param x                  vector of binomial random variables
 #' @param obs.freq           vector of frequencies
@@ -1054,22 +1047,20 @@ AIC.mlTRI<-function(object,...)
 #' @examples
 #' No.D.D=0:7      #assigning the random variables
 #' Obs.fre.1=c(47,54,43,40,40,41,39,95)  #assigning the corresponding frequencies
-#' \dontrun{
+#'
 #' modeTriBin=EstMLETriBin(No.D.D,Obs.fre.1)$mode  #assigning the extracted the mode value
 #'
 #' #fitting when the random variable,frequencies,mode value are given.
 #' results<-fitTriBin(No.D.D,Obs.fre.1,modeTriBin)
-#'
 #' results
-#' }
 #'
 #' #extract coefficient mode
 #' coef(results)
 #'
-#' extract AIC value
+#' #extract AIC value
 #' AIC(results)
 #'
-#' extract fitted values
+#' #extract fitted values
 #' fitted(results)
 #'
 #' @export

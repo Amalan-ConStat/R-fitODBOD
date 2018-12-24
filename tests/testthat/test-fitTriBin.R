@@ -18,7 +18,7 @@ test_that("Chi-squared approximation issues",{
           gives_warning("Chi-squared approximation is not suitable because expected frequency approximates to zero"))
           })
 test_that("Chi-squared approximation issues",{
-          expect_that(fitTriBin(0:6,c(2,5,40,40,4,3),0.00000001),
+          expect_that(fitTriBin(0:5,c(2,5,40,40,4,3),0.00000001),
           gives_warning("Chi-squared approximation may be doubtful because expected frequency is less than 5"))
           })
 

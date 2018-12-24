@@ -867,7 +867,7 @@ EstMLEMcGBB<-function(x,freq,a,b,c)
 #' residuals(results)
 #' }
 #' @export
-fitMcGBB<-function(x,obs.freq,a,b,c)
+ fitMcGBB<-function(x,obs.freq,a,b,c)
 {
   #checking if inputs consist NA(not assigned)values, infinite values or NAN(not a number)values
   #if so creating an error message as well as stopping the function progress.
@@ -969,7 +969,7 @@ coef.fitMB<-function(object,...)
 
 #' @method AIC fitMB
 #' @export
-AIC.fitMB<-function(object,...)
+ AIC.fitMB<-function(object,...)
 {
   return(object$AIC)
 }
