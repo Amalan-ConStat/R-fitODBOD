@@ -913,7 +913,7 @@ EstMLEGHGBB<-function(x,freq,a,b,c)
 #' summary,fitted,AIC,coef and residuals to extract information.
 #'
 #' @return
-#' The output of \code{fitGHGBB} gives a class format \code{fitGB} consisting a list
+#' The output of \code{fitGHGBB} gives the class format \code{fitGB} and \code{fit} consisting a list
 #'
 #' \code{bin.ran.var} binomial random variables
 #'
@@ -943,6 +943,9 @@ EstMLEGHGBB<-function(x,freq,a,b,c)
 #'
 #' \code{call} the inputs x,obs.freq,a,b,c of the function.
 #'
+#' Methods \code{summary}, \code{print}, \code{AIC}, \code{residuals} and \code{fitted} can be used
+#' to extract specific outputs.
+#'
 #' @references
 #' Rodriguez-Avi, J., Conde-Sanchez, A., Saez-Castillo, A. J., & Olmo-Jimenez, M. J. (2007). A generalization
 #' of the beta-binomial distribution. Journal of the Royal Statistical Society. Series C (Applied Statistics), 56(1), 51-61.
@@ -954,11 +957,9 @@ EstMLEGHGBB<-function(x,freq,a,b,c)
 #' @seealso
 #' \code{\link[hypergeo]{hypergeo_powerseries}}
 #'
-#'
 #' --------------------
 #'
 #' \code{\link[bbmle]{mle2}}
-#'
 #'
 #' @examples
 #' No.D.D=0:7        #assigning the random variables
