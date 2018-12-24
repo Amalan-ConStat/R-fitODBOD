@@ -860,9 +860,6 @@ EstMLEMcGBB<-function(x,freq,a,b,c)
 #' #extracting the expected frequencies
 #' fitted(results)
 #'
-#' #extracting the coefficients a,b and c
-#' coef(results)
-#'
 #' #extracting the residuals
 #' residuals(results)
 #' }

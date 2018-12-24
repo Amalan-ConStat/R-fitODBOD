@@ -48,9 +48,12 @@ bbmle::coef(parameters)   #extracting the parameters
 
 #estimating the parameters using moment generating function methods
 results<-EstMGFBetaBin(No.D.D,Obs.fre.1)
+
+# extract the estimated parameters and summary
 coef(results)
 summary(results)
-AIC(results)
+
+AIC(results) #show the AIC value
 
 }
 \references{

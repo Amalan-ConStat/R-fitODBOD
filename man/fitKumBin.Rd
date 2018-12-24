@@ -85,9 +85,6 @@ results
 #extracting the expected frequencies
 fitted(results)
 
-#extracting the coefficients a, b and it
-coef(results)
-
 #extracting the residuals
 residuals(results)
 }

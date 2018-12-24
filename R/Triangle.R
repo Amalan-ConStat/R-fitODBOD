@@ -828,7 +828,8 @@ NegLLTriBin<-function(x,freq,mode)
 #'  and AIC to extract information.
 #'
 #' @return
-#' The output of \code{EstMLETriBin} will produce a list format consisting
+#' The output of \code{EstMLETriBin} will produce the classes of \code{ml} and \code{mlTB}
+#' format consisting
 #'
 #' \code{min}  Negative log likelihood value
 #'
@@ -836,7 +837,10 @@ NegLLTriBin<-function(x,freq,mode)
 #'
 #' \code{AIC}   AIC value
 #'
-#' \code{call} the inputs for x and freq
+#' \code{call} the inputs for the function
+#'
+#' Methods \code{print}, \code{summary}, \code{coef} and \code{AIC} can be used to
+#' extract specific outputs.
 #'
 #' @references
 #' Horsnell, G. (1957). Economic acceptance sampling schemes. Journal of the Royal Statistical Society,
@@ -1005,7 +1009,7 @@ coef.mlTRI<-function(object,...)
 #' summary,fitted,AIC,coef and residuals to extract information.
 #'
 #' @return
-#' The output of \code{fitTriBin} gives a class format \code{fitTB} consisting a list
+#' The output of \code{fitTriBin} gives the class format \code{fitTB} and \code{fit} consisting a list
 #'
 #' \code{bin.ran.var} binomial random variables
 #'
@@ -1019,7 +1023,7 @@ coef.mlTRI<-function(object,...)
 #'
 #' \code{p.value} probability value by chi-squared test statistic
 #'
-#' \code{fitTB} fitted values of \code{dTriBin}.
+#' \code{fitTB} fitted probability values of \code{dTriBin}.
 #'
 #' \code{NegLL} Negative Log Likelihood value.
 #'
@@ -1029,7 +1033,10 @@ coef.mlTRI<-function(object,...)
 #'
 #' \code{over.dis.para} over dispersion value.
 #'
-#' \code{call} the inputs x,obs.freq,mode of the function.
+#' \code{call} the inputs of the function.
+#'
+#' Methods \code{summary}, \code{print}, \code{AIC}, \code{residuals} and \code{fitted}
+#' can be used to extract specific outputs.
 #'
 #' @references
 #' Horsnell, G. (1957). Economic acceptance sampling schemes. Journal of the Royal Statistical Society,

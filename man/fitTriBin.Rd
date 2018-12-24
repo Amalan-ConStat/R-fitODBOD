@@ -15,7 +15,7 @@ fitTriBin(x,obs.freq,mode)
 \item{mode}{single value for mode}
 }
 \value{
-The output of \code{fitTriBin} gives a class format \code{fitTB} consisting a list
+The output of \code{fitTriBin} gives the class format \code{fitTB} and \code{fit} consisting a list
 
 \code{bin.ran.var} binomial random variables
 
@@ -29,7 +29,7 @@ The output of \code{fitTriBin} gives a class format \code{fitTB} consisting a li
 
 \code{p.value} probability value by chi-squared test statistic
 
-\code{fitTB} fitted values of \code{dTriBin}.
+\code{fitTB} fitted probability values of \code{dTriBin}.
 
 \code{NegLL} Negative Log Likelihood value.
 
@@ -39,7 +39,10 @@ The output of \code{fitTriBin} gives a class format \code{fitTB} consisting a li
 
 \code{over.dis.para} over dispersion value.
 
-\code{call} the inputs x,obs.freq,mode of the function.
+\code{call} the inputs of the function.
+
+Methods \code{summary}, \code{print}, \code{AIC}, \code{residuals} and \code{fitted}
+can be used to extract specific outputs.
 }
 \description{
 The function will fit the triangular binomial distribution when random variables, corresponding
@@ -66,9 +69,6 @@ modeTriBin=EstMLETriBin(No.D.D,Obs.fre.1)$mode  #assigning the extracted the mod
 #fitting when the random variable,frequencies,mode value are given.
 results<-fitTriBin(No.D.D,Obs.fre.1,modeTriBin)
 results
-
-#extract coefficient mode
-coef(results)
 
 #extract AIC value
 AIC(results)

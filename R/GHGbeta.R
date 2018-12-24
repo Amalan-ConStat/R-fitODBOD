@@ -978,9 +978,6 @@ EstMLEGHGBB<-function(x,freq,a,b,c)
 #' #extracting the expected frequencies
 #' fitted(results)
 #'
-#' #extracting the coefficients a,b and c
-#' coef(results)
-#'
 #' #extracting the residuals
 #' residuals(results)
 #'
@@ -1071,7 +1068,7 @@ summary.fitGB<-function(object,...)
   cat("\nChi-squared test for Gaussian Hypergeometric Generalized Beta-Binomial Distribution \n\t
       Observed Frequency : ",object$obs.freq,"\n\t
       expected Frequency : ",object$exp.freq,"\n\t
-      estimated a parameter :",object$a,"  ,estimated b parameter :",object$b," ,estimated c value :",object$it,"\n\t
+      estimated a parameter :",object$a," ,estimated b parameter :",object$b," ,estimated c value :",object$it,"\n\t
       X-squared :",object$statistic,"  ,df :",object$df,"  ,p-value :",object$p.value,"\n\t
       over dispersion :",object$over.dis.para,"\n\t
       Negative Loglikehood value :",object$NegLL,"\n\t

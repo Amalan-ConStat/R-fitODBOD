@@ -12,7 +12,8 @@ EstMLETriBin(x,freq)
 \item{freq}{vector of frequencies}
 }
 \value{
-The output of \code{EstMLETriBin} will produce a list format consisting
+The output of \code{EstMLETriBin} will produce the classes of \code{ml} and \code{mlTB}
+format consisting
 
 \code{min}  Negative log likelihood value
 
@@ -20,7 +21,10 @@ The output of \code{EstMLETriBin} will produce a list format consisting
 
 \code{AIC}   AIC value
 
-\code{call} the inputs for x and freq
+\code{call} the inputs for the function
+
+Methods \code{print}, \code{summary}, \code{coef} and \code{AIC} can be used to
+extract specific outputs.
 }
 \description{
 The function will estimate the mode value using the maximum log likelihood method for the
@@ -42,9 +46,11 @@ Obs.fre.1=c(47,54,43,40,40,41,39,95)   #assigning the corresponding frequencies
 \dontrun{
 results<-EstMLETriBin(No.D.D,Obs.fre.1)    #estimating the mode value and extracting the mode value
 
-# extract teh mode value and summary
+# extract the mode value and summary
 coef(results)
 summary(results)
+
+AIC(results)  #show the AIC value
 }
 
 }

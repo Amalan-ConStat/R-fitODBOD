@@ -85,9 +85,6 @@ BB<-fitBetaBin(No.D.D,Obs.fre.1,aBetaBin1,bBetaBin1)
 #extracting the expected frequencies
 fitted(BB)
 
-#extracting the coefficients a and b
-coef(BB)
-
 #extracting the residuals
 residuals(BB)
 
