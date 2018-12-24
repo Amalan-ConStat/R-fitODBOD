@@ -844,9 +844,12 @@ EstMLEBetaBin<-function(x,freq,a,b)
 #'
 #' #estimating the parameters using moment generating function methods
 #' results<-EstMGFBetaBin(No.D.D,Obs.fre.1)
+#'
+#' # extract the estimated parameters and summary
 #' coef(results)
 #' summary(results)
-#' AIC(results)
+#'
+#' AIC(results) #show the AIC value
 #'
 #' @export
 EstMGFBetaBin<-function(x,freq)
