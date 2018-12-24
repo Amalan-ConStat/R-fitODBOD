@@ -1155,12 +1155,6 @@ summary.fitTB<-function(object,...)
       AIC value :",object$AIC,"\n")
 }
 
-#' @method coef fitTB
-#' @export
-coef.fitTB<-function(object,...)
-{
-  return(object$mode)
-}
 
 #' @method AIC fitTB
 #' @export

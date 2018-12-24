@@ -1119,12 +1119,6 @@ summary.fitBB<-function(object,...)
       AIC value :",object$AIC,"\n")
 }
 
-#' @method coef fitBB
-#' @export
-coef.fitBB<-function(object,...)
-{
-  return(c(object$a,object$b))
-}
 
 #' @method AIC fitBB
 #' @export

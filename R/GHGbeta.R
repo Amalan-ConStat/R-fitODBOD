@@ -1078,12 +1078,6 @@ summary.fitGB<-function(object,...)
       AIC value :",object$AIC,"\n")
 }
 
-#' @method coef fitGB
-#' @export
-coef.fitGB<-function(object,...)
-{
-  return(c(object$a,object$b,object$c))
-}
 
 #' @method AIC fitGB
 #' @export

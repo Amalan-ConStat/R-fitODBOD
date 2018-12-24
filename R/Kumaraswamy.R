@@ -1007,12 +1007,6 @@ summary.fitKB<-function(object,...)
       AIC value :",object$AIC,"\n")
 }
 
-#' @method coef fitKB
-#' @export
-coef.fitKB<-function(object,...)
-{
-  return(c(object$a,object$b,object$it))
-}
 
 #' @method AIC fitKB
 #' @export

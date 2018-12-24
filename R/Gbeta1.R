@@ -960,12 +960,6 @@ summary.fitMB<-function(object,...)
       AIC value :",object$AIC,"\n")
 }
 
-#' @method coef fitMB
-#' @export
-coef.fitMB<-function(object,...)
-{
-  return(c(object$a,object$b,object$c))
-}
 
 #' @method AIC fitMB
 #' @export
