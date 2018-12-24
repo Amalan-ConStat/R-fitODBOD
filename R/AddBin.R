@@ -660,6 +660,7 @@ coef.mlAB<-function(object,...)
 #' #assigning the estimated probability value
 #' \dontrun{
 #' paddbin=suppressWarnings(EstMLEAddBin(No.D.D,Obs.fre.1)$p)
+#'
 #' #assigning the estimated alpha value
 #' alphaaddbin=suppressWarnings(EstMLEAddBin(No.D.D,Obs.fre.1)$alpha)
 #'
