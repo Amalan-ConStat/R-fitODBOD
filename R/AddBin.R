@@ -544,7 +544,7 @@ EstMLEAddBin<-function(x,freq)
     AICvalue<-2*2+(2*NegLLAddBinfin)
     argument<-match.call()
     output<-list("min"=NegLLAddBinfin,"p"=pfin,"alpha"=alphafin,"AIC"=AICvalue,"call"=argument)
-    class(output)<-"mlAB"
+    class(output)<-c("mlAB","ml")
     return(output)
 
   }
@@ -585,13 +585,6 @@ summary.mlAB<-function(object,...)
 coef.mlAB<-function(object,...)
 {
   cat(" \t p  \t alpha  \n", object$p, object$alpha)
-}
-
-#' @method AIC mlAB
-#' @export
-AIC.mlAB<-function(object,...)
-{
-  return(object$AIC)
 }
 
 #' Fitting the Additive Binomial Distribution when binomial
