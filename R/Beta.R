@@ -1022,9 +1022,6 @@ AIC.mgf<-function(object,...)
 #' #extracting the expected frequencies
 #' fitted(BB)
 #'
-#' #extracting the coefficients a and b
-#' coef(BB)
-#'
 #' #extracting the residuals
 #' residuals(BB)
 #'
