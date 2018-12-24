@@ -849,7 +849,7 @@ EstMLEKumBin<-function(x,freq,a,b,it)
 #' summary,fitted,AIC,coef and residuals to extract information.
 #'
 #' @return
-#' The output of \code{fitKumBin} gives a class format \code{fitKB} consisting a list
+#' The output of \code{fitKumBin} gives the class format \code{fitKB} and \code{fit} consisting a list
 #'
 #' \code{bin.ran.var} binomial random variables
 #'
@@ -878,6 +878,9 @@ EstMLEKumBin<-function(x,freq,a,b,it)
 #' \code{over.dis.para} over dispersion value.
 #'
 #' \code{call} the inputs x,obs.freq,a,b,it of the function.
+#'
+#' Methods \code{summary}, \code{print}, \code{AIC}, \code{residuals} and \code{fiited} can be used to
+#' extract specific outputs.
 #'
 #' @references
 #' Li, X. H., Huang, Y. Y., & Zhao, X. Y. (2011). The Kumaraswamy Binomial Distribution. Chinese Journal

@@ -20,7 +20,7 @@ fitKumBin(x,obs.freq,a,b,it)
 function replacing infinity}
 }
 \value{
-The output of \code{fitKumBin} gives a class format \code{fitKB} consisting a list
+The output of \code{fitKumBin} gives the class format \code{fitKB} and \code{fit} consisting a list
 
 \code{bin.ran.var} binomial random variables
 
@@ -49,6 +49,9 @@ The output of \code{fitKumBin} gives a class format \code{fitKB} consisting a li
 \code{over.dis.para} over dispersion value.
 
 \code{call} the inputs x,obs.freq,a,b,it of the function.
+
+Methods \code{summary}, \code{print}, \code{AIC}, \code{residuals} and \code{fiited} can be used to
+extract specific outputs.
 }
 \description{
 The function will fit the Kumaraswamy binomial distribution when random variables,
