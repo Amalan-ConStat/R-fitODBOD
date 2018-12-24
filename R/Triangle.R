@@ -179,11 +179,11 @@ dTRI<-function(p,mode)
 #' \eqn{r = 1,2,3,...}
 #'
 #' \strong{NOTE} : If input parameters are not in given domain conditions
-#' necessary error messages will be provided to go further
+#' necessary error messages will be provided to go further.
 #'
 #' @return
 #'
-#' The output of \code{pTRI} gives the cumulative density values in vector form
+#' The output of \code{pTRI} gives the cumulative density values in vector form.
 #'
 #' @references
 #' Horsnell, G. (1957). Economic acceptance sampling schemes. Journal of the Royal Statistical Society,

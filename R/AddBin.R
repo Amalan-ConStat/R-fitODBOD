@@ -671,7 +671,7 @@ coef.mlAB<-function(object,...)
 #' #extracting the AIC value
 #' AIC(results)
 #'
-#' #extrac fitted values
+#' #extract fitted values
 #' fitted(results)
 #'
 #' }

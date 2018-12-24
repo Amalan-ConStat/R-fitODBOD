@@ -12,7 +12,7 @@ pTRI(p,mode)
 \item{mode}{single value for mode}
 }
 \value{
-The output of \code{pTRI} gives the cumulative density values in vector form
+The output of \code{pTRI} gives the cumulative density values in vector form.
 }
 \description{
 These functions provide the ability for generating probability density values,
@@ -40,7 +40,7 @@ Moments about zero is denoted as
 \eqn{r = 1,2,3,...}
 
 \strong{NOTE} : If input parameters are not in given domain conditions
-necessary error messages will be provided to go further
+necessary error messages will be provided to go further.
 }
 \examples{
 #plotting the random variables and probability values

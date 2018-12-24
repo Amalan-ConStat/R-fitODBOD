@@ -666,7 +666,7 @@ fitBetaCorrBin<-function(x,obs.freq,cov,a,b)
 #' @export
 fitBetaCorrBin.default<-function(x,obs.freq,cov,a,b)
 {
-  est<-fitTriBin(x,obs.freq,cov,a,b)
+  est<-fitBetaCorrBin(x,obs.freq,cov,a,b)
   return(est)
 }
 

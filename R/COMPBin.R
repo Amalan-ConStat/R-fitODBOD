@@ -400,13 +400,12 @@ EstMLECOMPBin<-function(x,freq,p,v)
 #' and degree of freedom so that it can be seen if this distribution fits the data.
 #'
 #' @usage
-#' fitCOMPBin(x,obs.freq,p,v,print)
+#' fitCOMPBin(x,obs.freq,p,v)
 #'
 #' @param x                  vector of binomial random variables
 #' @param obs.freq           vector of frequencies
 #' @param p                  single value for probability of success
 #' @param v                  single value for v
-#' @param print              logical value for print or not
 #'
 #' @details
 #' \deqn{obs.freq \ge 0}
@@ -418,7 +417,7 @@ EstMLECOMPBin<-function(x,freq,p,v)
 #' necessary error messages will be provided to go further
 #'
 #' @return
-#' The output of \code{fitCOMPBin} gives a list format consisting
+#' The output of \code{fitCOMPBin} gives the class format \code{fitCPB} and \code{fit} consisting a list
 #'
 #' \code{bin.ran.var} binomial random variables
 #'
@@ -432,6 +431,20 @@ EstMLECOMPBin<-function(x,freq,p,v)
 #'
 #' \code{p.value} probability value by chi-squared test statistic
 #'
+#' \code{fitCPB} fitted probability values of \code{dCOMPBin}
+#'
+#' \code{NegLL} Negative Log Likelihood value
+#'
+#' \code{p} estiamted probability value
+#'
+#' \code{v} estimated v parameter value
+#'
+#' \code{AIC} AIC value
+#'
+#' \code{call} the inputs of the function
+#'
+#' Methods \code{summary}, \code{print}, \code{AIC}, \code{residuals} and \code{fitted}
+#' can be used to extract specific outputs.
 #'
 #' @references
 #' Borges, P., Rodrigues, J., Balakrishnan, N. and Bazan, J., 2014. A COM-Poisson type
@@ -450,12 +463,19 @@ EstMLECOMPBin<-function(x,freq,p,v)
 #'            data = list(x=No.D.D,freq=Obs.fre.1)))
 #' pCOMPBin=bbmle::coef(parameters)[1]
 #' vCOMPBin=bbmle::coef(parameters)[2]
+#'
 #' #fitting when the random variable,frequencies,probability and v parameter are given
-#' fitCOMPBin(No.D.D,Obs.fre.1,pCOMPBin,vCOMPBin)
-#' #extracting the expected frequencies
-#' fitCOMPBin(No.D.D,Obs.fre.1,pCOMPBin,vCOMPBin,FALSE)$exp.freq
+#' results<-fitCOMPBin(No.D.D,Obs.fre.1,pCOMPBin,vCOMPBin)
+#' results
+#'
+#' #extracting the AIC value
+#' AIC(results)
+#'
+#' #extract fitted values
+#' fitted(results)
+#'
 #' @export
-fitCOMPBin<-function(x,obs.freq,p,v,print=T)
+fitCOMPBin<-function(x,obs.freq,p,v)
 {
   #checking if inputs consist NA(not assigned)values, infinite values or NAN(not a number)values
   #if so creating an error message as well as stopping the function progress.
@@ -466,8 +486,9 @@ fitCOMPBin<-function(x,obs.freq,p,v,print=T)
   }
   else
   {
+    est<-dCOMPBin(x,max(x),p,v)
     #for given random variables and parameters calculating the estimated probability values
-    est.prob<-dCOMPBin(x,max(x),p,v)$pdf
+    est.prob<-est$pdf
     #using the estimated probability values the expected frequencies are calculated
     exp.freq<-round((sum(obs.freq)*est.prob),2)
     #chi-squared test statistics is calculated with observed frequency and expected frequency
@@ -476,15 +497,7 @@ fitCOMPBin<-function(x,obs.freq,p,v,print=T)
     df<-length(x)-3
     #p value of chi-squared test statistic is calculated
     p.value<-1-stats::pchisq(statistic,df)
-    #all the above information is mentioned as a message below
-    #and if the user wishes they can print or not to
-    if(print==TRUE)
-    {
-      cat("\nChi-squared test for COM Poisson Binomial Distribution\n\n
-                 Observed Frequency : ",obs.freq,"\n
-                 expected Frequency : ",exp.freq,"\n
-                 X-squared =",round(statistic,4),"df =",df,"  p-value =",round(p.value,4),"\n")
-    }
+
     #checking if any of the expected frequencies are less than five and greater than zero, if so
     #a warning message is provided in interpreting the results
     if(min(exp.freq)<5 && min(exp.freq) > 0)
@@ -502,8 +515,50 @@ fitCOMPBin<-function(x,obs.freq,p,v,print=T)
     {
       warning("Chi-squared approximation is not suitable because expected frequency approximates to zero")
     }
+    #calculating Negative log likelihood value and AIC
+    NegLL<-NegLLCOMPBin(x,obs.freq,p,v)
+    AICvalue<-2*2+NegLL
     #the final output is in a list format containing the calculated values
     final<-list("bin.ran.var"=x,"obs.freq"=obs.freq,"exp.freq"=exp.freq,"statistic"=round(statistic,4),
-                "df"=df,"p.value"=round(p.value,4))
+                "df"=df,"p.value"=round(p.value,4),"fitCPB"=est,"NegLL"=NegLL,"AIC"=AICvalue,"p"=p,"v"=v,
+                "call"=match.call())
+    class(final)<-c("fitCPB","fit")
+    return(final)
   }
+}
+
+#' @method fitCOMPBin default
+#' @export
+fitCOMPBin.default<-function(x,obs.freq,p,v)
+{
+  est<-fitCOMPBin(x,obs.freq,p,v)
+  return(est)
+}
+
+#' @method print fitCPB
+#' @export
+print.fitCPB<-function(x,...)
+{
+  cat("Call: \n")
+  print(x$call)
+  cat("\nChi-squared test for COM Poisson Binomial Distribution \n\t
+      Observed Frequency : ",x$obs.freq,"\n\t
+      expected Frequency : ",x$exp.freq,"\n\t
+      estimated p value :",x$p," ,estimated v parameter :",x$v,"\n\t
+      X-squared :",x$statistic,"  ,df :",x$df,"  ,p-value :",x$p.value,"\n")
+}
+
+#' @method summary fitCPB
+#' @export
+summary.fitCPB<-function(object,...)
+{
+  cat("Call: \n")
+  print(object$call)
+  cat("\nChi-squared test for COM Poisson Binomial Distribution \n\t
+      Observed Frequency : ",object$obs.freq,"\n\t
+      expected Frequency : ",object$exp.freq,"\n\t
+      estimated p value :",object$p," ,estimated v parameter :",x$v,"\n\t
+      X-squared :",object$statistic,"  ,df :",object$df,"  ,p-value :",object$p.value,"\n\t
+      Negative Loglikehood value :",object$NegLL,"\n\t
+      AIC value :",object$AIC,"\n")
 }
