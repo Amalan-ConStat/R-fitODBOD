@@ -859,9 +859,11 @@ NegLLTriBin<-function(x,freq,mode)
 #' \dontrun{
 #' results<-EstMLETriBin(No.D.D,Obs.fre.1)    #estimating the mode value and extracting the mode value
 #'
-#' # extract teh mode value and summary
+#' # extract the mode value and summary
 #' coef(results)
 #' summary(results)
+#'
+#' AIC(results)  #show the AIC value
 #' }
 #'
 #' @export
@@ -1053,9 +1055,6 @@ coef.mlTRI<-function(object,...)
 #' #fitting when the random variable,frequencies,mode value are given.
 #' results<-fitTriBin(No.D.D,Obs.fre.1,modeTriBin)
 #' results
-#'
-#' #extract coefficient mode
-#' coef(results)
 #'
 #' #extract AIC value
 #' AIC(results)
