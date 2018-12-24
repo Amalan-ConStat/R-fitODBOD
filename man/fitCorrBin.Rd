@@ -5,7 +5,7 @@
 \title{Fitting the Correlated Binomial Distribution when binomial
 random variable, frequency, probability of success and covariance are given}
 \usage{
-fitCorrBin(x,obs.freq,p,cov,print)
+fitCorrBin(x,obs.freq,p,cov)
 }
 \arguments{
 \item{x}{vector of binomial random variables}
@@ -15,11 +15,9 @@ fitCorrBin(x,obs.freq,p,cov,print)
 \item{p}{single value for probability of success}
 
 \item{cov}{single value for covariance}
-
-\item{print}{logical value for print or not}
 }
 \value{
-The output of \code{fitCorrBin} gives a list format consisting
+The output of \code{fitCorrBin} gives the class format \code{fitCB} and \code{fit} consisting a list
 
 \code{bin.ran.var} binomial random variables
 
@@ -34,6 +32,17 @@ The output of \code{fitCorrBin} gives a list format consisting
 \code{p.value} probability value by chi-squared test statistic
 
 \code{corr}    Correlation value
+
+\code{fitCB} fitted probability values of \code{dCorrBin}
+
+\code{NegLL} Negative Log Likelihood value
+
+\code{AIC} AIC value
+
+\code{call} the inputs of the function
+
+Methods \code{summary}, \code{print}, \code{AIC}, \code{residuals} and \code{fitted}
+can be used to extract specific outputs.
 }
 \description{
 The function will fit the Correlated binomial Distribution
@@ -59,10 +68,17 @@ parameters=suppressWarnings(bbmle::mle2(EstMLECorrBin,start = list(p=0.5,cov=0.0
            data = list(x=No.D.D,freq=Obs.fre.1)))
 pCorrBin=bbmle::coef(parameters)[1]
 covCorrBin=bbmle::coef(parameters)[2]
+
 #fitting when the random variable,frequencies,probability and covariance are given
-fitCorrBin(No.D.D,Obs.fre.1,pCorrBin,covCorrBin)
-#extracting the expected frequencies
-fitCorrBin(No.D.D,Obs.fre.1,pCorrBin,covCorrBin,FALSE)$exp.freq
+results<-fitCorrBin(No.D.D,Obs.fre.1,pCorrBin,covCorrBin)
+results
+
+#extracting the AIC value
+AIC(results)
+
+#extract fitted values
+fitted(results)
+
 }
 \references{
 Johnson, N. L., Kemp, A. W., & Kotz, S. (2005). Univariate discrete distributions (Vol. 444).

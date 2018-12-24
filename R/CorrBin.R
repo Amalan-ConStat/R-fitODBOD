@@ -502,13 +502,12 @@ EstMLECorrBin<-function(x,freq,p,cov)
 #' and degree of freedom so that it can be seen if this distribution fits the data.
 #'
 #' @usage
-#' fitCorrBin(x,obs.freq,p,cov,print)
+#' fitCorrBin(x,obs.freq,p,cov)
 #'
 #' @param x                  vector of binomial random variables
 #' @param obs.freq           vector of frequencies
 #' @param p                  single value for probability of success
 #' @param cov                single value for covariance
-#' @param print              logical value for print or not
 #'
 #' @details
 #' \deqn{obs.freq \ge 0}
@@ -520,7 +519,7 @@ EstMLECorrBin<-function(x,freq,p,cov)
 #' necessary error messages will be provided to go further
 #'
 #' @return
-#' The output of \code{fitCorrBin} gives a list format consisting
+#' The output of \code{fitCorrBin} gives the class format \code{fitCB} and \code{fit} consisting a list
 #'
 #' \code{bin.ran.var} binomial random variables
 #'
@@ -535,6 +534,17 @@ EstMLECorrBin<-function(x,freq,p,cov)
 #' \code{p.value} probability value by chi-squared test statistic
 #'
 #' \code{corr}    Correlation value
+#'
+#' \code{fitCB} fitted probability values of \code{dCorrBin}
+#'
+#' \code{NegLL} Negative Log Likelihood value
+#'
+#' \code{AIC} AIC value
+#'
+#' \code{call} the inputs of the function
+#'
+#' Methods \code{summary}, \code{print}, \code{AIC}, \code{residuals} and \code{fitted}
+#' can be used to extract specific outputs.
 #'
 #' @references
 #' Johnson, N. L., Kemp, A. W., & Kotz, S. (2005). Univariate discrete distributions (Vol. 444).
@@ -559,12 +569,19 @@ EstMLECorrBin<-function(x,freq,p,cov)
 #'            data = list(x=No.D.D,freq=Obs.fre.1)))
 #' pCorrBin=bbmle::coef(parameters)[1]
 #' covCorrBin=bbmle::coef(parameters)[2]
+#'
 #' #fitting when the random variable,frequencies,probability and covariance are given
-#' fitCorrBin(No.D.D,Obs.fre.1,pCorrBin,covCorrBin)
-#' #extracting the expected frequencies
-#' fitCorrBin(No.D.D,Obs.fre.1,pCorrBin,covCorrBin,FALSE)$exp.freq
+#' results<-fitCorrBin(No.D.D,Obs.fre.1,pCorrBin,covCorrBin)
+#' results
+#'
+#' #extracting the AIC value
+#' AIC(results)
+#'
+#' #extract fitted values
+#' fitted(results)
+#'
 #' @export
-fitCorrBin<-function(x,obs.freq,p,cov,print=T)
+fitCorrBin<-function(x,obs.freq,p,cov)
 {
   #checking if inputs consist NA(not assigned)values, infinite values or NAN(not a number)values
   #if so creating an error message as well as stopping the function progress.
@@ -575,8 +592,9 @@ fitCorrBin<-function(x,obs.freq,p,cov,print=T)
   }
   else
   {
+    est<-dCorrBin(x,max(x),p,cov)
     #for given random variables and parameters calculating the estimated probability values
-    est.prob<-dCorrBin(x,max(x),p,cov)$pdf
+    est.prob<-est$pdf
     #using the estimated probability values the expected frequencies are calculated
     exp.freq<-round((sum(obs.freq)*est.prob),2)
     #chi-squared test statistics is calculated with observed frequency and expected frequency
@@ -585,16 +603,7 @@ fitCorrBin<-function(x,obs.freq,p,cov,print=T)
     df<-length(x)-3
     #p value of chi-squared test statistic is calculated
     p.value<-1-stats::pchisq(statistic,df)
-    #all the above information is mentioned as a message below
-    #and if the user wishes they can print or not to
-    if(print==TRUE)
-    {
-    cat("\nChi-squared test for Correlated Binomial Distribution\n\n
-                 Observed Frequency : ",obs.freq,"\n
-                 expected Frequency : ",exp.freq,"\n
-                 X-squared =",round(statistic,4),"df =",df,"  p-value =",round(p.value,4),"\n
-                 Correlation  =",dCorrBin(x,max(x),p,cov)$corr,"\n")
-    }
+
     #checking if any of the expected frequencies are less than five and greater than zero, if so
     #a warning message is provided in interpreting the results
     if(min(exp.freq)<5 && min(exp.freq) > 0)
@@ -612,10 +621,54 @@ fitCorrBin<-function(x,obs.freq,p,cov,print=T)
     {
       warning("Chi-squared approximation is not suitable because expected frequency approximates to zero")
     }
+    #calculating Negative log likelihood value and AIC
+    NegLL<-NegLLCorrBin(x,obs.freq,p,cov)
+    AICvalue<-2*2+NegLL
     #the final output is in a list format containing the calculated values
     final<-list("bin.ran.var"=x,"obs.freq"=obs.freq,"exp.freq"=exp.freq,"statistic"=round(statistic,4),
-                "df"=df,"p.value"=round(p.value,4),"corr"=dCorrBin(x,max(x),p,cov)$corr)
+                "df"=df,"p.value"=round(p.value,4),"corr"=est$corr,"fitCB"=est,"NegLL"=NegLL,
+                "p"=p,"cov"=cov,"AIC"=AICvalue,"call"=match.call())
+    class(final)<-c("fitCB","fit")
+    return(final)
     }
   }
+
+#' @method fitCorrBin default
+#' @export
+fitCorrBin.default<-function(x,obs.freq,p,cov)
+{
+  est<-fitCorrBin(x,obs.freq,p,cov)
+  return(est)
+}
+
+#' @method print fitCB
+#' @export
+print.fitCB<-function(x,...)
+{
+  cat("Call: \n")
+  print(x$call)
+  cat("\nChi-squared test for Correlated Binomial Distribution \n\t
+      Observed Frequency : ",x$obs.freq,"\n\t
+      expected Frequency : ",x$exp.freq,"\n\t
+      estimated p value :",x$p," ,estimated cov value :",x$cov,"\n\t
+      X-squared :",x$statistic,"  ,df :",x$df,"  ,p-value :",x$p.value,"\n")
+}
+
+#' @method summary fitCB
+#' @export
+summary.fitCB<-function(object,...)
+{
+  cat("Call: \n")
+  print(object$call)
+  cat("\nChi-squared test for Correlated Binomial Distribution \n\t
+      Observed Frequency : ",object$obs.freq,"\n\t
+      expected Frequency : ",object$exp.freq,"\n\t
+      estimated p value :",object$p," ,estimated cov value :",object$cov,"\n\t
+      X-squared :",object$statistic,"  ,df :",object$df,"  ,p-value :",object$p.value,"\n\t
+      Negative Loglikehood value :",object$NegLL,"\n\t
+      AIC value :",object$AIC,"\n")
+}
+
+
 #' @importFrom bbmle mle2
 #' @importFrom stats pchisq
