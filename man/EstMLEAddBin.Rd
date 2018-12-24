@@ -13,7 +13,7 @@ EstMLEAddBin(x,freq)
 \item{freq}{vector of frequencies}
 }
 \value{
-The output of \code{EstMLEAddBin} will produce a list consisting
+The output of \code{EstMLEAddBin} will produce the class \code{mlAB} and \code{ml} with a list consisting
 
 \code{min} Negative Log Likelihood value
 
@@ -23,7 +23,9 @@ The output of \code{EstMLEAddBin} will produce a list consisting
 
 \code{AIC}  AIC value
 
-\code{call} the inputs for x and freq
+\code{call} the inputs for the function
+
+Methods \code{print}, \code{summary}, \code{coef} and \code{AIC} can be used to extract specific outputs.
 }
 \description{
 The function will estimate the probability of success and alpha using the maximum log likelihood method

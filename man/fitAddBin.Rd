@@ -32,6 +32,21 @@ The output of \code{fitAddBin} gives a list format consisting
 \code{df} degree of freedom
 
 \code{p.value} probability value by chi-squared test statistic
+
+\code{fitAB} fitted probability values of \code{dAddBin}
+
+\code{NegLL} Negative Log Likelihood value
+
+\code{p} estimated probability value
+
+\code{alpha} estimated alpha parameter value
+
+\code{AIC} AIC value
+
+\code{call} the inputs of the function
+
+Methods \code{summary}, \code{print}, \code{AIC}, \code{residuals} and \code{fitted}
+can be used to extract specific outputs.
 }
 \description{
 The function will fit the Additive binomial distribution when random variables,

@@ -399,7 +399,7 @@ NegLLAddBin<-function(x,freq,p,alpha)
 #' and AIC to extract information.
 #'
 #' @return
-#' The output of \code{EstMLEAddBin} will produce a list consisting
+#' The output of \code{EstMLEAddBin} will produce the class \code{mlAB} and \code{ml} with a list consisting
 #'
 #' \code{min} Negative Log Likelihood value
 #'
@@ -409,7 +409,9 @@ NegLLAddBin<-function(x,freq,p,alpha)
 #'
 #' \code{AIC}  AIC value
 #'
-#' \code{call} the inputs for x and freq
+#' \code{call} the inputs for the function
+#'
+#' Methods \code{print}, \code{summary}, \code{coef} and \code{AIC} can be used to extract specific outputs.
 #'
 #' @references
 #' Johnson, N. L., Kemp, A. W., & Kotz, S. (2005). Univariate discrete distributions (Vol. 444).
@@ -624,6 +626,21 @@ coef.mlAB<-function(object,...)
 #'
 #' \code{p.value} probability value by chi-squared test statistic
 #'
+#' \code{fitAB} fitted probability values of \code{dAddBin}
+#'
+#' \code{NegLL} Negative Log Likelihood value
+#'
+#' \code{p} estimated probability value
+#'
+#' \code{alpha} estimated alpha parameter value
+#'
+#' \code{AIC} AIC value
+#'
+#' \code{call} the inputs of the function
+#'
+#' Methods \code{summary}, \code{print}, \code{AIC}, \code{residuals} and \code{fitted}
+#' can be used to extract specific outputs.
+#'
 #' @references
 #' Johnson, N. L., Kemp, A. W., & Kotz, S. (2005). Univariate discrete distributions (Vol. 444).
 #' Hoboken, NJ: Wiley-Interscience.
@@ -665,8 +682,9 @@ fitAddBin<-function(x,obs.freq,p,alpha,print=T)
   }
   else
   {
+    est<-dAddBin(x,max(x),p,alpha)
     #for given random variables and parameters calculating the estimated probability values
-    est.prob<-dAddBin(x,max(x),p,alpha)$pdf
+    est.prob<-est$pdf
     #using the estimated probability values the expected frequencies are calculated
     exp.freq<-round((sum(obs.freq)*est.prob),2)
     #chi-squared test statistics is calculated with observed frequency and expected frequency
@@ -675,15 +693,7 @@ fitAddBin<-function(x,obs.freq,p,alpha,print=T)
     df<-length(x)-3
     #p value of chi-squared test statistic is calculated
     p.value<-1-stats::pchisq(statistic,df)
-    #all the above information is mentioned as a message below
-    #and if the user wishes they can print or not to
-    if(print==TRUE)
-    {
-    cat("\nChi-squared test for Additive Binomial Distribution\n\n
-                 Observed Frequency : ",obs.freq,"\n
-                 expected Frequency : ",exp.freq,"\n
-                 X-squared =",round(statistic,4),"df =",df,"  p-value =",round(p.value,4),"\n")
-    }
+
     #checking if df is less than or equal to zero
     if(df<0 | df==0)
     {
@@ -701,9 +711,19 @@ fitAddBin<-function(x,obs.freq,p,alpha,print=T)
     {
       warning("Chi-squared approximation is not suitable because expected frequency approximates to zero")
     }
+
+    #calculating Negative log likelihood value and AIC
+    NegLL<-NegLLAddBin(x,obs.freq,p,alpha)
+    AICvalue<-2*2+NegLL
     #the final output is in a list format containing the calculated values
     final<-list("bin.ran.var"=x,"obs.freq"=obs.freq,"exp.freq"=exp.freq,
-                "statistic"=round(statistic,4),"df"=df,"p.value"=round(p.value,4))
+                "statistic"=round(statistic,4),"df"=df,"p.value"=round(p.value,4),
+                "fitAB"=est,"NegLL"=NegLL,"p"=p,"alpha"=alpha,"AIC"=AICvalue,
+                "over.dis.para"=est$over.dis.para,"call"=match.call())
+    class(final)<-c("fitAB","fit")
+    return(final)
     }
   }
+
+
 #' @importFrom stats pchisq
