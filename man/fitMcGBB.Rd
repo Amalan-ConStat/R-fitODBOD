@@ -19,7 +19,7 @@ fitMcGBB(x,obs.freq,a,b,c)
 \item{c}{single value for shape parameter gamma representing c}
 }
 \value{
-The output of \code{fitGHGBB} gives a class format \code{fitMB} consisting a list
+The output of \code{fitMcGBB} gives the class format \code{fitMB} and \code{fit} consisting a list
 
 \code{bin.ran.var} binomial random variables
 
@@ -47,7 +47,10 @@ The output of \code{fitGHGBB} gives a class format \code{fitMB} consisting a lis
 
 \code{over.dis.para} over dispersion value.
 
-\code{call} the inputs x,obs.freq,a,b,c of the function.
+\code{call} the inputs of the function.
+
+Methods \code{summary}, \code{print}, \code{AIC}, \code{residuals} and \code{fitted} can be used to
+extract specific outputs.
 }
 \description{
 The function will fit the McDonald Generalized Beta  Binomial Distribution

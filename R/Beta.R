@@ -979,7 +979,7 @@ AIC.mgf<-function(object,...)
 #'
 #' \code{over.dis.para} over dispersion value.
 #'
-#' \code{call} the inputs x,obs.freq,a,b of the function.
+#' \code{call} the inputs of the function.
 #'
 #' Methods \code{summary}, \code{print}, \code{AIC}, \code{residuals} and \code{fitted} can be
 #' used to extract specific outputs.

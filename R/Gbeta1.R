@@ -793,7 +793,7 @@ EstMLEMcGBB<-function(x,freq,a,b,c)
 #' summary,fitted,AIC,coef and residuals to extract information.
 #'
 #' @return
-#' The output of \code{fitGHGBB} gives a class format \code{fitMB} consisting a list
+#' The output of \code{fitMcGBB} gives the class format \code{fitMB} and \code{fit} consisting a list
 #'
 #' \code{bin.ran.var} binomial random variables
 #'
@@ -821,7 +821,10 @@ EstMLEMcGBB<-function(x,freq,a,b,c)
 #'
 #' \code{over.dis.para} over dispersion value.
 #'
-#' \code{call} the inputs x,obs.freq,a,b,c of the function.
+#' \code{call} the inputs of the function.
+#'
+#' Methods \code{summary}, \code{print}, \code{AIC}, \code{residuals} and \code{fitted} can be used to
+#' extract specific outputs.
 #'
 #' @references
 #' Manoj, C., Wijekoon, P. & Yapa, R.D., 2013. The McDonald Generalized Beta-Binomial Distribution: A New
