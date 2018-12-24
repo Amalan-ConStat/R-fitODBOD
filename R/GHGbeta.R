@@ -1035,7 +1035,7 @@ fitGHGBB<-function(x,obs.freq,a,b,c)
                 "statistic"=round(statistic,4),"df"=df,"p.value"=round(p.value,4),
                 "fitGB"=est, "NegLL"=NegLL, "a"=a, "b"=b, "c"=c, "AIC"=AICvalue,
                 "over.dis.para"=est$over.dis.para,"call"=match.call())
-    class(final)<-"fitGB"
+    class(final)<-c("fitGB","fit")
     return(final)
     }
   }
@@ -1076,28 +1076,6 @@ summary.fitGB<-function(object,...)
       over dispersion :",object$over.dis.para,"\n\t
       Negative Loglikehood value :",object$NegLL,"\n\t
       AIC value :",object$AIC,"\n")
-}
-
-
-#' @method AIC fitGB
-#' @export
-AIC.fitGB<-function(object,...)
-{
-  return(object$AIC)
-}
-
-#' @method residuals fitGB
-#' @export
-residuals.fitGB<-function(object,...)
-{
-  return(object$obs.freq-object$exp.freq)
-}
-
-#' @method fitted fitGB
-#' @export
-fitted.fitGB<-function(object,...)
-{
-  return(object$exp.freq)
 }
 
 #' @importFrom bbmle mle2

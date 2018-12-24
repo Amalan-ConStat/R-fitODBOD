@@ -964,7 +964,7 @@ fitKumBin<-function(x,obs.freq,a,b,it)
                 "statistic"=round(statistic,4),"df"=df,"p.value"=round(p.value,4),
                 "fitBB"=est,"NegLL"=NegLL,"a"=a,"b"=b,"it"=it,"AIC"=AICvalue,
                 "over.dis.para"=est$over.dis.para,"call"=match.call())
-    class(final)<-"fitKB"
+    class(final)<-c("fitKB","fit")
     return(final)
   }
 }
@@ -1005,28 +1005,6 @@ summary.fitKB<-function(object,...)
       over dispersion :",object$over.dis.para,"\n\t
       Negative Loglikehood value :",object$NegLL,"\n\t
       AIC value :",object$AIC,"\n")
-}
-
-
-#' @method AIC fitKB
-#' @export
-AIC.fitKB<-function(object,...)
-{
-  return(object$AIC)
-}
-
-#' @method residuals fitKB
-#' @export
-residuals.fitKB<-function(object,...)
-{
-  return(object$obs.freq-object$exp.freq)
-}
-
-#' @method fitted fitKB
-#' @export
-fitted.fitKB<-function(object,...)
-{
-  return(object$exp.freq)
 }
 
 #' @importFrom bbmle mle2

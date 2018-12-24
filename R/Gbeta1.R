@@ -917,7 +917,7 @@ EstMLEMcGBB<-function(x,freq,a,b,c)
                 "statistic"=round(statistic,4),"df"=df,"p.value"=round(p.value,4),
                 "fitMB"=est,"NegLL"=NegLL,"a"=a,"b"=b,"c"=c,"AIC"=AICvalue,
                 "over.dis.para"=est$over.dis.para,"call"=match.call())
-    class(final)<-"fitMB"
+    class(final)<-c("fitMB","fit")
     return(final)
     }
 }
@@ -958,28 +958,6 @@ summary.fitMB<-function(object,...)
       over dispersion :",object$over.dis.para,"\n\t
       Negative Loglikehood value :",object$NegLL,"\n\t
       AIC value :",object$AIC,"\n")
-}
-
-
-#' @method AIC fitMB
-#' @export
- AIC.fitMB<-function(object,...)
-{
-  return(object$AIC)
-}
-
-#' @method residuals fitMB
-#' @export
-residuals.fitMB<-function(object,...)
-{
-  return(object$obs.freq-object$exp.freq)
-}
-
-#' @method fitted fitMB
-#' @export
-fitted.fitMB<-function(object,...)
-{
-  return(object$exp.freq)
 }
 
 #' @importFrom bbmle mle2

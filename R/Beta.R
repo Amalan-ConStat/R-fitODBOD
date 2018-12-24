@@ -1076,7 +1076,7 @@ fitBetaBin<-function(x,obs.freq,a,b)
                 "statistic"=round(statistic,4),"df"=df,"p.value"=round(p.value,4),
                 "fitBB"=est,"NegLL"=NegLL,"a"=a,"b"=b, "AIC"=AICvalue,
                 "over.dis.para"=est$over.dis.para,"call"=match.call())
-    class(final)<-"fitBB"
+    class(final)<-c("fitBB","fit")
     return(final)
     }
   }
@@ -1119,27 +1119,6 @@ summary.fitBB<-function(object,...)
       AIC value :",object$AIC,"\n")
 }
 
-
-#' @method AIC fitBB
-#' @export
-AIC.fitBB<-function(object,...)
-{
-  return(object$AIC)
-}
-
-#' @method residuals fitBB
-#' @export
-residuals.fitBB<-function(object,...)
-{
-  return(object$obs.freq-object$exp.freq)
-}
-
-#' @method fitted fitBB
-#' @export
-fitted.fitBB<-function(object,...)
-{
-  return(object$exp.freq)
-}
 
 #' @importFrom bbmle mle2
 #' @importFrom stats integrate
