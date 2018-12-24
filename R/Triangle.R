@@ -1112,7 +1112,7 @@ fitTriBin<-function(x,obs.freq,mode)
                 "statistic"=round(statistic,4),"df"=df,"p.value"=round(p.value,4),
                 "fitTB"=est,"NegLL"=NegLL,"mode"=mode,"AIC"=AICvalue,
                 "over.dis.para"=est$over.dis.para,"call"=match.call())
-    class(final)<-"fitTB"
+    class(final)<-c("fitTB","fit")
     return(final)
     }
   }
@@ -1153,27 +1153,5 @@ summary.fitTB<-function(object,...)
       over dispersion :",object$over.dis.para,"\n\t
       Negative Loglikehood value :",object$NegLL,"\n\t
       AIC value :",object$AIC,"\n")
-}
-
-
-#' @method AIC fitTB
-#' @export
-AIC.fitTB<-function(object,...)
-{
-  return(object$AIC)
-}
-
-#' @method residuals fitTB
-#' @export
-residuals.fitTB<-function(object,...)
-{
-  return(object$obs.freq-object$exp.freq)
-}
-
-#' @method fitted fitTB
-#' @export
-fitted.fitTB<-function(object,...)
-{
-  return(object$exp.freq)
 }
 
