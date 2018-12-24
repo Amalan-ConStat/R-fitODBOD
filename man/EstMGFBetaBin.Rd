@@ -12,7 +12,7 @@ EstMGFBetaBin(x,freq)
 \item{freq}{vector of frequencies}
 }
 \value{
-The output of \code{EstMGFBetaBin} will produce a list format consisting
+The output of \code{EstMGFBetaBin} will produce the class \code{mgf} format consisting
 
 \code{a} shape parameter of beta distribution representing for alpha
 
@@ -22,7 +22,10 @@ The output of \code{EstMGFBetaBin} will produce a list format consisting
 
 \code{AIC} AIC value
 
-\code{call} the inputs for x and freq
+\code{call} the inputs for the function
+
+Methods \code{print}, \code{summary}, \code{coef} and \code{AIC} can be used to extract
+specific outputs.
 }
 \description{
 The functions will estimate the shape parameters using the maximum log likelihood method and

@@ -17,7 +17,7 @@ fitBetaBin(x,obs.freq,a,b)
 \item{b}{single value for shape parameter beta representing as b}
 }
 \value{
-The output of \code{fitBetaBin} gives a class format \code{fitBB} consisting a list
+The output of \code{fitBetaBin} gives the class format \code{fitBB} abd \code{fit} consisting a list
 
 \code{bin.ran.var} binomial random variables
 
@@ -44,6 +44,9 @@ The output of \code{fitBetaBin} gives a class format \code{fitBB} consisting a l
 \code{over.dis.para} over dispersion value.
 
 \code{call} the inputs x,obs.freq,a,b of the function.
+
+Methods \code{summary}, \code{print}, \code{AIC}, \code{residuals} and \code{fitted} can be
+used to extract specific outputs.
 }
 \description{
 The function will fit the beta-binomial distribution when random variables, corresponding

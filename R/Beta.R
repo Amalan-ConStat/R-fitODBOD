@@ -803,7 +803,7 @@ EstMLEBetaBin<-function(x,freq,a,b)
 #'
 #' @return
 #'
-#' The output of \code{EstMGFBetaBin} will produce a list format consisting
+#' The output of \code{EstMGFBetaBin} will produce the class \code{mgf} format consisting
 #'
 #' \code{a} shape parameter of beta distribution representing for alpha
 #'
@@ -813,7 +813,10 @@ EstMLEBetaBin<-function(x,freq,a,b)
 #'
 #' \code{AIC} AIC value
 #'
-#' \code{call} the inputs for x and freq
+#' \code{call} the inputs for the function
+#'
+#' Methods \code{print}, \code{summary}, \code{coef} and \code{AIC} can be used to extract
+#' specific outputs.
 #'
 #' @references
 #' Young-Xu, Y. & Chan, K.A., 2008. Pooling overdispersed binomial data to estimate event rate. BMC medical
@@ -950,7 +953,7 @@ AIC.mgf<-function(object,...)
 #' summary,fitted,AIC,coef and residuals to extract information.
 #'
 #' @return
-#' The output of \code{fitBetaBin} gives a class format \code{fitBB} consisting a list
+#' The output of \code{fitBetaBin} gives the class format \code{fitBB} abd \code{fit} consisting a list
 #'
 #' \code{bin.ran.var} binomial random variables
 #'
@@ -977,6 +980,9 @@ AIC.mgf<-function(object,...)
 #' \code{over.dis.para} over dispersion value.
 #'
 #' \code{call} the inputs x,obs.freq,a,b of the function.
+#'
+#' Methods \code{summary}, \code{print}, \code{AIC}, \code{residuals} and \code{fitted} can be
+#' used to extract specific outputs.
 #'
 #' @references
 #' Young-Xu, Y. & Chan, K.A., 2008. Pooling overdispersed binomial data to estimate event rate. BMC medical
