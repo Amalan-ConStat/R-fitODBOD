@@ -2,16 +2,16 @@
 #'
 #' These functions provide the ability for generating probability density values,
 #' cumulative probability density values and moment about zero values for the
-#' Gaussian Hypergeometric Generalized Beta distribution bounded between [0,1]
+#' Gaussian Hypergeometric Generalized Beta distribution bounded between [0,1].
 #'
 #' @usage
 #' dGHGBeta(p,n,a,b,c)
 #'
-#' @param p              vector of probabilities
-#' @param n              single value for no of binomial trials
-#' @param a              single value for shape parameter alpha representing as a
-#' @param b              single value for shape parameter beta representing as b
-#' @param c              single value for shape parameter lambda representing as c
+#' @param p              vector of probabilities.
+#' @param n              single value for no of binomial trials.
+#' @param a              single value for shape parameter alpha representing as a.
+#' @param b              single value for shape parameter beta representing as b.
+#' @param c              single value for shape parameter lambda representing as c.
 #'
 #' @details
 #' The probability density function and cumulative density function of a unit bounded
@@ -32,8 +32,8 @@
 #' \deqn{E[P^r]= \int^1_0 \frac{p^r}{B(a,b)}\frac{2F1(-n,a;-b-n+1;1)}{2F1(-n,a;-b-n+1;c)} p^{a-1}(1-p)^{b-1}\frac{c^{b+n}}{(c+(1-c)p)^{a+b+n}} \,dp}
 #' \eqn{r = 1,2,3,...}
 #'
-#' Defined as \eqn{B(a,b)} as the beta function
-#' Defined as \eqn{2F1(a,b;c;d)} as the Gaussian Hypergeometric function
+#' Defined as \eqn{B(a,b)} as the beta function.
+#' Defined as \eqn{2F1(a,b;c;d)} as the Gaussian Hypergeometric function.
 #'
 #' \strong{NOTE} : If input parameters are not in given domain conditions
 #' necessary error messages will be provided to go further.
@@ -41,11 +41,11 @@
 #' @return
 #' The output of \code{dGHGBeta} gives a list format consisting
 #'
-#' \code{pdf}           probability density values in vector form
+#' \code{pdf}           probability density values in vector form.
 #'
-#' \code{mean}          mean of the Gaussian Hypergeometric Generalized Beta Distribution
+#' \code{mean}          mean of the Gaussian Hypergeometric Generalized Beta Distribution.
 #'
-#' \code{var}           variance of the Gaussian Hypergeometric Generalized Beta Distribution
+#' \code{var}           variance of the Gaussian Hypergeometric Generalized Beta Distribution.
 #'
 #' @references
 #' Rodriguez-Avi, J., Conde-Sanchez, A., Saez-Castillo, A. J., & Olmo-Jimenez, M. J. (2007). A generalization
@@ -58,7 +58,6 @@
 #' @seealso
 #' \code{\link[hypergeo]{hypergeo_powerseries}}
 #'
-#'
 #' @examples
 #' #plotting the random variables and probability values
 #' col<-rainbow(5)
@@ -69,6 +68,7 @@
 #' {
 #' lines(seq(0,1,by=0.001),dGHGBeta(seq(0,1,by=0.001),7,1+a[i],0.3,1+a[i])$pdf,col = col[i])
 #' }
+#'
 #' dGHGBeta(seq(0,1,by=0.01),7,1.6312,0.3913,0.6659)$pdf   #extracting the pdf values
 #' dGHGBeta(seq(0,1,by=0.01),7,1.6312,0.3913,0.6659)$mean  #extracting the mean
 #' dGHGBeta(seq(0,1,by=0.01),7,1.6312,0.3913,0.6659)$var   #extracting the variance
@@ -88,6 +88,7 @@
 #'
 #' #acquiring the variance for a=1.6312,b=0.3913,c=0.6659
 #' mazGHGBeta(2,7,1.6312,0.3913,0.6659)-mazGHGBeta(1,7,1.6312,0.3913,0.6659)^2
+#'
 #' #only the integer value of moments is taken here because moments cannot be decimal
 #' mazGHGBeta(1.9,15,5,6,1)
 #'
@@ -160,16 +161,16 @@
 #'
 #' These functions provide the ability for generating probability density values,
 #' cumulative probability density values and moment about zero values for the
-#' Gaussian Hypergeometric Generalized Beta distribution bounded between [0,1]
+#' Gaussian Hypergeometric Generalized Beta distribution bounded between [0,1].
 #'
 #' @usage
 #' pGHGBeta(p,n,a,b,c)
 #'
-#' @param p              vector of probabilities
-#' @param n              single value for no of binomial trials
-#' @param a              single value for shape parameter alpha representing as a
-#' @param b              single value for shape parameter beta representing as b
-#' @param c              single value for shape parameter lambda representing as c
+#' @param p              vector of probabilities.
+#' @param n              single value for no of binomial trials.
+#' @param a              single value for shape parameter alpha representing as a.
+#' @param b              single value for shape parameter beta representing as b.
+#' @param c              single value for shape parameter lambda representing as c.
 #'
 #' @details
 #' The probability density function and cumulative density function of a unit bounded
@@ -190,15 +191,14 @@
 #' \deqn{E[P^r]= \int^1_0 \frac{p^r}{B(a,b)}\frac{2F1(-n,a;-b-n+1;1)}{2F1(-n,a;-b-n+1;c)} p^{a-1}(1-p)^{b-1}\frac{c^{b+n}}{(c+(1-c)p)^{a+b+n}} \,dp}
 #' \eqn{r = 1,2,3,...}
 #'
-#' Defined as \eqn{B(a,b)} as the beta function
-#' Defined as \eqn{2F1(a,b;c;d)} as the Gaussian Hypergeometric function
+#' Defined as \eqn{B(a,b)} as the beta function.
+#' Defined as \eqn{2F1(a,b;c;d)} as the Gaussian Hypergeometric function.
 #'
 #'
 #' \strong{NOTE} : If input parameters are not in given domain conditions
 #' necessary error messages will be provided to go further.
 #'
 #' @return
-#'
 #' The output of \code{pGHGBeta} gives the cumulative density values in vector form.
 #'
 #'
@@ -213,7 +213,6 @@
 #' @seealso
 #' \code{\link[hypergeo]{hypergeo_powerseries}}
 #'
-#'
 #' @examples
 #' #plotting the random variables and probability values
 #' col<-rainbow(5)
@@ -224,6 +223,7 @@
 #' {
 #' lines(seq(0,1,by=0.001),dGHGBeta(seq(0,1,by=0.001),7,1+a[i],0.3,1+a[i])$pdf,col = col[i])
 #' }
+#'
 #' dGHGBeta(seq(0,1,by=0.01),7,1.6312,0.3913,0.6659)$pdf   #extracting the pdf values
 #' dGHGBeta(seq(0,1,by=0.01),7,1.6312,0.3913,0.6659)$mean  #extracting the mean
 #' dGHGBeta(seq(0,1,by=0.01),7,1.6312,0.3913,0.6659)$var   #extracting the variance
@@ -243,6 +243,7 @@
 #'
 #' #acquiring the variance for a=1.6312,b=0.3913,c=0.6659
 #' mazGHGBeta(2,7,1.6312,0.3913,0.6659)-mazGHGBeta(1,7,1.6312,0.3913,0.6659)^2
+#'
 #' #only the integer value of moments is taken here because moments cannot be decimal
 #' mazGHGBeta(1.9,15,5,6,1)
 #'
@@ -317,16 +318,16 @@ pGHGBeta<-function(p,n,a,b,c)
 #'
 #' These functions provide the ability for generating probability density values,
 #' cumulative probability density values and moment about zero values for the
-#' Gaussian Hypergeometric Generalized Beta distribution bounded between [0,1]
+#' Gaussian Hypergeometric Generalized Beta distribution bounded between [0,1].
 #'
 #' @usage
 #' mazGHGBeta(r,n,a,b,c)
 #'
-#' @param n              single value for no of binomial trials
-#' @param a              single value for shape parameter alpha representing as a
-#' @param b              single value for shape parameter beta representing as b
-#' @param c              single value for shape parameter lambda representing as c
-#' @param r              vector of moments
+#' @param n              single value for no of binomial trials.
+#' @param a              single value for shape parameter alpha representing as a.
+#' @param b              single value for shape parameter beta representing as b.
+#' @param c              single value for shape parameter lambda representing as c.
+#' @param r              vector of moments.
 #'
 #' @details
 #' The probability density function and cumulative density function of a unit bounded
@@ -347,8 +348,8 @@ pGHGBeta<-function(p,n,a,b,c)
 #' \deqn{E[P^r]= \int^1_0 \frac{p^r}{B(a,b)}\frac{2F1(-n,a;-b-n+1;1)}{2F1(-n,a;-b-n+1;c)} p^{a-1}(1-p)^{b-1}\frac{c^{b+n}}{(c+(1-c)p)^{a+b+n}} \,dp}
 #' \eqn{r = 1,2,3,...}
 #'
-#' Defined as \eqn{B(a,b)} as the beta function
-#' Defined as \eqn{2F1(a,b;c;d)} as the Gaussian Hypergeometric function
+#' Defined as \eqn{B(a,b)} as the beta function.
+#' Defined as \eqn{2F1(a,b;c;d)} as the Gaussian Hypergeometric function.
 #'
 #'
 #' \strong{NOTE} : If input parameters are not in given domain conditions
@@ -369,7 +370,6 @@ pGHGBeta<-function(p,n,a,b,c)
 #' @seealso
 #' \code{\link[hypergeo]{hypergeo_powerseries}}
 #'
-#'
 #' @examples
 #' #plotting the random variables and probability values
 #' col<-rainbow(5)
@@ -380,6 +380,7 @@ pGHGBeta<-function(p,n,a,b,c)
 #' {
 #' lines(seq(0,1,by=0.001),dGHGBeta(seq(0,1,by=0.001),7,1+a[i],0.3,1+a[i])$pdf,col = col[i])
 #' }
+#'
 #' dGHGBeta(seq(0,1,by=0.01),7,1.6312,0.3913,0.6659)$pdf   #extracting the pdf values
 #' dGHGBeta(seq(0,1,by=0.01),7,1.6312,0.3913,0.6659)$mean  #extracting the mean
 #' dGHGBeta(seq(0,1,by=0.01),7,1.6312,0.3913,0.6659)$var   #extracting the variance
@@ -399,6 +400,7 @@ pGHGBeta<-function(p,n,a,b,c)
 #'
 #' #acquiring the variance for a=1.6312,b=0.3913,c=0.6659
 #' mazGHGBeta(2,7,1.6312,0.3913,0.6659)-mazGHGBeta(1,7,1.6312,0.3913,0.6659)^2
+#'
 #' #only the integer value of moments is taken here because moments cannot be decimal
 #' mazGHGBeta(1.9,15,5,6,1)
 #'
@@ -482,19 +484,19 @@ mazGHGBeta<-function(r,n,a,b,c)
 #' @usage
 #' dGHGBB(x,n,a,b,c)
 #'
-#' @param x        vector of binomial random variables
-#' @param n        single value for no of binomial trials
-#' @param a        single value for shape parameter alpha value representing a
-#' @param b        single value for shape parameter beta value representing b
-#' @param c        single value for shape parameter lambda value representing c
+#' @param x        vector of binomial random variables.
+#' @param n        single value for no of binomial trials.
+#' @param a        single value for shape parameter alpha value representing a.
+#' @param b        single value for shape parameter beta value representing b.
+#' @param c        single value for shape parameter lambda value representing c.
 #'
 #' @details
-#' Mixing Gaussian Hypergeometric Generalized beta distribution with binomial distribution will
+#' Mixing Gaussian Hypergeometric Generalized Beta distribution with Binomial distribution will
 #' create the Gaussian Hypergeometric Generalized Beta Binomial distribution.
 #' The probability function and cumulative probability function can be constructed
 #' and are denoted below.
 #'
-#' The cumulative probability function is the summation of probability function values
+#' The cumulative probability function is the summation of probability function values.
 #'
 #' \deqn{P_{GHGBB}(x)=\frac{1}{2F1(-n,a;-b-n+1;c)} {n \choose x} \frac{B(x+a,n-x+b)}{B(a,b+n)}(c^x) }
 #' \deqn{a,b,c > 0}
@@ -515,26 +517,25 @@ mazGHGBeta<-function(r,n,a,b,c)
 #' @return
 #' The output of \code{dGHGBB} gives a list format consisting
 #'
-#' \code{pdf}             probability function values in vector form
+#' \code{pdf}             probability function values in vector form.
 #'
-#' \code{mean}            mean of Gaussian Hypergeometric Generalized Beta Binomial Distribution
+#' \code{mean}            mean of Gaussian Hypergeometric Generalized Beta Binomial Distribution.
 #'
-#' \code{var}             variance of Gaussian Hypergeometric Generalized Beta Binomial Distribution
+#' \code{var}             variance of Gaussian Hypergeometric Generalized Beta Binomial Distribution.
 #'
 #' \code{over.dis.para}   over dispersion value of Gaussian Hypergeometric Generalized Beta
-#'                        Binomial Distribution
+#'                        Binomial Distribution.
 #'
 #' @references
 #' Rodriguez-Avi, J., Conde-Sanchez, A., Saez-Castillo, A. J., & Olmo-Jimenez, M. J. (2007). A generalization
 #' of the beta-binomial distribution. Journal of the Royal Statistical Society. Series C (Applied Statistics), 56(1), 51-61.
 #'
-#' Available at : \url{http://dx.doi.org/10.1111/j.1467-9876.2007.00564.x}
+#' Available at : \url{http://dx.doi.org/10.1111/j.1467-9876.2007.00564.x}.
 #'
 #' Pearson, J., 2009. Computation of Hypergeometric Functions. Transformation, (September), p.1--123.
 #'
 #' @seealso
 #' \code{\link[hypergeo]{hypergeo_powerseries}}
-#'
 #'
 #' @examples
 #' #plotting the random variables and probability values
@@ -547,6 +548,7 @@ mazGHGBeta<-function(r,n,a,b,c)
 #' lines(0:7,dGHGBB(0:7,7,1+a[i],0.3,1+a[i])$pdf,col = col[i],lwd=2.85)
 #' points(0:7,dGHGBB(0:7,7,1+a[i],0.3,1+a[i])$pdf,col = col[i],pch=16)
 #' }
+#'
 #' dGHGBB(0:7,7,1.3,0.3,1.3)$pdf      #extracting the pdf values
 #' dGHGBB(0:7,7,1.3,0.3,1.3)$mean     #extracting the mean
 #' dGHGBB(0:7,7,1.3,0.3,1.3)$var      #extracting the variance
@@ -638,19 +640,19 @@ dGHGBB<-function(x,n,a,b,c)
 #' @usage
 #' pGHGBB(x,n,a,b,c)
 #'
-#' @param x        vector of binomial random variables
-#' @param n        single value for no of binomial trials
-#' @param a        single value for shape parameter alpha value representing a
-#' @param b        single value for shape parameter beta value representing b
-#' @param c        single value for shape parameter lambda value representing c
+#' @param x        vector of binomial random variables.
+#' @param n        single value for no of binomial trials.
+#' @param a        single value for shape parameter alpha value representing a.
+#' @param b        single value for shape parameter beta value representing b.
+#' @param c        single value for shape parameter lambda value representing c.
 #'
 #' @details
-#' Mixing Gaussian Hypergeometric Generalized beta distribution with binomial distribution will
+#' Mixing Gaussian Hypergeometric Generalized Beta distribution with Binomial distribution will
 #' create the Gaussian Hypergeometric Generalized Beta Binomial distribution.
 #' The probability function and cumulative probability function can be constructed
 #' and are denoted below.
 #'
-#' The cumulative probability function is the summation of probability function values
+#' The cumulative probability function is the summation of probability function values.
 #'
 #' \deqn{P_{GHGBB}(x)=\frac{1}{2F1(-n,a;-b-n+1;c)}{n \choose x} \frac{B(x+a,n-x+b)}{B(a,b+n)}(c^x) }
 #' \deqn{a,b,c > 0}
@@ -663,14 +665,13 @@ dGHGBB<-function(x,n,a,b,c)
 #' \deqn{over dispersion= \frac{var_{GHGBeta}}{E_{GHGBeta}(1-E_{GHGBeta})} }
 #'
 #' Defined as \eqn{B(a,b)} is the beta function.
-#' Defined as \eqn{2F1(a,b;c;d)} is the Gaussian Hypergeometric function
+#' Defined as \eqn{2F1(a,b;c;d)} is the Gaussian Hypergeometric function.
 #'
 #' \strong{NOTE} : If input parameters are not in given domain conditions necessary error
 #' messages will be provided to go further.
 #'
 #' @return
-#'
-#' The output of \code{pGHGBB} gives cumulative probability function values in vector form
+#' The output of \code{pGHGBB} gives cumulative probability function values in vector form.
 #'
 #' @references
 #' Rodriguez-Avi, J., Conde-Sanchez, A., Saez-Castillo, A. J., & Olmo-Jimenez, M. J. (2007). A generalization
@@ -683,7 +684,6 @@ dGHGBB<-function(x,n,a,b,c)
 #' @seealso
 #' \code{\link[hypergeo]{hypergeo_powerseries}}
 #'
-#'
 #' @examples
 #' #plotting the random variables and probability values
 #' col<-rainbow(6)
@@ -695,6 +695,7 @@ dGHGBB<-function(x,n,a,b,c)
 #' lines(0:7,dGHGBB(0:7,7,1+a[i],0.3,1+a[i])$pdf,col = col[i],lwd=2.85)
 #' points(0:7,dGHGBB(0:7,7,1+a[i],0.3,1+a[i])$pdf,col = col[i],pch=16)
 #' }
+#'
 #' dGHGBB(0:7,7,1.3,0.3,1.3)$pdf      #extracting the pdf values
 #' dGHGBB(0:7,7,1.3,0.3,1.3)$mean     #extracting the mean
 #' dGHGBB(0:7,7,1.3,0.3,1.3)$var      #extracting the variance
@@ -736,11 +737,11 @@ pGHGBB<-function(x,n,a,b,c)
 #' @usage
 #' NegLLGHGBB(x,freq,a,b,c)
 #'
-#' @param x                vector of binomial random variables
-#' @param freq             vector of frequencies
-#' @param a                single value for shape parameter alpha representing a
-#' @param b                single value for shape parameter beta representing b
-#' @param c                single value for shape parameter lambda representing c
+#' @param x                vector of binomial random variables.
+#' @param freq             vector of frequencies.
+#' @param a                single value for shape parameter alpha representing a.
+#' @param b                single value for shape parameter beta representing b.
+#' @param c                single value for shape parameter lambda representing c.
 #'
 #' @details
 #' \deqn{0 < a,b,c }
@@ -748,10 +749,10 @@ pGHGBB<-function(x,n,a,b,c)
 #' \deqn{x = 0,1,2,...}
 #'
 #' \strong{NOTE} : If input parameters are not in given domain conditions necessary
-#' error messages will be provided to go further
+#' error messages will be provided to go further.
 #'
 #' @return
-#' The output of \code{NegLLGHGBB} will produce a single numeric value
+#' The output of \code{NegLLGHGBB} will produce a single numeric value.
 #'
 #' @references
 #' Rodriguez-Avi, J., Conde-Sanchez, A., Saez-Castillo, A. J., & Olmo-Jimenez, M. J. (2007). A generalization
@@ -763,7 +764,6 @@ pGHGBB<-function(x,n,a,b,c)
 #'
 #' @seealso
 #' \code{\link[hypergeo]{hypergeo_powerseries}}
-#'
 #'
 #' @examples
 #' No.D.D=0:7                    #assigning the random variables
@@ -825,16 +825,16 @@ NegLLGHGBB<-function(x,freq,a,b,c)
 #'
 #' The function will estimate the shape parameters using the maximum log likelihood method  for
 #' the Gaussian Hypergeometric Generalized Beta  Binomial distribution when the binomial random
-#' variables and corresponding frequencies are given
+#' variables and corresponding frequencies are given.
 #'
 #' @usage
 #' EstMLEGHGBB(x,freq,a,b,c)
 #'
-#' @param x                  vector of binomial random variables
-#' @param freq               vector of frequencies
-#' @param a                single value for shape parameter alpha representing a
-#' @param b                single value for shape parameter beta representing b
-#' @param c                single value for shape parameter lambda representing c
+#' @param x                vector of binomial random variables.
+#' @param freq             vector of frequencies.
+#' @param a                single value for shape parameter alpha representing a.
+#' @param b                single value for shape parameter beta representing b.
+#' @param c                single value for shape parameter lambda representing c.
 #'
 #' @details
 #' \deqn{0 < a,b,c}
@@ -842,11 +842,11 @@ NegLLGHGBB<-function(x,freq,a,b,c)
 #' \deqn{freq \ge 0}
 #'
 #' \strong{NOTE} : If input parameters are not in given domain conditions necessary
-#' error messages will be provided to go further
+#' error messages will be provided to go further.
 #'
 #' @return
 #' \code{EstMLEGHGBB} here is used as a input parameter for the \code{mle2} function of
-#' \pkg{bbmle} package
+#' \pkg{bbmle} package.
 #'
 #' @references
 #' Rodriguez-Avi, J., Conde-Sanchez, A., Saez-Castillo, A. J., & Olmo-Jimenez, M. J. (2007). A generalization
@@ -859,18 +859,18 @@ NegLLGHGBB<-function(x,freq,a,b,c)
 #' @seealso
 #' \code{\link[hypergeo]{hypergeo_powerseries}}
 #'
-#'
 #' ----------------
 #'
 #' \code{\link[bbmle]{mle2}}
 #'
-#'
 #' @examples
 #' No.D.D=0:7           #assigning the random variables
 #' Obs.fre.1=c(47,54,43,40,40,41,39,95)     #assigning the corresponding frequencies
+#'
 #' #estimating the parameters using maximum log likelihood value and assigning it
 #' parameters=suppressWarnings(bbmle::mle2(EstMLEGHGBB,start = list(a=0.1,b=0.1,c=0.2),
 #' data = list(x=No.D.D,freq=Obs.fre.1)))
+#'
 #' bbmle::coef(parameters)   #extracting the parameters
 #'
 #' @export
@@ -897,11 +897,11 @@ EstMLEGHGBB<-function(x,freq,a,b,c)
 #'
 #' @usage fitGHGBB(x,obs.freq,a,b,c)
 #'
-#' @param x                  vector of binomial random variables
-#' @param obs.freq           vector of frequencies
-#' @param a                  single value for shape parameter alpha representing a
-#' @param b                  single value for shape parameter beta representing b
-#' @param c                  single value for shape parameter lambda representing c
+#' @param x                  vector of binomial random variables.
+#' @param obs.freq           vector of frequencies.
+#' @param a                  single value for shape parameter alpha representing a.
+#' @param b                  single value for shape parameter beta representing b.
+#' @param c                  single value for shape parameter lambda representing c.
 #'
 #' @details
 #' \deqn{0 < a,b,c}
@@ -909,23 +909,22 @@ EstMLEGHGBB<-function(x,freq,a,b,c)
 #' \deqn{obs.freq \ge 0}
 #'
 #' \strong{NOTE} : If input parameters are not in given domain conditions necessary
-#' error messages will be provided to go further. Use the functions
-#' summary,fitted,AIC,coef and residuals to extract information.
+#' error messages will be provided to go further.
 #'
 #' @return
 #' The output of \code{fitGHGBB} gives the class format \code{fitGB} and \code{fit} consisting a list
 #'
-#' \code{bin.ran.var} binomial random variables
+#' \code{bin.ran.var} binomial random variables.
 #'
-#' \code{obs.freq} corresponding observed frequencies
+#' \code{obs.freq} corresponding observed frequencies.
 #'
-#' \code{exp.freq} corresponding expected frequencies
+#' \code{exp.freq} corresponding expected frequencies.
 #'
-#' \code{statistic} chi-squared test statistics
+#' \code{statistic} chi-squared test statistics.
 #'
-#' \code{df} degree of freedom
+#' \code{df} degree of freedom.
 #'
-#' \code{p.value} probability value by chi-squared test statistic
+#' \code{p.value} probability value by chi-squared test statistic.
 #'
 #' \code{fitGB} fitted values of \code{dGHGBB}.
 #'
@@ -964,9 +963,11 @@ EstMLEGHGBB<-function(x,freq,a,b,c)
 #' @examples
 #' No.D.D=0:7        #assigning the random variables
 #' Obs.fre.1=c(47,54,43,40,40,41,39,95)       #assigning the corresponding frequencies
+#'
 #' #estimating the parameters using maximum log likelihood value and assigning it
 #' parameters=suppressWarnings(bbmle::mle2(EstMLEGHGBB,start = list(a=0.1,b=0.1,c=0.2),
 #' data = list(x=No.D.D,freq=Obs.fre.1)))
+#'
 #' bbmle::coef(parameters)         #extracting the parameters
 #' aGHGBB=bbmle::coef(parameters)[1]  #assigning the estimated a
 #' bGHGBB=bbmle::coef(parameters)[2]  #assigning the estimated b

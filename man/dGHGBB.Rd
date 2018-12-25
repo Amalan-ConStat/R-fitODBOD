@@ -7,27 +7,27 @@
 dGHGBB(x,n,a,b,c)
 }
 \arguments{
-\item{x}{vector of binomial random variables}
+\item{x}{vector of binomial random variables.}
 
-\item{n}{single value for no of binomial trials}
+\item{n}{single value for no of binomial trials.}
 
-\item{a}{single value for shape parameter alpha value representing a}
+\item{a}{single value for shape parameter alpha value representing a.}
 
-\item{b}{single value for shape parameter beta value representing b}
+\item{b}{single value for shape parameter beta value representing b.}
 
-\item{c}{single value for shape parameter lambda value representing c}
+\item{c}{single value for shape parameter lambda value representing c.}
 }
 \value{
 The output of \code{dGHGBB} gives a list format consisting
 
-\code{pdf}             probability function values in vector form
+\code{pdf}             probability function values in vector form.
 
-\code{mean}            mean of Gaussian Hypergeometric Generalized Beta Binomial Distribution
+\code{mean}            mean of Gaussian Hypergeometric Generalized Beta Binomial Distribution.
 
-\code{var}             variance of Gaussian Hypergeometric Generalized Beta Binomial Distribution
+\code{var}             variance of Gaussian Hypergeometric Generalized Beta Binomial Distribution.
 
 \code{over.dis.para}   over dispersion value of Gaussian Hypergeometric Generalized Beta
-                       Binomial Distribution
+                       Binomial Distribution.
 }
 \description{
 These functions provide the ability for generating probability function values and
@@ -35,12 +35,12 @@ cumulative probability function values for the Gaussian Hypergeometric Generaliz
 Beta  Binomial distribution.
 }
 \details{
-Mixing Gaussian Hypergeometric Generalized beta distribution with binomial distribution will
+Mixing Gaussian Hypergeometric Generalized Beta distribution with Binomial distribution will
 create the Gaussian Hypergeometric Generalized Beta Binomial distribution.
 The probability function and cumulative probability function can be constructed
 and are denoted below.
 
-The cumulative probability function is the summation of probability function values
+The cumulative probability function is the summation of probability function values.
 
 \deqn{P_{GHGBB}(x)=\frac{1}{2F1(-n,a;-b-n+1;c)} {n \choose x} \frac{B(x+a,n-x+b)}{B(a,b+n)}(c^x) }
 \deqn{a,b,c > 0}
@@ -69,6 +69,7 @@ for (i in 1:6)
 lines(0:7,dGHGBB(0:7,7,1+a[i],0.3,1+a[i])$pdf,col = col[i],lwd=2.85)
 points(0:7,dGHGBB(0:7,7,1+a[i],0.3,1+a[i])$pdf,col = col[i],pch=16)
 }
+
 dGHGBB(0:7,7,1.3,0.3,1.3)$pdf      #extracting the pdf values
 dGHGBB(0:7,7,1.3,0.3,1.3)$mean     #extracting the mean
 dGHGBB(0:7,7,1.3,0.3,1.3)$var      #extracting the variance
@@ -92,7 +93,7 @@ pGHGBB(0:7,7,1.3,0.3,1.3)     #acquiring the cumulative probability values
 Rodriguez-Avi, J., Conde-Sanchez, A., Saez-Castillo, A. J., & Olmo-Jimenez, M. J. (2007). A generalization
 of the beta-binomial distribution. Journal of the Royal Statistical Society. Series C (Applied Statistics), 56(1), 51-61.
 
-Available at : \url{http://dx.doi.org/10.1111/j.1467-9876.2007.00564.x}
+Available at : \url{http://dx.doi.org/10.1111/j.1467-9876.2007.00564.x}.
 
 Pearson, J., 2009. Computation of Hypergeometric Functions. Transformation, (September), p.1--123.
 }

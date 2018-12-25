@@ -1,17 +1,16 @@
-#'
 #' Generalized Beta Type-1 Distribution
 #'
 #' These functions provide the ability for generating probability density values,
 #' cumulative probability density values and moment about zero values for the
-#' Generalized Beta Type-1 Distribution bounded between [0,1]
+#' Generalized Beta Type-1 Distribution bounded between [0,1].
 #'
 #' @usage
 #' dGBeta1(p,a,b,c)
 #'
-#' @param p              vector of probabilities
-#' @param a              single value for shape parameter alpha representing as a
-#' @param b              single value for shape parameter beta representing as a
-#' @param c              single value for shape parameter gamma representing as c
+#' @param p              vector of probabilities.
+#' @param a              single value for shape parameter alpha representing as a.
+#' @param b              single value for shape parameter beta representing as b.
+#' @param c              single value for shape parameter gamma representing as c.
 #'
 #' @details
 #' The probability density function and cumulative density function of a unit bounded
@@ -29,20 +28,20 @@
 #' \deqn{E[P^r]= \frac{B(a+b,\frac{r}{c})}{B(a,\frac{r}{c})} }
 #' \eqn{r = 1,2,3,....}
 #'
-#' Defined as \eqn{B(a,b)} is beta function
-#' Defined as \eqn{2F1(a,b;c;d)} is Gaussian Hypergeometric function
+#' Defined as \eqn{B(a,b)} is Beta function.
+#' Defined as \eqn{2F1(a,b;c;d)} is Gaussian Hypergeometric function.
 #'
 #' \strong{NOTE} : If input parameters are not in given domain conditions
-#' necessary error messages will be provided to go further
+#' necessary error messages will be provided to go further.
 #'
 #' @return
 #' The output of \code{dGBeta1} gives a list format consisting
 #'
-#' \code{pdf}                   probability density values in vector form
+#' \code{pdf}                   probability density values in vector form.
 #'
-#' \code{mean}                  mean of the Generalized Beta Type-1 Distribution
+#' \code{mean}                  mean of the Generalized Beta Type-1 Distribution.
 #'
-#' \code{var}                   variance of the Generalized Beta Type-1 Distribution
+#' \code{var}                   variance of the Generalized Beta Type-1 Distribution.
 #'
 #' @references
 #' Manoj, C., Wijekoon, P. & Yapa, R.D., 2013. The McDonald Generalized Beta-Binomial Distribution: A New
@@ -57,7 +56,7 @@
 #' Roozegar, R., Tahmasebi, S. & Jafari, A.A., 2015. The McDonald Gompertz Distribution: Properties and Applications.
 #' Communications in Statistics - Simulation and Computation, (May), pp.0-0.
 #'
-#' Available at: \url{http://www.tandfonline.com/doi/full/10.1080/03610918.2015.1088024} .
+#' Available at: \url{http://www.tandfonline.com/doi/full/10.1080/03610918.2015.1088024}.
 #'
 #' @examples
 #' #plotting the random variables and probability values
@@ -69,6 +68,7 @@
 #' {
 #' lines(seq(0,1,by=0.001),dGBeta1(seq(0,1,by=0.001),a[i],1,2*a[i])$pdf,col = col[i])
 #' }
+#'
 #' dGBeta1(seq(0,1,by=0.01),2,3,1)$pdf    #extracting the pdf values
 #' dGBeta1(seq(0,1,by=0.01),2,3,1)$mean   #extracting the mean
 #' dGBeta1(seq(0,1,by=0.01),2,3,1)$var    #extracting the variance
@@ -76,6 +76,7 @@
 #' pGBeta1(0.04,2,3,4)        #acquiring the cdf values for a=2,b=3,c=4
 #' mazGBeta1(1.4,3,2,2)              #acquiring the moment about zero values
 #' mazGBeta1(2,3,2,2)-mazGBeta1(1,3,2,2)^2        #acquiring the variance for a=3,b=2,c=2
+#'
 #' #only the integer value of moments is taken here because moments cannot be decimal
 #' mazGBeta1(3.2,3,2,2)
 #'
@@ -124,15 +125,15 @@ dGBeta1<-function(p,a,b,c)
 #'
 #' These functions provide the ability for generating probability density values,
 #' cumulative probability density values and moment about zero values for the
-#' Generalized Beta Type-1 Distribution bounded between [0,1]
+#' Generalized Beta Type-1 Distribution bounded between [0,1].
 #'
 #' @usage
 #' pGBeta1(p,a,b,c)
 #'
-#' @param p              vector of probabilities
-#' @param a              single value for shape parameter alpha representing as a
-#' @param b              single value for shape parameter beta representing as a
-#' @param c              single value for shape parameter gamma representing as c
+#' @param p              vector of probabilities.
+#' @param a              single value for shape parameter alpha representing as a.
+#' @param b              single value for shape parameter beta representing as b.
+#' @param c              single value for shape parameter gamma representing as c.
 #'
 #' @details
 #' The probability density function and cumulative density function of a unit bounded
@@ -150,14 +151,13 @@ dGBeta1<-function(p,a,b,c)
 #' \deqn{E[P^r]= \frac{B(a+b,\frac{r}{c})}{B(a,\frac{r}{c})} }
 #' \eqn{r = 1,2,3,....}
 #'
-#' Defined as \eqn{B(a,b)} is beta function
-#' Defined as \eqn{2F1(a,b;c;d)} is Gaussian Hypergeometric function
+#' Defined as \eqn{B(a,b)} is Beta function.
+#' Defined as \eqn{2F1(a,b;c;d)} is Gaussian Hypergeometric function.
 #'
 #' \strong{NOTE} : If input parameters are not in given domain conditions
-#' necessary error messages will be provided to go further
+#' necessary error messages will be provided to go further.
 #'
 #' @return
-#'
 #' The output \code{pGBeta1} gives the cumulative density values in vector form.
 #'
 #' @references
@@ -165,7 +165,7 @@ dGBeta1<-function(p,a,b,c)
 #' Binomial Mixture Distribution and Simulation Based Comparison with Its Nested Distributions in Handling
 #' Overdispersion. International Journal of Statistics and Probability, 2(2), pp.24-41.
 #'
-#' Available at: \url{http://www.ccsenet.org/journal/index.php/ijsp/article/view/23491} .
+#' Available at: \url{http://www.ccsenet.org/journal/index.php/ijsp/article/view/23491}.
 #'
 #' Janiffer, N.M., Islam, A. & Luke, O., 2014. Estimating Equations for Estimation of Mcdonald Generalized
 #' Beta - Binomial Parameters. , (October), pp.702-709.
@@ -173,7 +173,7 @@ dGBeta1<-function(p,a,b,c)
 #' Roozegar, R., Tahmasebi, S. & Jafari, A.A., 2015. The McDonald Gompertz Distribution: Properties and Applications.
 #' Communications in Statistics - Simulation and Computation, (May), pp.0-0.
 #'
-#' Available at: \url{http://www.tandfonline.com/doi/full/10.1080/03610918.2015.1088024} .
+#' Available at: \url{http://www.tandfonline.com/doi/full/10.1080/03610918.2015.1088024}.
 #'
 #' @examples
 #' #plotting the random variables and probability values
@@ -185,6 +185,7 @@ dGBeta1<-function(p,a,b,c)
 #' {
 #' lines(seq(0,1,by=0.001),dGBeta1(seq(0,1,by=0.001),a[i],1,2*a[i])$pdf,col = col[i])
 #' }
+#'
 #' dGBeta1(seq(0,1,by=0.01),2,3,1)$pdf    #extracting the pdf values
 #' dGBeta1(seq(0,1,by=0.01),2,3,1)$mean   #extracting the mean
 #' dGBeta1(seq(0,1,by=0.01),2,3,1)$var    #extracting the variance
@@ -192,6 +193,7 @@ dGBeta1<-function(p,a,b,c)
 #' pGBeta1(0.04,2,3,4)        #acquiring the cdf values for a=2,b=3,c=4
 #' mazGBeta1(1.4,3,2,2)              #acquiring the moment about zero values
 #' mazGBeta1(2,3,2,2)-mazGBeta1(1,3,2,2)^2        #acquiring the variance for a=3,b=2,c=2
+#'
 #' #only the integer value of moments is taken here because moments cannot be decimal
 #' mazGBeta1(3.2,3,2,2)
 #'
@@ -249,14 +251,14 @@ pGBeta1<-function(p,a,b,c)
 #'
 #' These functions provide the ability for generating probability density values,
 #' cumulative probability density values and moment about zero values for the
-#' Generalized Beta Type-1 Distribution bounded between [0,1]
+#' Generalized Beta Type-1 Distribution bounded between [0,1].
 #'
 #' @usage
 #' mazGBeta1(r,a,b,c)
 #'
-#' @param a              single value for shape parameter alpha representing as a
-#' @param b              single value for shape parameter beta representing as a
-#' @param c              single value for shape parameter gamma representing as c
+#' @param a              single value for shape parameter alpha representing as a.
+#' @param b              single value for shape parameter beta representing as b.
+#' @param c              single value for shape parameter gamma representing as c.
 #' @param r              vector of moments
 #'
 #' @details
@@ -275,14 +277,13 @@ pGBeta1<-function(p,a,b,c)
 #' \deqn{E[P^r]= \frac{B(a+b,\frac{r}{c})}{B(a,\frac{r}{c})} }
 #' \eqn{r = 1,2,3,....}
 #'
-#' Defined as \eqn{B(a,b)} is beta function
-#' Defined as \eqn{2F1(a,b;c;d)} is Gaussian Hypergeometric function
+#' Defined as \eqn{B(a,b)} is Beta function.
+#' Defined as \eqn{2F1(a,b;c;d)} is Gaussian Hypergeometric function.
 #'
 #' \strong{NOTE} : If input parameters are not in given domain conditions
-#' necessary error messages will be provided to go further
+#' necessary error messages will be provided to go further.
 #'
 #' @return
-#'
 #' The output \code{mazGBeta1} gives the moments about zero in vector form.
 #'
 #' @references
@@ -290,7 +291,7 @@ pGBeta1<-function(p,a,b,c)
 #' Binomial Mixture Distribution and Simulation Based Comparison with Its Nested Distributions in Handling
 #' Overdispersion. International Journal of Statistics and Probability, 2(2), pp.24-41.
 #'
-#' Available at: \url{http://www.ccsenet.org/journal/index.php/ijsp/article/view/23491} .
+#' Available at: \url{http://www.ccsenet.org/journal/index.php/ijsp/article/view/23491}.
 #'
 #' Janiffer, N.M., Islam, A. & Luke, O., 2014. Estimating Equations for Estimation of Mcdonald Generalized
 #' Beta - Binomial Parameters. , (October), pp.702-709.
@@ -298,7 +299,7 @@ pGBeta1<-function(p,a,b,c)
 #' Roozegar, R., Tahmasebi, S. & Jafari, A.A., 2015. The McDonald Gompertz Distribution: Properties and Applications.
 #' Communications in Statistics - Simulation and Computation, (May), pp.0-0.
 #'
-#' Available at: \url{http://www.tandfonline.com/doi/full/10.1080/03610918.2015.1088024} .
+#' Available at: \url{http://www.tandfonline.com/doi/full/10.1080/03610918.2015.1088024}.
 #'
 #' @examples
 #' #plotting the random variables and probability values
@@ -310,6 +311,7 @@ pGBeta1<-function(p,a,b,c)
 #' {
 #' lines(seq(0,1,by=0.001),dGBeta1(seq(0,1,by=0.001),a[i],1,2*a[i])$pdf,col = col[i])
 #' }
+#'
 #' dGBeta1(seq(0,1,by=0.01),2,3,1)$pdf    #extracting the pdf values
 #' dGBeta1(seq(0,1,by=0.01),2,3,1)$mean   #extracting the mean
 #' dGBeta1(seq(0,1,by=0.01),2,3,1)$var    #extracting the variance
@@ -317,6 +319,7 @@ pGBeta1<-function(p,a,b,c)
 #' pGBeta1(0.04,2,3,4)        #acquiring the cdf values for a=2,b=3,c=4
 #' mazGBeta1(1.4,3,2,2)              #acquiring the moment about zero values
 #' mazGBeta1(2,3,2,2)-mazGBeta1(1,3,2,2)^2        #acquiring the variance for a=3,b=2,c=2
+#'
 #' #only the integer value of moments is taken here because moments cannot be decimal
 #' mazGBeta1(3.2,3,2,2)
 #'
@@ -372,18 +375,18 @@ mazGBeta1<-function(r,a,b,c)
 #' @usage
 #' dMcGBB(x,n,a,b,c)
 #'
-#' @param x        vector of binomial random variables
-#' @param n        single value for no of binomial trials
-#' @param a        single value for shape parameter alpha representing as a
-#' @param b        single value for shape parameter beta representing as b
-#' @param c        single value for shape parameter gamma representing as c
+#' @param x        vector of binomial random variables.
+#' @param n        single value for no of binomial trials.
+#' @param a        single value for shape parameter alpha representing as a.
+#' @param b        single value for shape parameter beta representing as b.
+#' @param c        single value for shape parameter gamma representing as c.
 #'
 #' @details
-#' Mixing Generalized Beta Type-1 Distribution with  binomial distribution
+#' Mixing Generalized Beta Type-1 Distribution with  Binomial distribution
 #' the probability function value and cumulative probability function can be constructed
 #' and are denoted below.
 #'
-#' The cumulative probability function is the summation of probability function values
+#' The cumulative probability function is the summation of probability function values.
 #'
 #' \deqn{P_{McGBB}(x)= {n \choose x} \frac{1}{B(a,b)} (\sum_{j=0}^{n-x} (-1)^j {n-x \choose j} B(\frac{x}{c}+a+\frac{j}{c},b) ) }
 #' \deqn{a,b,c > 0}
@@ -398,20 +401,20 @@ mazGBeta1<-function(r,a,b,c)
 #' @return
 #' The output of \code{dMcGBB} gives a list format consisting
 #'
-#' \code{pdf}            probability function values in vector form
+#' \code{pdf}            probability function values in vector form.
 #'
-#' \code{mean}           mean of McDonald Generalized Beta Binomial Distribution
+#' \code{mean}           mean of McDonald Generalized Beta Binomial Distribution.
 #'
-#' \code{var}            variance of McDonald Generalized Beta Binomial Distribution
+#' \code{var}            variance of McDonald Generalized Beta Binomial Distribution.
 #'
-#' \code{over.dis.para}  over dispersion value of McDonald Generalized Beta Binomial Distribution
+#' \code{over.dis.para}  over dispersion value of McDonald Generalized Beta Binomial Distribution.
 #'
 #' @references
 #' Manoj, C., Wijekoon, P. & Yapa, R.D., 2013. The McDonald Generalized Beta-Binomial Distribution: A New
 #' Binomial Mixture Distribution and Simulation Based Comparison with Its Nested Distributions in Handling
 #' Overdispersion. International Journal of Statistics and Probability, 2(2), pp.24-41.
 #'
-#' Available at: \url{http://www.ccsenet.org/journal/index.php/ijsp/article/view/23491} .
+#' Available at: \url{http://www.ccsenet.org/journal/index.php/ijsp/article/view/23491}.
 #'
 #' Janiffer, N.M., Islam, A. & Luke, O., 2014. Estimating Equations for Estimation of Mcdonald Generalized
 #' Beta - Binomial Parameters. , (October), pp.702-709.
@@ -419,7 +422,7 @@ mazGBeta1<-function(r,a,b,c)
 #' Roozegar, R., Tahmasebi, S. & Jafari, A.A., 2015. The McDonald Gompertz Distribution: Properties and Applications.
 #' Communications in Statistics - Simulation and Computation, (May), pp.0-0.
 #'
-#' Available at: \url{http://www.tandfonline.com/doi/full/10.1080/03610918.2015.1088024} .
+#' Available at: \url{http://www.tandfonline.com/doi/full/10.1080/03610918.2015.1088024}.
 #'
 #' @examples
 #' #plotting the random variables and probability values
@@ -432,6 +435,7 @@ mazGBeta1<-function(r,a,b,c)
 #' lines(0:10,dMcGBB(0:10,10,a[i],2.5,a[i])$pdf,col = col[i],lwd=2.85)
 #' points(0:10,dMcGBB(0:10,10,a[i],2.5,a[i])$pdf,col = col[i],pch=16)
 #' }
+#'
 #' dMcGBB(0:10,10,4,2,1)$pdf             #extracting the pdf values
 #' dMcGBB(0:10,10,4,2,1)$mean            #extracting the mean
 #' dMcGBB(0:10,10,4,2,1)$var             #extracting the variance
@@ -447,6 +451,7 @@ mazGBeta1<-function(r,a,b,c)
 #' lines(0:10,pMcGBB(0:10,10,a[i],a[i],2),col = col[i])
 #' points(0:10,pMcGBB(0:10,10,a[i],a[i],2),col = col[i])
 #' }
+#'
 #' pMcGBB(0:10,10,4,2,1)       #acquiring the cumulative probability values
 #'
 #' @export

@@ -7,29 +7,29 @@
 dGHGBeta(p,n,a,b,c)
 }
 \arguments{
-\item{p}{vector of probabilities}
+\item{p}{vector of probabilities.}
 
-\item{n}{single value for no of binomial trials}
+\item{n}{single value for no of binomial trials.}
 
-\item{a}{single value for shape parameter alpha representing as a}
+\item{a}{single value for shape parameter alpha representing as a.}
 
-\item{b}{single value for shape parameter beta representing as b}
+\item{b}{single value for shape parameter beta representing as b.}
 
-\item{c}{single value for shape parameter lambda representing as c}
+\item{c}{single value for shape parameter lambda representing as c.}
 }
 \value{
 The output of \code{dGHGBeta} gives a list format consisting
 
-\code{pdf}           probability density values in vector form
+\code{pdf}           probability density values in vector form.
 
-\code{mean}          mean of the Gaussian Hypergeometric Generalized Beta Distribution
+\code{mean}          mean of the Gaussian Hypergeometric Generalized Beta Distribution.
 
-\code{var}           variance of the Gaussian Hypergeometric Generalized Beta Distribution
+\code{var}           variance of the Gaussian Hypergeometric Generalized Beta Distribution.
 }
 \description{
 These functions provide the ability for generating probability density values,
 cumulative probability density values and moment about zero values for the
-Gaussian Hypergeometric Generalized Beta distribution bounded between [0,1]
+Gaussian Hypergeometric Generalized Beta distribution bounded between [0,1].
 }
 \details{
 The probability density function and cumulative density function of a unit bounded
@@ -50,8 +50,8 @@ The moments about zero is denoted as
 \deqn{E[P^r]= \int^1_0 \frac{p^r}{B(a,b)}\frac{2F1(-n,a;-b-n+1;1)}{2F1(-n,a;-b-n+1;c)} p^{a-1}(1-p)^{b-1}\frac{c^{b+n}}{(c+(1-c)p)^{a+b+n}} \,dp}
 \eqn{r = 1,2,3,...}
 
-Defined as \eqn{B(a,b)} as the beta function
-Defined as \eqn{2F1(a,b;c;d)} as the Gaussian Hypergeometric function
+Defined as \eqn{B(a,b)} as the beta function.
+Defined as \eqn{2F1(a,b;c;d)} as the Gaussian Hypergeometric function.
 
 \strong{NOTE} : If input parameters are not in given domain conditions
 necessary error messages will be provided to go further.
@@ -66,6 +66,7 @@ for (i in 1:5)
 {
 lines(seq(0,1,by=0.001),dGHGBeta(seq(0,1,by=0.001),7,1+a[i],0.3,1+a[i])$pdf,col = col[i])
 }
+
 dGHGBeta(seq(0,1,by=0.01),7,1.6312,0.3913,0.6659)$pdf   #extracting the pdf values
 dGHGBeta(seq(0,1,by=0.01),7,1.6312,0.3913,0.6659)$mean  #extracting the mean
 dGHGBeta(seq(0,1,by=0.01),7,1.6312,0.3913,0.6659)$var   #extracting the variance
@@ -85,6 +86,7 @@ mazGHGBeta(1.4,7,1.6312,0.3913,0.6659)            #acquiring the moment about ze
 
 #acquiring the variance for a=1.6312,b=0.3913,c=0.6659
 mazGHGBeta(2,7,1.6312,0.3913,0.6659)-mazGHGBeta(1,7,1.6312,0.3913,0.6659)^2
+
 #only the integer value of moments is taken here because moments cannot be decimal
 mazGHGBeta(1.9,15,5,6,1)
 

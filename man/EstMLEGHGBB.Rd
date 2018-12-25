@@ -8,24 +8,24 @@ Distribution}
 EstMLEGHGBB(x,freq,a,b,c)
 }
 \arguments{
-\item{x}{vector of binomial random variables}
+\item{x}{vector of binomial random variables.}
 
-\item{freq}{vector of frequencies}
+\item{freq}{vector of frequencies.}
 
-\item{a}{single value for shape parameter alpha representing a}
+\item{a}{single value for shape parameter alpha representing a.}
 
-\item{b}{single value for shape parameter beta representing b}
+\item{b}{single value for shape parameter beta representing b.}
 
-\item{c}{single value for shape parameter lambda representing c}
+\item{c}{single value for shape parameter lambda representing c.}
 }
 \value{
 \code{EstMLEGHGBB} here is used as a input parameter for the \code{mle2} function of
-\pkg{bbmle} package
+\pkg{bbmle} package.
 }
 \description{
 The function will estimate the shape parameters using the maximum log likelihood method  for
 the Gaussian Hypergeometric Generalized Beta  Binomial distribution when the binomial random
-variables and corresponding frequencies are given
+variables and corresponding frequencies are given.
 }
 \details{
 \deqn{0 < a,b,c}
@@ -33,14 +33,16 @@ variables and corresponding frequencies are given
 \deqn{freq \ge 0}
 
 \strong{NOTE} : If input parameters are not in given domain conditions necessary
-error messages will be provided to go further
+error messages will be provided to go further.
 }
 \examples{
 No.D.D=0:7           #assigning the random variables
 Obs.fre.1=c(47,54,43,40,40,41,39,95)     #assigning the corresponding frequencies
+
 #estimating the parameters using maximum log likelihood value and assigning it
 parameters=suppressWarnings(bbmle::mle2(EstMLEGHGBB,start = list(a=0.1,b=0.1,c=0.2),
 data = list(x=No.D.D,freq=Obs.fre.1)))
+
 bbmle::coef(parameters)   #extracting the parameters
 
 }
@@ -54,7 +56,6 @@ Pearson, J., 2009. Computation of Hypergeometric Functions. Transformation, (Sep
 }
 \seealso{
 \code{\link[hypergeo]{hypergeo_powerseries}}
-
 
 ----------------
 

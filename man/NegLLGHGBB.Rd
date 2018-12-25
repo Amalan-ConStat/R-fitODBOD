@@ -7,18 +7,18 @@
 NegLLGHGBB(x,freq,a,b,c)
 }
 \arguments{
-\item{x}{vector of binomial random variables}
+\item{x}{vector of binomial random variables.}
 
-\item{freq}{vector of frequencies}
+\item{freq}{vector of frequencies.}
 
-\item{a}{single value for shape parameter alpha representing a}
+\item{a}{single value for shape parameter alpha representing a.}
 
-\item{b}{single value for shape parameter beta representing b}
+\item{b}{single value for shape parameter beta representing b.}
 
-\item{c}{single value for shape parameter lambda representing c}
+\item{c}{single value for shape parameter lambda representing c.}
 }
 \value{
-The output of \code{NegLLGHGBB} will produce a single numeric value
+The output of \code{NegLLGHGBB} will produce a single numeric value.
 }
 \description{
 This function will calculate the negative log likelihood value when the vector of binomial random
@@ -30,7 +30,7 @@ variables and vector of corresponding frequencies are given with the shape param
 \deqn{x = 0,1,2,...}
 
 \strong{NOTE} : If input parameters are not in given domain conditions necessary
-error messages will be provided to go further
+error messages will be provided to go further.
 }
 \examples{
 No.D.D=0:7                    #assigning the random variables
