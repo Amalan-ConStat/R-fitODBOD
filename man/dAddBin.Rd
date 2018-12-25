@@ -7,22 +7,22 @@
 dAddBin(x,n,p,alpha)
 }
 \arguments{
-\item{x}{vector of binomial random variables}
+\item{x}{vector of binomial random variables.}
 
-\item{n}{single value for no of binomial trials}
+\item{n}{single value for no of binomial trials.}
 
 \item{p}{single value for probability of success}
 
-\item{alpha}{single value for alpha parameter}
+\item{alpha}{single value for alpha parameter.}
 }
 \value{
 The output of \code{dAddBin} gives a list format consisting
 
-\code{pdf} probability function values in vector form
+\code{pdf} probability function values in vector form.
 
-\code{mean} mean of Additive Binomial Distribution
+\code{mean} mean of Additive Binomial Distribution.
 
-\code{var} variance of Additive Binomial Distribution
+\code{var} variance of Additive Binomial Distribution.
 }
 \description{
 These functions provide the ability for generating probability function values and
@@ -31,7 +31,7 @@ cumulative probability function values for the Additive Binomial Distribution.
 \details{
 The probability function and cumulative function can be constructed and are denoted below
 
-The cumulative probability function is the summation of probability function values
+The cumulative probability function is the summation of probability function values.
 
 \deqn{P_{AddBin}(x)= {n \choose x} p^x (1-p)^{n-x}(\frac{alpha}{2}(\frac{x(x-1)}{p}+\frac{(n-x)(n-x-1)}{(1-p)}-\frac{alpha(n-1)n}{2})+1)}
 
@@ -48,7 +48,7 @@ The mean and the variance are denoted as
 \deqn{Var_{Addbin}[x]=np(1-p)(1+(n-1)alpha)}
 
 \strong{NOTE} : If input parameters are not in given domain conditions
-necessary error messages will be provided to go further
+necessary error messages will be provided to go further.
 }
 \examples{
 #plotting the random variables and probability values
@@ -62,6 +62,7 @@ for (i in 1:5)
   lines(0:10,dAddBin(0:10,10,a[i],b[i])$pdf,col = col[i],lwd=2.85)
   points(0:10,dAddBin(0:10,10,a[i],b[i])$pdf,col = col[i],pch=16)
 }
+
 dAddBin(0:10,10,0.58,0.022)$pdf     #extracting the probability values
 dAddBin(0:10,10,0.58,0.022)$mean    #extracting the mean
 dAddBin(0:10,10,0.58,0.022)$var     #extracting the variance
@@ -77,6 +78,7 @@ for (i in 1:5)
 lines(0:10,pAddBin(0:10,10,a[i],b[i]),col = col[i],lwd=2.85)
 points(0:10,pAddBin(0:10,10,a[i],b[i]),col = col[i],pch=16)
 }
+
 pAddBin(0:10,10,0.58,0.022)       #acquiring the cumulative probability values
 
 }

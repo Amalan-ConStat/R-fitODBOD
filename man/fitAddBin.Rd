@@ -8,46 +8,46 @@ random variable, frequency, probability of success and alpha are given}
 fitAddBin(x,obs.freq,p,alpha)
 }
 \arguments{
-\item{x}{vector of binomial random variables}
+\item{x}{vector of binomial random variables.}
 
-\item{obs.freq}{vector of frequencies}
+\item{obs.freq}{vector of frequencies.}
 
-\item{p}{single value for probability of success}
+\item{p}{single value for probability of success.}
 
-\item{alpha}{single value for alpha}
+\item{alpha}{single value for alpha.}
 }
 \value{
 The output of \code{fitAddBin} gives the class format \code{fitAB} and \code{fit} consisting a list
 
-\code{bin.ran.var} binomial random variables
+\code{bin.ran.var} binomial random variables.
 
-\code{obs.freq} corresponding observed frequencies
+\code{obs.freq} corresponding observed frequencies.
 
-\code{exp.freq} corresponding expected frequencies
+\code{exp.freq} corresponding expected frequencies.
 
-\code{statistic} chi-squared test statistics
+\code{statistic} chi-squared test statistics.
 
-\code{df} degree of freedom
+\code{df} degree of freedom.
 
-\code{p.value} probability value by chi-squared test statistic
+\code{p.value} probability value by chi-squared test statistic.
 
-\code{fitAB} fitted probability values of \code{dAddBin}
+\code{fitAB} fitted probability values of \code{dAddBin}.
 
-\code{NegLL} Negative Log Likelihood value
+\code{NegLL} Negative Log Likelihood value.
 
-\code{p} estimated probability value
+\code{p} estimated probability value.
 
-\code{alpha} estimated alpha parameter value
+\code{alpha} estimated alpha parameter value.
 
-\code{AIC} AIC value
+\code{AIC} AIC value.
 
-\code{call} the inputs of the function
+\code{call} the inputs of the function.
 
 Methods \code{summary}, \code{print}, \code{AIC}, \code{residuals} and \code{fitted}
 can be used to extract specific outputs.
 }
 \description{
-The function will fit the Additive binomial distribution when random variables,
+The function will fit the Additive Binomial distribution when random variables,
 corresponding frequencies, probability of success and alpha are given.
 It will provide the expected frequencies, chi-squared test statistics value, p value,
 and degree of freedom value so that it can be seen if this distribution fits the data.
@@ -61,6 +61,7 @@ and degree of freedom value so that it can be seen if this distribution fits the
 \examples{
 No.D.D=0:7         #assigning the random variables
 Obs.fre.1=c(47,54,43,40,40,41,39,95)            #assigning the corresponding the frequencies
+
 #assigning the estimated probability value
 \dontrun{
 paddbin=suppressWarnings(EstMLEAddBin(No.D.D,Obs.fre.1)$p)
@@ -77,8 +78,7 @@ AIC(results)
 
 #extract fitted values
 fitted(results)
-
-}
+       }
 }
 \references{
 Johnson, N. L., Kemp, A. W., & Kotz, S. (2005). Univariate discrete distributions (Vol. 444).

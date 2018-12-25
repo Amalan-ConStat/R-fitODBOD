@@ -873,7 +873,7 @@ EstMLEMcGBB<-function(x,freq,a,b,c)
 #'
 #' #extracting the residuals
 #' residuals(results)
-#' }
+#'        }
 #' @export
  fitMcGBB<-function(x,obs.freq,a,b,c)
 {

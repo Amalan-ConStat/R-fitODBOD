@@ -88,7 +88,7 @@ fitted(results)
 
 #extracting the residuals
 residuals(results)
-}
+       }
 }
 \references{
 Manoj, C., Wijekoon, P. & Yapa, R.D., 2013. The McDonald Generalized Beta-Binomial Distribution: A New
