@@ -11,7 +11,7 @@
 \item{\code{Father}}{Father with Status of Introducing Cases}
 \item{\code{Mother}}{Mother with Status of Introducing Cases}
 \item{\code{SChild}}{School Child with Status of Introducing Cases}
-\item{\code{PSChld}}{Pre-School Child with Status of Introducing Cases}
+\item{\code{PSChild}}{Pre-School Child with Status of Introducing Cases}
 }}
 \source{
 Extracted from
