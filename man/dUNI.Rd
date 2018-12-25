@@ -2,32 +2,33 @@
 % Please edit documentation in R/Uniform.R
 \name{dUNI}
 \alias{dUNI}
-\title{Uniform Distribution bounded between [0,1]}
+\title{Uniform Distribution Bounded Between [0,1]}
 \usage{
 dUNI(p)
 }
 \arguments{
-\item{p}{vector of probabilities}
+\item{p}{vector of probabilities.}
 }
 \value{
 The output of \code{dUNI} gives a list format consisting
 
-\code{pdf}              probability density values in vector form
+\code{pdf}              probability density values in vector form.
 
-\code{mean}             mean of unit bounded uniform distribution
+\code{mean}             mean of unit bounded uniform distribution.
 
-\code{var}              variance of unit bounded uniform distribution
+\code{var}              variance of unit bounded uniform distribution.
 }
 \description{
 These functions provide the ability for generating probability density values,
 cumulative probability density values and moments about zero values for the
-Uniform Distribution bounded between [0,1]
+Uniform Distribution bounded between [0,1].
 }
 \details{
 Setting \eqn{a=0} and \eqn{b=1} in the Uniform Distribution
 a unit bounded Uniform Distribution can be obtained. The probability density function
 and cumulative density function of a unit bounded Uniform Distribution with random
 variable P are given by
+
 \deqn{g_{P}(p) = 1}    \eqn{0 \le p \le 1}
 \deqn{G_{P}(p) = p}    \eqn{0 \le p \le 1}
 
@@ -46,6 +47,7 @@ error messages will be provided to go further.
 #plotting the random variables and probability values
 plot(seq(0,1,by=0.01),dUNI(seq(0,1,by=0.01))$pdf,type = "l",main="Probability density graph",
 xlab="Random variable",ylab="Probability density values")
+
 dUNI(seq(0,1,by=0.05))$pdf     #extract the pdf values
 dUNI(seq(0,1,by=0.01))$mean    #extract the mean
 dUNI(seq(0,1,by=0.01))$var     #extract the variance
@@ -53,9 +55,11 @@ dUNI(seq(0,1,by=0.01))$var     #extract the variance
 #plotting the random variables and cumulative probability values
 plot(seq(0,1,by=0.01),pUNI(seq(0,1,by=0.01)),type = "l",main="Cumulative density graph",
 xlab="Random variable",ylab="Cumulative density values")
+
 pUNI(seq(0,1,by=0.05))     #acquiring the cumulative probability values
 
 mazUNI(c(1,2,3))    #acquiring the moment about zero values
+
 #only the integer value of moments is taken here because moments cannot be decimal
 mazUNI(1.9)
 
@@ -65,7 +69,7 @@ Horsnell, G. (1957). Economic acceptance sampling schemes. Journal of the Royal 
 Series A, 120:148-191.
 
 Johnson, N. L., Kotz, S. and Balakrishnan, N. (1994) Continuous Univariate Distributions,
-Vol. 2, Wiley Series in Probability and Mathematical Statistics, Wiley
+Vol. 2, Wiley Series in Probability and Mathematical Statistics, Wiley.
 }
 \seealso{
 \code{\link[stats]{Uniform}}

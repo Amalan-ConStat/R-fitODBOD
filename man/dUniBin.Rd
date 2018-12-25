@@ -7,20 +7,20 @@
 dUniBin(x,n)
 }
 \arguments{
-\item{x}{vector of binomial random variables}
+\item{x}{vector of binomial random variables.}
 
-\item{n}{single value for no of binomial trials}
+\item{n}{single value for no of binomial trials.}
 }
 \value{
 The output of \code{dUniBin} gives a list format consisting
 
-\code{pdf}            probability function values in vector form
+\code{pdf}            probability function values in vector form.
 
-\code{mean}           mean of the Uniform Binomial Distribution
+\code{mean}           mean of the Uniform Binomial Distribution.
 
-\code{var}            variance of the Uniform Binomial Distribution
+\code{var}            variance of the Uniform Binomial Distribution.
 
-\code{ove.dis.para}   over dispersion value of Uniform Binomial Distribution
+\code{ove.dis.para}   over dispersion value of Uniform Binomial Distribution.
 }
 \description{
 These functions provide the ability for generating probability function values and
@@ -50,6 +50,7 @@ error messages will be provided to go further.
 plot(0:10,dUniBin(0:10,10)$pdf,type="l",main="Uniform binomial probability function graph",
 xlab=" Binomial random variable",ylab="Probability function values")
 points(0:10,dUniBin(0:10,10)$pdf)
+
 dUniBin(0:300,300)$pdf  #extracting the pdf values
 dUniBin(0:10,10)$mean   #extracting the mean
 dUniBin(0:10,10)$var    #extracting the variance

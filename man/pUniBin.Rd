@@ -7,9 +7,9 @@
 pUniBin(x,n)
 }
 \arguments{
-\item{x}{vector of binomial random variables}
+\item{x}{vector of binomial random variables.}
 
-\item{n}{single value for no of binomial trials}
+\item{n}{single value for no of binomial trials.}
 }
 \value{
 The output of \code{pUniBin} gives cumulative probability function values in vector form.
@@ -23,7 +23,7 @@ Mixing unit bounded uniform distribution with binomial distribution will create
 the Uniform Binomial Distribution. The  probability function
 and cumulative probability function can be constructed and are denoted below.
 
-The cumulative probability function is the summation of probability function values
+The cumulative probability function is the summation of probability function values.
 
 \deqn{P_{UniBin}(x)= \frac{1}{n+1} }
 \deqn{n = 1,2,...}
@@ -42,6 +42,7 @@ error messages will be provided to go further.
 plot(0:10,dUniBin(0:10,10)$pdf,type="l",main="Uniform binomial probability function graph",
 xlab=" Binomial random variable",ylab="Probability function values")
 points(0:10,dUniBin(0:10,10)$pdf)
+
 dUniBin(0:300,300)$pdf  #extracting the pdf values
 dUniBin(0:10,10)$mean   #extracting the mean
 dUniBin(0:10,10)$var    #extracting the variance
@@ -63,5 +64,5 @@ Okagbue, H. et al., 2014. Using the Average of the Extreme Values of a Triangula
 Transformation, and Its Approximant via the Continuous Uniform Distribution. British Journal of
 Mathematics & Computer Science, 4(24), pp.3497-3507.
 
-Available at: \url{http://www.sciencedomain.org/abstract.php?iid=699&id=6&aid=6427} .
+Available at: \url{http://www.sciencedomain.org/abstract.php?iid=699&id=6&aid=6427}.
 }
