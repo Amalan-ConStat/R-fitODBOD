@@ -8,26 +8,26 @@ value are given}
 fitTriBin(x,obs.freq,mode)
 }
 \arguments{
-\item{x}{vector of binomial random variables}
+\item{x}{vector of binomial random variables.}
 
-\item{obs.freq}{vector of frequencies}
+\item{obs.freq}{vector of frequencies.}
 
-\item{mode}{single value for mode}
+\item{mode}{single value for mode.}
 }
 \value{
 The output of \code{fitTriBin} gives the class format \code{fitTB} and \code{fit} consisting a list
 
-\code{bin.ran.var} binomial random variables
+\code{bin.ran.var} binomial random variables.
 
-\code{obs.freq} corresponding observed frequencies
+\code{obs.freq} corresponding observed frequencies.
 
-\code{exp.freq} corresponding expected frequencies
+\code{exp.freq} corresponding expected frequencies.
 
-\code{statistic} chi-squared test statistics value
+\code{statistic} chi-squared test statistics value.
 
-\code{df} degree of freedom
+\code{df} degree of freedom.
 
-\code{p.value} probability value by chi-squared test statistic
+\code{p.value} probability value by chi-squared test statistic.
 
 \code{fitTB} fitted probability values of \code{dTriBin}.
 
@@ -45,7 +45,7 @@ Methods \code{summary}, \code{print}, \code{AIC}, \code{residuals} and \code{fit
 can be used to extract specific outputs.
 }
 \description{
-The function will fit the triangular binomial distribution when random variables, corresponding
+The function will fit the Triangular Binomial distribution when random variables, corresponding
 frequencies and mode parameter are given. It will provide the expected frequencies, chi-squared
 test statistics value, p value, degree of freedom and over dispersion value so that it can be
 seen if this distribution fits the data.
@@ -57,8 +57,7 @@ seen if this distribution fits the data.
 \deqn{obs.freq \ge 0}
 
 \strong{NOTE} : If input parameters are not in given domain conditions
-necessary error messages will be provided to go further. Use the functions
-summary,fitted,AIC,coef and residuals to extract information.
+necessary error messages will be provided to go further.
 }
 \examples{
 No.D.D=0:7      #assigning the random variables
@@ -84,11 +83,11 @@ Series A, 120:148-191.
 Karlis, D. & Xekalaki, E., 2008. The Polygonal Distribution. In Advances in Mathematical and Statistical
 Modeling. Boston: Birkhuser Boston, pp. 21-33.
 
-Available at: \url{http://dx.doi.org/10.1007/978-0-8176-4626-4_2} .
+Available at: \url{http://dx.doi.org/10.1007/978-0-8176-4626-4_2}.
 
 Okagbue, H. et al., 2014. Using the Average of the Extreme Values of a Triangular Distribution for a
 Transformation, and Its Approximant via the Continuous Uniform Distribution. British Journal of Mathematics
 & Computer Science, 4(24), pp.3497-3507.
 
-Available at: \url{http://www.sciencedomain.org/abstract.php?iid=699&id=6&aid=6427} .
+Available at: \url{http://www.sciencedomain.org/abstract.php?iid=699&id=6&aid=6427}.
 }

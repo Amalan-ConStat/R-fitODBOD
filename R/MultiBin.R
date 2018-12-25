@@ -427,13 +427,12 @@ EstMLEMultiBin<-function(x,freq,p,theta)
 #' p value and degree of freedom  value so that it can be seen if this distribution
 #' fits the data.
 #'
-#' @usage fitMultiBin(x,obs.freq,p,theta,print)
+#' @usage fitMultiBin(x,obs.freq,p,theta)
 #'
 #' @param x                  vector of binomial random variables
 #' @param obs.freq           vector of frequencies
 #' @param p                  single value for probability of success
 #' @param theta              single value for theta parameter
-#' @param print              logical value for print or not
 #'
 #' @details
 #' \deqn{obs.freq \ge 0}
@@ -442,7 +441,7 @@ EstMLEMultiBin<-function(x,freq,p,theta)
 #' \deqn{0 < theta }
 #'
 #' @return
-#' The output of \code{fitMultiBin} gives a list format consisting
+#' The output of \code{fitMultiBin} gives the class format \code{fitMuB} and \code{fit} consisting a list
 #'
 #' \code{bin.ran.var} binomial random variables
 #'
@@ -455,6 +454,21 @@ EstMLEMultiBin<-function(x,freq,p,theta)
 #' \code{df} degree of freedom
 #'
 #' \code{p.value} probability value by chi-squared test statistic
+#'
+#' \code{fitMuB} fitted probability values of \code{dMultiBin}
+#'
+#' \code{NegLL} Negative Log Likelihood value
+#'
+#' \code{p} estimated probability value
+#'
+#' \code{theta} estimated theta parameter value
+#'
+#' \code{AIC} AIC value
+#'
+#' \code{call} the inputs of the function
+#'
+#' Methods \code{summary}, \code{print}, \code{AIC}, \code{residuals} and \code{fitted}
+#' can be used to extract specific outputs.
 #'
 #' @references
 #' Johnson, N. L., Kemp, A. W., & Kotz, S. (2005). Univariate discrete distributions (Vol. 444).
@@ -475,6 +489,7 @@ EstMLEMultiBin<-function(x,freq,p,theta)
 #' @examples
 #' No.D.D=0:7       #assigning the random variables
 #' Obs.fre.1=c(47,54,43,40,40,41,39,95)     #assigning the corresponding frequencies
+#'
 #' #estimating the parameters using maximum log likelihood value and assigning it
 #' parameters=suppressWarnings(bbmle::mle2(EstMLEMultiBin,start = list(p=0.1,theta=.3),
 #'           data = list(x=No.D.D,freq=Obs.fre.1)))
@@ -482,12 +497,17 @@ EstMLEMultiBin<-function(x,freq,p,theta)
 #' thetaMultiBin=bbmle::coef(parameters)[2]  #assigning the estimated theta value
 #'
 #' #fitting when the random variable,frequencies,probability and theta are given
-#' fitMultiBin(No.D.D,Obs.fre.1,pMultiBin,thetaMultiBin)
+#' results<-fitMultiBin(No.D.D,Obs.fre.1,pMultiBin,thetaMultiBin)
+#' results
 #'
-#' #extracting the expected frequencies
-#' fitMultiBin(No.D.D,Obs.fre.1,pMultiBin,thetaMultiBin,FALSE)$exp.freq
+#' #extracting the AIC value
+#' AIC(results)
+#'
+#' #extract fitted values
+#' fitted(results)
+#'
 #' @export
-fitMultiBin<-function(x,obs.freq,p,theta,print=T)
+fitMultiBin<-function(x,obs.freq,p,theta)
 {
   #checking if inputs consist NA(not assigned)values, infinite values or NAN(not a number)values
   #if so creating an error message as well as stopping the function progress.
@@ -498,8 +518,9 @@ fitMultiBin<-function(x,obs.freq,p,theta,print=T)
   }
   else
   {
+    est<-dMultiBin(x,max(x),p,theta)
     #for given random variables and parameters calculating the estimated probability values
-    est.prob<-dMultiBin(x,max(x),p,theta)$pdf
+    est.prob<-est$pdf
     #using the estimated probability values the expected frequencies are calculated
     exp.freq<-round((sum(obs.freq)*est.prob),2)
     #chi-squared test statistics is calculated with observed frequency and expected frequency
@@ -508,15 +529,7 @@ fitMultiBin<-function(x,obs.freq,p,theta,print=T)
     df<-length(x)-3
     #p value of chi-squared test statistic is calculated
     p.value<-1-stats::pchisq(statistic,df)
-    #all the above information is mentioned as a message below
-    #and if the user wishes they can print or not to
-    if(print==TRUE)
-    {
-      cat("\nChi-squared test for Multiplicative Binomial Distribution\n\n
-                 Observed Frequency : ",obs.freq,"\n
-                 expected Frequency : ",exp.freq,"\n
-                 X-squared =",round(statistic,4),"df =",df,"  p-value =",round(p.value,4),"\n")
-    }
+
     #checking if df is less than or equal to zero
     if(df<0 | df==0)
     {
@@ -534,10 +547,54 @@ fitMultiBin<-function(x,obs.freq,p,theta,print=T)
     {
       warning("Chi-squared approximation is not suitable because expected frequency approximates to zero")
     }
+    #calculating Negative log likelihood value and AIC
+    NegLL<-NegLLMultiBin(x,obs.freq,p,theta)
+    AICvalue<-2*2+NegLL
     #the final output is in a list format containing the calculated values
     final<-list("bin.ran.var"=x,"obs.freq"=obs.freq,"exp.freq"=exp.freq,
-                "statistic"=round(statistic,4),"df"=df,"p.value"=round(p.value,4))
+                "statistic"=round(statistic,4),"df"=df,"p.value"=round(p.value,4),
+                "fitMuB"=est,"NegLL"=NegLL,"p"=p,"theta"=theta,"AIC"=AICvalue,
+                "call"=match.call())
+    class(final)<-c("fitMuB","fit")
+    return(final)
   }
 }
+
+#' @method fitMultiBin default
+#' @export
+fitMultiBin.default<-function(x,obs.freq,p,theta)
+{
+  est<-fitMultiBin(x,obs.freq,p,theta)
+  return(est)
+}
+
+#' @method print fitMuB
+#' @export
+print.fitMuB<-function(x,...)
+{
+  cat("Call: \n")
+  print(x$call)
+  cat("\nChi-squared test for Multiplicative Binomial Distribution \n\t
+      Observed Frequency : ",x$obs.freq,"\n\t
+      expected Frequency : ",x$exp.freq,"\n\t
+      estimated p value :",x$p," ,estimated theta parameter :",x$theta,"\n\t
+      X-squared :",x$statistic,"  ,df :",x$df,"  ,p-value :",x$p.value,"\n")
+}
+
+#' @method summary fitMuB
+#' @export
+summary.fitMuB<-function(object,...)
+{
+  cat("Call: \n")
+  print(object$call)
+  cat("\nChi-squared test for Multiplicative Binomial Distribution \n\t
+      Observed Frequency : ",object$obs.freq,"\n\t
+      expected Frequency : ",object$exp.freq,"\n\t
+      estimated p value :",object$p," ,estimated theta parameter :",object$theta,"\n\t
+      X-squared :",object$statistic,"  ,df :",object$df,"  ,p-value :",object$p.value,"\n\t
+      Negative Loglikehood value :",object$NegLL,"\n\t
+      AIC value :",object$AIC,"\n")
+}
+
 #' @importFrom bbmle mle2
 #' @importFrom stats pchisq

@@ -1,19 +1,19 @@
-#' Triangular Distribution bounded between [0,1]
+#' Triangular Distribution Bounded Between [0,1]
 #'
 #' These functions provide the ability for generating probability density values,
 #' cumulative probability density values and moments about zero values for the
-#' Triangular Distribution bounded between [0,1]
+#' Triangular Distribution bounded between [0,1].
 #'
 #' @usage
 #' dTRI(p,mode)
 #'
-#' @param p                vector of probabilities
-#' @param mode             single value for mode
+#' @param p                vector of probabilities.
+#' @param mode             single value for mode.
 #'
 #' @details
-#' Setting \eqn{min=0} and \eqn{max=1} \eqn{mode=c} in the triangular distribution
-#' a unit bounded triangular distribution can be obtained. The probability density function
-#' and cumulative density function of a unit bounded triangular distribution with random
+#' Setting \eqn{min=0} and \eqn{max=1} \eqn{mode=c} in the Triangular distribution
+#' a unit bounded Triangular distribution can be obtained. The probability density function
+#' and cumulative density function of a unit bounded Triangular distribution with random
 #' variable P are given by
 #'
 #' \deqn{g_{P}(p)= \frac{2p}{c} } ;            \eqn{0 \le p < c}
@@ -31,23 +31,23 @@
 #' \eqn{r = 1,2,3,...}
 #'
 #' \strong{NOTE} : If input parameters are not in given domain conditions
-#' necessary error messages will be provided to go further
+#' necessary error messages will be provided to go further.
 #'
 #' @return
 #' The output of \code{dTRI} gives a list format consisting
 #'
-#' \code{pdf}             probability density values in vector form
+#' \code{pdf}             probability density values in vector form.
 #'
-#' \code{mean}            mean of the unit bounded triangular distribution
+#' \code{mean}            mean of the unit bounded Triangular distribution.
 #'
-#' \code{variance}        variance of the unit bounded triangular distribution
+#' \code{variance}        variance of the unit bounded Triangular distribution
 #'
 #' @references
 #' Horsnell, G. (1957). Economic acceptance sampling schemes. Journal of the Royal Statistical Society,
 #' Series A, 120:148-191.
 #'
 #' Johnson, N. L., Kotz, S. and Balakrishnan, N. (1994) Continuous Univariate Distributions, Vol. 2,
-#' Wiley Series in Probability and Mathematical Statistics, Wiley
+#' Wiley Series in Probability and Mathematical Statistics, Wiley.
 #'
 #' Karlis, D. & Xekalaki, E., 2008. The Polygonal Distribution. In Advances in Mathematical and Statistical
 #' Modeling. Boston: Birkhuser Boston, pp. 21-33.
@@ -62,7 +62,6 @@
 #'
 #' @seealso
 #' \code{\link[triangle]{triangle}}
-#'
 #'
 #' ---------------
 #'
@@ -97,6 +96,7 @@
 #' pTRI(seq(0,1,by=0.05),0.3)      #acquiring the cumulative probability values
 #' mazTRI(1.4,.3)                  #acquiring the moment about zero values
 #' mazTRI(2,.3)-mazTRI(1,.3)^2     #variance for when is mode 0.3
+#'
 #' #only the integer value of moments is taken here because moments cannot be decimal
 #' mazTRI(1.9,0.5)
 #'
@@ -146,7 +146,7 @@ dTRI<-function(p,mode)
   return(output)
 }
 
-#' Triangular Distribution bounded between [0,1]
+#' Triangular Distribution Bounded Between [0,1]
 #'
 #' These functions provide the ability for generating probability density values,
 #' cumulative probability density values and moments about zero values for the
@@ -155,13 +155,13 @@ dTRI<-function(p,mode)
 #' @usage
 #' pTRI(p,mode)
 #'
-#' @param p                vector of probabilities
-#' @param mode             single value for mode
+#' @param p                vector of probabilities.
+#' @param mode             single value for mode.
 #'
 #' @details
-#' Setting \eqn{min=0} and \eqn{max=1} \eqn{mode=c} in the triangular distribution
-#' a unit bounded triangular distribution can be obtained. The probability density function
-#' and cumulative density function of a unit bounded triangular distribution with random
+#' Setting \eqn{min=0} and \eqn{max=1} \eqn{mode=c} in the Triangular distribution
+#' a unit bounded Triangular distribution can be obtained. The probability density function
+#' and cumulative density function of a unit bounded Triangular distribution with random
 #' variable P are given by
 #'
 #' \deqn{g_{P}(p)= \frac{2p}{c} } ;            \eqn{0 \le p < c}
@@ -190,7 +190,7 @@ dTRI<-function(p,mode)
 #' Series A, 120:148-191.
 #'
 #' Johnson, N. L., Kotz, S. and Balakrishnan, N. (1994) Continuous Univariate Distributions, Vol. 2,
-#' Wiley Series in Probability and Mathematical Statistics, Wiley
+#' Wiley Series in Probability and Mathematical Statistics, Wiley.
 #'
 #' Karlis, D. & Xekalaki, E., 2008. The Polygonal Distribution. In Advances in Mathematical and Statistical
 #' Modeling. Boston: Birkhuser Boston, pp. 21-33.
@@ -206,11 +206,9 @@ dTRI<-function(p,mode)
 #' @seealso
 #' \code{\link[triangle]{triangle}}
 #'
-#'
 #' ---------------
 #'
 #' \code{\link[extraDistr]{Triangular}}
-#'
 #'
 #' @examples
 #' #plotting the random variables and probability values
@@ -240,6 +238,7 @@ dTRI<-function(p,mode)
 #' pTRI(seq(0,1,by=0.05),0.3)      #acquiring the cumulative probability values
 #' mazTRI(1.4,.3)                  #acquiring the moment about zero values
 #' mazTRI(2,.3)-mazTRI(1,.3)^2     #variance for when is mode 0.3
+#'
 #' #only the integer value of moments is taken here because moments cannot be decimal
 #' mazTRI(1.9,0.5)
 #'
@@ -285,7 +284,7 @@ pTRI<-function(p,mode)
   }
 }
 
-#' Triangular Distribution bounded between [0,1]
+#' Triangular Distribution Bounded Between [0,1]
 #'
 #' These functions provide the ability for generating probability density values,
 #' cumulative probability density values and moments about zero values for the
@@ -294,13 +293,13 @@ pTRI<-function(p,mode)
 #' @usage
 #' mazTRI(r,mode)
 #'
-#' @param mode             single value for mode
-#' @param r                vector of moments
+#' @param mode             single value for mode.
+#' @param r                vector of moments.
 #'
 #' @details
-#' Setting \eqn{min=0} and \eqn{max=1} \eqn{mode=c} in the triangular distribution
-#' a unit bounded triangular distribution can be obtained. The probability density function
-#' and cumulative density function of a unit bounded triangular distribution with random
+#' Setting \eqn{min=0} and \eqn{max=1} \eqn{mode=c} in the Triangular distribution
+#' a unit bounded Triangular distribution can be obtained. The probability density function
+#' and cumulative density function of a unit bounded Triangular distribution with random
 #' variable P are given by
 #'
 #' \deqn{g_{P}(p)= \frac{2p}{c} } ;            \eqn{0 \le p < c}
@@ -318,7 +317,7 @@ pTRI<-function(p,mode)
 #' \eqn{r = 1,2,3,...}
 #'
 #' \strong{NOTE} : If input parameters are not in given domain conditions
-#' necessary error messages will be provided to go further
+#' necessary error messages will be provided to go further.
 #'
 #' @return
 #'
@@ -329,12 +328,12 @@ pTRI<-function(p,mode)
 #' Series A, 120:148-191.
 #'
 #' Johnson, N. L., Kotz, S. and Balakrishnan, N. (1994) Continuous Univariate Distributions, Vol. 2,
-#' Wiley Series in Probability and Mathematical Statistics, Wiley
+#' Wiley Series in Probability and Mathematical Statistics, Wiley.
 #'
 #' Karlis, D. & Xekalaki, E., 2008. The Polygonal Distribution. In Advances in Mathematical and Statistical
 #' Modeling. Boston: Birkhuser Boston, pp. 21-33.
 #'
-#' Available at: \url{http://dx.doi.org/10.1007/978-0-8176-4626-4_2} .
+#' Available at: \url{http://dx.doi.org/10.1007/978-0-8176-4626-4_2}.
 #'
 #' Okagbue, H. et al., 2014. Using the Average of the Extreme Values of a Triangular Distribution for a
 #' Transformation, and Its Approximant via the Continuous Uniform Distribution. British Journal of Mathematics
@@ -345,12 +344,9 @@ pTRI<-function(p,mode)
 #' @seealso
 #' \code{\link[triangle]{triangle}}
 #'
-#'
 #' ---------------
 #'
 #' \code{\link[extraDistr]{Triangular}}
-#'
-
 #'
 #' @examples
 #' #plotting the random variables and probability values
@@ -380,6 +376,7 @@ pTRI<-function(p,mode)
 #' pTRI(seq(0,1,by=0.05),0.3)      #acquiring the cumulative probability values
 #' mazTRI(1.4,.3)                  #acquiring the moment about zero values
 #' mazTRI(2,.3)-mazTRI(1,.3)^2     #variance for when is mode 0.3
+#'
 #' #only the integer value of moments is taken here because moments cannot be decimal
 #' mazTRI(1.9,0.5)
 #'
@@ -434,16 +431,16 @@ mazTRI<-function(r,mode)
 #' @usage
 #' dTriBin(x,n,mode)
 #'
-#' @param x        vector of binomial random variables
-#' @param n        single value for no of binomial trials
-#' @param mode     single value for mode
+#' @param x        vector of binomial random variables.
+#' @param n        single value for no of binomial trials.
+#' @param mode     single value for mode.
 #'
 #' @details
-#' Mixing unit bounded triangular distribution with binomial distribution will create
+#' Mixing unit bounded Triangular distribution with Binomial distribution will create
 #' Triangular Binomial distribution. The probability function and cumulative probability function
 #' can be constructed and are denoted below.
 #'
-#' The cumulative probability function is the summation of probability function values
+#' The cumulative probability function is the summation of probability function values.
 #'
 #' \deqn{P_{TriBin}(x)= 2 {n \choose x}(c^{-1}B_c(x+2,n-x+1)+(1-c)^{-1}B(x+1,n-x+2)-(1-c)^{-1}B_c(x+1,n-x+2))}
 #' \deqn{0 < mode=c < 1}
@@ -459,18 +456,18 @@ mazTRI<-function(r,mode)
 #' and \eqn{B(a,b)} is the beta function.
 #'
 #' \strong{NOTE} : If input parameters are not in given domain conditions
-#' necessary error messages will be provided to go further
+#' necessary error messages will be provided to go further.
 #'
 #' @return
 #' The output of \code{dTriBin} gives a list format consisting
 #'
-#' \code{pdf}             probability function values in vector form
+#' \code{pdf}             probability function values in vector form.
 #'
-#' \code{mean}            mean of the Triangular Binomial Distribution
+#' \code{mean}            mean of the Triangular Binomial Distribution.
 #'
-#' \code{var}             variance of the Triangular Binomial Distribution
+#' \code{var}             variance of the Triangular Binomial Distribution.
 #'
-#' \code{over.dis.para}   over dispersion value of the Triangular Binomial Distribution
+#' \code{over.dis.para}   over dispersion value of the Triangular Binomial Distribution.
 #'
 #' @references
 #' Horsnell, G. (1957). Economic acceptance sampling schemes. Journal of the Royal Statistical Society,
@@ -485,7 +482,7 @@ mazTRI<-function(r,mode)
 #' Transformation, and Its Approximant via the Continuous Uniform Distribution. British Journal of Mathematics
 #' & Computer Science, 4(24), pp.3497-3507.
 #'
-#' Available at: \url{http://www.sciencedomain.org/abstract.php?iid=699&id=6&aid=6427} .
+#' Available at: \url{http://www.sciencedomain.org/abstract.php?iid=699&id=6&aid=6427}.
 #'
 #' @examples
 #' #plotting the random variables and probability values
@@ -514,6 +511,7 @@ mazTRI<-function(r,mode)
 #' lines(0:10,pTriBin(0:10,10,x[i]),col = col[i],lwd=2.85)
 #' points(0:10,pTriBin(0:10,10,x[i]),col = col[i],pch=16)
 #' }
+#'
 #' pTriBin(0:10,10,.4)    #acquiring the cumulative probability values
 #'
 #' @export
@@ -603,11 +601,11 @@ dTriBin<-function(x,n,mode)
 #' @param mode     single value for mode
 #'
 #' @details
-#' Mixing unit bounded triangular distribution with binomial distribution will create
+#' Mixing unit bounded Triangular distribution with Binomial distribution will create
 #' Triangular Binomial distribution. The probability function and cumulative probability function
 #' can be constructed and are denoted below.
 #'
-#' The cumulative probability function is the summation of probability function values
+#' The cumulative probability function is the summation of probability function values.
 #'
 #' \deqn{P_{TriBin}(x)= 2 {n \choose x}(c^{-1}B_c(x+2,n-x+1)+(1-c)^{-1}B(x+1,n-x+2)-(1-c)^{-1}B_c(x+1,n-x+2))}
 #' \deqn{0 < mode=c < 1}
@@ -623,7 +621,7 @@ dTriBin<-function(x,n,mode)
 #' and \eqn{B(a,b)} is the beta function.
 #'
 #' \strong{NOTE} : If input parameters are not in given domain conditions
-#' necessary error messages will be provided to go further
+#' necessary error messages will be provided to go further.
 #'
 #' @return
 #'
@@ -636,13 +634,13 @@ dTriBin<-function(x,n,mode)
 #' Karlis, D. & Xekalaki, E., 2008. The Polygonal Distribution. In Advances in Mathematical and Statistical
 #' Modeling. Boston: Birkhuser Boston, pp. 21-33.
 #'
-#' Available at: \url{http://dx.doi.org/10.1007/978-0-8176-4626-4_2} .
+#' Available at: \url{http://dx.doi.org/10.1007/978-0-8176-4626-4_2}.
 #'
 #' Okagbue, H. et al., 2014. Using the Average of the Extreme Values of a Triangular Distribution for a
 #' Transformation, and Its Approximant via the Continuous Uniform Distribution. British Journal of Mathematics
 #' & Computer Science, 4(24), pp.3497-3507.
 #'
-#' Available at: \url{http://www.sciencedomain.org/abstract.php?iid=699&id=6&aid=6427} .
+#' Available at: \url{http://www.sciencedomain.org/abstract.php?iid=699&id=6&aid=6427}.
 #'
 #' @examples
 #' #plotting the random variables and probability values
@@ -671,6 +669,7 @@ dTriBin<-function(x,n,mode)
 #' lines(0:10,pTriBin(0:10,10,x[i]),col = col[i],lwd=2.85)
 #' points(0:10,pTriBin(0:10,10,x[i]),col = col[i],pch=16)
 #' }
+#'
 #' pTriBin(0:10,10,.4)    #acquiring the cumulative probability values
 #'
 #' @export
@@ -690,15 +689,15 @@ pTriBin<-function(x,n,mode)
 
 #' Negative Log Likelihood value of Triangular Binomial Distribution
 #'
-#' This function will calculate the negative log likelihood value when the vector of binomial random
+#' This function will calculate the Negative Log Likelihood value when the vector of binomial random
 #' variables and vector of corresponding frequencies are given with the mode value.
 #'
 #' @usage
 #' NegLLTriBin(x,freq,mode)
 #'
-#' @param x                  vector of binomial random variables
-#' @param freq               vector of frequencies
-#' @param mode               single value for mode
+#' @param x                  vector of binomial random variables.
+#' @param freq               vector of frequencies.
+#' @param mode               single value for mode.
 #'
 #' @details
 #' \deqn{0 < mode=c < 1}
@@ -706,10 +705,10 @@ pTriBin<-function(x,n,mode)
 #' \deqn{freq \ge 0}
 #'
 #' \strong{NOTE} : If input parameters are not in given domain conditions necessary error
-#'  messages will be provided to go further
+#'  messages will be provided to go further.
 #'
 #' @return
-#' The output of \code{NegLLTriBin} will produce a single numeric value
+#' The output of \code{NegLLTriBin} will produce a single numeric value.
 #'
 #' @references
 #' Horsnell, G. (1957). Economic acceptance sampling schemes. Journal of the Royal Statistical Society,
@@ -718,17 +717,18 @@ pTriBin<-function(x,n,mode)
 #' Karlis, D. & Xekalaki, E., 2008. The Polygonal Distribution. In Advances in Mathematical and Statistical
 #' Modeling. Boston: Birkhuser Boston, pp. 21-33.
 #'
-#' Available at: \url{http://dx.doi.org/10.1007/978-0-8176-4626-4_2} .
+#' Available at: \url{http://dx.doi.org/10.1007/978-0-8176-4626-4_2}.
 #'
 #' Okagbue, H. et al., 2014. Using the Average of the Extreme Values of a Triangular Distribution for a
 #' Transformation, and Its Approximant via the Continuous Uniform Distribution. British Journal of Mathematics
 #' & Computer Science, 4(24), pp.3497-3507.
 #'
-#' Available at: \url{http://www.sciencedomain.org/abstract.php?iid=699&id=6&aid=6427} .
+#' Available at: \url{http://www.sciencedomain.org/abstract.php?iid=699&id=6&aid=6427}.
 #'
 #' @examples
 #' No.D.D=0:7    #assigning the Random variables
 #' Obs.fre.1=c(47,54,43,40,40,41,39,95) #assigning the corresponding frequencies
+#'
 #' NegLLTriBin(No.D.D,Obs.fre.1,.023)   #acquiring the Negative log likelihood value
 #'
 #' @export
@@ -809,14 +809,14 @@ NegLLTriBin<-function(x,freq,mode)
 #' Estimating the mode value for Triangular Binomial Distribution
 #'
 #' The function will estimate the mode value using the maximum log likelihood method for the
-#' triangular binomial distribution when the binomial random variables and corresponding frequencies
+#' Triangular Binomial Distribution when the binomial random variables and corresponding frequencies
 #' are given
 #'
 #' @usage
 #' EstMLETriBin(x,freq)
 #'
-#' @param x                  vector of binomial random variables
-#' @param freq               vector of frequencies
+#' @param x                  vector of binomial random variables.
+#' @param freq               vector of frequencies.
 #'
 #' @details
 #' \deqn{0 < mode=c < 1}
@@ -824,20 +824,19 @@ NegLLTriBin<-function(x,freq,mode)
 #' \deqn{freq \ge 0}
 #'
 #' \strong{NOTE} : If input parameters are not in given domain conditions necessary error
-#'  messages will be provided to go further. We can use the functions summary, coef
-#'  and AIC to extract information.
+#'  messages will be provided to go further.
 #'
 #' @return
 #' The output of \code{EstMLETriBin} will produce the classes of \code{ml} and \code{mlTB}
 #' format consisting
 #'
-#' \code{min}  Negative log likelihood value
+#' \code{min}  Negative log likelihood value.
 #'
-#' \code{mode}  Estimated mode value
+#' \code{mode}  Estimated mode value.
 #'
-#' \code{AIC}   AIC value
+#' \code{AIC}   AIC value.
 #'
-#' \code{call} the inputs for the function
+#' \code{call} the inputs for the function.
 #'
 #' Methods \code{print}, \code{summary}, \code{coef} and \code{AIC} can be used to
 #' extract specific outputs.
@@ -849,17 +848,18 @@ NegLLTriBin<-function(x,freq,mode)
 #' Karlis, D. & Xekalaki, E., 2008. The Polygonal Distribution. In Advances in Mathematical and Statistical
 #' Modeling. Boston: Birkhuser Boston, pp. 21-33.
 #'
-#' Available at: \url{http://dx.doi.org/10.1007/978-0-8176-4626-4_2} .
+#' Available at: \url{http://dx.doi.org/10.1007/978-0-8176-4626-4_2}.
 #'
 #' Okagbue, H. et al., 2014. Using the Average of the Extreme Values of a Triangular Distribution for a
 #' Transformation, and Its Approximant via the Continuous Uniform Distribution. British Journal of Mathematics
 #' & Computer Science, 4(24), pp.3497-3507.
 #'
-#' Available at: \url{http://www.sciencedomain.org/abstract.php?iid=699&id=6&aid=6427} .
+#' Available at: \url{http://www.sciencedomain.org/abstract.php?iid=699&id=6&aid=6427}.
 #'
 #' @examples
 #' No.D.D=0:7   #assigning the random variables
 #' Obs.fre.1=c(47,54,43,40,40,41,39,95)   #assigning the corresponding frequencies
+#'
 #' \dontrun{
 #' results<-EstMLETriBin(No.D.D,Obs.fre.1)    #estimating the mode value and extracting the mode value
 #'
@@ -987,16 +987,16 @@ coef.mlTRI<-function(object,...)
 #' Fitting the Triangular Binomial Distribution when binomial random variable, frequency and mode
 #' value are given
 #'
-#' The function will fit the triangular binomial distribution when random variables, corresponding
+#' The function will fit the Triangular Binomial distribution when random variables, corresponding
 #' frequencies and mode parameter are given. It will provide the expected frequencies, chi-squared
 #' test statistics value, p value, degree of freedom and over dispersion value so that it can be
 #' seen if this distribution fits the data.
 #'
 #' @usage fitTriBin(x,obs.freq,mode)
 #'
-#' @param x                  vector of binomial random variables
-#' @param obs.freq           vector of frequencies
-#' @param mode               single value for mode
+#' @param x                  vector of binomial random variables.
+#' @param obs.freq           vector of frequencies.
+#' @param mode               single value for mode.
 #'
 #' @details
 #' \deqn{0 < mode=c < 1}
@@ -1005,23 +1005,22 @@ coef.mlTRI<-function(object,...)
 #' \deqn{obs.freq \ge 0}
 #'
 #' \strong{NOTE} : If input parameters are not in given domain conditions
-#' necessary error messages will be provided to go further. Use the functions
-#' summary,fitted,AIC,coef and residuals to extract information.
+#' necessary error messages will be provided to go further.
 #'
 #' @return
 #' The output of \code{fitTriBin} gives the class format \code{fitTB} and \code{fit} consisting a list
 #'
-#' \code{bin.ran.var} binomial random variables
+#' \code{bin.ran.var} binomial random variables.
 #'
-#' \code{obs.freq} corresponding observed frequencies
+#' \code{obs.freq} corresponding observed frequencies.
 #'
-#' \code{exp.freq} corresponding expected frequencies
+#' \code{exp.freq} corresponding expected frequencies.
 #'
-#' \code{statistic} chi-squared test statistics value
+#' \code{statistic} chi-squared test statistics value.
 #'
-#' \code{df} degree of freedom
+#' \code{df} degree of freedom.
 #'
-#' \code{p.value} probability value by chi-squared test statistic
+#' \code{p.value} probability value by chi-squared test statistic.
 #'
 #' \code{fitTB} fitted probability values of \code{dTriBin}.
 #'
@@ -1045,13 +1044,13 @@ coef.mlTRI<-function(object,...)
 #' Karlis, D. & Xekalaki, E., 2008. The Polygonal Distribution. In Advances in Mathematical and Statistical
 #' Modeling. Boston: Birkhuser Boston, pp. 21-33.
 #'
-#' Available at: \url{http://dx.doi.org/10.1007/978-0-8176-4626-4_2} .
+#' Available at: \url{http://dx.doi.org/10.1007/978-0-8176-4626-4_2}.
 #'
 #' Okagbue, H. et al., 2014. Using the Average of the Extreme Values of a Triangular Distribution for a
 #' Transformation, and Its Approximant via the Continuous Uniform Distribution. British Journal of Mathematics
 #' & Computer Science, 4(24), pp.3497-3507.
 #'
-#' Available at: \url{http://www.sciencedomain.org/abstract.php?iid=699&id=6&aid=6427} .
+#' Available at: \url{http://www.sciencedomain.org/abstract.php?iid=699&id=6&aid=6427}.
 #'
 #' @examples
 #' No.D.D=0:7      #assigning the random variables

@@ -2,33 +2,33 @@
 % Please edit documentation in R/Triangle.R
 \name{dTRI}
 \alias{dTRI}
-\title{Triangular Distribution bounded between [0,1]}
+\title{Triangular Distribution Bounded Between [0,1]}
 \usage{
 dTRI(p,mode)
 }
 \arguments{
-\item{p}{vector of probabilities}
+\item{p}{vector of probabilities.}
 
-\item{mode}{single value for mode}
+\item{mode}{single value for mode.}
 }
 \value{
 The output of \code{dTRI} gives a list format consisting
 
-\code{pdf}             probability density values in vector form
+\code{pdf}             probability density values in vector form.
 
-\code{mean}            mean of the unit bounded triangular distribution
+\code{mean}            mean of the unit bounded Triangular distribution.
 
-\code{variance}        variance of the unit bounded triangular distribution
+\code{variance}        variance of the unit bounded Triangular distribution
 }
 \description{
 These functions provide the ability for generating probability density values,
 cumulative probability density values and moments about zero values for the
-Triangular Distribution bounded between [0,1]
+Triangular Distribution bounded between [0,1].
 }
 \details{
-Setting \eqn{min=0} and \eqn{max=1} \eqn{mode=c} in the triangular distribution
-a unit bounded triangular distribution can be obtained. The probability density function
-and cumulative density function of a unit bounded triangular distribution with random
+Setting \eqn{min=0} and \eqn{max=1} \eqn{mode=c} in the Triangular distribution
+a unit bounded Triangular distribution can be obtained. The probability density function
+and cumulative density function of a unit bounded Triangular distribution with random
 variable P are given by
 
 \deqn{g_{P}(p)= \frac{2p}{c} } ;            \eqn{0 \le p < c}
@@ -46,7 +46,7 @@ Moments about zero is denoted as
 \eqn{r = 1,2,3,...}
 
 \strong{NOTE} : If input parameters are not in given domain conditions
-necessary error messages will be provided to go further
+necessary error messages will be provided to go further.
 }
 \examples{
 #plotting the random variables and probability values
@@ -76,6 +76,7 @@ lines(seq(0,1,by=0.01),pTRI(seq(0,1,by=0.01),x[i]),col = col[i])
 pTRI(seq(0,1,by=0.05),0.3)      #acquiring the cumulative probability values
 mazTRI(1.4,.3)                  #acquiring the moment about zero values
 mazTRI(2,.3)-mazTRI(1,.3)^2     #variance for when is mode 0.3
+
 #only the integer value of moments is taken here because moments cannot be decimal
 mazTRI(1.9,0.5)
 
@@ -85,7 +86,7 @@ Horsnell, G. (1957). Economic acceptance sampling schemes. Journal of the Royal 
 Series A, 120:148-191.
 
 Johnson, N. L., Kotz, S. and Balakrishnan, N. (1994) Continuous Univariate Distributions, Vol. 2,
-Wiley Series in Probability and Mathematical Statistics, Wiley
+Wiley Series in Probability and Mathematical Statistics, Wiley.
 
 Karlis, D. & Xekalaki, E., 2008. The Polygonal Distribution. In Advances in Mathematical and Statistical
 Modeling. Boston: Birkhuser Boston, pp. 21-33.
@@ -100,7 +101,6 @@ Available at: \url{http://www.sciencedomain.org/abstract.php?iid=699&id=6&aid=64
 }
 \seealso{
 \code{\link[triangle]{triangle}}
-
 
 ---------------
 

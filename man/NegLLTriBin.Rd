@@ -7,17 +7,17 @@
 NegLLTriBin(x,freq,mode)
 }
 \arguments{
-\item{x}{vector of binomial random variables}
+\item{x}{vector of binomial random variables.}
 
-\item{freq}{vector of frequencies}
+\item{freq}{vector of frequencies.}
 
-\item{mode}{single value for mode}
+\item{mode}{single value for mode.}
 }
 \value{
-The output of \code{NegLLTriBin} will produce a single numeric value
+The output of \code{NegLLTriBin} will produce a single numeric value.
 }
 \description{
-This function will calculate the negative log likelihood value when the vector of binomial random
+This function will calculate the Negative Log Likelihood value when the vector of binomial random
 variables and vector of corresponding frequencies are given with the mode value.
 }
 \details{
@@ -26,11 +26,12 @@ variables and vector of corresponding frequencies are given with the mode value.
 \deqn{freq \ge 0}
 
 \strong{NOTE} : If input parameters are not in given domain conditions necessary error
- messages will be provided to go further
+ messages will be provided to go further.
 }
 \examples{
 No.D.D=0:7    #assigning the Random variables
 Obs.fre.1=c(47,54,43,40,40,41,39,95) #assigning the corresponding frequencies
+
 NegLLTriBin(No.D.D,Obs.fre.1,.023)   #acquiring the Negative log likelihood value
 
 }
@@ -41,11 +42,11 @@ Series A, 120:148-191.
 Karlis, D. & Xekalaki, E., 2008. The Polygonal Distribution. In Advances in Mathematical and Statistical
 Modeling. Boston: Birkhuser Boston, pp. 21-33.
 
-Available at: \url{http://dx.doi.org/10.1007/978-0-8176-4626-4_2} .
+Available at: \url{http://dx.doi.org/10.1007/978-0-8176-4626-4_2}.
 
 Okagbue, H. et al., 2014. Using the Average of the Extreme Values of a Triangular Distribution for a
 Transformation, and Its Approximant via the Continuous Uniform Distribution. British Journal of Mathematics
 & Computer Science, 4(24), pp.3497-3507.
 
-Available at: \url{http://www.sciencedomain.org/abstract.php?iid=699&id=6&aid=6427} .
+Available at: \url{http://www.sciencedomain.org/abstract.php?iid=699&id=6&aid=6427}.
 }

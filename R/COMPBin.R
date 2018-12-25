@@ -557,7 +557,7 @@ summary.fitCPB<-function(object,...)
   cat("\nChi-squared test for COM Poisson Binomial Distribution \n\t
       Observed Frequency : ",object$obs.freq,"\n\t
       expected Frequency : ",object$exp.freq,"\n\t
-      estimated p value :",object$p," ,estimated v parameter :",x$v,"\n\t
+      estimated p value :",object$p," ,estimated v parameter :",object$v,"\n\t
       X-squared :",object$statistic,"  ,df :",object$df,"  ,p-value :",object$p.value,"\n\t
       Negative Loglikehood value :",object$NegLL,"\n\t
       AIC value :",object$AIC,"\n")

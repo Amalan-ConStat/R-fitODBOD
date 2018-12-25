@@ -760,7 +760,7 @@ summary.fitAB<-function(object,...)
   cat("\nChi-squared test for Additive Binomial Distribution \n\t
       Observed Frequency : ",object$obs.freq,"\n\t
       expected Frequency : ",object$exp.freq,"\n\t
-      estimated p value :",object$p," ,estimated alpha parameter :",x$alpha,"\n\t
+      estimated p value :",object$p," ,estimated alpha parameter :",object$alpha,"\n\t
       X-squared :",object$statistic,"  ,df :",object$df,"  ,p-value :",object$p.value,"\n\t
       Negative Loglikehood value :",object$NegLL,"\n\t
       AIC value :",object$AIC,"\n")

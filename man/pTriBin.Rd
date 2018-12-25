@@ -21,11 +21,11 @@ These functions provide the ability for generating probability function values a
 cumulative probability function values for the Triangular Binomial distribution.
 }
 \details{
-Mixing unit bounded triangular distribution with binomial distribution will create
+Mixing unit bounded Triangular distribution with Binomial distribution will create
 Triangular Binomial distribution. The probability function and cumulative probability function
 can be constructed and are denoted below.
 
-The cumulative probability function is the summation of probability function values
+The cumulative probability function is the summation of probability function values.
 
 \deqn{P_{TriBin}(x)= 2 {n \choose x}(c^{-1}B_c(x+2,n-x+1)+(1-c)^{-1}B(x+1,n-x+2)-(1-c)^{-1}B_c(x+1,n-x+2))}
 \deqn{0 < mode=c < 1}
@@ -41,7 +41,7 @@ Defined as \eqn{B_c(a,b)=\int^c_0 t^{a-1} (1-t)^{b-1} \,dt} is incomplete beta i
 and \eqn{B(a,b)} is the beta function.
 
 \strong{NOTE} : If input parameters are not in given domain conditions
-necessary error messages will be provided to go further
+necessary error messages will be provided to go further.
 }
 \examples{
 #plotting the random variables and probability values
@@ -70,6 +70,7 @@ for (i in 1:7)
 lines(0:10,pTriBin(0:10,10,x[i]),col = col[i],lwd=2.85)
 points(0:10,pTriBin(0:10,10,x[i]),col = col[i],pch=16)
 }
+
 pTriBin(0:10,10,.4)    #acquiring the cumulative probability values
 
 }
@@ -80,11 +81,11 @@ Series A, 120:148-191.
 Karlis, D. & Xekalaki, E., 2008. The Polygonal Distribution. In Advances in Mathematical and Statistical
 Modeling. Boston: Birkhuser Boston, pp. 21-33.
 
-Available at: \url{http://dx.doi.org/10.1007/978-0-8176-4626-4_2} .
+Available at: \url{http://dx.doi.org/10.1007/978-0-8176-4626-4_2}.
 
 Okagbue, H. et al., 2014. Using the Average of the Extreme Values of a Triangular Distribution for a
 Transformation, and Its Approximant via the Continuous Uniform Distribution. British Journal of Mathematics
 & Computer Science, 4(24), pp.3497-3507.
 
-Available at: \url{http://www.sciencedomain.org/abstract.php?iid=699&id=6&aid=6427} .
+Available at: \url{http://www.sciencedomain.org/abstract.php?iid=699&id=6&aid=6427}.
 }
