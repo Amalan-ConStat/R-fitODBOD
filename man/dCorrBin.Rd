@@ -7,28 +7,28 @@
 dCorrBin(x,n,p,cov)
 }
 \arguments{
-\item{x}{vector of binomial random variables}
+\item{x}{vector of binomial random variables.}
 
-\item{n}{single value for no of binomial trials}
+\item{n}{single value for no of binomial trials.}
 
-\item{p}{single value for probability of success}
+\item{p}{single value for probability of success.}
 
-\item{cov}{single value for covariance}
+\item{cov}{single value for covariance.}
 }
 \value{
 The output of \code{dCorrBin} gives a list format consisting
 
-\code{pdf}           probability function values in vector form
+\code{pdf}           probability function values in vector form.
 
-\code{mean}          mean of Correlated  Binomial Distribution
+\code{mean}          mean of Correlated  Binomial Distribution.
 
-\code{var}           variance of Correlated  Binomial Distribution
+\code{var}           variance of Correlated  Binomial Distribution.
 
-\code{corr}          correlation of Correlated Binomial Distribution
+\code{corr}          correlation of Correlated Binomial Distribution.
 
-\code{mincorr}       minimum correlation value possible
+\code{mincorr}       minimum correlation value possible.
 
-\code{maxcorr}       maximum correlation value possible
+\code{maxcorr}       maximum correlation value possible.
 }
 \description{
 These functions provide the ability for generating probability function values and
@@ -37,7 +37,7 @@ cumulative probability function values for the Correlated  Binomial Distribution
 \details{
 The probability function and cumulative function can be constructed and are denoted below
 
-The cumulative probability function is the summation of probability function values
+The cumulative probability function is the summation of probability function values.
 
 \deqn{P_{CorrBin}(x) = {n \choose x}(p^x)(1-p)^{n-x}(1+(\frac{cov}{2p^2(1-p)^2})((x-np)^2+x(2p-1)-np^2)) }
 \deqn{x = 0,1,2,3,...n}
@@ -55,7 +55,7 @@ The mean and the variance are denoted as
 \deqn{Corr_{CorrBin}[x]=\frac{cov}{p(1-p)}}
 
 \strong{NOTE} : If input parameters are not in given domain conditions
-necessary error messages will be provided to go further
+necessary error messages will be provided to go further.
 }
 \examples{
 #plotting the random variables and probability values
@@ -69,6 +69,7 @@ for (i in 1:5)
 lines(0:10,dCorrBin(0:10,10,a[i],b[i])$pdf,col = col[i],lwd=2.85)
 points(0:10,dCorrBin(0:10,10,a[i],b[i])$pdf,col = col[i],pch=16)
 }
+
 dCorrBin(0:10,10,0.58,0.022)$pdf      #extracting the pdf values
 dCorrBin(0:10,10,0.58,0.022)$mean     #extracting the mean
 dCorrBin(0:10,10,0.58,0.022)$var      #extracting the variance
@@ -87,6 +88,7 @@ for (i in 1:5)
 lines(0:10,pCorrBin(0:10,10,a[i],b[i]),col = col[i],lwd=2.85)
 points(0:10,pCorrBin(0:10,10,a[i],b[i]),col = col[i],pch=16)
 }
+
 pCorrBin(0:10,10,0.58,0.022)      #acquiring the cumulative probability values
 
 }

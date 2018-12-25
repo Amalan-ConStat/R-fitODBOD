@@ -8,38 +8,38 @@ random variable, frequency, probability of success and covariance are given}
 fitCorrBin(x,obs.freq,p,cov)
 }
 \arguments{
-\item{x}{vector of binomial random variables}
+\item{x}{vector of binomial random variables.}
 
-\item{obs.freq}{vector of frequencies}
+\item{obs.freq}{vector of frequencies.}
 
-\item{p}{single value for probability of success}
+\item{p}{single value for probability of success.}
 
-\item{cov}{single value for covariance}
+\item{cov}{single value for covariance.}
 }
 \value{
 The output of \code{fitCorrBin} gives the class format \code{fitCB} and \code{fit} consisting a list
 
-\code{bin.ran.var} binomial random variables
+\code{bin.ran.var} binomial random variables.
 
-\code{obs.freq} corresponding observed frequencies
+\code{obs.freq} corresponding observed frequencies.
 
-\code{exp.freq} corresponding expected frequencies
+\code{exp.freq} corresponding expected frequencies.
 
-\code{statistic} chi-squared test statistics
+\code{statistic} chi-squared test statistics.
 
-\code{df} degree of freedom
+\code{df} degree of freedom.
 
-\code{p.value} probability value by chi-squared test statistic
+\code{p.value} probability value by chi-squared test statistic.
 
-\code{corr}    Correlation value
+\code{corr}    Correlation value.
 
-\code{fitCB} fitted probability values of \code{dCorrBin}
+\code{fitCB} fitted probability values of \code{dCorrBin}.
 
-\code{NegLL} Negative Log Likelihood value
+\code{NegLL} Negative Log Likelihood value.
 
-\code{AIC} AIC value
+\code{AIC} AIC value.
 
-\code{call} the inputs of the function
+\code{call} the inputs of the function.
 
 Methods \code{summary}, \code{print}, \code{AIC}, \code{residuals} and \code{fitted}
 can be used to extract specific outputs.
@@ -57,15 +57,16 @@ and degree of freedom so that it can be seen if this distribution fits the data.
 \deqn{-\infty < cov < +\infty}
 
 \strong{NOTE} : If input parameters are not in given domain conditions
-necessary error messages will be provided to go further
+necessary error messages will be provided to go further.
 }
 \examples{
-No.D.D=0:7                    #assigning the random variables
+No.D.D=0:7       #assigning the random variables
 Obs.fre.1=c(47,54,43,40,40,41,39,95)      #assigning the corresponding frequencies
 
 #estimating the parameters using maximum log likelihood value and assigning it
 parameters=suppressWarnings(bbmle::mle2(EstMLECorrBin,start = list(p=0.5,cov=0.0050),
            data = list(x=No.D.D,freq=Obs.fre.1)))
+
 pCorrBin=bbmle::coef(parameters)[1]
 covCorrBin=bbmle::coef(parameters)[2]
 
@@ -90,7 +91,7 @@ Experiments. Biometrics, 34(1), pp.69-76.
 Paul, S.R., 1985. A three-parameter generalization of the binomial distribution. Communications in Statistics
 - Theory and Methods, 14(6), pp.1497-1506.
 
-Available at: \url{http://www.tandfonline.com/doi/abs/10.1080/03610928508828990} .
+Available at: \url{http://www.tandfonline.com/doi/abs/10.1080/03610928508828990}.
 
 Jorge G. Morel and Nagaraj K. Neerchal. Overdispersion Models in SAS. SAS Institute, 2012.
 }
