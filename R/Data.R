@@ -270,6 +270,11 @@
 #'
 "Epidemic_Cold"
 
+#' @export
+.onAttach<-function(libname,pkgname)
+{
+  packageStartupMessage("Hello, This is Amalan. For more details refer --> https://amalan-constat.github.io/R-fitODBOD/index.html")
+}
 
 #' Binomial Data Extraction from Raw data
 #'
