@@ -55,7 +55,6 @@
 #' @seealso
 #' \code{\link[extraDistr]{Kumaraswamy}}
 #'
-#'
 #' @examples
 #' #plotting the random variables and probability values
 #' col<-rainbow(4)
@@ -181,7 +180,6 @@ dKUM<-function(p,a,b)
 #' @seealso
 #' \code{\link[extraDistr]{Kumaraswamy}}
 #'
-#'
 #' @examples
 #' #plotting the random variables and probability values
 #' col<-rainbow(4)
@@ -257,14 +255,14 @@ pKUM<-function(p,a,b)
 #'
 #' These functions provide the ability for generating probability density values,
 #' cumulative probability density values and moment about zero values for the
-#' Kumaraswamy Distribution bounded between [0,1]
+#' Kumaraswamy Distribution bounded between [0,1].
 #'
 #' @usage
 #' mazKUM(r,a,b)
 #'
-#' @param a              single value for shape parameter alpha representing as a
-#' @param b              single value for shape parameter beta representing as b
-#' @param r              vector of moments
+#' @param a              single value for shape parameter alpha representing as a.
+#' @param b              single value for shape parameter beta representing as b.
+#' @param r              vector of moments.
 #'
 #' @details
 #' The probability density function and cumulative density function of a unit
@@ -285,26 +283,24 @@ pKUM<-function(p,a,b)
 #' Defined as \eqn{B(a,b)} is the beta function.
 #'
 #' \strong{NOTE} : If input parameters are not in given domain conditions
-#' necessary error messages will be provided to go further
+#' necessary error messages will be provided to go further.
 #'
 #' @return
-#'
 #' The output of \code{mazKUM} gives the moments about zero in vector form.
 #'
 #' @references
 #' Kumaraswamy, P. (1980). A generalized probability density function for double-bounded random processes.
 #' Journal of Hydrology, 46(1), 79-88.
 #'
-#' Available at : \url{http://dx.doi.org/10.1016/0022-1694(80)90036-0}
+#' Available at : \url{http://dx.doi.org/10.1016/0022-1694(80)90036-0}.
 #'
 #' Jones, M. C. (2009). Kumaraswamy's distribution: A beta-type distribution with some tractability advantages.
 #' Statistical Methodology, 6(1), 70-81.
 #'
-#' Available at : \url{http://dx.doi.org/10.1016/j.stamet.2008.04.001}
+#' Available at : \url{http://dx.doi.org/10.1016/j.stamet.2008.04.001}.
 #'
 #' @seealso
 #' \code{\link[extraDistr]{Kumaraswamy}}
-#'
 #'
 #' @examples
 #' #plotting the random variables and probability values
@@ -316,6 +312,7 @@ pKUM<-function(p,a,b)
 #' {
 #' lines(seq(0,1,by=0.01),dKUM(seq(0,1,by=0.01),a[i],a[i])$pdf,col = col[i])
 #' }
+#'
 #' dKUM(seq(0,1,by=0.01),2,3)$pdf   #extracting the probability values
 #' dKUM(seq(0,1,by=0.01),2,3)$mean  #extracting the mean
 #' dKUM(seq(0,1,by=0.01),2,3)$var   #extracting the variance
@@ -329,10 +326,12 @@ pKUM<-function(p,a,b)
 #' {
 #' lines(seq(0,1,by=0.01),pKUM(seq(0,1,by=0.01),a[i],a[i]),col = col[i])
 #' }
+#'
 #' pKUM(seq(0,1,by=0.01),2,3)    #acquiring the cumulative probability values
 #' mazKUM(1.4,3,2)               #acquiring the moment about zero values
 #' mazKUM(2,2,3)-mazKUM(1,2,3)^2  #acquiring the variance for a=2,b=3
-#'  #only the integer value of moments is taken here because moments cannot be decimal
+#'
+#' #only the integer value of moments is taken here because moments cannot be decimal
 #' mazKUM(1.9,5.5,6)
 #'
 #' @export
@@ -393,12 +392,12 @@ mazKUM<-function(r,a,b)
 #'                 probability function replacing infinity
 #'
 #' @details
-#' Mixing kumaraswamy distribution with binomial distribution will create the
+#' Mixing Kumaraswamy distribution with Binomial distribution will create the
 #' Kumaraswamy Binomial distribution.  The probability function and cumulative
 #' probability function can be constructed and are denoted below.
 #'
 #' The cumulative probability function is the summation of probability
-#' function values
+#' function values.
 #'
 #' \deqn{P_{KumBin}(x)= ab{n \choose x} \sum_{j=0}^{it} (-1)^j{b-1 \choose j}B(x+a+aj,n-x+1) }
 #' \deqn{a,b > 0}
@@ -413,21 +412,21 @@ mazKUM<-function(r,a,b)
 #' \deqn{over dispersion= \frac{(bB(1+\frac{2}{a},b)-(bB(1+\frac{1}{a},b))^2)}
 #'                        {(bB(1+\frac{1}{a},b)-(bB(1+\frac{1}{a},b))^2)} }
 #'
-#' Defined as \eqn{B(a,b)} is the beta function
+#' Defined as \eqn{B(a,b)} is the beta function.
 #'
 #' \strong{NOTE} : If input parameters are not in given domain conditions necessary error
-#' messages will be provided to go further
+#' messages will be provided to go further.
 #'
 #' @return
 #' The output of \code{dKumBin} gives a list format consisting
 #'
-#' \code{pdf}           probability function values in vector form
+#' \code{pdf}           probability function values in vector form.
 #'
-#' \code{mean}          mean of the Kumaraswamy Binomial Distribution
+#' \code{mean}          mean of the Kumaraswamy Binomial Distribution.
 #'
-#' \code{var}           variance of the Kumaraswamy Binomial Distribution
+#' \code{var}           variance of the Kumaraswamy Binomial Distribution.
 #'
-#' \code{over.dis.para} over dispersion value of the Kumaraswamy Distribution
+#' \code{over.dis.para} over dispersion value of the Kumaraswamy Distribution.
 #'
 #' @references
 #' Li, X. H., Huang, Y. Y., & Zhao, X. Y. (2011). The Kumaraswamy Binomial Distribution. Chinese Journal
@@ -440,13 +439,13 @@ mazKUM<-function(r,a,b)
 #' a<-c(1,2,5,10,.85)
 #' plot(0,0,main="Kumaraswamy binomial probability function graph",xlab="Binomial random variable",
 #' ylab="Probability function values",xlim = c(0,10),ylim = c(0,0.5))
-#'
 #' for (i in 1:5)
 #' {
 #' lines(0:10,dKumBin(0:10,10,a[i],a[i])$pdf,col = col[i],lwd=2.85)
 #' points(0:10,dKumBin(0:10,10,a[i],a[i])$pdf,col = col[i],pch=16)
 #' }
-#' }
+#'        }
+#'
 #' dKumBin(0:10,10,4,2)$pdf  #extracting the pdf values
 #' dKumBin(0:10,10,4,2)$mean #extracting the mean
 #' dKumBin(0:10,10,4,2)$var  #extracting the variance
@@ -458,13 +457,13 @@ mazKUM<-function(r,a,b)
 #' a<-c(1,2,5,10,.85)
 #' plot(0,0,main="Cumulative probability function graph",xlab="Binomial random variable",
 #' ylab="Cumulative probability function values",xlim = c(0,10),ylim = c(0,1))
-#'
 #' for (i in 1:5)
 #' {
 #' lines(0:10,pKumBin(0:10,10,a[i],a[i]),col = col[i])
 #' points(0:10,pKumBin(0:10,10,a[i],a[i]),col = col[i])
 #' }
-#' }
+#'        }
+#'
 #' pKumBin(0:10,10,4,2)    #acquiring the cumulative probability values
 #'
 #' @export
@@ -559,20 +558,20 @@ dKumBin<-function(x,n,a,b,it=25000)
 #' @usage
 #' pKumBin(x,n,a,b,it=25000)
 #'
-#' @param x        vector of binomial random variables
-#' @param n        single value for no of binomial trial
-#' @param a        single value for shape parameter alpha representing a
-#' @param b        single value for shape parameter beta representing b
+#' @param x        vector of binomial random variables.
+#' @param n        single value for no of binomial trial.
+#' @param a        single value for shape parameter alpha representing a.
+#' @param b        single value for shape parameter beta representing b.
 #' @param it       number of iterations to converge as a proper
-#'                 probability function replacing infinity
+#'                 probability function replacing infinity.
 #'
 #' @details
-#' Mixing kumaraswamy distribution with binomial distribution will create the
+#' Mixing Kumaraswamy distribution with Binomial distribution will create the
 #' Kumaraswamy Binomial distribution.  The probability function and cumulative
 #' probability function can be constructed and are denoted below.
 #'
 #' The cumulative probability function is the summation of probability
-#' function values
+#' function values.
 #'
 #' \deqn{P_{KumBin}(x)= ab{n \choose x} \sum_{j=0}^{it} (-1)^j{b-1 \choose j}B(x+a+aj,n-x+1) }
 #' \deqn{a,b > 0}
@@ -587,13 +586,12 @@ dKumBin<-function(x,n,a,b,it=25000)
 #' \deqn{over dispersion= \frac{(bB(1+\frac{2}{a},b)-(bB(1+\frac{1}{a},b))^2)}
 #'                        {(bB(1+\frac{1}{a},b)-(bB(1+\frac{1}{a},b))^2)} }
 #'
-#' Defined as \eqn{B(a,b)} is the beta function
+#' Defined as \eqn{B(a,b)} is the beta function.
 #'
 #' \strong{NOTE} : If input parameters are not in given domain conditions necessary error
-#' messages will be provided to go further
+#' messages will be provided to go further.
 #'
 #' @return
-#'
 #' The output of \code{pKumBin} gives cumulative probability values in vector form.
 #'
 #' @references
@@ -607,13 +605,13 @@ dKumBin<-function(x,n,a,b,it=25000)
 #' a<-c(1,2,5,10,.85)
 #' plot(0,0,main="Kumaraswamy binomial probability function graph",xlab="Binomial random variable",
 #' ylab="Probability function values",xlim = c(0,10),ylim = c(0,0.5))
-#'
 #' for (i in 1:5)
 #' {
 #' lines(0:10,dKumBin(0:10,10,a[i],a[i])$pdf,col = col[i],lwd=2.85)
 #' points(0:10,dKumBin(0:10,10,a[i],a[i])$pdf,col = col[i],pch=16)
 #' }
-#' }
+#'        }
+#'
 #' dKumBin(0:10,10,4,2)$pdf  #extracting the pdf values
 #' dKumBin(0:10,10,4,2)$mean #extracting the mean
 #' dKumBin(0:10,10,4,2)$var  #extracting the variance
@@ -630,7 +628,8 @@ dKumBin<-function(x,n,a,b,it=25000)
 #' lines(0:10,pKumBin(0:10,10,a[i],a[i]),col = col[i])
 #' points(0:10,pKumBin(0:10,10,a[i],a[i]),col = col[i])
 #' }
-#' }
+#'        }
+#'
 #' pKumBin(0:10,10,4,2)    #acquiring the cumulative probability values
 #'
 #' @export
@@ -650,19 +649,19 @@ pKumBin<-function(x,n,a,b,it=25000)
 
 #' Negative Log Likelihood value of Kumaraswamy Binomial Distribution
 #'
-#' This function will calculate the negative log likelihood value when the vector of binomial random
+#' This function will calculate the Negative Log Likelihood value when the vector of binomial random
 #' variables and vector of corresponding frequencies are given with the shape parameters a and b
 #' and iterations it.
 #'
 #' @usage
 #' NegLLKumBin(x,freq,a,b,it=25000)
 #'
-#' @param x                 vector of binomial random variables
-#' @param freq              vector of frequencies
-#' @param a                 single value for shape parameter alpha representing as a
-#' @param b                 single value for shape parameter beta representing as b
+#' @param x                 vector of binomial random variables.
+#' @param freq              vector of frequencies.
+#' @param a                 single value for shape parameter alpha representing as a.
+#' @param b                 single value for shape parameter beta representing as b.
 #' @param it                number of iterations to converge as a proper probability function
-#'                          replacing infinity
+#'                          replacing infinity.
 #'
 #' @details
 #' \deqn{0 < a,b }
@@ -671,10 +670,10 @@ pKumBin<-function(x,n,a,b,it=25000)
 #' \deqn{it > 0}
 #'
 #' \strong{NOTE} : If input parameters are not in given domain conditions necessary error
-#' messages will be provided to go further
+#' messages will be provided to go further.
 #'
 #' @return
-#' The output of \code{NegLLKumBin} will produce a single numeric value
+#' The output of \code{NegLLKumBin} will produce a single numeric value.
 #'
 #' @references
 #' Li, X. H., Huang, Y. Y., & Zhao, X. Y. (2011). The Kumaraswamy Binomial Distribution. Chinese Journal
@@ -683,9 +682,10 @@ pKumBin<-function(x,n,a,b,it=25000)
 #' @examples
 #' No.D.D=0:7          #assigning the random variables
 #' Obs.fre.1=c(47,54,43,40,40,41,39,95)  #assigning the corresponding frequencies
+#'
 #' \dontrun{
 #' NegLLKumBin(No.D.D,Obs.fre.1,1.3,4.4) #acquiring the negative log likelihood value
-#' }
+#'         }
 #' @export
 NegLLKumBin<-function(x,freq,a,b,it=25000)
 {
@@ -761,19 +761,19 @@ NegLLKumBin<-function(x,freq,a,b,it=25000)
 #' Estimating the shape parameters a and b and iterations for  Kumaraswamy Binomial Distribution
 #'
 #' The function will estimate the shape parameters using the maximum log likelihood method  for
-#' the Kumaraswamy binomial distribution when the binomial random variables and
+#' the Kumaraswamy Binomial distribution when the binomial random variables and
 #' corresponding frequencies are given
 #'
 #' @usage
 #' EstMLEKumBin(x,freq,a,b,it)
 #'
 #'
-#' @param x                  vector of binomial random variables
-#' @param freq               vector of frequencies
-#' @param a                 single value for shape parameter alpha representing as a
-#' @param b                 single value for shape parameter beta representing as b
+#' @param x                 vector of binomial random variables.
+#' @param freq              vector of frequencies.
+#' @param a                 single value for shape parameter alpha representing as a.
+#' @param b                 single value for shape parameter beta representing as b.
 #' @param it                number of iterations to converge as a proper probability function
-#'                          replacing infinity
+#'                          replacing infinity.
 #'
 #' @details
 #' \deqn{0 < a,b}
@@ -782,7 +782,7 @@ NegLLKumBin<-function(x,freq,a,b,it=25000)
 #' \deqn{it > 0}
 #'
 #' \strong{NOTE} : If input parameters are not in given domain conditions necessary
-#' error messages will be provided to go further
+#' error messages will be provided to go further.
 #'
 #' @return
 #' \code{EstMLEKumBin} here is used as a input parameter for the \code{mle2} function of
@@ -795,16 +795,17 @@ NegLLKumBin<-function(x,freq,a,b,it=25000)
 #' @seealso
 #' \code{\link[bbmle]{mle2}}
 #'
-#'
 #' @examples
 #' No.D.D=0:7     #assigning the random variables
 #' Obs.fre.1=c(47,54,43,40,40,41,39,95)  #assigning the corresponding frequencies
+#'
 #' #estimating the parameters using maximum log likelihood value and assigning it
 #' \dontrun{
 #' parameters1=suppressWarnings(bbmle::mle2(EstMLEKumBin,start = list(a=10.1,b=1.1,it=10000),
 #' data = list(x=No.D.D,freq=Obs.fre.1)))
+#'
 #' bbmle::coef(parameters1)   #extracting the parameters
-#' }
+#'         }
 #'
 #' @export
 EstMLEKumBin<-function(x,freq,a,b,it)
@@ -828,21 +829,21 @@ EstMLEKumBin<-function(x,freq,a,b,it)
 }
 
 #' Fitting the Kumaraswamy Binomial Distribution when binomial random variable, frequency and shape
-#' parameters \code{a} and \code{b}, iterations parameter \code{it} are given
+#' parameters a and b, iterations parameter it are given
 #'
-#' The function will fit the Kumaraswamy binomial distribution when random variables,
+#' The function will fit the Kumaraswamy Binomial distribution when random variables,
 #' corresponding frequencies and shape parameters are given. It will provide the expected
 #' frequencies, chi-squared test statistics value, p value, degree of freedom and
 #' over dispersion value so that it can be seen if this distribution fits the data.
 #'
 #' @usage fitKumBin(x,obs.freq,a,b,it)
 #'
-#' @param x                  vector of binomial random variables
-#' @param obs.freq           vector of frequencies
-#' @param a                  single value for shape parameter alpha representing a
-#' @param b                  single value for shape parameter beta representing b
+#' @param x                  vector of binomial random variables.
+#' @param obs.freq           vector of frequencies.
+#' @param a                  single value for shape parameter alpha representing a.
+#' @param b                  single value for shape parameter beta representing b.
 #' @param it                 number of iterations to converge as a proper probability
-#'                           function replacing infinity
+#'                           function replacing infinity.
 #'
 #' @details
 #' \deqn{0 < a,b}
@@ -851,23 +852,22 @@ EstMLEKumBin<-function(x,freq,a,b,it)
 #' \deqn{it > 0}
 #'
 #' \strong{NOTE} : If input parameters are not in given domain conditions
-#' necessary error messages will be provided to go further. Use the functions
-#' summary,fitted,AIC,coef and residuals to extract information.
+#' necessary error messages will be provided to go further.
 #'
 #' @return
 #' The output of \code{fitKumBin} gives the class format \code{fitKB} and \code{fit} consisting a list
 #'
-#' \code{bin.ran.var} binomial random variables
+#' \code{bin.ran.var} binomial random variables.
 #'
-#' \code{obs.freq} corresponding observed frequencies
+#' \code{obs.freq} corresponding observed frequencies.
 #'
-#' \code{exp.freq} corresponding expected frequencies
+#' \code{exp.freq} corresponding expected frequencies.
 #'
-#' \code{statistic} chi-squared test statistics
+#' \code{statistic} chi-squared test statistics.
 #'
-#' \code{df} degree of freedom
+#' \code{df} degree of freedom.
 #'
-#' \code{p.value} probability value by chi-squared test statistic
+#' \code{p.value} probability value by chi-squared test statistic.
 #'
 #' \code{fitKB} fitted values of \code{dKumBin}.
 #'
@@ -877,7 +877,7 @@ EstMLEKumBin<-function(x,freq,a,b,it)
 #'
 #' \code{b} estimated value for beta parameter as b.
 #'
-#' \code{it} estimated it value for iterations
+#' \code{it} estimated it value for iterations.
 #'
 #' \code{AIC} AIC value.
 #'
@@ -895,14 +895,15 @@ EstMLEKumBin<-function(x,freq,a,b,it)
 #' @seealso
 #' \code{\link[bbmle]{mle2}}
 #'
-#'
 #' @examples
 #' No.D.D=0:7   #assigning the random variables
 #' Obs.fre.1=c(47,54,43,40,40,41,39,95)   #assigning the corresponding frequencies
+#'
 #' #estimating the parameters using maximum log likelihood value and assigning it
 #' \dontrun{
 #' parameters=suppressWarnings(bbmle::mle2(EstMLEKumBin,start = list(a=10.1,b=1.1,it=10000),
 #'           data = list(x=No.D.D,freq=Obs.fre.1)))
+#'
 #' bbmle::coef(parameters)    #extracting the parameters
 #' aKumBin=bbmle::coef(parameters)[1] #assigning the estimated a
 #' bKumBin=bbmle::coef(parameters)[2] #assigning the estimated b
@@ -917,7 +918,7 @@ EstMLEKumBin<-function(x,freq,a,b,it)
 #'
 #' #extracting the residuals
 #' residuals(results)
-#' }
+#'        }
 #'
 #' @export
 fitKumBin<-function(x,obs.freq,a,b,it)

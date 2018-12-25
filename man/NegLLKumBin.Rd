@@ -7,22 +7,22 @@
 NegLLKumBin(x,freq,a,b,it=25000)
 }
 \arguments{
-\item{x}{vector of binomial random variables}
+\item{x}{vector of binomial random variables.}
 
-\item{freq}{vector of frequencies}
+\item{freq}{vector of frequencies.}
 
-\item{a}{single value for shape parameter alpha representing as a}
+\item{a}{single value for shape parameter alpha representing as a.}
 
-\item{b}{single value for shape parameter beta representing as b}
+\item{b}{single value for shape parameter beta representing as b.}
 
 \item{it}{number of iterations to converge as a proper probability function
-replacing infinity}
+replacing infinity.}
 }
 \value{
-The output of \code{NegLLKumBin} will produce a single numeric value
+The output of \code{NegLLKumBin} will produce a single numeric value.
 }
 \description{
-This function will calculate the negative log likelihood value when the vector of binomial random
+This function will calculate the Negative Log Likelihood value when the vector of binomial random
 variables and vector of corresponding frequencies are given with the shape parameters a and b
 and iterations it.
 }
@@ -33,14 +33,15 @@ and iterations it.
 \deqn{it > 0}
 
 \strong{NOTE} : If input parameters are not in given domain conditions necessary error
-messages will be provided to go further
+messages will be provided to go further.
 }
 \examples{
 No.D.D=0:7          #assigning the random variables
 Obs.fre.1=c(47,54,43,40,40,41,39,95)  #assigning the corresponding frequencies
+
 \dontrun{
 NegLLKumBin(No.D.D,Obs.fre.1,1.3,4.4) #acquiring the negative log likelihood value
-}
+        }
 }
 \references{
 Li, X. H., Huang, Y. Y., & Zhao, X. Y. (2011). The Kumaraswamy Binomial Distribution. Chinese Journal

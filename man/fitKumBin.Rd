@@ -3,36 +3,36 @@
 \name{fitKumBin}
 \alias{fitKumBin}
 \title{Fitting the Kumaraswamy Binomial Distribution when binomial random variable, frequency and shape
-parameters \code{a} and \code{b}, iterations parameter \code{it} are given}
+parameters a and b, iterations parameter it are given}
 \usage{
 fitKumBin(x,obs.freq,a,b,it)
 }
 \arguments{
-\item{x}{vector of binomial random variables}
+\item{x}{vector of binomial random variables.}
 
-\item{obs.freq}{vector of frequencies}
+\item{obs.freq}{vector of frequencies.}
 
-\item{a}{single value for shape parameter alpha representing a}
+\item{a}{single value for shape parameter alpha representing a.}
 
-\item{b}{single value for shape parameter beta representing b}
+\item{b}{single value for shape parameter beta representing b.}
 
 \item{it}{number of iterations to converge as a proper probability
-function replacing infinity}
+function replacing infinity.}
 }
 \value{
 The output of \code{fitKumBin} gives the class format \code{fitKB} and \code{fit} consisting a list
 
-\code{bin.ran.var} binomial random variables
+\code{bin.ran.var} binomial random variables.
 
-\code{obs.freq} corresponding observed frequencies
+\code{obs.freq} corresponding observed frequencies.
 
-\code{exp.freq} corresponding expected frequencies
+\code{exp.freq} corresponding expected frequencies.
 
-\code{statistic} chi-squared test statistics
+\code{statistic} chi-squared test statistics.
 
-\code{df} degree of freedom
+\code{df} degree of freedom.
 
-\code{p.value} probability value by chi-squared test statistic
+\code{p.value} probability value by chi-squared test statistic.
 
 \code{fitKB} fitted values of \code{dKumBin}.
 
@@ -42,7 +42,7 @@ The output of \code{fitKumBin} gives the class format \code{fitKB} and \code{fit
 
 \code{b} estimated value for beta parameter as b.
 
-\code{it} estimated it value for iterations
+\code{it} estimated it value for iterations.
 
 \code{AIC} AIC value.
 
@@ -54,7 +54,7 @@ Methods \code{summary}, \code{print}, \code{AIC}, \code{residuals} and \code{fii
 extract specific outputs.
 }
 \description{
-The function will fit the Kumaraswamy binomial distribution when random variables,
+The function will fit the Kumaraswamy Binomial distribution when random variables,
 corresponding frequencies and shape parameters are given. It will provide the expected
 frequencies, chi-squared test statistics value, p value, degree of freedom and
 over dispersion value so that it can be seen if this distribution fits the data.
@@ -66,16 +66,17 @@ over dispersion value so that it can be seen if this distribution fits the data.
 \deqn{it > 0}
 
 \strong{NOTE} : If input parameters are not in given domain conditions
-necessary error messages will be provided to go further. Use the functions
-summary,fitted,AIC,coef and residuals to extract information.
+necessary error messages will be provided to go further.
 }
 \examples{
 No.D.D=0:7   #assigning the random variables
 Obs.fre.1=c(47,54,43,40,40,41,39,95)   #assigning the corresponding frequencies
+
 #estimating the parameters using maximum log likelihood value and assigning it
 \dontrun{
 parameters=suppressWarnings(bbmle::mle2(EstMLEKumBin,start = list(a=10.1,b=1.1,it=10000),
           data = list(x=No.D.D,freq=Obs.fre.1)))
+
 bbmle::coef(parameters)    #extracting the parameters
 aKumBin=bbmle::coef(parameters)[1] #assigning the estimated a
 bKumBin=bbmle::coef(parameters)[2] #assigning the estimated b
@@ -90,7 +91,7 @@ fitted(results)
 
 #extracting the residuals
 residuals(results)
-}
+       }
 
 }
 \references{

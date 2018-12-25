@@ -7,11 +7,11 @@
 pKUM(p,a,b)
 }
 \arguments{
-\item{p}{vector of probabilities}
+\item{p}{vector of probabilities.}
 
-\item{a}{single value for shape parameter alpha representing as a}
+\item{a}{single value for shape parameter alpha representing as a.}
 
-\item{b}{single value for shape parameter beta representing as b}
+\item{b}{single value for shape parameter beta representing as b.}
 }
 \value{
 The output of \code{pKUM} gives the cumulative density values in vector form.
@@ -19,7 +19,7 @@ The output of \code{pKUM} gives the cumulative density values in vector form.
 \description{
 These functions provide the ability for generating probability density values,
 cumulative probability density values and moment about zero values for the
-Kumaraswamy Distribution bounded between [0,1]
+Kumaraswamy Distribution bounded between [0,1].
 }
 \details{
 The probability density function and cumulative density function of a unit
@@ -40,7 +40,7 @@ The moments about zero is denoted as
 Defined as \eqn{B(a,b)} is the beta function.
 
 \strong{NOTE} : If input parameters are not in given domain conditions
-necessary error messages will be provided to go further
+necessary error messages will be provided to go further.
 }
 \examples{
 #plotting the random variables and probability values
@@ -52,6 +52,7 @@ for (i in 1:4)
 {
 lines(seq(0,1,by=0.01),dKUM(seq(0,1,by=0.01),a[i],a[i])$pdf,col = col[i])
 }
+
 dKUM(seq(0,1,by=0.01),2,3)$pdf   #extracting the probability values
 dKUM(seq(0,1,by=0.01),2,3)$mean  #extracting the mean
 dKUM(seq(0,1,by=0.01),2,3)$var   #extracting the variance
@@ -65,9 +66,12 @@ for (i in 1:4)
 {
 lines(seq(0,1,by=0.01),pKUM(seq(0,1,by=0.01),a[i],a[i]),col = col[i])
 }
+
 pKUM(seq(0,1,by=0.01),2,3)    #acquiring the cumulative probability values
+
 mazKUM(1.4,3,2)               #acquiring the moment about zero values
 mazKUM(2,2,3)-mazKUM(1,2,3)^2  #acquiring the variance for a=2,b=3
+
 #only the integer value of moments is taken here because moments cannot be decimal
 mazKUM(1.9,5.5,6)
 
@@ -76,12 +80,12 @@ mazKUM(1.9,5.5,6)
 Kumaraswamy, P. (1980). A generalized probability density function for double-bounded random processes.
 Journal of Hydrology, 46(1), 79-88.
 
-Available at : \url{http://dx.doi.org/10.1016/0022-1694(80)90036-0}
+Available at : \url{http://dx.doi.org/10.1016/0022-1694(80)90036-0}.
 
 Jones, M. C. (2009). Kumaraswamy's distribution: A beta-type distribution with some tractability advantages.
 Statistical Methodology, 6(1), 70-81.
 
-Available at : \url{http://dx.doi.org/10.1016/j.stamet.2008.04.001}
+Available at : \url{http://dx.doi.org/10.1016/j.stamet.2008.04.001}.
 }
 \seealso{
 \code{\link[extraDistr]{Kumaraswamy}}

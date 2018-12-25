@@ -7,16 +7,16 @@
 EstMLEKumBin(x,freq,a,b,it)
 }
 \arguments{
-\item{x}{vector of binomial random variables}
+\item{x}{vector of binomial random variables.}
 
-\item{freq}{vector of frequencies}
+\item{freq}{vector of frequencies.}
 
-\item{a}{single value for shape parameter alpha representing as a}
+\item{a}{single value for shape parameter alpha representing as a.}
 
-\item{b}{single value for shape parameter beta representing as b}
+\item{b}{single value for shape parameter beta representing as b.}
 
 \item{it}{number of iterations to converge as a proper probability function
-replacing infinity}
+replacing infinity.}
 }
 \value{
 \code{EstMLEKumBin} here is used as a input parameter for the \code{mle2} function of
@@ -24,7 +24,7 @@ replacing infinity}
 }
 \description{
 The function will estimate the shape parameters using the maximum log likelihood method  for
-the Kumaraswamy binomial distribution when the binomial random variables and
+the Kumaraswamy Binomial distribution when the binomial random variables and
 corresponding frequencies are given
 }
 \details{
@@ -34,17 +34,19 @@ corresponding frequencies are given
 \deqn{it > 0}
 
 \strong{NOTE} : If input parameters are not in given domain conditions necessary
-error messages will be provided to go further
+error messages will be provided to go further.
 }
 \examples{
 No.D.D=0:7     #assigning the random variables
 Obs.fre.1=c(47,54,43,40,40,41,39,95)  #assigning the corresponding frequencies
+
 #estimating the parameters using maximum log likelihood value and assigning it
 \dontrun{
 parameters1=suppressWarnings(bbmle::mle2(EstMLEKumBin,start = list(a=10.1,b=1.1,it=10000),
 data = list(x=No.D.D,freq=Obs.fre.1)))
+
 bbmle::coef(parameters1)   #extracting the parameters
-}
+        }
 
 }
 \references{
