@@ -522,18 +522,18 @@ dMcGBB<-function(x,n,a,b,c)
 #' @usage
 #' pMcGBB(x,n,a,b,c)
 #'
-#' @param x        vector of binomial random variables
-#' @param n        single value for no of binomial trials
-#' @param a        single value for shape parameter alpha representing as a
-#' @param b        single value for shape parameter beta representing as b
-#' @param c        single value for shape parameter gamma representing as c
+#' @param x        vector of binomial random variables.
+#' @param n        single value for no of binomial trials.
+#' @param a        single value for shape parameter alpha representing as a.
+#' @param b        single value for shape parameter beta representing as b.
+#' @param c        single value for shape parameter gamma representing as c.
 #'
 #' @details
-#' Mixing Generalized Beta Type-1 Distribution with  binomial distribution
+#' Mixing Generalized Beta Type-1 Distribution with  Binomial distribution
 #' the probability function value and cumulative probability function can be constructed
 #' and are denoted below.
 #'
-#' The cumulative probability function is the summation of probability function values
+#' The cumulative probability function is the summation of probability function values.
 #'
 #' \deqn{P_{McGBB}(x)= {n \choose x} \frac{1}{B(a,b)} (\sum_{j=0}^{n-x} (-1)^j {n-x \choose j} B(\frac{x}{c}+a+\frac{j}{c},b) ) }
 #' \deqn{a,b,c > 0}
@@ -546,15 +546,14 @@ dMcGBB<-function(x,n,a,b,c)
 #' \deqn{n = 1,2,3,...}
 #'
 #' @return
-#'
-#' The output of \code{pMcGBB} gives cumulative probability function values in vector form
+#' The output of \code{pMcGBB} gives cumulative probability function values in vector form.
 #'
 #' @references
 #' Manoj, C., Wijekoon, P. & Yapa, R.D., 2013. The McDonald Generalized Beta-Binomial Distribution: A New
 #' Binomial Mixture Distribution and Simulation Based Comparison with Its Nested Distributions in Handling
 #' Overdispersion. International Journal of Statistics and Probability, 2(2), pp.24-41.
 #'
-#' Available at: \url{http://www.ccsenet.org/journal/index.php/ijsp/article/view/23491} .
+#' Available at: \url{http://www.ccsenet.org/journal/index.php/ijsp/article/view/23491}.
 #'
 #' Janiffer, N.M., Islam, A. & Luke, O., 2014. Estimating Equations for Estimation of Mcdonald Generalized
 #' Beta - Binomial Parameters. , (October), pp.702-709.
@@ -562,7 +561,7 @@ dMcGBB<-function(x,n,a,b,c)
 #' Roozegar, R., Tahmasebi, S. & Jafari, A.A., 2015. The McDonald Gompertz Distribution: Properties and Applications.
 #' Communications in Statistics - Simulation and Computation, (May), pp.0-0.
 #'
-#' Available at: \url{http://www.tandfonline.com/doi/full/10.1080/03610918.2015.1088024} .
+#' Available at: \url{http://www.tandfonline.com/doi/full/10.1080/03610918.2015.1088024}.
 #'
 #' @examples
 #' #plotting the random variables and probability values
@@ -575,6 +574,7 @@ dMcGBB<-function(x,n,a,b,c)
 #' lines(0:10,dMcGBB(0:10,10,a[i],2.5,a[i])$pdf,col = col[i],lwd=2.85)
 #' points(0:10,dMcGBB(0:10,10,a[i],2.5,a[i])$pdf,col = col[i],pch=16)
 #' }
+#'
 #' dMcGBB(0:10,10,4,2,1)$pdf             #extracting the pdf values
 #' dMcGBB(0:10,10,4,2,1)$mean            #extracting the mean
 #' dMcGBB(0:10,10,4,2,1)$var             #extracting the variance
@@ -590,6 +590,7 @@ dMcGBB<-function(x,n,a,b,c)
 #' lines(0:10,pMcGBB(0:10,10,a[i],a[i],2),col = col[i])
 #' points(0:10,pMcGBB(0:10,10,a[i],a[i],2),col = col[i])
 #' }
+#'
 #' pMcGBB(0:10,10,4,2,1)       #acquiring the cumulative probability values
 #'
 #' @export
@@ -615,11 +616,11 @@ pMcGBB<-function(x,n,a,b,c)
 #' @usage
 #' NegLLMcGBB(x,freq,a,b,c)
 #'
-#' @param x                 vector of binomial random variables
-#' @param freq              vector of frequencies
-#' @param a                 single value for shape parameter alpha representing as a
-#' @param b                 single value for shape parameter beta representing as b
-#' @param c                 single value for shape parameter gamma representing as c
+#' @param x                 vector of binomial random variables.
+#' @param freq              vector of frequencies.
+#' @param a                 single value for shape parameter alpha representing as a.
+#' @param b                 single value for shape parameter beta representing as b.
+#' @param c                 single value for shape parameter gamma representing as c.
 #'
 #' @details
 #' \deqn{0 < a,b,c }
@@ -627,14 +628,14 @@ pMcGBB<-function(x,n,a,b,c)
 #' \deqn{x = 0,1,2,...}
 #'
 #' @return
-#' The output of \code{NegLLMcGBB} will produce a single numeric value
+#' The output of \code{NegLLMcGBB} will produce a single numeric value.
 #'
 #' @references
 #' Manoj, C., Wijekoon, P. & Yapa, R.D., 2013. The McDonald Generalized Beta-Binomial Distribution: A New
 #' Binomial Mixture Distribution and Simulation Based Comparison with Its Nested Distributions in Handling
 #' Overdispersion. International Journal of Statistics and Probability, 2(2), pp.24-41.
 #'
-#' Available at: \url{http://www.ccsenet.org/journal/index.php/ijsp/article/view/23491} .
+#' Available at: \url{http://www.ccsenet.org/journal/index.php/ijsp/article/view/23491}.
 #'
 #' Janiffer, N.M., Islam, A. & Luke, O., 2014. Estimating Equations for Estimation of Mcdonald Generalized
 #' Beta - Binomial Parameters. , (October), pp.702-709.
@@ -642,11 +643,12 @@ pMcGBB<-function(x,n,a,b,c)
 #' Roozegar, R., Tahmasebi, S. & Jafari, A.A., 2015. The McDonald Gompertz Distribution: Properties and Applications.
 #' Communications in Statistics - Simulation and Computation, (May), pp.0-0.
 #'
-#' Available at: \url{http://www.tandfonline.com/doi/full/10.1080/03610918.2015.1088024} .
+#' Available at: \url{http://www.tandfonline.com/doi/full/10.1080/03610918.2015.1088024}.
 #'
 #' @examples
 #' No.D.D=0:7            #assigning the random variables
 #' Obs.fre.1=c(47,54,43,40,40,41,39,95)    #assigning the corresponding frequencies
+#'
 #' NegLLMcGBB(No.D.D,Obs.fre.1,.2,.3,1)    #acquiring the negative log likelihood value
 #'
 #' @export
@@ -700,16 +702,16 @@ NegLLMcGBB<-function(x,freq,a,b,c)
 #'
 #' The function will estimate the shape parameters using the maximum log likelihood method  for
 #' the McDonald Generalized Beta  Binomial distribution when the binomial random
-#' variables and corresponding frequencies are given
+#' variables and corresponding frequencies are given.
 #'
 #' @usage
 #' EstMLEMcGBB(x,freq,a,b,c)
 #'
-#' @param x                  vector of binomial random variables
-#' @param freq               vector of frequencies
-#' @param a                  single value for shape parameter alpha representing as a
-#' @param b                  single value for shape parameter beta representing as b
-#' @param c                  single value for shape parameter gamma representing as c
+#' @param x                  vector of binomial random variables.
+#' @param freq               vector of frequencies.
+#' @param a                  single value for shape parameter alpha representing as a.
+#' @param b                  single value for shape parameter beta representing as b.
+#' @param c                  single value for shape parameter gamma representing as c.
 #'
 #' @details
 #' \deqn{0 < a,b,c}
@@ -717,18 +719,18 @@ NegLLMcGBB<-function(x,freq,a,b,c)
 #' \deqn{freq \ge 0}
 #'
 #' \strong{NOTE} : If input parameters are not in given domain conditions necessary
-#' error messages will be provided to go further
+#' error messages will be provided to go further.
 #'
 #' @return
 #' \code{EstMLEMcGBB} here is used as a input parameter for the \code{mle2} function of \pkg{bbmle}
-#' package
+#' package.
 #'
 #' @references
 #' Manoj, C., Wijekoon, P. & Yapa, R.D., 2013. The McDonald Generalized Beta-Binomial Distribution: A New
 #' Binomial Mixture Distribution and Simulation Based Comparison with Its Nested Distributions in Handling
 #' Overdispersion. International Journal of Statistics and Probability, 2(2), pp.24-41.
 #'
-#' Available at: \url{http://www.ccsenet.org/journal/index.php/ijsp/article/view/23491} .
+#' Available at: \url{http://www.ccsenet.org/journal/index.php/ijsp/article/view/23491}.
 #'
 #' Janiffer, N.M., Islam, A. & Luke, O., 2014. Estimating Equations for Estimation of Mcdonald Generalized
 #' Beta - Binomial Parameters. , (October), pp.702-709.
@@ -736,21 +738,22 @@ NegLLMcGBB<-function(x,freq,a,b,c)
 #' Roozegar, R., Tahmasebi, S. & Jafari, A.A., 2015. The McDonald Gompertz Distribution: Properties and Applications.
 #' Communications in Statistics - Simulation and Computation, (May), pp.0-0.
 #'
-#' Available at: \url{http://www.tandfonline.com/doi/full/10.1080/03610918.2015.1088024} .
+#' Available at: \url{http://www.tandfonline.com/doi/full/10.1080/03610918.2015.1088024}.
 #'
 #' @seealso
 #' \code{\link[bbmle]{mle2}}
 #'
-#'
 #' @examples
 #' No.D.D=0:7                   #assigning the random variables
 #' Obs.fre.1=c(47,54,43,40,40,41,39,95)  #assigning the corresponding frequencies
+#'
 #' #estimating the parameters using maximum log likelihood value and assigning it
 #' \dontrun{
 #' parameters=suppressWarnings(bbmle::mle2(EstMLEMcGBB,start = list(a=0.1,b=0.1,c=0.2),
-#'           data = list(x=No.D.D,freq=Obs.fre.1)))
+#' data = list(x=No.D.D,freq=Obs.fre.1)))
+#'
 #' bbmle::coef(parameters)         #extracting the parameters
-#' }
+#'         }
 #' @export
 EstMLEMcGBB<-function(x,freq,a,b,c)
 {
@@ -772,7 +775,7 @@ EstMLEMcGBB<-function(x,freq,a,b,c)
   return(-McGBBLL)
 }
 
-#' Fitting the McDonald Generalized beta  binomial distribution when binomial
+#' Fitting the McDonald Generalized Beta  Binomial distribution when binomial
 #' random variable, frequency and shape parameters are given
 #'
 #' The function will fit the McDonald Generalized Beta  Binomial Distribution
@@ -782,11 +785,11 @@ EstMLEMcGBB<-function(x,freq,a,b,c)
 #'
 #' @usage fitMcGBB(x,obs.freq,a,b,c)
 #'
-#' @param x                  vector of binomial random variables
-#' @param obs.freq           vector of frequencies
-#' @param a                  single value for shape parameter alpha representing a
-#' @param b                  single value for shape parameter beta representing b
-#' @param c                  single value for shape parameter gamma representing c
+#' @param x                  vector of binomial random variables.
+#' @param obs.freq           vector of frequencies.
+#' @param a                  single value for shape parameter alpha representing a.
+#' @param b                  single value for shape parameter beta representing b.
+#' @param c                  single value for shape parameter gamma representing c.
 #'
 #' @details
 #' \deqn{0 < a,b,c}
@@ -794,25 +797,24 @@ EstMLEMcGBB<-function(x,freq,a,b,c)
 #' \deqn{obs.freq \ge 0}
 #'
 #' \strong{NOTE} : If input parameters are not in given domain conditions necessary
-#' error messages will be provided to go further. Use the functions
-#' summary,fitted,AIC,coef and residuals to extract information.
+#' error messages will be provided to go further.
 #'
 #' @return
 #' The output of \code{fitMcGBB} gives the class format \code{fitMB} and \code{fit} consisting a list
 #'
-#' \code{bin.ran.var} binomial random variables
+#' \code{bin.ran.var} binomial random variables.
 #'
-#' \code{obs.freq} corresponding observed frequencies
+#' \code{obs.freq} corresponding observed frequencies.
 #'
-#' \code{exp.freq} corresponding expected frequencies
+#' \code{exp.freq} corresponding expected frequencies.
 #'
-#' \code{statistic} chi-squared test statistics
+#' \code{statistic} chi-squared test statistics.
 #'
-#' \code{df} degree of freedom
+#' \code{df} degree of freedom.
 #'
-#' \code{p.value} probability value by chi-squared test statistic
+#' \code{p.value} probability value by chi-squared test statistic.
 #'
-#' \code{fitMB} fitted values of \code{dMcGBB}
+#' \code{fitMB} fitted values of \code{dMcGBB}.
 #'
 #' \code{NegLL} Negative Log Likelihood value.
 #'
@@ -836,7 +838,7 @@ EstMLEMcGBB<-function(x,freq,a,b,c)
 #' Binomial Mixture Distribution and Simulation Based Comparison with Its Nested Distributions in Handling
 #' Overdispersion. International Journal of Statistics and Probability, 2(2), pp.24-41.
 #'
-#' Available at: \url{http://www.ccsenet.org/journal/index.php/ijsp/article/view/23491} .
+#' Available at: \url{http://www.ccsenet.org/journal/index.php/ijsp/article/view/23491}.
 #'
 #' Janiffer, N.M., Islam, A. & Luke, O., 2014. Estimating Equations for Estimation of Mcdonald Generalized
 #' Beta - Binomial Parameters. , (October), pp.702-709.
@@ -844,19 +846,20 @@ EstMLEMcGBB<-function(x,freq,a,b,c)
 #' Roozegar, R., Tahmasebi, S. & Jafari, A.A., 2015. The McDonald Gompertz Distribution: Properties and Applications.
 #' Communications in Statistics - Simulation and Computation, (May), pp.0-0.
 #'
-#' Available at: \url{http://www.tandfonline.com/doi/full/10.1080/03610918.2015.1088024} .
+#' Available at: \url{http://www.tandfonline.com/doi/full/10.1080/03610918.2015.1088024}.
 #'
 #' @seealso
 #' \code{\link[bbmle]{mle2}}
 #'
-#'
 #' @examples
 #' No.D.D=0:7       #assigning the random variables
 #' Obs.fre.1=c(47,54,43,40,40,41,39,95)          #assigning the corresponding frequencies
+#'
 #' #estimating the parameters using maximum log likelihood value and assigning it
 #' \dontrun{
 #' parameters=suppressWarnings(bbmle::mle2(EstMLEMcGBB,start = list(a=0.1,b=0.1,c=0.2),
 #' data = list(x=No.D.D,freq=Obs.fre.1)))
+#'
 #' aMcGBB=bbmle::coef(parameters)[1]         #assigning the estimated a
 #' bMcGBB=bbmle::coef(parameters)[2]         #assigning the estimated b
 #' cMcGBB=bbmle::coef(parameters)[3]         #assigning the estimated c

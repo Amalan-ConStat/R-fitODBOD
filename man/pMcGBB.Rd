@@ -7,18 +7,18 @@
 pMcGBB(x,n,a,b,c)
 }
 \arguments{
-\item{x}{vector of binomial random variables}
+\item{x}{vector of binomial random variables.}
 
-\item{n}{single value for no of binomial trials}
+\item{n}{single value for no of binomial trials.}
 
-\item{a}{single value for shape parameter alpha representing as a}
+\item{a}{single value for shape parameter alpha representing as a.}
 
-\item{b}{single value for shape parameter beta representing as b}
+\item{b}{single value for shape parameter beta representing as b.}
 
-\item{c}{single value for shape parameter gamma representing as c}
+\item{c}{single value for shape parameter gamma representing as c.}
 }
 \value{
-The output of \code{pMcGBB} gives cumulative probability function values in vector form
+The output of \code{pMcGBB} gives cumulative probability function values in vector form.
 }
 \description{
 These functions provide the ability for generating probability function values and
@@ -26,11 +26,11 @@ cumulative probability function values for the McDonald Generalized Beta
 Binomial Distribution.
 }
 \details{
-Mixing Generalized Beta Type-1 Distribution with  binomial distribution
+Mixing Generalized Beta Type-1 Distribution with  Binomial distribution
 the probability function value and cumulative probability function can be constructed
 and are denoted below.
 
-The cumulative probability function is the summation of probability function values
+The cumulative probability function is the summation of probability function values.
 
 \deqn{P_{McGBB}(x)= {n \choose x} \frac{1}{B(a,b)} (\sum_{j=0}^{n-x} (-1)^j {n-x \choose j} B(\frac{x}{c}+a+\frac{j}{c},b) ) }
 \deqn{a,b,c > 0}
@@ -53,6 +53,7 @@ for (i in 1:5)
 lines(0:10,dMcGBB(0:10,10,a[i],2.5,a[i])$pdf,col = col[i],lwd=2.85)
 points(0:10,dMcGBB(0:10,10,a[i],2.5,a[i])$pdf,col = col[i],pch=16)
 }
+
 dMcGBB(0:10,10,4,2,1)$pdf             #extracting the pdf values
 dMcGBB(0:10,10,4,2,1)$mean            #extracting the mean
 dMcGBB(0:10,10,4,2,1)$var             #extracting the variance
@@ -68,6 +69,7 @@ for (i in 1:4)
 lines(0:10,pMcGBB(0:10,10,a[i],a[i],2),col = col[i])
 points(0:10,pMcGBB(0:10,10,a[i],a[i],2),col = col[i])
 }
+
 pMcGBB(0:10,10,4,2,1)       #acquiring the cumulative probability values
 
 }
@@ -76,7 +78,7 @@ Manoj, C., Wijekoon, P. & Yapa, R.D., 2013. The McDonald Generalized Beta-Binomi
 Binomial Mixture Distribution and Simulation Based Comparison with Its Nested Distributions in Handling
 Overdispersion. International Journal of Statistics and Probability, 2(2), pp.24-41.
 
-Available at: \url{http://www.ccsenet.org/journal/index.php/ijsp/article/view/23491} .
+Available at: \url{http://www.ccsenet.org/journal/index.php/ijsp/article/view/23491}.
 
 Janiffer, N.M., Islam, A. & Luke, O., 2014. Estimating Equations for Estimation of Mcdonald Generalized
 Beta - Binomial Parameters. , (October), pp.702-709.
@@ -84,5 +86,5 @@ Beta - Binomial Parameters. , (October), pp.702-709.
 Roozegar, R., Tahmasebi, S. & Jafari, A.A., 2015. The McDonald Gompertz Distribution: Properties and Applications.
 Communications in Statistics - Simulation and Computation, (May), pp.0-0.
 
-Available at: \url{http://www.tandfonline.com/doi/full/10.1080/03610918.2015.1088024} .
+Available at: \url{http://www.tandfonline.com/doi/full/10.1080/03610918.2015.1088024}.
 }
