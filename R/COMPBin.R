@@ -6,15 +6,15 @@
 #' @usage
 #' dCOMPBin(x,n,p,v)
 #'
-#' @param x        vector of binomial random variables
-#' @param n        single value for no of binomial trials
-#' @param p        single value for probability of success
-#' @param v        single value for  v
+#' @param x        vector of binomial random variables.
+#' @param n        single value for no of binomial trials.
+#' @param p        single value for probability of success.
+#' @param v        single value for  v.
 #'
 #' @details
 #' The probability function and cumulative function can be constructed and are denoted below
 #'
-#' The cumulative probability function is the summation of probability function values
+#' The cumulative probability function is the summation of probability function values.
 #'
 #' \deqn{P_{COMPBin}(x) = \frac{{n \choose x}^v p^x (1-p)^{n-x}}{\sum_{j=0}^{n} {n \choose j}^v p^j (1-p)^{(n-j)}}}
 #' \deqn{x = 0,1,2,3,...n}
@@ -22,19 +22,17 @@
 #' \deqn{0 < p < 1}
 #' \deqn{-\infty < v < +\infty }
 #'
-#'
 #' \strong{NOTE} : If input parameters are not in given domain conditions
-#' necessary error messages will be provided to go further
+#' necessary error messages will be provided to go further.
 #'
 #' @return
 #' The output of \code{dCOMPBin} gives a list format consisting
 #'
-#' \code{pdf}           probability function values in vector form
+#' \code{pdf}           probability function values in vector form.
 #'
-#' \code{mean}          mean of COM Poisson  Binomial Distribution
+#' \code{mean}          mean of COM Poisson  Binomial Distribution.
 #'
-#' \code{var}           variance of COM Poisson  Binomial Distribution
-#'
+#' \code{var}           variance of COM Poisson  Binomial Distribution.
 #'
 #' @references
 #' Extracted from
@@ -57,6 +55,7 @@
 #' lines(0:10,dCOMPBin(0:10,10,a[i],b[i])$pdf,col = col[i],lwd=2.85)
 #' points(0:10,dCOMPBin(0:10,10,a[i],b[i])$pdf,col = col[i],pch=16)
 #' }
+#'
 #' dCOMPBin(0:10,10,0.58,0.022)$pdf      #extracting the pdf values
 #' dCOMPBin(0:10,10,0.58,0.022)$mean     #extracting the mean
 #' dCOMPBin(0:10,10,0.58,0.022)$var      #extracting the variance
@@ -72,6 +71,7 @@
 #' lines(0:10,pCOMPBin(0:10,10,a[i],b[i]),col = col[i],lwd=2.85)
 #' points(0:10,pCOMPBin(0:10,10,a[i],b[i]),col = col[i],pch=16)
 #' }
+#'
 #' pCOMPBin(0:10,10,0.58,0.022)      #acquiring the cumulative probability values
 #'
 #' @export
@@ -151,15 +151,15 @@ dCOMPBin<-function(x,n,p,v)
 #' @usage
 #' pCOMPBin(x,n,p,v)
 #'
-#' @param x        vector of binomial random variables
-#' @param n        single value for no of binomial trials
-#' @param p        single value for probability of success
-#' @param v        single value for  v
+#' @param x        vector of binomial random variables.
+#' @param n        single value for no of binomial trials.
+#' @param p        single value for probability of success.
+#' @param v        single value for  v.
 #'
 #' @details
 #' The probability function and cumulative function can be constructed and are denoted below
 #'
-#' The cumulative probability function is the summation of probability function values
+#' The cumulative probability function is the summation of probability function values.
 #'
 #' \deqn{P_{COMPBin}(x) = \frac{{n \choose x}^v p^x (1-p)^{n-x}}{\sum_{j=0}^{n} {n \choose j}^v p^j (1-p)^{(n-j)}}}
 #' \deqn{x = 0,1,2,3,...n}
@@ -167,13 +167,11 @@ dCOMPBin<-function(x,n,p,v)
 #' \deqn{0 < p < 1}
 #' \deqn{-\infty < v < +\infty }
 #'
-#'
 #' \strong{NOTE} : If input parameters are not in given domain conditions
-#' necessary error messages will be provided to go further
+#' necessary error messages will be provided to go further.
 #'
 #' @return
 #' The output of \code{pCOMPBin} gives  cumulative probability  values in vector form.
-#'
 #'
 #' @references
 #' Extracted from
@@ -196,6 +194,7 @@ dCOMPBin<-function(x,n,p,v)
 #' lines(0:10,dCOMPBin(0:10,10,a[i],b[i])$pdf,col = col[i],lwd=2.85)
 #' points(0:10,dCOMPBin(0:10,10,a[i],b[i])$pdf,col = col[i],pch=16)
 #' }
+#'
 #' dCOMPBin(0:10,10,0.58,0.022)$pdf      #extracting the pdf values
 #' dCOMPBin(0:10,10,0.58,0.022)$mean     #extracting the mean
 #' dCOMPBin(0:10,10,0.58,0.022)$var      #extracting the variance
@@ -211,6 +210,7 @@ dCOMPBin<-function(x,n,p,v)
 #' lines(0:10,pCOMPBin(0:10,10,a[i],b[i]),col = col[i],lwd=2.85)
 #' points(0:10,pCOMPBin(0:10,10,a[i],b[i]),col = col[i],pch=16)
 #' }
+#'
 #' pCOMPBin(0:10,10,0.58,0.022)      #acquiring the cumulative probability values
 #'
 #' @export
@@ -236,10 +236,10 @@ pCOMPBin<-function(x,n,p,v)
 #' @usage
 #' NegLLCOMPBin(x,freq,p,v)
 #'
-#' @param x                 vector of binomial random variables
-#' @param freq              vector of frequencies
-#' @param p                 single value for probability of success
-#' @param v                 single value for  v
+#' @param x                 vector of binomial random variables.
+#' @param freq              vector of frequencies.
+#' @param p                 single value for probability of success.
+#' @param v                 single value for  v.
 #'
 #' @details
 #' \deqn{freq \ge 0}
@@ -248,10 +248,10 @@ pCOMPBin<-function(x,n,p,v)
 #' \deqn{-\infty < v < +\infty}
 #'
 #' \strong{NOTE} : If input parameters are not in given domain conditions
-#' necessary error messages will be provided to go further
+#' necessary error messages will be provided to go further.
 #'
 #' @return
-#' The output of \code{NegLLCOMPBin} will produce a single numeric value
+#' The output of \code{NegLLCOMPBin} will produce a single numeric value.
 #'
 #' @references
 #' Borges, P., Rodrigues, J., Balakrishnan, N. and Bazan, J., 2014. A COM-Poisson type
@@ -263,6 +263,7 @@ pCOMPBin<-function(x,n,p,v)
 #' @examples
 #' No.D.D=0:7         #assigning the random variables
 #' Obs.fre.1=c(47,54,43,40,40,41,39,95)      #assigning the corresponding frequencies
+#'
 #' NegLLCOMPBin(No.D.D,Obs.fre.1,.5,.03)     #acquiring the negative log likelihood value
 #'
 #' @export
@@ -331,16 +332,15 @@ NegLLCOMPBin<-function(x,freq,p,v)
 #'
 #' The function will estimate the probability of success and v parameter using the maximum log
 #' likelihood method for the COM Poisson Binomial distribution when the binomial random
-#' variables and corresponding frequencies are given
+#' variables and corresponding frequencies are given.
 #'
 #' @usage
 #' EstMLECOMPBin(x,freq,p,v)
 #'
-#'
-#' @param x       vector of binomial random variables
-#' @param freq    vector of frequencies
-#' @param p       single value for probability of success
-#' @param v       single value for v
+#' @param x       vector of binomial random variables.
+#' @param freq    vector of frequencies.
+#' @param p       single value for probability of success.
+#' @param v       single value for v.
 #'
 #' @details
 #' \deqn{x = 0,1,2,...}
@@ -349,7 +349,7 @@ NegLLCOMPBin<-function(x,freq,p,v)
 #' \deqn{-\infty < v < +\infty}
 #'
 #' \strong{NOTE} : If input parameters are not in given domain conditions
-#' necessary error messages will be provided to go further
+#' necessary error messages will be provided to go further.
 #'
 #' @return
 #' \code{EstMLECOMPBin} here is used as a input parameter for the \code{mle2} function of \pkg{bbmle} package
@@ -362,7 +362,6 @@ NegLLCOMPBin<-function(x,freq,p,v)
 #'
 #' Available at: \url{http://conteudo.icmc.usp.br/CMS/Arquivos/arquivos_enviados/BIBLIOTECA_113_NSE_90.pdf}
 #'
-#'
 #' @examples
 #' No.D.D=0:7               #assigning the random variables
 #' Obs.fre.1=c(47,54,43,40,40,41,39,95)     #assigning the corresponding frequencies
@@ -370,6 +369,7 @@ NegLLCOMPBin<-function(x,freq,p,v)
 #' #estimating the parameters using maximum log likelihood value and assigning it
 #' parameters=suppressWarnings(bbmle::mle2(EstMLECOMPBin,start = list(p=0.5,v=0.1),
 #'                        data = list(x=No.D.D,freq=Obs.fre.1)))
+#'
 #' bbmle::coef(parameters)           #extracting the parameters
 #'
 #' @export
@@ -402,10 +402,10 @@ EstMLECOMPBin<-function(x,freq,p,v)
 #' @usage
 #' fitCOMPBin(x,obs.freq,p,v)
 #'
-#' @param x                  vector of binomial random variables
-#' @param obs.freq           vector of frequencies
-#' @param p                  single value for probability of success
-#' @param v                  single value for v
+#' @param x                  vector of binomial random variables.
+#' @param obs.freq           vector of frequencies.
+#' @param p                  single value for probability of success.
+#' @param v                  single value for v.
 #'
 #' @details
 #' \deqn{obs.freq \ge 0}
@@ -414,34 +414,34 @@ EstMLECOMPBin<-function(x,freq,p,v)
 #' \deqn{-\infty < v < +\infty}
 #'
 #' \strong{NOTE} : If input parameters are not in given domain conditions
-#' necessary error messages will be provided to go further
+#' necessary error messages will be provided to go further.
 #'
 #' @return
 #' The output of \code{fitCOMPBin} gives the class format \code{fitCPB} and \code{fit} consisting a list
 #'
-#' \code{bin.ran.var} binomial random variables
+#' \code{bin.ran.var} binomial random variables.
 #'
-#' \code{obs.freq} corresponding observed frequencies
+#' \code{obs.freq} corresponding observed frequencies.
 #'
-#' \code{exp.freq} corresponding expected frequencies
+#' \code{exp.freq} corresponding expected frequencies.
 #'
-#' \code{statistic} chi-squared test statistics
+#' \code{statistic} chi-squared test statistics.
 #'
-#' \code{df} degree of freedom
+#' \code{df} degree of freedom.
 #'
-#' \code{p.value} probability value by chi-squared test statistic
+#' \code{p.value} probability value by chi-squared test statistic.
 #'
-#' \code{fitCPB} fitted probability values of \code{dCOMPBin}
+#' \code{fitCPB} fitted probability values of \code{dCOMPBin}.
 #'
-#' \code{NegLL} Negative Log Likelihood value
+#' \code{NegLL} Negative Log Likelihood value.
 #'
-#' \code{p} estimated probability value
+#' \code{p} estimated probability value.
 #'
-#' \code{v} estimated v parameter value
+#' \code{v} estimated v parameter value.
 #'
-#' \code{AIC} AIC value
+#' \code{AIC} AIC value.
 #'
-#' \code{call} the inputs of the function
+#' \code{call} the inputs of the function.
 #'
 #' Methods \code{summary}, \code{print}, \code{AIC}, \code{residuals} and \code{fitted}
 #' can be used to extract specific outputs.
@@ -453,7 +453,6 @@ EstMLECOMPBin<-function(x,freq,p,v)
 #'
 #' Available at: \url{http://conteudo.icmc.usp.br/CMS/Arquivos/arquivos_enviados/BIBLIOTECA_113_NSE_90.pdf}
 #'
-#'
 #' @examples
 #' No.D.D=0:7                    #assigning the random variables
 #' Obs.fre.1=c(47,54,43,40,40,41,39,95)      #assigning the corresponding frequencies
@@ -461,6 +460,7 @@ EstMLECOMPBin<-function(x,freq,p,v)
 #' #estimating the parameters using maximum log likelihood value and assigning it
 #' parameters=suppressWarnings(bbmle::mle2(EstMLECOMPBin,start = list(p=0.5,v=0.050),
 #'            data = list(x=No.D.D,freq=Obs.fre.1)))
+#'
 #' pCOMPBin=bbmle::coef(parameters)[1]
 #' vCOMPBin=bbmle::coef(parameters)[2]
 #'

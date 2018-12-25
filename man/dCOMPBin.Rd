@@ -7,22 +7,22 @@
 dCOMPBin(x,n,p,v)
 }
 \arguments{
-\item{x}{vector of binomial random variables}
+\item{x}{vector of binomial random variables.}
 
-\item{n}{single value for no of binomial trials}
+\item{n}{single value for no of binomial trials.}
 
-\item{p}{single value for probability of success}
+\item{p}{single value for probability of success.}
 
-\item{v}{single value for  v}
+\item{v}{single value for  v.}
 }
 \value{
 The output of \code{dCOMPBin} gives a list format consisting
 
-\code{pdf}           probability function values in vector form
+\code{pdf}           probability function values in vector form.
 
-\code{mean}          mean of COM Poisson  Binomial Distribution
+\code{mean}          mean of COM Poisson  Binomial Distribution.
 
-\code{var}           variance of COM Poisson  Binomial Distribution
+\code{var}           variance of COM Poisson  Binomial Distribution.
 }
 \description{
 These functions provide the ability for generating probability function values and
@@ -31,7 +31,7 @@ cumulative probability function values for the COM Poisson  Binomial Distributio
 \details{
 The probability function and cumulative function can be constructed and are denoted below
 
-The cumulative probability function is the summation of probability function values
+The cumulative probability function is the summation of probability function values.
 
 \deqn{P_{COMPBin}(x) = \frac{{n \choose x}^v p^x (1-p)^{n-x}}{\sum_{j=0}^{n} {n \choose j}^v p^j (1-p)^{(n-j)}}}
 \deqn{x = 0,1,2,3,...n}
@@ -39,9 +39,8 @@ The cumulative probability function is the summation of probability function val
 \deqn{0 < p < 1}
 \deqn{-\infty < v < +\infty }
 
-
 \strong{NOTE} : If input parameters are not in given domain conditions
-necessary error messages will be provided to go further
+necessary error messages will be provided to go further.
 }
 \examples{
 #plotting the random variables and probability values
@@ -55,6 +54,7 @@ for (i in 1:5)
 lines(0:10,dCOMPBin(0:10,10,a[i],b[i])$pdf,col = col[i],lwd=2.85)
 points(0:10,dCOMPBin(0:10,10,a[i],b[i])$pdf,col = col[i],pch=16)
 }
+
 dCOMPBin(0:10,10,0.58,0.022)$pdf      #extracting the pdf values
 dCOMPBin(0:10,10,0.58,0.022)$mean     #extracting the mean
 dCOMPBin(0:10,10,0.58,0.022)$var      #extracting the variance
@@ -70,6 +70,7 @@ for (i in 1:5)
 lines(0:10,pCOMPBin(0:10,10,a[i],b[i]),col = col[i],lwd=2.85)
 points(0:10,pCOMPBin(0:10,10,a[i],b[i]),col = col[i],pch=16)
 }
+
 pCOMPBin(0:10,10,0.58,0.022)      #acquiring the cumulative probability values
 
 }

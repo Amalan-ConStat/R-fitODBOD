@@ -7,16 +7,16 @@
 NegLLCOMPBin(x,freq,p,v)
 }
 \arguments{
-\item{x}{vector of binomial random variables}
+\item{x}{vector of binomial random variables.}
 
-\item{freq}{vector of frequencies}
+\item{freq}{vector of frequencies.}
 
-\item{p}{single value for probability of success}
+\item{p}{single value for probability of success.}
 
-\item{v}{single value for  v}
+\item{v}{single value for  v.}
 }
 \value{
-The output of \code{NegLLCOMPBin} will produce a single numeric value
+The output of \code{NegLLCOMPBin} will produce a single numeric value.
 }
 \description{
 This function will calculate the negative log likelihood value when the vector of binomial random
@@ -29,11 +29,12 @@ variables and vector of corresponding frequencies are given with the input param
 \deqn{-\infty < v < +\infty}
 
 \strong{NOTE} : If input parameters are not in given domain conditions
-necessary error messages will be provided to go further
+necessary error messages will be provided to go further.
 }
 \examples{
 No.D.D=0:7         #assigning the random variables
 Obs.fre.1=c(47,54,43,40,40,41,39,95)      #assigning the corresponding frequencies
+
 NegLLCOMPBin(No.D.D,Obs.fre.1,.5,.03)     #acquiring the negative log likelihood value
 
 }
