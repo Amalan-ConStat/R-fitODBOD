@@ -347,17 +347,16 @@ BODextract<-function(data)
 #' Fitting the Binomial Distribution when binomial random variable, frequency and probability
 #' value are given
 #'
-#' The function will fit the binomial distribution when random variables, corresponding
+#' The function will fit the Binomial distribution when random variables, corresponding
 #' frequencies and probability value are given. It will provide the expected frequencies, chi-squared
 #' test statistics value, p value and degree of freedom  so that it can be
 #' seen if this distribution fits the data.
 #'
-#' @usage fitBin(x,obs.freq,p=0,print=T)
+#' @usage fitBin(x,obs.freq,p=0)
 #'
-#' @param x                  vector of binomial random variables
-#' @param obs.freq           vector of frequencies
-#' @param p                  single value for probability
-#' @param print              logical value for print or not
+#' @param x                  vector of binomial random variables.
+#' @param obs.freq           vector of frequencies.
+#' @param p                  single value for probability.
 #'
 #' @details
 #' \deqn{x = 0,1,2,...}
@@ -368,19 +367,25 @@ BODextract<-function(data)
 #' necessary error messages will be provided to go further.
 #'
 #' @return
-#' The output of \code{fitBin} gives a list format consisting
+#' The output of \code{fitBin} gives the class format \code{fitB} and \code{fit} consisting alist
 #'
-#' \code{bin.ran.var} binomial random variables
+#' \code{bin.ran.var} binomial random variables.
 #'
-#' \code{obs.freq} corresponding observed frequencies
+#' \code{obs.freq} corresponding observed frequencies.
 #'
-#' \code{exp.freq} corresponding expected frequencies
+#' \code{exp.freq} corresponding expected frequencies.
 #'
-#' \code{statistic} chi-squared test statistics value
+#' \code{statistic} chi-squared test statistics value.
 #'
-#' \code{df} degree of freedom
+#' \code{df} degree of freedom.
 #'
-#' \code{p.value} probability value by chi-squared test statistic
+#' \code{p.value} probability value by chi-squared test statistic.
+#'
+#' \code{fitB} fitted probability values of \code{dbinom}.
+#'
+#' \code{phat} estimated probability value.
+#'
+#' \code{call} the inputs of the function.
 #'
 #' @examples
 #' No.D.D=0:7      #assigning the random variables
@@ -389,13 +394,11 @@ BODextract<-function(data)
 #' #fitting when the random variable,frequencies,probability value are given.
 #' fitBin(No.D.D,Obs.fre.1,p=0.7)
 #'
-#' fitBin(No.D.D,Obs.fre.1,p=0.7,FALSE)$exp.freq  #extracting the expected frequencies
-#'
 #' #fitting when the random variable,frequencies are given.
 #' fitBin(No.D.D,Obs.fre.1)
 #'
 #' @export
-fitBin<-function(x,obs.freq,p=0,print=T)
+fitBin<-function(x,obs.freq,p=0)
 {
   #checking if inputs consist NA(not assigned)values, infinite values or NAN(not a number)values if so
   #creating an error message as well as stopping the function progress.
@@ -429,15 +432,7 @@ fitBin<-function(x,obs.freq,p=0,print=T)
         df<-length(x)-2
         #p value of chi-squared test statistic is calculated
         p.value<-1-stats::pchisq(statistic,df)
-        #all the above information is mentioned as a message below
-        #and if the user wishes they can print or not to
-        if(print==TRUE)
-        {
-          cat("\nChi-squared test for Binomial Distribution\n\n
-                Observed Frequency : ",obs.freq,"\n
-                expected Frequency : ",exp.freq,"\n
-                X-squared =",round(statistic,4),"df =",df,"p-value =",round(p.value,4),"\n")
-        }
+
         #checking if df is less than or equal to zero
         if(df<0 | df==0)
         {
@@ -457,7 +452,7 @@ fitBin<-function(x,obs.freq,p=0,print=T)
         }
         #the final output is in a list format containing the calculated values
         final<-list("bin.ran.var"=x,"obs.freq"=obs.freq,"exp.freq"=exp.freq,"statistic"=round(statistic,4),
-                    "df"=df,"p.value"=round(p.value,4))
+                    "df"=df,"p.value"=round(p.value,4),"fitB"=est.prob,"phat"=p.hat,"call"=match.call())
       }
       else
       {
@@ -467,16 +462,7 @@ fitBin<-function(x,obs.freq,p=0,print=T)
         exp.freq<-round((sum(obs.freq)*est.prob),2)
         #applying the chi squared test
         ans<-stats::chisq.test(x=obs.freq,p=est.prob)
-        #all the above information is mentioned as a message below
-        #and if the user wishes they can print or not to
-        if(print==TRUE)
-        {
-          cat("\nChi-squared test for Binomial Distribution\n\n
-              Observed Frequency : ",obs.freq,"\n
-              expected Frequency : ",exp.freq,"\n
-              X-squared =",round(ans$statistic,4),"df =",ans$parameter,
-              "p-value =",round(ans$p.value,4),"\n")
-        }
+
         #checking if any of the expected frequencies are less than five and greater than zero, if so
         #a warning message is provided in interpreting the results
         if(min(exp.freq)<5 && min(exp.freq) > 0)
@@ -492,11 +478,49 @@ fitBin<-function(x,obs.freq,p=0,print=T)
         #the final output is in a list format containing the calculated values
         final<-list("bin.ran.var"=x,"obs.freq"=obs.freq,"exp.freq"=exp.freq,
                     "statistic"=round(ans$statistic,4),"df"=ans$parameter,
-                    "p.value"=round(ans$p.value,4))
+                    "p.value"=round(ans$p.value,4),"fitB"=est.prob,"phat"=p,
+                    "call"=match.call())
       }
+      class(final)<-c("fitB","fit")
+      return(final)
     }
   }
 }
+
+#' @method fitBin default
+#' @export
+fitBin.default<-function(x,obs.freq,p=0)
+{
+  est<-fitBin(x,obs.freq,p=0)
+  return(est)
+}
+
+#' @method print fitB
+#' @export
+print.fitB<-function(x,...)
+{
+  cat("Call: \n")
+  print(x$call)
+  cat("\nChi-squared test for Binomial Distribution \n\t
+      Observed Frequency : ",x$obs.freq,"\n\t
+      expected Frequency : ",x$exp.freq,"\n\t
+      estimated probability value :",x$phat,"\n\t
+      X-squared :",x$statistic,"  ,df :",x$df,"  ,p-value :",x$p.value,"\n")
+}
+
+#' @method summary fitB
+#' @export
+summary.fitB<-function(object,...)
+{
+  cat("Call: \n")
+  print(object$call)
+  cat("\nChi-squared test for Binomial Distribution \n\t
+      Observed Frequency : ",object$obs.freq,"\n\t
+      expected Frequency : ",object$exp.freq,"\n\t
+      estimated probability value :",object$phat," \n\t
+      X-squared :",object$statistic,"  ,df :",object$df,"  ,p-value :",object$p.value,"\n")
+}
+
 
 #' @importFrom stats dbinom
 #' @importFrom stats chisq.test

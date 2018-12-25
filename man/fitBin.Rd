@@ -5,34 +5,38 @@
 \title{Fitting the Binomial Distribution when binomial random variable, frequency and probability
 value are given}
 \usage{
-fitBin(x,obs.freq,p=0,print=T)
+fitBin(x,obs.freq,p=0)
 }
 \arguments{
-\item{x}{vector of binomial random variables}
+\item{x}{vector of binomial random variables.}
 
-\item{obs.freq}{vector of frequencies}
+\item{obs.freq}{vector of frequencies.}
 
-\item{p}{single value for probability}
-
-\item{print}{logical value for print or not}
+\item{p}{single value for probability.}
 }
 \value{
-The output of \code{fitBin} gives a list format consisting
+The output of \code{fitBin} gives the class format \code{fitB} and \code{fit} consisting alist
 
-\code{bin.ran.var} binomial random variables
+\code{bin.ran.var} binomial random variables.
 
-\code{obs.freq} corresponding observed frequencies
+\code{obs.freq} corresponding observed frequencies.
 
-\code{exp.freq} corresponding expected frequencies
+\code{exp.freq} corresponding expected frequencies.
 
-\code{statistic} chi-squared test statistics value
+\code{statistic} chi-squared test statistics value.
 
-\code{df} degree of freedom
+\code{df} degree of freedom.
 
-\code{p.value} probability value by chi-squared test statistic
+\code{p.value} probability value by chi-squared test statistic.
+
+\code{fitB} fitted probability values of \code{dbinom}.
+
+\code{phat} estimated probability value.
+
+\code{call} the inputs of the function.
 }
 \description{
-The function will fit the binomial distribution when random variables, corresponding
+The function will fit the Binomial distribution when random variables, corresponding
 frequencies and probability value are given. It will provide the expected frequencies, chi-squared
 test statistics value, p value and degree of freedom  so that it can be
 seen if this distribution fits the data.
@@ -51,8 +55,6 @@ Obs.fre.1=c(47,54,43,40,40,41,39,95)  #assigning the corresponding frequencies
 
 #fitting when the random variable,frequencies,probability value are given.
 fitBin(No.D.D,Obs.fre.1,p=0.7)
-
-fitBin(No.D.D,Obs.fre.1,p=0.7,FALSE)$exp.freq  #extracting the expected frequencies
 
 #fitting when the random variable,frequencies are given.
 fitBin(No.D.D,Obs.fre.1)
