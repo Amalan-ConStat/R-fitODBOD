@@ -45,7 +45,7 @@ Methods \code{summary}, \code{print}, \code{AIC}, \code{residuals} and \code{fit
 can be used to extract specific outputs.
 }
 \description{
-The function will fit the Correlated binomial Distribution
+The function will fit the Correlated Binomial Distribution
 when random variables, corresponding frequencies, probability of success and covariance are given.
 It will provide the expected frequencies, chi-squared test statistics value, p value,
 and degree of freedom so that it can be seen if this distribution fits the data.

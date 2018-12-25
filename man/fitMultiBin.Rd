@@ -8,46 +8,46 @@ random variable, frequency, probability of success and theta parameter are given
 fitMultiBin(x,obs.freq,p,theta)
 }
 \arguments{
-\item{x}{vector of binomial random variables}
+\item{x}{vector of binomial random variables.}
 
-\item{obs.freq}{vector of frequencies}
+\item{obs.freq}{vector of frequencies.}
 
-\item{p}{single value for probability of success}
+\item{p}{single value for probability of success.}
 
-\item{theta}{single value for theta parameter}
+\item{theta}{single value for theta parameter.}
 }
 \value{
 The output of \code{fitMultiBin} gives the class format \code{fitMuB} and \code{fit} consisting a list
 
-\code{bin.ran.var} binomial random variables
+\code{bin.ran.var} binomial random variables.
 
-\code{obs.freq} corresponding observed frequencies
+\code{obs.freq} corresponding observed frequencies.
 
-\code{exp.freq} corresponding expected frequencies
+\code{exp.freq} corresponding expected frequencies.
 
-\code{statistic} chi-squared test statistics
+\code{statistic} chi-squared test statistics.
 
-\code{df} degree of freedom
+\code{df} degree of freedom.
 
-\code{p.value} probability value by chi-squared test statistic
+\code{p.value} probability value by chi-squared test statistic.
 
-\code{fitMuB} fitted probability values of \code{dMultiBin}
+\code{fitMuB} fitted probability values of \code{dMultiBin}.
 
-\code{NegLL} Negative Log Likelihood value
+\code{NegLL} Negative Log Likelihood value.
 
-\code{p} estimated probability value
+\code{p} estimated probability value.
 
-\code{theta} estimated theta parameter value
+\code{theta} estimated theta parameter value.
 
-\code{AIC} AIC value
+\code{AIC} AIC value.
 
-\code{call} the inputs of the function
+\code{call} the inputs of the function.
 
 Methods \code{summary}, \code{print}, \code{AIC}, \code{residuals} and \code{fitted}
 can be used to extract specific outputs.
 }
 \description{
-The function will fit the Multiplicative binomial distribution
+The function will fit the Multiplicative Binomial distribution
 when random variables, corresponding frequencies, probability of success and theta parameter
 are given. It will provide the expected frequencies, chi-squared test statistics value,
 p value and degree of freedom  value so that it can be seen if this distribution
@@ -66,6 +66,7 @@ Obs.fre.1=c(47,54,43,40,40,41,39,95)     #assigning the corresponding frequencie
 #estimating the parameters using maximum log likelihood value and assigning it
 parameters=suppressWarnings(bbmle::mle2(EstMLEMultiBin,start = list(p=0.1,theta=.3),
           data = list(x=No.D.D,freq=Obs.fre.1)))
+
 pMultiBin=bbmle::coef(parameters)[1]    #assigning the estimated probability value
 thetaMultiBin=bbmle::coef(parameters)[2]  #assigning the estimated theta value
 
@@ -90,7 +91,7 @@ Experiments. Biometrics, 34(1), pp.69-76.
 Paul, S.R., 1985. A three-parameter generalization of the binomial distribution. Communications in Statistics
 - Theory and Methods, 14(6), pp.1497-1506.
 
-Available at: \url{http://www.tandfonline.com/doi/abs/10.1080/03610928508828990} .
+Available at: \url{http://www.tandfonline.com/doi/abs/10.1080/03610928508828990}.
 }
 \seealso{
 \code{\link[bbmle]{mle2}}

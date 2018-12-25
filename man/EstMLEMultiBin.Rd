@@ -8,13 +8,13 @@ Distribution}
 EstMLEMultiBin(x,freq,p,theta)
 }
 \arguments{
-\item{x}{vector of binomial random variables}
+\item{x}{vector of binomial random variables.}
 
-\item{freq}{vector of frequencies}
+\item{freq}{vector of frequencies.}
 
-\item{p}{single value for probability of success}
+\item{p}{single value for probability of success.}
 
-\item{theta}{single value for theta parameter}
+\item{theta}{single value for theta parameter.}
 }
 \value{
 \code{EstMLEMultiBin} here is used as a input parameter for the \code{mle2} function of \pkg{bbmle} package
@@ -23,7 +23,7 @@ therefore output is of class of mle2.
 \description{
 The function will estimate the probability of success and theta parameter using the
 maximum log likelihood method for the Multiplicative Binomial distribution when the binomial random
-variables and corresponding frequencies are given
+variables and corresponding frequencies are given.
 }
 \details{
 \deqn{freq \ge 0}
@@ -34,9 +34,11 @@ variables and corresponding frequencies are given
 \examples{
 No.D.D=0:7         #assigning the random variables
 Obs.fre.1=c(47,54,43,40,40,41,39,95)    #assigning the corresponding frequencies
+
 #estimating the parameters using maximum log likelihood value and assigning it
 parameters=suppressWarnings(bbmle::mle2(EstMLEMultiBin,start = list(p=0.5,theta=15),
            data = list(x=No.D.D,freq=Obs.fre.1)))
+
 bbmle::coef(parameters)           #extracting the parameters
 
 }

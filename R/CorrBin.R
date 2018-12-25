@@ -497,7 +497,7 @@ EstMLECorrBin<-function(x,freq,p,cov)
 #' Fitting the Correlated Binomial Distribution when binomial
 #' random variable, frequency, probability of success and covariance are given
 #'
-#' The function will fit the Correlated binomial Distribution
+#' The function will fit the Correlated Binomial Distribution
 #' when random variables, corresponding frequencies, probability of success and covariance are given.
 #' It will provide the expected frequencies, chi-squared test statistics value, p value,
 #' and degree of freedom so that it can be seen if this distribution fits the data.

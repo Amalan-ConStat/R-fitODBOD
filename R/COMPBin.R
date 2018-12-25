@@ -394,7 +394,7 @@ EstMLECOMPBin<-function(x,freq,p,v)
 #' Fitting the COM Poisson Binomial Distribution when binomial
 #' random variable, frequency, probability of success and v parameter are given
 #'
-#' The function will fit the COM Poisson binomial Distribution
+#' The function will fit the COM Poisson Binomial Distribution
 #' when random variables, corresponding frequencies, probability of success and v parameter are given.
 #' It will provide the expected frequencies, chi-squared test statistics value, p value,
 #' and degree of freedom so that it can be seen if this distribution fits the data.

@@ -7,13 +7,13 @@
 pMultiBin(x,n,p,theta)
 }
 \arguments{
-\item{x}{vector of binomial random variables}
+\item{x}{vector of binomial random variables.}
 
-\item{n}{single value for no of binomial trials}
+\item{n}{single value for no of binomial trials.}
 
-\item{p}{single value for probability of success}
+\item{p}{single value for probability of success.}
 
-\item{theta}{single value for theta}
+\item{theta}{single value for theta.}
 }
 \value{
 The output of \code{pMultiBin} gives cumulative probability values in vector form.
@@ -25,7 +25,7 @@ cumulative probability function values for the Multiplicative Binomial Distribut
 \details{
 The probability function and cumulative function can be constructed and are denoted below
 
-The cumulative probability function is the summation of probability function values
+The cumulative probability function is the summation of probability function values.
 
 \deqn{P_{MultiBin}(x)= {n \choose x} p^x (1-p)^{n-x} \frac{(theta^{x(n-x)}}{f(p,theta,n)} }
 
@@ -39,7 +39,7 @@ here \eqn{f(p,theta,n)} is
 \deqn{0 < theta }
 
 \strong{NOTE} : If input parameters are not in given domain conditions
-necessary error messages will be provided to go further
+necessary error messages will be provided to go further.
 }
 \examples{
 #plotting the random variables and probability values
@@ -53,6 +53,7 @@ for (i in 1:5)
 lines(0:10,dMultiBin(0:10,10,a[i],1+b[i])$pdf,col = col[i],lwd=2.85)
 points(0:10,dMultiBin(0:10,10,a[i],1+b[i])$pdf,col = col[i],pch=16)
 }
+
 dMultiBin(0:10,10,.58,10.022)$pdf   #extracting the pdf values
 dMultiBin(0:10,10,.58,10.022)$mean   #extracting the mean
 dMultiBin(0:10,10,.58,10.022)$var   #extracting the variance
@@ -68,6 +69,7 @@ for (i in 1:5)
 lines(0:10,pMultiBin(0:10,10,a[i],1+b[i]),col = col[i],lwd=2.85)
 points(0:10,pMultiBin(0:10,10,a[i],1+b[i]),col = col[i],pch=16)
 }
+
 pMultiBin(0:10,10,.58,10.022)     #acquiring the cumulative probability values
 
 }
@@ -81,5 +83,5 @@ Experiments. Biometrics, 34(1), pp.69-76.
 Paul, S.R., 1985. A three-parameter generalization of the binomial distribution. Communications in Statistics
 - Theory and Methods, 14(6), pp.1497-1506.
 
-Available at: \url{http://www.tandfonline.com/doi/abs/10.1080/03610928508828990} .
+Available at: \url{http://www.tandfonline.com/doi/abs/10.1080/03610928508828990}.
 }

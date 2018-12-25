@@ -7,16 +7,16 @@
 NegLLMultiBin(x,freq,p,theta)
 }
 \arguments{
-\item{x}{vector of binomial random variables}
+\item{x}{vector of binomial random variables.}
 
-\item{freq}{vector of frequencies}
+\item{freq}{vector of frequencies.}
 
-\item{p}{single value for probability of success}
+\item{p}{single value for probability of success.}
 
-\item{theta}{single value for theta parameter}
+\item{theta}{single value for theta parameter.}
 }
 \value{
-The output of \code{NegLLMultiBin} will produce a single numeric value
+The output of \code{NegLLMultiBin} will produce a single numeric value.
 }
 \description{
 This function will calculate the negative log likelihood value when the vector of binomial random
@@ -31,6 +31,7 @@ variable and vector of corresponding frequencies are given with the input parame
 \examples{
 No.D.D=0:7       #assigning the random variables
 Obs.fre.1=c(47,54,43,40,40,41,39,95)    #assigning the corresponding frequencies
+
 NegLLMultiBin(No.D.D,Obs.fre.1,.5,3)    #acquiring the negative log likelihood value
 
 }
@@ -44,5 +45,5 @@ Experiments. Biometrics, 34(1), pp.69-76.
 Paul, S.R., 1985. A three-parameter generalization of the binomial distribution. Communications in Statistics
 - Theory and Methods, 14(6), pp.1497-1506.
 
-Available at: \url{http://www.tandfonline.com/doi/abs/10.1080/03610928508828990} .
+Available at: \url{http://www.tandfonline.com/doi/abs/10.1080/03610928508828990}.
 }
