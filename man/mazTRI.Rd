@@ -17,7 +17,7 @@ The output of \code{mazTRI} give the moments about zero in vector form.
 \description{
 These functions provide the ability for generating probability density values,
 cumulative probability density values and moments about zero values for the
-Triangular Distribution bounded between [0,1]
+Triangular Distribution bounded between [0,1].
 }
 \details{
 Setting \eqn{min=0} and \eqn{max=1} \eqn{mode=c} in the Triangular distribution

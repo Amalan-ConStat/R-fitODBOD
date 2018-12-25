@@ -7,20 +7,20 @@
 dBETA(p,a,b)
 }
 \arguments{
-\item{p}{vector of probabilities}
+\item{p}{vector of probabilities.}
 
-\item{a}{single value for shape parameter alpha representing as a}
+\item{a}{single value for shape parameter alpha representing as a.}
 
-\item{b}{single value for shape parameter beta representing as b}
+\item{b}{single value for shape parameter beta representing as b.}
 }
 \value{
 The output of \code{dBETA} gives a list format consisting
 
-\code{pdf}            probability density values in vector form
+\code{pdf}            probability density values in vector form.
 
-\code{mean}           mean of the beta distribution
+\code{mean}           mean of the Beta distribution.
 
-\code{var}            variance of the beta distribution
+\code{var}            variance of the Beta distribution.
 }
 \description{
 These functions provide the ability for generating probability density values,
@@ -29,7 +29,7 @@ Beta Distribution bounded between [0,1]
 }
 \details{
 The probability density function and cumulative density function of a unit
-bounded beta distribution with random variable P are given by
+bounded Beta distribution with random variable P are given by
 
 \deqn{g_{P}(p)= \frac{p^{a-1}(1-p)^{b-1}}{B(a,b)} } ;            \eqn{0 \le p \le 1}
 \deqn{G_{P}(p)= \frac{B_p(a,b)}{B(a,b)} } ;                   \eqn{0 \le p \le 1}
@@ -47,7 +47,7 @@ Defined as \eqn{B_p(a,b)=\int^p_0 t^{a-1} (1-t)^{b-1}\,dt} is
 incomplete beta integrals  and \eqn{B(a,b)} is the beta function.
 
 \strong{NOTE} : If input parameters are not in given domain conditions necessary error
-messages will be provided to go further
+messages will be provided to go further.
 }
 \examples{
 #plotting the random variables and probability values
@@ -77,18 +77,19 @@ lines(seq(0,1,by=0.01),pBETA(seq(0,1,by=0.01),a[i],a[i]),col = col[i])
 pBETA(seq(0,1,by=0.01),2,3)   #acquiring the cumulative probability values
 mazBETA(1.4,3,2)              #acquiring the moment about zero values
 mazBETA(2,3,2)-mazBETA(1,3,2)^2 #acquiring the variance for a=3,b=2
+
 #only the integer value of moments is taken here because moments cannot be decimal
 mazBETA(1.9,5.5,6)
 
 }
 \references{
 Johnson, N. L., Kotz, S. and Balakrishnan, N. (1994) Continuous Univariate Distributions, Vol. 2,
-Wiley Series in Probability and Mathematical Statistics, Wiley
+Wiley Series in Probability and Mathematical Statistics, Wiley.
 
 Trenkler, G., 1996. Continuous univariate distributions. Computational Statistics & Data Analysis,
 21(1), p.119.
 
-Available at: \url{http://linkinghub.elsevier.com/retrieve/pii/0167947396900158} .
+Available at: \url{http://linkinghub.elsevier.com/retrieve/pii/0167947396900158}.
 }
 \seealso{
 \code{\link[stats]{Beta}}

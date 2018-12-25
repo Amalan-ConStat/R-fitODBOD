@@ -7,13 +7,13 @@
 EstMLEBetaBin(x,freq,a,b)
 }
 \arguments{
-\item{x}{vector of binomial random variables}
+\item{x}{vector of binomial random variables.}
 
-\item{freq}{vector of frequencies}
+\item{freq}{vector of frequencies.}
 
-\item{a}{single value for shape parameter alpha representing as a}
+\item{a}{single value for shape parameter alpha representing as a.}
 
-\item{b}{single value for shape parameter beta representing as b}
+\item{b}{single value for shape parameter beta representing as b.}
 }
 \value{
 \code{EstMLEBetaBin} here is used as a input parameter for the \code{mle2} function of \pkg{bbmle} package
@@ -21,8 +21,8 @@ therefore output is of class of mle2.
 }
 \description{
 The functions will estimate the shape parameters using the maximum log likelihood method and
-moment generating function method for the beta-binomial distribution when the binomial
-random variables and corresponding frequencies are given
+moment generating function method for the Beta-Binomial distribution when the binomial
+random variables and corresponding frequencies are given.
 }
 \details{
 \deqn{a,b > 0}
@@ -30,14 +30,16 @@ random variables and corresponding frequencies are given
 \deqn{freq \ge 0}
 
 \strong{NOTE} : If input parameters are not in given domain conditions necessary error
- messages will be provided to go further
+ messages will be provided to go further.
 }
 \examples{
 No.D.D=0:7        #assigning the random variables
 Obs.fre.1=c(47,54,43,40,40,41,39,95)   #assigning the corresponding frequencies
+
 #estimating the parameters using maximum log likelihood value and assigning it
 parameters=suppressWarnings(bbmle::mle2(EstMLEBetaBin,start = list(a=0.1,b=0.1),
 data = list(x=No.D.D,freq=Obs.fre.1)))
+
 bbmle::coef(parameters)   #extracting the parameters
 
 #estimating the parameters using moment generating function methods
@@ -48,11 +50,11 @@ EstMGFBetaBin(No.D.D,Obs.fre.1)
 Young-Xu, Y. & Chan, K.A., 2008. Pooling overdispersed binomial data to estimate event rate. BMC medical
 research methodology, 8(1), p.58.
 
-Available at: \url{http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=2538541&tool=pmcentrez&rendertype=abstract} .
+Available at: \url{http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=2538541&tool=pmcentrez&rendertype=abstract}.
 
 Trenkler, G., 1996. Continuous univariate distributions. Computational Statistics & Data Analysis, 21(1), p.119.
 
-Available at: \url{http://linkinghub.elsevier.com/retrieve/pii/0167947396900158} .
+Available at: \url{http://linkinghub.elsevier.com/retrieve/pii/0167947396900158}.
 
 Hughes, G., 1993. Using the Beta-Binomial Distribution to Describe Aggregated Patterns of Disease
 Incidence. Phytopathology, 83(9), p.759.

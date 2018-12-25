@@ -29,7 +29,7 @@ extract specific outputs.
 \description{
 The function will estimate the mode value using the maximum log likelihood method for the
 Triangular Binomial Distribution when the binomial random variables and corresponding frequencies
-are given
+are given.
 }
 \details{
 \deqn{0 < mode=c < 1}

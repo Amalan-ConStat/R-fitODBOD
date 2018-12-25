@@ -150,7 +150,7 @@ dTRI<-function(p,mode)
 #'
 #' These functions provide the ability for generating probability density values,
 #' cumulative probability density values and moments about zero values for the
-#' Triangular Distribution bounded between [0,1]
+#' Triangular Distribution bounded between [0,1].
 #'
 #' @usage
 #' pTRI(p,mode)
@@ -288,7 +288,7 @@ pTRI<-function(p,mode)
 #'
 #' These functions provide the ability for generating probability density values,
 #' cumulative probability density values and moments about zero values for the
-#' Triangular Distribution bounded between [0,1]
+#' Triangular Distribution bounded between [0,1].
 #'
 #' @usage
 #' mazTRI(r,mode)
@@ -810,7 +810,7 @@ NegLLTriBin<-function(x,freq,mode)
 #'
 #' The function will estimate the mode value using the maximum log likelihood method for the
 #' Triangular Binomial Distribution when the binomial random variables and corresponding frequencies
-#' are given
+#' are given.
 #'
 #' @usage
 #' EstMLETriBin(x,freq)

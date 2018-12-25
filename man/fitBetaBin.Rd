@@ -8,28 +8,28 @@ parameters a and b are given}
 fitBetaBin(x,obs.freq,a,b)
 }
 \arguments{
-\item{x}{vector of binomial random variables}
+\item{x}{vector of binomial random variables.}
 
-\item{obs.freq}{vector of frequencies}
+\item{obs.freq}{vector of frequencies.}
 
-\item{a}{single value for shape parameter alpha representing as a}
+\item{a}{single value for shape parameter alpha representing as a.}
 
-\item{b}{single value for shape parameter beta representing as b}
+\item{b}{single value for shape parameter beta representing as b.}
 }
 \value{
-The output of \code{fitBetaBin} gives the class format \code{fitBB} abd \code{fit} consisting a list
+The output of \code{fitBetaBin} gives the class format \code{fitBB} and \code{fit} consisting a list
 
-\code{bin.ran.var} binomial random variables
+\code{bin.ran.var} binomial random variables.
 
-\code{obs.freq} corresponding observed frequencies
+\code{obs.freq} corresponding observed frequencies.
 
-\code{exp.freq} corresponding expected frequencies
+\code{exp.freq} corresponding expected frequencies.
 
-\code{statistic} chi-squared test statistics
+\code{statistic} chi-squared test statistics.
 
-\code{df} degree of freedom
+\code{df} degree of freedom.
 
-\code{p.value} probability value by chi-squared test statistic
+\code{p.value} probability value by chi-squared test statistic.
 
 \code{fitBB} fitted values of \code{dBetaBin}.
 
@@ -49,7 +49,7 @@ Methods \code{summary}, \code{print}, \code{AIC}, \code{residuals} and \code{fit
 used to extract specific outputs.
 }
 \description{
-The function will fit the beta-binomial distribution when random variables, corresponding
+The function will fit the Beta-Binomial distribution when random variables, corresponding
 frequencies and shape parameters are given. It will provide the expected frequencies, chi-squared
 test statistics value, p value, degree of freedom and over dispersion value so that it can be
 seen if this distribution fits the data.
@@ -60,15 +60,16 @@ seen if this distribution fits the data.
 \deqn{obs.freq \ge 0}
 
 \strong{NOTE} : If input parameters are not in given domain conditions
-necessary error messages will be provided to go further.Use the functions
-summary,fitted,AIC,coef and residuals to extract information.
+necessary error messages will be provided to go further.
 }
 \examples{
 No.D.D=0:7    #assigning the random variables
 Obs.fre.1=c(47,54,43,40,40,41,39,95)  #assigning the corresponding frequencies
+
 #estimating the parameters using maximum log likelihood value and assigning it
 parameters=suppressWarnings(bbmle::mle2(EstMLEBetaBin,start = list(a=0.1,b=0.1),
 data = list(x=No.D.D,freq=Obs.fre.1)))
+
 bbmle::coef(parameters)   #extracting the parameters a and b
 aBetaBin=bbmle::coef(parameters)[1]  #assigning the parameter a
 bBetaBin=bbmle::coef(parameters)[2]  #assigning the parameter b
@@ -79,6 +80,7 @@ fitBetaBin(No.D.D,Obs.fre.1,aBetaBin,bBetaBin)
 #estimating the parameters using moment generating function methods
 results<-EstMGFBetaBin(No.D.D,Obs.fre.1)
 results
+
 aBetaBin1=results$a  #assigning the estimated a
 bBetaBin1=results$b  #assigning the estimated b
 
@@ -96,11 +98,11 @@ residuals(BB)
 Young-Xu, Y. & Chan, K.A., 2008. Pooling overdispersed binomial data to estimate event rate. BMC medical
 research methodology, 8(1), p.58.
 
-Available at: \url{http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=2538541&tool=pmcentrez&rendertype=abstract} .
+Available at: \url{http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=2538541&tool=pmcentrez&rendertype=abstract}.
 
 Trenkler, G., 1996. Continuous univariate distributions. Computational Statistics & Data Analysis, 21(1), p.119.
 
-Available at: \url{http://linkinghub.elsevier.com/retrieve/pii/0167947396900158} .
+Available at: \url{http://linkinghub.elsevier.com/retrieve/pii/0167947396900158}.
 
 Hughes, G., 1993. Using the Beta-Binomial Distribution to Describe Aggregated Patterns of Disease
 Incidence. Phytopathology, 83(9), p.759.

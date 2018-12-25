@@ -7,13 +7,13 @@
 pBetaBin(x,n,a,b)
 }
 \arguments{
-\item{x}{vector of binomial random variables}
+\item{x}{vector of binomial random variables.}
 
-\item{n}{single value for no of binomial trials}
+\item{n}{single value for no of binomial trials.}
 
-\item{a}{single value for shape parameter alpha representing as a}
+\item{a}{single value for shape parameter alpha representing as a.}
 
-\item{b}{single value for shape parameter beta representing as b}
+\item{b}{single value for shape parameter beta representing as b.}
 }
 \value{
 The output of \code{pBetaBin} gives cumulative probability  values in vector form.
@@ -23,11 +23,11 @@ These functions provide the ability for generating probability function values a
 cumulative probability function values for the Beta-Binomial Distribution.
 }
 \details{
-Mixing beta distribution with binomial distribution will create the Beta-Binomial
+Mixing Beta distribution with Binomial distribution will create the Beta-Binomial
 distribution. The probability function and cumulative probability function can be
 constructed and are denoted below.
 
-The cumulative probability function is the summation of probability function values
+The cumulative probability function is the summation of probability function values.
 
 \deqn{P_{BetaBin}(x)= {n \choose x} \frac{B(a+x,n+b-x)}{B(a,b)} }
 \deqn{a,b > 0}
@@ -68,6 +68,7 @@ for (i in 1:4)
 lines(0:10,pBetaBin(0:10,10,a[i],a[i]),col = col[i])
 points(0:10,pBetaBin(0:10,10,a[i],a[i]),col = col[i])
 }
+
 pBetaBin(0:10,10,4,.2)   #acquiring the cumulative probability values
 
 }
@@ -75,11 +76,11 @@ pBetaBin(0:10,10,4,.2)   #acquiring the cumulative probability values
 Young-Xu, Y. & Chan, K.A., 2008. Pooling overdispersed binomial data to estimate event rate. BMC medical
 research methodology, 8(1), p.58.
 
-Available at: \url{http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=2538541&tool=pmcentrez&rendertype=abstract} .
+Available at: \url{http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=2538541&tool=pmcentrez&rendertype=abstract}.
 
 Trenkler, G., 1996. Continuous univariate distributions. Computational Statistics & Data Analysis, 21(1), p.119.
 
-Available at: \url{http://linkinghub.elsevier.com/retrieve/pii/0167947396900158} .
+Available at: \url{http://linkinghub.elsevier.com/retrieve/pii/0167947396900158}.
 
 Hughes, G., 1993. Using the Beta-Binomial Distribution to Describe Aggregated Patterns of Disease
 Incidence. Phytopathology, 83(9), p.759.
