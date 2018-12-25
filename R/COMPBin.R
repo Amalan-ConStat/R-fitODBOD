@@ -435,7 +435,7 @@ EstMLECOMPBin<-function(x,freq,p,v)
 #'
 #' \code{NegLL} Negative Log Likelihood value
 #'
-#' \code{p} estiamted probability value
+#' \code{p} estimated probability value
 #'
 #' \code{v} estimated v parameter value
 #'

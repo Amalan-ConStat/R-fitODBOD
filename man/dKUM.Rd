@@ -18,9 +18,9 @@ The output of \code{dKUM} gives a list format consisting
 
 \code{pdf}             probability density values in vector form.
 
-\code{mean}            mean of the kumaraswamy distribution.
+\code{mean}            mean of the Kumaraswamy distribution.
 
-\code{var}             variance of the kumaraswamy distribution.
+\code{var}             variance of the Kumaraswamy distribution.
 }
 \description{
 These functions provide the ability for generating probability density values,

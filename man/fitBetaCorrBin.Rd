@@ -8,52 +8,52 @@ random variable, frequency, covariance, alpha and beta parameters are given}
 fitBetaCorrBin(x,obs.freq,cov,a,b)
 }
 \arguments{
-\item{x}{vector of binomial random variables}
+\item{x}{vector of binomial random variables.}
 
-\item{obs.freq}{vector of frequencies}
+\item{obs.freq}{vector of frequencies.}
 
-\item{cov}{single value for covariance}
+\item{cov}{single value for covariance.}
 
-\item{a}{single value for alpha parameter}
+\item{a}{single value for alpha parameter.}
 
-\item{b}{single value for beta parameter}
+\item{b}{single value for beta parameter.}
 }
 \value{
 The output of \code{fitBetaCorrBin} gives the class format \code{fitBCB} and \code{fit} consisting a list
 
-\code{bin.ran.var} binomial random variables
+\code{bin.ran.var} binomial random variables.
 
-\code{obs.freq} corresponding observed frequencies
+\code{obs.freq} corresponding observed frequencies.
 
-\code{exp.freq} corresponding expected frequencies
+\code{exp.freq} corresponding expected frequencies.
 
-\code{statistic} chi-squared test statistics
+\code{statistic} chi-squared test statistics.
 
-\code{df} degree of freedom
+\code{df} degree of freedom.
 
 \code{p.value} probability value by chi-squared test statistic
 
-\code{corr}    Correlation value
+\code{corr}    Correlation value.
 
-\code{fitBCB} fitted probability values of \code{dBetaCorrBin}
+\code{fitBCB} fitted probability values of \code{dBetaCorrBin}.
 
-\code{NegLL} Negative Log Likelihood value
+\code{NegLL} Negative Log Likelihood value.
 
-\code{a} estimated shape parameter value a
+\code{a} estimated shape parameter value a.
 
-\code{b} estiamted shape parameter value b
+\code{b} estimated shape parameter value b.
 
-\code{cov} estimated covariance value
+\code{cov} estimated covariance value.
 
 \code{AIC} AIC value.
 
-\code{call} the inputs of the function
+\code{call} the inputs of the function.
 
 Methods \code{summary}, \code{print}, \code{AIC}, \code{residuals} and \code{fitted}
 can be used to extract specific outputs.
 }
 \description{
-The function will fit the Beta-Correlated binomial Distribution
+The function will fit the Beta-Correlated Binomial Distribution
 when random variables, corresponding frequencies, covariance, alpha and beta parameters are given.
 It will provide the expected frequencies, chi-squared test statistics value, p value,
 and degree of freedom so that it can be seen if this distribution fits the data.
@@ -65,7 +65,7 @@ and degree of freedom so that it can be seen if this distribution fits the data.
 \deqn{0 < a,b}
 
 \strong{NOTE} : If input parameters are not in given domain conditions
-necessary error messages will be provided to go further
+necessary error messages will be provided to go further.
 }
 \examples{
 No.D.D=0:7                    #assigning the random variables
@@ -74,6 +74,7 @@ Obs.fre.1=c(47,54,43,40,40,41,39,95)      #assigning the corresponding frequenci
 #estimating the parameters using maximum log likelihood value and assigning it
 parameters=suppressWarnings(bbmle::mle2(EstMLEBetaCorrBin,start = list(cov=0.0050,a=10,b=10),
            data = list(x=No.D.D,freq=Obs.fre.1)))
+
 covBetaCorrBin=bbmle::coef(parameters)[1]
 aBetaCorrBin=bbmle::coef(parameters)[2]
 bBetaCorrBin=bbmle::coef(parameters)[3]

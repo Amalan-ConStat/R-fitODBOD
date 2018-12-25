@@ -7,15 +7,15 @@
 pBetaCorrBin(x,n,cov,a,b)
 }
 \arguments{
-\item{x}{vector of binomial random variables}
+\item{x}{vector of binomial random variables.}
 
-\item{n}{single value for no of binomial trials}
+\item{n}{single value for no of binomial trials.}
 
-\item{cov}{single value for covariance}
+\item{cov}{single value for covariance.}
 
 \item{a}{single value for alpha parameter}
 
-\item{b}{single value for beta parameter}
+\item{b}{single value for beta parameter.}
 }
 \value{
 The output of \code{pBetaCorrBin} gives cumulative probability  values in vector form.
@@ -27,7 +27,7 @@ cumulative probability function values for the Beta-Correlated  Binomial Distrib
 \details{
 The probability function and cumulative function can be constructed and are denoted below
 
-The cumulative probability function is the summation of probability function values
+The cumulative probability function is the summation of probability function values.
 
 \if{html}{\figure{Capture.png}{options: width="50\%"}}
 \if{latex}{\figure{Capture.png}{options: width=11cm}}
@@ -51,7 +51,7 @@ The mean and the variance are denoted as
 \deqn{Corr_{BetaCorrBin}[x]=\frac{cov}{p(1-p)}}
 
 \strong{NOTE} : If input parameters are not in given domain conditions
-necessary error messages will be provided to go further
+necessary error messages will be provided to go further.
 }
 \examples{
 #plotting the random variables and probability values
@@ -65,6 +65,7 @@ for (i in 1:5)
 lines(0:10,dBetaCorrBin(0:10,10,0.001,a[i],b[i])$pdf,col = col[i],lwd=2.85)
 points(0:10,dBetaCorrBin(0:10,10,0.001,a[i],b[i])$pdf,col = col[i],pch=16)
 }
+
 dBetaCorrBin(0:10,10,0.001,10,13)$pdf      #extracting the pdf values
 dBetaCorrBin(0:10,10,0.001,10,13)$mean     #extracting the mean
 dBetaCorrBin(0:10,10,0.001,10,13)$var      #extracting the variance
@@ -83,6 +84,7 @@ for (i in 1:5)
 lines(0:10,pBetaCorrBin(0:10,10,0.001,a[i],b[i]),col = col[i],lwd=2.85)
 points(0:10,pBetaCorrBin(0:10,10,0.001,a[i],b[i]),col = col[i],pch=16)
 }
+
 pBetaCorrBin(0:10,10,0.001,10,13)      #acquiring the cumulative probability values
 
 }
@@ -90,5 +92,5 @@ pBetaCorrBin(0:10,10,0.001,10,13)      #acquiring the cumulative probability val
 Paul, S.R., 1985. A three-parameter generalization of the binomial distribution. Communications in Statistics
 - Theory and Methods, 14(6), pp.1497-1506.
 
-Available at: \url{http://www.tandfonline.com/doi/abs/10.1080/03610928508828990} .
+Available at: \url{http://www.tandfonline.com/doi/abs/10.1080/03610928508828990}.
 }

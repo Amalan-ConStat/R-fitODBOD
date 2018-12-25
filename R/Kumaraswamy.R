@@ -37,9 +37,9 @@
 #'
 #' \code{pdf}             probability density values in vector form.
 #'
-#' \code{mean}            mean of the kumaraswamy distribution.
+#' \code{mean}            mean of the Kumaraswamy distribution.
 #'
-#' \code{var}             variance of the kumaraswamy distribution.
+#' \code{var}             variance of the Kumaraswamy distribution.
 #'
 #' @references
 #' Kumaraswamy, P. (1980). A generalized probability density function for double-bounded random processes.

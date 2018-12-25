@@ -35,7 +35,7 @@ The output of \code{fitCOMPBin} gives the class format \code{fitCPB} and \code{f
 
 \code{NegLL} Negative Log Likelihood value
 
-\code{p} estiamted probability value
+\code{p} estimated probability value
 
 \code{v} estimated v parameter value
 

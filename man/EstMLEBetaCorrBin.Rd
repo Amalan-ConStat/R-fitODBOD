@@ -8,15 +8,15 @@ Distribution}
 EstMLEBetaCorrBin(x,freq,cov,a,b)
 }
 \arguments{
-\item{x}{vector of binomial random variables}
+\item{x}{vector of binomial random variables.}
 
-\item{freq}{vector of frequencies}
+\item{freq}{vector of frequencies.}
 
-\item{cov}{single value for covariance}
+\item{cov}{single value for covariance.}
 
-\item{a}{single value for alpha parameter}
+\item{a}{single value for alpha parameter.}
 
-\item{b}{single value for beta parameter}
+\item{b}{single value for beta parameter.}
 }
 \value{
 \code{EstMLEBetaCorrBin} here is used as a input parameter for the \code{mle2} function of \pkg{bbmle} package
@@ -25,7 +25,7 @@ therefore output is of class of mle2.
 \description{
 The function will estimate the covariance, alpha and beta parameter values using the maximum log
 likelihood method for the Beta-Correlated Binomial distribution when the binomial random
-variables and corresponding frequencies are given
+variables and corresponding frequencies are given.
 }
 \details{
 \deqn{x = 0,1,2,...}
@@ -34,7 +34,7 @@ variables and corresponding frequencies are given
 \deqn{0 < a,b}
 
 \strong{NOTE} : If input parameters are not in given domain conditions
-necessary error messages will be provided to go further
+necessary error messages will be provided to go further.
 }
 \examples{
 No.D.D=0:7               #assigning the random variables
@@ -43,6 +43,7 @@ Obs.fre.1=c(47,54,43,40,40,41,39,95)     #assigning the corresponding frequencie
 #estimating the parameters using maximum log likelihood value and assigning it
 parameters=suppressWarnings(bbmle::mle2(EstMLEBetaCorrBin,start = list(cov=0.0050,a=10,b=10),
                        data = list(x=No.D.D,freq=Obs.fre.1)))
+
 bbmle::coef(parameters)           #extracting the parameters
 
 }
