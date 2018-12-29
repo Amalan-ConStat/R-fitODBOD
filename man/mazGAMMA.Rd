@@ -14,13 +14,7 @@ mazGAMMA(r,c,l)
 \item{l}{single value for shape parameter l.}
 }
 \value{
-The output of \code{dGAMMA} gives a list format consisting
-
-\code{pdf}                   probability density values in vector form.
-
-\code{mean}                  mean of the Gamma distribution.
-
-\code{var}                   variance of Gamma distribution.
+The output of \code{mazGAMMA} gives the moments about zero in vector form.
 }
 \description{
 These functions provide the ability for generating probability density values,
