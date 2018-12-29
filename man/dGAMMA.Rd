@@ -19,6 +19,15 @@ mazGAMMA(r, c, l)
 
 \item{l}{single value for shape parameter l.}
 }
+\value{
+The output of \code{dGAMMA} gives a list format consisting
+
+\code{pdf}                   probability density values in vector form.
+
+\code{mean}                  mean of the Gamma distribution.
+
+\code{var}                   variance of Gamma distribution.
+}
 \description{
 These functions provide the ability for generating probability density values,
 cumulative probability density values and moment about zero values for
@@ -46,26 +55,6 @@ Defined as \eqn{Ig(l,cln(1/p))= \int_0^{cln(1/p)} t^{l-1} e^{-t}dt } is the Lowe
 
 \strong{NOTE} : If input parameters are not in given domain  conditions necessary error
 messages will be provided to go further.
-
- @return
- The output of \code{dGAMMA} gives a list format consisting
-
- \code{pdf}                   probability density values in vector form.
-
- \code{mean}                  mean of the Gamma distribution.
-
- \code{var}                   variance of Gamma distribution.
-
- @references
-
-
-
-
-
- @seealso
- \code{\link[stats]{dgamma}}
-
- \code{\link[base]{gamma}}
 }
 \examples{
 plotting the random variables and probability values
@@ -78,9 +67,9 @@ for (i in 1:4)
 lines(seq(0,1,by=0.01),dGAMMA(seq(0,1,by=0.01),a[i],a[i])$pdf,col = col[i])
 }
 
-dGAMMA(seq(0,1,by=0.01),2,3)$pdf   #extracting the pdf values
-dGAMMA(seq(0,1,by=0.01),2,3)$mean  #extracting the mean
-dGAMMA(seq(0,1,by=0.01),2,3)$var   #extracting the variance
+dGAMMA(seq(0,1,by=0.01),5,6)$pdf   #extracting the pdf values
+dGAMMA(seq(0,1,by=0.01),5,6)$mean  #extracting the mean
+dGAMMA(seq(0,1,by=0.01),5,6)$var   #extracting the variance
 
 #plotting the random variables and cumulative probability values
 col<-rainbow(4)
@@ -92,11 +81,17 @@ for (i in 1:4)
 lines(seq(0,1,by=0.01),pGAMMAseq(0,1,by=0.01),a[i],a[i]),col = col[i])
 }
 
-pGAMMA(seq(0,1,by=0.01),2,3)   #acquiring the cumulative probability values
-mazGAMMA(1.4,3,2)              #acquiring the moment about zero values
-mazGAMMA(2,3,2)-mazGAMMA(1,3,2)^2 #acquiring the variance for a=3,b=2
+pGAMMA(seq(0,1,by=0.01),5,6)   #acquiring the cumulative probability values
+mazGAMMA(1.4,5,6)              #acquiring the moment about zero values
+mazGAMMA(2,5,6)-mazGAMMA(1,5,6)^2 #acquiring the variance for a=5,b=6
 
 #only the integer value of moments is taken here because moments cannot be decimal
 mazGAMMA(1.9,5.5,6)
+
+}
+\references{
+
+}
+\seealso{
 
 }

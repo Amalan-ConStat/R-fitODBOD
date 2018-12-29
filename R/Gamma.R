@@ -34,25 +34,24 @@
 #' \strong{NOTE} : If input parameters are not in given domain  conditions necessary error
 #' messages will be provided to go further.
 #'
-#'  @return
-#'  The output of \code{dGAMMA} gives a list format consisting
+#' @return
+#' The output of \code{dGAMMA} gives a list format consisting
 #'
-#'  \code{pdf}                   probability density values in vector form.
+#' \code{pdf}                   probability density values in vector form.
 #'
-#'  \code{mean}                  mean of the Gamma distribution.
+#' \code{mean}                  mean of the Gamma distribution.
 #'
-#'  \code{var}                   variance of Gamma distribution.
+#' \code{var}                   variance of Gamma distribution.
 #'
-#'  @references
-#'
-#'
+#' @references
 #'
 #'
 #'
-#'  @seealso
-#'  \code{\link[stats]{dgamma}}
 #'
-#'  \code{\link[base]{gamma}}
+#'
+#' @seealso
+#'
+#'
 #'
 #' @examples
 #' plotting the random variables and probability values
@@ -65,9 +64,9 @@
 #' lines(seq(0,1,by=0.01),dGAMMA(seq(0,1,by=0.01),a[i],a[i])$pdf,col = col[i])
 #' }
 #'
-#' dGAMMA(seq(0,1,by=0.01),2,3)$pdf   #extracting the pdf values
-#' dGAMMA(seq(0,1,by=0.01),2,3)$mean  #extracting the mean
-#' dGAMMA(seq(0,1,by=0.01),2,3)$var   #extracting the variance
+#' dGAMMA(seq(0,1,by=0.01),5,6)$pdf   #extracting the pdf values
+#' dGAMMA(seq(0,1,by=0.01),5,6)$mean  #extracting the mean
+#' dGAMMA(seq(0,1,by=0.01),5,6)$var   #extracting the variance
 #'
 #' #plotting the random variables and cumulative probability values
 #' col<-rainbow(4)
@@ -76,12 +75,12 @@
 #' xlim = c(0,1),ylim = c(0,1))
 #' for (i in 1:4)
 #' {
-#' lines(seq(0,1,by=0.01),pGAMMAseq(0,1,by=0.01),a[i],a[i]),col = col[i])
+#' lines(seq(0,1,by=0.01),pGAMMA(seq(0,1,by=0.01),a[i],a[i]),col = col[i])
 #' }
 #'
-#' pGAMMA(seq(0,1,by=0.01),2,3)   #acquiring the cumulative probability values
-#' mazGAMMA(1.4,3,2)              #acquiring the moment about zero values
-#' mazGAMMA(2,3,2)-mazGAMMA(1,3,2)^2 #acquiring the variance for a=3,b=2
+#' pGAMMA(seq(0,1,by=0.01),5,6)   #acquiring the cumulative probability values
+#' mazGAMMA(1.4,5,6)              #acquiring the moment about zero values
+#' mazGAMMA(2,5,6)-mazGAMMA(1,5,6)^2 #acquiring the variance for a=5,b=6
 #'
 #' #only the integer value of moments is taken here because moments cannot be decimal
 #' mazGAMMA(1.9,5.5,6)
@@ -131,7 +130,47 @@ dGAMMA<-function(p,c,l)
 #' @export
 pGAMMA<-function(p,c,l)
 {
-
+  #checking if inputs consist NA(not assigned)values, infinite values or NAN(not a number)values
+  #if so creating an error message as well as stopping the function progress.
+  if(any(is.na(c(p,c,l))) | any(is.infinite(c(p,c,l))) | any(is.nan(c(p,c,l))) )
+  {
+    stop("NA or Infinite or NAN values in the Input")
+  }
+  else
+  {
+    #checking if shape parameters are greater than zero and if not providing an error message
+    #and stopping the function progress
+    if(c <= 0 | l <= 0)
+    {
+      stop("Shape parameters cannot be less than or equal to zero")
+    }
+    else
+    {
+      ans<-NULL
+      val<-NULL
+      #the equation contains partial beta integration, below is the integral function
+      Igp<-function(t)
+      {
+        (t^(l-1))*(exp(-t))
+      }
+      #for each input values in the vector necessary calculations and conditions are applied
+      for(i in 1:length(p))
+      {
+        if(p[i]<0 | p[i]>1)
+        {
+          stop("Invalid values in the input")
+        }
+        else
+        {
+          #integrating the above mentioned function under limits of zero and vector p
+          val<-stats::integrate(Igp,lower = 0,upper = (c*log(1/p[i])))
+          ans[i]<-val$value/gamma(l)
+        }
+      }
+      #generating an ouput vector of cumulative probability values
+      return(ans)
+    }
+  }
 }
 
 #' @rdname dGAMMA
