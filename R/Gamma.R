@@ -16,7 +16,7 @@
 #' unit bounded Gamma distribution with random variable P are given by
 #'
 #' \deqn{g_{P}(p) = \frac{ c^l p^{c-1}}{\gamma(l)} [ln(1/p)]^{l-1} } ;    \eqn{0 \le p \le 1}
-#' \deqn{G_{P}(p) = \frac{ Ig(l,cln(1/p))}{\gamma(l) } ; \eqn{0 \le p \le 1}
+#' \deqn{G_{P}(p) = \frac{ Ig(l,cln(1/p))}{\gamma(l)} } ; \eqn{0 \le p \le 1}
 #' \deqn{l,c > 0}
 #'
 #' The mean the variance are denoted by
