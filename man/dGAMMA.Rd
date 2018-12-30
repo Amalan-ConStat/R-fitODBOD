@@ -25,7 +25,7 @@ The output of \code{dGAMMA} gives a list format consisting
 \description{
 These functions provide the ability for generating probability density values,
 cumulative probability density values and moment about zero values for
-Gamma Distribution bounded between [0,1]
+Gamma Distribution bounded between [0,1].
 }
 \details{
 The probability density function and cumulative density function of a
@@ -43,7 +43,7 @@ The moments about zero is denoted as
 \deqn{E[P^r]=(\frac{c}{c+r})^l }
 \eqn{r = 1,2,3,...}
 
-Defined as \eqn{\gamma(l)= } is the gamma function
+Defined as \eqn{\gamma(l) } is the gamma function
 Defined as \eqn{Ig(l,cln(1/p))= \int_0^{cln(1/p)} t^{l-1} e^{-t}dt } is the Lower incomplete gamma function
 
 

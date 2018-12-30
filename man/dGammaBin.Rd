@@ -2,7 +2,7 @@
 % Please edit documentation in R/Gamma.R
 \name{dGammaBin}
 \alias{dGammaBin}
-\title{Gamma-Binomial Distribution}
+\title{Gamma Binomial Distribution}
 \usage{
 dGammaBin(x,n,c,l)
 }
@@ -28,10 +28,10 @@ The output of \code{dGammaBin} gives a list format consisting
 }
 \description{
 These functions provide the ability for generating probability function values and
-cumulative probability function values for the Gamma1-Binomial Distribution.
+cumulative probability function values for the Gamma Binomial Distribution.
 }
 \details{
-Mixing Gamma distribution with Binomial distribution will create the the Gamma1-Binomial
+Mixing Gamma distribution with Binomial distribution will create the the Gamma Binomial
 distribution. The probability function and cumulative probability function can be
 constructed and are denoted below.
 
@@ -51,7 +51,7 @@ The mean, variance and over dispersion are denoted as
 #plotting the random variables and probability values
 col<-rainbow(5)
 a<-c(1,2,5,10,0.2)
-plot(0,0,main="Gamma-binomial probability function graph",xlab="Binomial random variable",
+plot(0,0,main="Gamma Binomial probability function graph",xlab="Binomial random variable",
 ylab="Probability function values",xlim = c(0,10),ylim = c(0,0.5))
 for (i in 1:5)
 {

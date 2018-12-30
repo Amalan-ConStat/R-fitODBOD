@@ -20,9 +20,9 @@ EstMLEGammaBin(x,freq,c,l)
 package.
 }
 \description{
-The function will estimatethe shape parameters using the maximum log likelihood method
-for the Gamma Binoial distribution when the binomial random variables and corresponding frequencies
-are given
+The function will estimate the shape parameters using the maximum log likelihood method
+for the Gamma Binomial distribution when the binomial random variables and corresponding frequencies
+are given.
 }
 \details{
 \deqn{0 < c,l}

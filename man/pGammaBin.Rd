@@ -2,7 +2,7 @@
 % Please edit documentation in R/Gamma.R
 \name{pGammaBin}
 \alias{pGammaBin}
-\title{Gamma-Binomial Distribution}
+\title{Gamma Binomial Distribution}
 \usage{
 pGammaBin(x,n,c,l)
 }
@@ -20,10 +20,10 @@ The output of \code{pGammaBin} gives cumulative probability  values in vector fo
 }
 \description{
 These functions provide the ability for generating probability function values and
-cumulative probability function values for the Gamma1-Binomial Distribution.
+cumulative probability function values for the Gamma Binomial Distribution.
 }
 \details{
-Mixing Gamma distribution with Binomial distribution will create the the Gamma1-Binomial
+Mixing Gamma distribution with Binomial distribution will create the the Gamma Binomial
 distribution. The probability function and cumulative probability function can be
 constructed and are denoted below.
 

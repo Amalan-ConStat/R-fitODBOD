@@ -31,7 +31,7 @@ The output of \code{fitGammaBin} gives the class format \code{fitGaB} and \code{
 
 \code{p.value} probability value by chi-squared test statistic.
 
-\code{fitMB} fitted values of \code{dGammBin}.
+\code{fitMB} fitted values of \code{dGammaBin}.
 
 \code{NegLL} Negative Log Likelihood value.
 
@@ -70,8 +70,8 @@ Obs.fre.1=c(47,54,43,40,40,41,39,95)          #assigning the corresponding frequ
 parameters=suppressWarnings(bbmle::mle2(EstMLEGammaBin,start = list(c=0.1,l=0.1),
 data = list(x=No.D.D,freq=Obs.fre.1)))
 
-cGBin=bbmle::coef(parameters)[1]         #assigning the estimated a
-lGBin=bbmle::coef(parameters)[2]         #assigning the estimated b
+cGBin=bbmle::coef(parameters)[1]         #assigning the estimated c
+lGBin=bbmle::coef(parameters)[2]         #assigning the estimated l
 
 #fitting when the random variable,frequencies,shape parameter values are given.
 results<-fitGammaBin(No.D.D,Obs.fre.1,cGBin,lGBin)
