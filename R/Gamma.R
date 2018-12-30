@@ -891,153 +891,6 @@ summary.fitGaB<-function(object,...)
       AIC value :",object$AIC,"\n")
 }
 
-#' Grassia-I-Binomial Distribution
-#'
-#' These functions provide the ability for generating probability function values and
-#' cumulative probability function values for the Grassia-I-Binomial Distribution.
-#'
-#' @usage
-#' dGrassiaIBin(x,n,a,b)
-#'
-#' @param x             vector of binomial random variables.
-#' @param n             single value for no of binomial trials.
-#' @param a             single value for shape parameter a.
-#' @param b             single value for shape parameter b.
-#'
-#' @details
-#' Mixing Gamma distribution with Binomial distribution will create the the Grassia-I-Binomial
-#' distribution, only when p=e^(-lambda) of the Binomial distribution. The probability function and
-#' cumulative probability function can be constructed and are denoted below.
-#'
-#' The cumulative probability function is the summation of probability function values.
-#'
-#' \deqn{P_{GrassiaIBin}[x]= {n \choose x} \sum_{j=0}^{n-x} {n-x \choose j} (-1)^{n-x-j} (1+b(2n-2x-j))^{-a} }
-#' \deqn{a,b > 0}
-#' \deqn{x = 0,1,2,...,n}
-#' \deqn{n = 1,2,3,...}
-#'
-#' The mean, variance and over dispersion are denoted as
-#' \deqn{E_{GrassiaIBin}[x] = (\frac{b}{b+1})^a}
-#' \deqn{Var_{GrassiaIBin}[x] = n^2[(\frac{b}{b+2})^a - (\frac{b}{b+1})^{2a}] + n(\frac{b}{b+1})^a{1-(\frac{b+1}{b+2})^a}}
-#' \deqn{over dispersion= \frac{(\frac{b}{b+2})^l - (\frac{b}{b+1})^{2a}}{(\frac{b}{b+1})^a[1-(\frac{b}{b+1})^a]}}
-#'
-#' @return
-#' The output of \code{dGrassiaIBin} gives a list format consisting
-#'
-#' \code{pdf}               probability function values in vector form.
-#'
-#' \code{mean}              mean of the Grassia I Binomial Distribution.
-#'
-#' \code{var}               variance of the Grassia I Binomial Distribution.
-#'
-#' \code{over.dis.para}     over dispersion value of the Grassia I Binomial Distribution.
-#'
-#' @references
-#'
-#'
-#' @examples
-#' #plotting the random variables and probability values
-#' col<-rainbow(5)
-#' a<-c(1,2,5,10,0.2)
-#' plot(0,0,main="Grassia I binomial probability function graph",xlab="Binomial random variable",
-#' ylab="Probability function values",xlim = c(0,10),ylim = c(0,0.5))
-#' for (i in 1:5)
-#' {
-#' lines(0:10,dGrassiaIBin(0:10,10,a[i],a[i])$pdf,col = col[i],lwd=2.85)
-#' points(0:10,dGrassiaIBin(0:10,10,a[i],a[i])$pdf,col = col[i],pch=16)
-#' }
-#'
-#' dGrassiaIBin(0:10,10,4,.2)$pdf    #extracting the pdf values
-#' dGrassiaIBin(0:10,10,4,.2)$mean   #extracting the mean
-#' dGrassiaIBin(0:10,10,4,.2)$var    #extracting the variance
-#' dGrassiaIBin(0:10,10,4,.2)$over.dis.para  #extracting the over dispersion value
-#'
-#' #plotting the random variables and cumulative probability values
-#' col<-rainbow(4)
-#' a<-c(1,2,5,10)
-#' plot(0,0,main="Cumulative probability function graph",xlab="Binomial random variable",
-#' ylab="Cumulative probability function values",xlim = c(0,10),ylim = c(0,1))
-#' for (i in 1:4)
-#' {
-#' lines(0:10,pGrassiaIBin(0:10,10,a[i],a[i]),col = col[i])
-#' points(0:10,pGrassiaIBin(0:10,10,a[i],a[i]),col = col[i])
-#' }
-#'
-#' pGrassiaIBin(0:10,10,4,.2)   #acquiring the cumulative probability values
-#' @export
-dGrassiaIBin<-function()
-{
-  #checking if inputs consist NA(not assigned)values, infinite values or NAN(not a number)values
-  #if so creating an error message as well as stopping the function progress.
-  if(any(is.na(c(x,n,a,b))) | any(is.infinite(c(x,n,a,b))) |any(is.nan(c(x,n,a,b))))
-  {
-    stop("NA or Infinite or NAN values in the Input")
-  }
-  else
-  {
-    #checking if shape parameters are less than or equal zero ,
-    #if so providing an error message and stopping the function progress
-    if(a <= 0 | b <= 0)
-    {
-      stop("Shape parameters cannot be less than or equal to zero")
-    }
-    else
-    {
-      #checking if at any chance the binomial random variable is greater than binomial trial value
-      #if so providing an error message and stopping the function from progress
-      if(max(x)>n)
-      {
-        stop("Binomial random variable cannot be greater than binomial trial value")
-      }
-      #checking if any random variable or trial value is negative if so providig an error message
-      #and stopping the function progress
-      else if(any(x<0) | n<0)
-      {
-        stop("Binomial random variable or binomial trial value cannot be negative")
-      }
-      ans<-NULL
-      #for each random variable in the input vector below calculations occur
-      for (i in 1:length(x))
-      {
-        j <- 0:n-x[i]
-        ans[i]<-choose(n,x[i])*sum((-1)^(n-x[i]-j) *choose(n-x[i],j) *(1+b*(2*n-2*x[i]-j))^(-a))
-      }
-    }
-  }
-  mean<-n*((b/(b+1))^a)               #according to theory the mean
-  variance<-(n^2)*((b/(b+2))^a-(b/(b+1))^(2*a))+(n*(b/(b+1))^a)*(1-((b+1)/(b+2))^a) #according to theory variance
-  ove.dis.par<-((b/(b+2))^a-(b/(b+1))^(2*a))/(((b/(b+1))^a)*(1-(b/(b+1))^a))                               #according to theory overdispersion value
-  # generating an output in list format consisting pdf,mean,variance and overdispersion value
-  output<-list('pdf'=ans,'mean'=mean,'var'=variance,
-               'over.dis.para'=ove.dis.par)
-  return(output)
-}
-
-
-#' @export
-pGrassiaIBin<-function()
-{
-
-}
-
-#' @export
-NegLLGrassiaIBin<-function()
-{
-
-}
-
-#' @export
-EstMLEGrassiaIBin<-function()
-{
-
-}
-
-#' @export
-fitGrassiaIBin<-function()
-{
-
-}
-
 #' Grassia-II-Binomial Distribution
 #'
 #' These functions provide the ability for generating probability function values and
@@ -1240,20 +1093,310 @@ pGrassiaIIBin<-function(x,n,a,b)
   return(ans)
 }
 
+#' Negative Log Likelihood value of Grassia II Binomial Distribution
+#'
+#' This function will calculate  the Negative Log Likelihood value when the vector of binomial random
+#' variables and vector of corresponding frequencies are given with the shape parameters l and c.
+#'
+#' @usage
+#' NegLLGrassiaIIBin(x,freq,a,b)
+#'
+#' @param x                  vector of binomial random variables.
+#' @param freq               vector of frequencies.
+#' @param a                  single value for shape parameter a.
+#' @param b                  single value for shape parameter b.
+#'
+#' @details
+#' \deqn{0 < a,b}
+#' \deqn{freq \ge 0}
+#' \deqn{x = 0,1,2,...}
+#'
+#' \strong{NOTE} : If input parameters are not in given domain conditions necessary error
+#' messages will be provided to go further.
+#'
+#' @return
+#' The output of \code{NegLLGrassiaIIBin} will produce a single numeric value.
+#'
+#' @references
+#'
+#'
+#' @examples
+#' No.D.D=0:7       #assigning the random variables
+#' Obs.fre.1=c(47,54,43,40,40,41,39,95)   #assigning the corresponding frequencies
+#'
+#' NegLLGrassiaIIBin(No.D.D,Obs.fre.1,.3,.4)   #acquiring the negative log likelihood value
+#'
 #' @export
-NegLLGrassiaIIBin<-function()
+NegLLGrassiaIIBin<-function(x,freq,a,b)
 {
-
+  #checking if inputs consist NA(not assigned)values, infinite values or NAN(not a number)values
+  #if so creating an error message as well as stopping the function progress.
+  if(any(is.na(c(x,freq,a,b))) | any(is.infinite(c(x,freq,a,b)))
+     |any(is.nan(c(x,freq,a,b))) )
+  {
+    stop("NA or Infinite or NAN values in the Input")
+  }
+  else
+  {
+    #checking if any of the random variables of frequencies are less than zero if so
+    #creating an error message as well as stopping the function progress
+    if( any(c(x,freq)< 0) )
+    {
+      stop("Binomial random variable or frequency values cannot be negative")
+    }
+    #checking if shape parameters are less than or equal to zero
+    #if so creating an error message as well as stopping the function progress
+    else if(a <= 0 | b <= 0)
+    {
+      stop("Shape parameters cannot be less than or equal to zero")
+    }
+    else
+    {
+      #constructing the data set using the random variables vector and frequency vector
+      n<-max(x)
+      data<-rep(x,freq)
+      i<-1:sum(freq)
+      term1<-sum(log(choose(n,data[i])))
+      value<-NULL
+      for (i in 1:sum(freq))
+      {
+        j<-0:data[i]
+        value[i]<-sum((-1)^(data[i]-j)*choose(data[i],j)*(1+b*(n-j))^(-a))
+      }
+      term2<-sum(log(value))
+      GrassiaIIBinLL<-term1+term2
+      #calculating the negative log likelihood value and representing as a single output value
+      return(-GrassiaIIBinLL)
+    }
+  }
 }
 
+#' Estimating the shape parameters a and b for Grassia II Binomial distribution
+#'
+#' The function will estimate the shape parameters using the maximum log likelihood method
+#' for the Grassia II Binomial distribution when the binomial random variables and corresponding frequencies
+#' are given.
+#'
+#' @usage
+#' EstMLEGrassiaIIBin(x,freq,a,b)
+#'
+#' @param x                   vector of binomial random variables.
+#' @param freq                vector of frequencies.
+#' @param a                   single value for shape parameter a.
+#' @param b                   single value for shape parameter b.
+#'
+#' @details
+#' \deqn{0 < a,b}
+#' \deqn{x = 0,1,2,...}
+#' \deqn{freq \ge 0}
+#'
+#' \strong{NOTE} : If input parameters are not in given domain conditions necessary
+#' error messages will be provided to go further.
+#'
+#' @return
+#' \code{EstMLEGrassiaIIBin} here is used as a input parameter for the \code{mle2} function of \pkg{bbmle}
+#' package.
+#'
+#' @references
+#'
+#' @examples
+#' No.D.D=0:7                   #assigning the random variables
+#' Obs.fre.1=c(47,54,43,40,40,41,39,95)  #assigning the corresponding frequencies
+#'
+#' #estimating the parameters using maximum log likelihood value and assigning it
+#' parameters=suppressWarnings(bbmle::mle2(EstMLEGrassiaIIBin,start = list(a=0.1,b=0.1),
+#' data = list(x=No.D.D,freq=Obs.fre.1)))
+#'
+#' bbmle::coef(parameters)         #extracting the parameters
 #' @export
-EstMLEGrassiaIIBin<-function()
+EstMLEGrassiaIIBin<-function(x,freq,a,b)
 {
-
+  #with respective to using bbmle package function mle2 there is no need impose any restrictions
+  #therefor the output is directly a single numeric value for the negative log likelihood value of
+  #Gamma binomial distribution
+  n<-max(x)
+  data<-rep(x,freq)
+  i<-1:sum(freq)
+  term1<-sum(log(choose(n,data)))
+  value<-NULL
+  for (i in 1:sum(freq))
+  {
+    j<-0:data[i]
+    value[i]<-sum(((-1)^(data[i]-j))*choose(data[i],j)*(1+b*(n-j))^(-a))
+  }
+  term2<-sum(log(value))
+  GrassiaIIBinLL<-term1+term2
+  return(-GrassiaIIBinLL)
 }
 
+#' Fitting the Grassia II Binomial distribution when binomial random variable,
+#' frequency and shape parameters are given
+#'
+#' The function will fit the Grassia II Binomial Distribution when random variables,
+#' corresponding frequencies and shape parameters are given. It will provide
+#' the expected frequencies, chi-squared test statistics value, p value, degree of freedom
+#' and over dispersion value so that it can be seen if this distribution fits the data.
+#'
+#' @usage fitGrassiaIIBin(x,obs.freq,a,b)
+#'
+#' @param x                vector of binomial random variables.
+#' @param obs.freq         vector of frequencies.
+#' @param a                single value for shape parameter a.
+#' @param b                single value for shape parameter b.
+#'
+#' @details
+#' \deqn{0 < a,b}
+#' \deqn{x = 0,1,2,...}
+#' \deqn{obs.freq \ge 0}
+#'
+#' \strong{NOTE} : If input parameters are not in given domain conditions necessary
+#' error messages will be provided to go further.
+#'
+#' @return
+#' The output of \code{fitGrassiaIIBin} gives the class format \code{fitGrIIB} and \code{fit} consisting a list
+#'
+#' \code{bin.ran.var} binomial random variables.
+#'
+#' \code{obs.freq} corresponding observed frequencies.
+#'
+#' \code{exp.freq} corresponding expected frequencies.
+#'
+#' \code{statistic} chi-squared test statistics.
+#'
+#' \code{df} degree of freedom.
+#'
+#' \code{p.value} probability value by chi-squared test statistic.
+#'
+#' \code{fitGrIIB} fitted values of \code{dGrassiaIIBin}.
+#'
+#' \code{NegLL} Negative Log Likelihood value.
+#'
+#' \code{a} estimated value for shape parameter a.
+#'
+#' \code{b} estimated value for shape parameter b.
+#'
+#' \code{AIC} AIC value.
+#'
+#' \code{over.dis.para} over dispersion value.
+#'
+#' \code{call} the inputs of the function.
+#'
+#' Methods \code{summary}, \code{print}, \code{AIC}, \code{residuals} and \code{fitted} can be used to
+#' extract specific outputs.
+#'
+#' @references
+#'
+#'
+#' @examples
+#' No.D.D=0:7       #assigning the random variables
+#' Obs.fre.1=c(47,54,43,40,40,41,39,95)          #assigning the corresponding frequencies
+#'
+#' #estimating the parameters using maximum log likelihood value and assigning it
+#' parameters=suppressWarnings(bbmle::mle2(EstMLEGrassiaIIBin,start = list(a=0.1,b=0.1),
+#' data = list(x=No.D.D,freq=Obs.fre.1)))
+#'
+#' aGIIBin=bbmle::coef(parameters)[1]         #assigning the estimated a
+#' bGIIBin=bbmle::coef(parameters)[2]         #assigning the estimated b
+#'
+#' #fitting when the random variable,frequencies,shape parameter values are given.
+#' results<-fitGrassiaIIBin(No.D.D,Obs.fre.1,aGIIBin,bGIIBin)
+#' results
+#'
+#' #extracting the expected frequencies
+#' fitted(results)
+#'
+#' #extracting the residuals
+#' residuals(results)
 #' @export
-fitGrassiaIIBin<-function()
+fitGrassiaIIBin<-function(x,obs.freq,a,b)
 {
+  #checking if inputs consist NA(not assigned)values, infinite values or NAN(not a number)values
+  #if so creating an error message as well as stopping the function progress.
+  if(any(is.na(c(x,obs.freq,a,b))) | any(is.infinite(c(x,obs.freq,a,b))) |
+     any(is.nan(c(x,obs.freq,a,b))) )
+  {
+    stop("NA or Infinite or NAN values in the Input")
+  }
+  else
+  {
+    est<-dGrassiaIIBin(x,max(x),a,b)
+    #for given random variables and parameters calculating the estimated probability values
+    est.prob<-est$pdf
+    #using the estimated probability values the expected frequencies are calculated
+    exp.freq<-round((sum(obs.freq)*est.prob),2)
+    #chi-squared test statistics is calculated with observed frequency and expected frequency
+    statistic<-sum(((obs.freq-exp.freq)^2)/exp.freq)
+    #degree of freedom is calculated
+    df<-length(x)-3
+    #p value of chi-squared test statistic is calculated
+    p.value<-1-stats::pchisq(statistic,df)
+    #all the above information is mentioned as a message below
+    #and if the user wishes they can print or not to
 
+    #checking if df is less than or equal to zero
+    if(df<0 | df==0)
+    {
+      warning("Degrees of freedom cannot be less than or equal to zero")
+    }
+    #checking if any of the expected frequencies are less than five and greater than zero, if so
+    #a warning message is provided in interpreting the results
+    if(min(exp.freq)<5 && min(exp.freq) > 0)
+    {
+      warning("Chi-squared approximation may be doubtful because expected frequency is less than 5")
+    }
+    #checking if expected frequency is zero, if so providing a warning message in interpreting
+    #the results
+    if(min(exp.freq)==0)
+    {
+      warning("Chi-squared approximation is not suitable because expected frequency approximates to zero")
+    }
+    #calculating Negative Loglikelihood value and AIC
+    NegLL<-NegLLGrassiaIIBin(x,obs.freq,a,b)
+    AICvalue<-2*2+NegLL
+    #the final output is in a list format containing the calculated values
+    final<-list("bin.ran.var"=x,"obs.freq"=obs.freq,"exp.freq"=exp.freq,
+                "statistic"=round(statistic,4),"df"=df,"p.value"=round(p.value,4),
+                "fitGrIIB"=est,"NegLL"=NegLL,"a"=a,"b"=b,"AIC"=AICvalue,
+                "over.dis.para"=est$over.dis.para,"call"=match.call())
+    class(final)<-c("fitGrIIB","fit")
+    return(final)
+  }
+}
+
+#' @method fitGrassiaIIBin default
+#' @export
+fitGrassiaIIBin.default<-function(x,obs.freq,a,b)
+{
+  est<-fitGrassiaIIBin(x,obs.freq,a,b)
+  return(est)
+}
+
+#' @method print fitGrIIB
+#' @export
+print.fitGrIIB<-function(x,...)
+{
+  cat("Call: \n")
+  print(x$call)
+  cat("\nChi-squared test for Grassia II Binomial Distribution \n\t
+      Observed Frequency : ",x$obs.freq,"\n\t
+      expected Frequency : ",x$exp.freq,"\n\t
+      estimated a parameter :",x$a, "  ,estimated b parameter :",x$b," \n\t
+      X-squared :",x$statistic,"  ,df :",x$df,"  ,p-value :",x$p.value,"\n\t
+      over dispersion :",x$over.dis.para,"\n")
+}
+
+#' @method summary fitGrIIB
+#' @export
+summary.fitGrIIB<-function(object,...)
+{
+  cat("Call: \n")
+  print(object$call)
+  cat("\nChi-squared test for Grassia II Binomial Distribution \n\t
+      Observed Frequency : ",object$obs.freq,"\n\t
+      expected Frequency : ",object$exp.freq,"\n\t
+      estimated a parameter :",object$a,"  ,estimated b parameter :",object$b,"\n\t
+      X-squared :",object$statistic,"  ,df :",object$df,"  ,p-value :",object$p.value,"\n\t
+      over dispersion :",object$over.dis.para,"\n\t
+      Negative Loglikehood value :",object$NegLL,"\n\t
+      AIC value :",object$AIC,"\n")
 }
