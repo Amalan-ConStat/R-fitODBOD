@@ -491,9 +491,9 @@ dGammaBin<-function(x,n,c,l)
       }
     }
   }
-  mean<-n*(c/(c+1))^l               #according to theory the mean
-  variance<-(n^2)*((c/(c+2))^l-(c/(c+1))^2*l)+(n*(c/(c+1))^l)*(1-((c+1)/(c+2))^l) #according to theory variance
-  ove.dis.par<-((c/(c+2))^l-(c/(c=1))^2*l)/(((c/(c+1))^l)*(1-(c/(c+1))^l))                               #according to theory overdispersion value
+  mean<-n*((c/(c+1))^l)               #according to theory the mean
+  variance<-(n^2)*((c/(c+2))^l-(c/(c+1))^(2*l))+(n*(c/(c+1))^l)*(1-((c+1)/(c+2))^l) #according to theory variance
+  ove.dis.par<-((c/(c+2))^l-(c/(c+1))^(2*l))/(((c/(c+1))^l)*(1-(c/(c+1))^l))                               #according to theory overdispersion value
   # generating an output in list format consisting pdf,mean,variance and overdispersion value
   output<-list('pdf'=ans,'mean'=mean,'var'=variance,
                'over.dis.para'=ove.dis.par)
