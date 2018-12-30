@@ -660,11 +660,60 @@ NegLLGammaBin<-function(x,freq,c,l)
 
 #' Estimating the shape parameters c and l for Gamma Binomial distribution
 #'
-#' The function will estimatethe shape parameters using
+#' The function will estimatethe shape parameters using the maximum log likelihood method
+#' for the Gamma Binoial distribution when the binomial random variables and corresponding frequencies
+#' are given
+#'
+#' @usage
+#' EstMLEGammaBin(x,freq,c,l)
+#' @param x                   vector of binomial random variables.
+#' @param freq                vector of frequencies.
+#' @param c                   single value for shape paramter c.
+#' @param l                   single value for shape parameter l.
+#'
+#' @details
+#' \deqn{0 < c,l}
+#' \deqn{x = 0,1,2,...}
+#' \deqn{freq \ge 0}
+#'
+#' \strong{NOTE} : If input parameters are not in given domain conditions necessary
+#' error messages will be provided to go further.
+#'
+#' @return
+#' \code{EstMLEGammaBin} here is used as a input parameter for the \code{mle2} function of \pkg{bbmle}
+#' package.
+#'
+#' @references
+#'
+#' @examples
+#' No.D.D=0:7                   #assigning the random variables
+#' Obs.fre.1=c(47,54,43,40,40,41,39,95)  #assigning the corresponding frequencies
+#'
+#' #estimating the parameters using maximum log likelihood value and assigning it
+#' parameters=suppressWarnings(bbmle::mle2(EstMLEGammaBin,start = list(a=0.1,b=0.1),
+#' data = list(x=No.D.D,freq=Obs.fre.1)))
+#'
+#' bbmle::coef(parameters)         #extracting the parameters
+#'
 #' @export
-EstMLEGammaBin<-function()
+EstMLEGammaBin<-function(x,freq,c,l)
 {
-
+  #with respective to using bbmle package function mle2 there is no need impose any restrictions
+  #therefor the output is directly a single numeric value for the negative log likelihood value of
+  #Gamma binomial distribution
+  n<-max(x)
+  data<-rep(x,freq)
+  i<-1:sum(freq)
+  term1<-sum(log(choose(n,data)))
+  value<-NULL
+  for (i in 1:sum(freq))
+  {
+    j<-0:n-data[i]
+    value[i]<-sum(((-1)^(j))*choose(n-data[i],j)*(c/(c+data[i]+j))^l)
+  }
+  term2<-sum(log(value))
+  GammaBinLL<-term1+term2
+  return(-GammaBinLL)
 }
 
 #' @export
