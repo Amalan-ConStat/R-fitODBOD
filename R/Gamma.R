@@ -377,7 +377,7 @@ mazGAMMA<-function(r,c,l)
   }
 }
 
-#' Gamma1-Binomial Distribution
+#' Gamma-Binomial Distribution
 #'
 #' These functions provide the ability for generating probability function values and
 #' cumulative probability function values for the Gamma1-Binomial Distribution.
@@ -500,7 +500,7 @@ dGammaBin<-function(x,n,c,l)
   return(output)
 }
 
-#' Gamma1-Binomial Distribution
+#' Gamma-Binomial Distribution
 #'
 #' These functions provide the ability for generating probability function values and
 #' cumulative probability function values for the Gamma1-Binomial Distribution.
@@ -580,12 +580,87 @@ pGammaBin<-function(x,n,c,l)
   return(ans)
 }
 
+#' Negative Log Likelihood value of Gamma Binomial Distribution
+#'
+#' This function will calculate  the Negative Log Likelihood value when the vector of binomial random
+#' variables and vector of corresponding frequencies are given with the shape parameters l and c.
+#'
+#' @usage
+#' NegLLGammaBin(x,freq,c,l)
+#'
+#' @param x                  vector of binomial random variables.
+#' @param freq               vector of frequencies.
+#' @param c                  single value for shape parameter c.
+#' @param l                  single value for shape parameter l.
+#'
+#' @details
+#' \deqn{0 < l,c}
+#' \deqn{freq \ge 0}
+#' \deqn{x = 0,1,2,...}
+#'
+#' \strong{NOTE} : If input parameters are not in given domain conditions necessary error
+#' messages will be provided to go further.
+#'
+#' @return
+#' The output of \code{NegLLGammaBin} will produce a single numeric value.
+#'
+#' @references
+#'
+#'
+#' @examples
+#' No.D.D=0:7       #assigning the random variables
+#' Obs.fre.1=c(47,54,43,40,40,41,39,95)   #assigning the corresponding frequencies
+#'
+#' NegLLGammaBin(No.D.D,Obs.fre.1,.3,.4)   #acquiring the negative log likelihood value
+#'
 #' @export
-NegLLGammaBin<-function()
+NegLLGammaBin<-function(x,freq,c,l)
 {
-
+  #checking if inputs consist NA(not assigned)values, infinite values or NAN(not a number)values
+  #if so creating an error message as well as stopping the function progress.
+  if(any(is.na(c(x,freq,c,l))) | any(is.infinite(c(x,freq,c,l)))
+     |any(is.nan(c(x,freq,c,l))) )
+  {
+    stop("NA or Infinite or NAN values in the Input")
+  }
+  else
+  {
+    #checking if any of the random variables of frequencies are less than zero if so
+    #creating an error message as well as stopping the function progress
+    if( any(c(x,freq)< 0) )
+    {
+      stop("Binomial random variable or frequency values cannot be negative")
+    }
+    #checking if shape parameters are less than or equal to zero
+    #if so creating an error message as well as stopping the function progress
+    else if(c <= 0 | l <= 0)
+    {
+      stop("Shape parameters cannot be less than or equal to zero")
+    }
+    else
+    {
+      #constructing the data set using the random variables vector and frequency vector
+      n<-max(x)
+      data<-rep(x,freq)
+      i<-1:sum(freq)
+      term1<-sum(log(choose(n,data[i])))
+      value<-NULL
+      for (i in 1:sum(freq))
+        {
+        j<-0:(n-data[i])
+        value[i]<-sum((-1)^j*choose(n-data[i],j)*(c/(c+data[i]+j))^l)
+        }
+      term2<-sum(log(value))
+      GammaBinLL<-term1+term2
+      #calculating the negative log likelihood value and representing as a single output value
+      return(-GammaBinLL)
+    }
+  }
 }
 
+#' Estimating the shape parameters c and l for Gamma Binomial distribution
+#'
+#' The function will estimatethe shape parameters using
 #' @export
 EstMLEGammaBin<-function()
 {

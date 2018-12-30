@@ -2,7 +2,7 @@
 % Please edit documentation in R/Gamma.R
 \name{dGammaBin}
 \alias{dGammaBin}
-\title{Gamma1-Binomial Distribution}
+\title{Gamma-Binomial Distribution}
 \usage{
 dGammaBin(x,n,c,l)
 }

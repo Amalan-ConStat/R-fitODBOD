@@ -2,7 +2,7 @@
 % Please edit documentation in R/Gamma.R
 \name{pGammaBin}
 \alias{pGammaBin}
-\title{Gamma1-Binomial Distribution}
+\title{Gamma-Binomial Distribution}
 \usage{
 pGammaBin(x,n,c,l)
 }
