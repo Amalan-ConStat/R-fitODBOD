@@ -690,7 +690,7 @@ NegLLGammaBin<-function(x,freq,c,l)
 #' Obs.fre.1=c(47,54,43,40,40,41,39,95)  #assigning the corresponding frequencies
 #'
 #' #estimating the parameters using maximum log likelihood value and assigning it
-#' parameters=suppressWarnings(bbmle::mle2(EstMLEGammaBin,start = list(a=0.1,b=0.1),
+#' parameters=suppressWarnings(bbmle::mle2(EstMLEGammaBin,start = list(c=0.1,l=0.1),
 #' data = list(x=No.D.D,freq=Obs.fre.1)))
 #'
 #' bbmle::coef(parameters)         #extracting the parameters
@@ -716,11 +716,180 @@ EstMLEGammaBin<-function(x,freq,c,l)
   return(-GammaBinLL)
 }
 
+#' Fitting the Gamma Binomial distribution when binomial random variable,
+#' frequency and shape parameters are given
+#'
+#' The function will fit the Gamma Binomial Distribution when random variables,
+#' corresponding frequencies and shape parameters are given. It will provide
+#' the expected frequencies, chi-squared test statistics value, p value, degree of freedom
+#' and over dispersion value so that it can be seen if this distribution fits the data.
+#'
+#' @usage fitGammaBin(x,obs.freq,c,l)
+#'
+#' @param x                vector of binomial random variables.
+#' @param obs.freq         vector of frequencies.
+#' @param c                single value for shape parameter c.
+#' @param l                single value for shape parameter l.
+#'
+#' @details
+#' \deqn{0 < c,l}
+#' \deqn{x = 0,1,2,...}
+#' \deqn{obs.freq \ge 0}
+#'
+#' \strong{NOTE} : If input parameters are not in given domain conditions necessary
+#' error messages will be provided to go further.
+#'
+#' @return
+#' The output of \code{fitGammaBin} gives the class format \code{fitGaB} and \code{fit} consisting a list
+#'
+#' \code{bin.ran.var} binomial random variables.
+#'
+#' \code{obs.freq} corresponding observed frequencies.
+#'
+#' \code{exp.freq} corresponding expected frequencies.
+#'
+#' \code{statistic} chi-squared test statistics.
+#'
+#' \code{df} degree of freedom.
+#'
+#' \code{p.value} probability value by chi-squared test statistic.
+#'
+#' \code{fitMB} fitted values of \code{dGammBin}.
+#'
+#' \code{NegLL} Negative Log Likelihood value.
+#'
+#' \code{c} estimated value for shape parameter c.
+#'
+#' \code{l} estimated value for shape parameter l.
+#'
+#' \code{AIC} AIC value.
+#'
+#' \code{over.dis.para} over dispersion value.
+#'
+#' \code{call} the inputs of the function.
+#'
+#' Methods \code{summary}, \code{print}, \code{AIC}, \code{residuals} and \code{fitted} can be used to
+#' extract specific outputs.
+#'
+#' @references
+#'
+#'
+#' @examples
+#' No.D.D=0:7       #assigning the random variables
+#' Obs.fre.1=c(47,54,43,40,40,41,39,95)          #assigning the corresponding frequencies
+#'
+#' #estimating the parameters using maximum log likelihood value and assigning it
+#' parameters=suppressWarnings(bbmle::mle2(EstMLEGammaBin,start = list(c=0.1,l=0.1),
+#' data = list(x=No.D.D,freq=Obs.fre.1)))
+#'
+#' cGBin=bbmle::coef(parameters)[1]         #assigning the estimated a
+#' lGBin=bbmle::coef(parameters)[2]         #assigning the estimated b
+#'
+#' #fitting when the random variable,frequencies,shape parameter values are given.
+#' results<-fitGammaBin(No.D.D,Obs.fre.1,cGBin,lGBin)
+#' results
+#'
+#' #extracting the expected frequencies
+#' fitted(results)
+#'
+#' #extracting the residuals
+#' residuals(results)
+#'
 #' @export
-fitGammaBin<-function()
+fitGammaBin<-function(x,obs.freq,c,l)
 {
+  #checking if inputs consist NA(not assigned)values, infinite values or NAN(not a number)values
+  #if so creating an error message as well as stopping the function progress.
+  if(any(is.na(c(x,obs.freq,c,l))) | any(is.infinite(c(x,obs.freq,c,l))) |
+     any(is.nan(c(x,obs.freq,c,l))) )
+  {
+    stop("NA or Infinite or NAN values in the Input")
+  }
+  else
+  {
+    est<-dGammaBin(x,max(x),c,l)
+    #for given random variables and parameters calculating the estimated probability values
+    est.prob<-est$pdf
+    #using the estimated probability values the expected frequencies are calculated
+    exp.freq<-round((sum(obs.freq)*est.prob),2)
+    #chi-squared test statistics is calculated with observed frequency and expected frequency
+    statistic<-sum(((obs.freq-exp.freq)^2)/exp.freq)
+    #degree of freedom is calculated
+    df<-length(x)-3
+    #p value of chi-squared test statistic is calculated
+    p.value<-1-stats::pchisq(statistic,df)
+    #all the above information is mentioned as a message below
+    #and if the user wishes they can print or not to
 
+    #checking if df is less than or equal to zero
+    if(df<0 | df==0)
+    {
+      warning("Degrees of freedom cannot be less than or equal to zero")
+    }
+    #checking if any of the expected frequencies are less than five and greater than zero, if so
+    #a warning message is provided in interpreting the results
+    if(min(exp.freq)<5 && min(exp.freq) > 0)
+    {
+      warning("Chi-squared approximation may be doubtful because expected frequency is less than 5")
+    }
+    #checking if expected frequency is zero, if so providing a warning message in interpreting
+    #the results
+    if(min(exp.freq)==0)
+    {
+      warning("Chi-squared approximation is not suitable because expected frequency approximates to zero")
+    }
+    #calculating Negative Loglikelihood value and AIC
+    NegLL<-NegLLGammaBin(x,obs.freq,c,l)
+    AICvalue<-2*2+NegLL
+    #the final output is in a list format containing the calculated values
+    final<-list("bin.ran.var"=x,"obs.freq"=obs.freq,"exp.freq"=exp.freq,
+                "statistic"=round(statistic,4),"df"=df,"p.value"=round(p.value,4),
+                "fitGaB"=est,"NegLL"=NegLL,"c"=c,"l"=l,"AIC"=AICvalue,
+                "over.dis.para"=est$over.dis.para,"call"=match.call())
+    class(final)<-c("fitGaB","fit")
+    return(final)
+  }
 }
+
+
+#' @method fitGammaBin default
+#' @export
+fitGammaBin.default<-function(x,obs.freq,c,l)
+{
+  est<-fitGammaBin(x,obs.freq,c,l)
+  return(est)
+}
+
+#' @method print fitGaB
+#' @export
+print.fitGaB<-function(x,...)
+{
+  cat("Call: \n")
+  print(x$call)
+  cat("\nChi-squared test for Gamma Binomial Distribution \n\t
+      Observed Frequency : ",x$obs.freq,"\n\t
+      expected Frequency : ",x$exp.freq,"\n\t
+      estimated c parameter :",x$c, "  ,estimated l parameter :",x$l," \n\t
+      X-squared :",x$statistic,"  ,df :",x$df,"  ,p-value :",x$p.value,"\n\t
+      over dispersion :",x$over.dis.para,"\n")
+}
+
+#' @method summary fitGaB
+#' @export
+summary.fitGaB<-function(object,...)
+{
+  cat("Call: \n")
+  print(object$call)
+  cat("\nChi-squared test for Gamma Binomial Distribution \n\t
+      Observed Frequency : ",object$obs.freq,"\n\t
+      expected Frequency : ",object$exp.freq,"\n\t
+      estimated c parameter :",object$c,"  ,estimated l parameter :",object$l,"\n\t
+      X-squared :",object$statistic,"  ,df :",object$df,"  ,p-value :",object$p.value,"\n\t
+      over dispersion :",object$over.dis.para,"\n\t
+      Negative Loglikehood value :",object$NegLL,"\n\t
+      AIC value :",object$AIC,"\n")
+}
+
 
 #' @export
 dGrassia1Bin<-function()
