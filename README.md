@@ -64,8 +64,20 @@ Distributions
 <td align="left">5.Gaussian Hypergeometric Generalized Beta-Binomial Distribution</td>
 </tr>
 <tr class="even">
-<td align="left"></td>
+<td align="left">6.Lovinson Multiplicative Binomial Distribution</td>
 <td align="left">6.McDonald Generalized Beta-Binomial Distribution</td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="left">7.Gamma Binomial Distribution</td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="left">8.Grassia I Binomial Distribution</td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="left">9.Grassia II Binomial Distribution</td>
 </tr>
 </tbody>
 </table>
@@ -77,7 +89,11 @@ Just an example
 
 ``` r
 library(fitODBOD)
+```
 
+    ## Hello, This is Amalan. For more details refer --> https://amalan-constat.github.io/R-fitODBOD/index.html
+
+``` r
 #Looking at the BOD
 Alcohol_data
 ```
@@ -103,18 +119,21 @@ Hypothesis to check if above data follows Binomial Distribution
 fitBin(Alcohol_data$Days,Alcohol_data$week2)
 ```
 
-    ## 
-    ## Chi-squared test for Binomial Distribution
-    ## 
-    ## 
-    ##                 Observed Frequency :  42 47 54 40 49 40 43 84 
-    ## 
-    ##                 expected Frequency :  1.66 13.79 49.19 97.48 115.89 82.67 32.76 5.56 
-    ## 
-    ##                 X-squared = 2265.111 df = 6 p-value = 0
-
     ## Warning in fitBin(Alcohol_data$Days, Alcohol_data$week2): Chi-squared
     ## approximation may be doubtful because expected frequency is less than 5
+
+    ## Call: 
+    ## fitBin(x = Alcohol_data$Days, obs.freq = Alcohol_data$week2)
+    ## 
+    ## Chi-squared test for Binomial Distribution 
+    ##  
+    ##       Observed Frequency :  42 47 54 40 49 40 43 84 
+    ##  
+    ##       expected Frequency :  1.66 13.79 49.19 97.48 115.89 82.67 32.76 5.56 
+    ##  
+    ##       estimated probability value : 0.5431436 
+    ##  
+    ##       X-squared : 2265.111   ,df : 6   ,p-value : 0
 
 According to p-value=0, *H*<sub>0</sub> is rejected at 5% significance level.
 
@@ -137,17 +156,21 @@ Now, Checking if above data follows Beta-Binomial Distribution
 fitBetaBin(Alcohol_data$Days,Alcohol_data$week2,a_est,b_est)
 ```
 
+    ## Call: 
+    ## fitBetaBin(x = Alcohol_data$Days, obs.freq = Alcohol_data$week2, 
+    ##     a = a_est, b = b_est)
     ## 
     ## Chi-squared test for Beta-Binomial Distribution 
-    ## 
-    ## 
-    ##                  Observed Frequency :  42 47 54 40 49 40 43 84 
-    ## 
-    ##                  expected Frequency :  47.91 42.92 41.95 42.5 44.3 47.81 54.89 76.73 
-    ## 
-    ##                  X-squared = 9.7641 df = 5   p-value = 0.0822 
-    ## 
-    ##                  over dispersion = 0.390885
+    ##  
+    ##           Observed Frequency :  42 47 54 40 49 40 43 84 
+    ##  
+    ##           expected Frequency :  47.91 42.92 41.95 42.5 44.3 47.81 54.89 76.73 
+    ##  
+    ##           estimated a parameter : 0.8575354   ,estimated b parameter : 0.7007619 
+    ##  
+    ##           X-squared : 9.7641   ,df : 5   ,p-value : 0.0822 
+    ##  
+    ##           over dispersion : 0.390885
 
 p-value=0.1524 indicates *H*<sub>0</sub> is not rejected at 5% significance level. Clearly Beta-Binomial Distribution is a better suit for the Alcohol BOD.
 

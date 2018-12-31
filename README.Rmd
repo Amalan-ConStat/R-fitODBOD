@@ -36,7 +36,10 @@ You can understand BMD & ABD with PMF & CPMF. Further, BOD can be modeled using 
 |3.COM Poisson Binomial Distribution|3.Beta-Binomial Distribution|
 |4.Correlated Binomial Distribution|4.Kumaraswamy Binomial Distribution|
 |5.Multiplicative Binomial Distribution|5.Gaussian Hypergeometric Generalized Beta-Binomial Distribution|
-||6.McDonald Generalized Beta-Binomial Distribution|
+|6.Lovinson Multiplicative Binomial Distribution|6.McDonald Generalized Beta-Binomial Distribution|
+||7.Gamma Binomial Distribution|
+||8.Grassia I Binomial Distribution|
+||9.Grassia II Binomial Distribution|
 
 
 ## Just an example
