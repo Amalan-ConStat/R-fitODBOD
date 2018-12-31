@@ -472,7 +472,7 @@ EstMLELMBin<-function(x,freq,p,phi)
 #' phiLMBin=bbmle::coef(parameters)[2]  #assigning the estimated phi value
 #'
 #' #fitting when the random variable,frequencies,probability and phi are given
-#' results<-fitMultiBin(No.D.D,Obs.fre.1,pLMBin,phiLMBin)
+#' results<-fitLMBin(No.D.D,Obs.fre.1,pLMBin,phiLMBin)
 #' results
 #'
 #' #extracting the AIC value
