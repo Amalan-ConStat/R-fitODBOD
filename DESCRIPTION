@@ -7,7 +7,7 @@ Version: 1.3.0
 Authors@R: c(
           person("Amalan","Mahendran", email = "amalan0595@gmail.com", role = c("aut","cre")),
           person("Pushpakanthie", "Wijekoon", role = c("aut","ctb")))
-Depends: R (>= 3.5.0)
+Depends: R (>= 3.6.0)
 License: GPL-2
 LazyData: TRUE
 RoxygenNote: 6.1.1
