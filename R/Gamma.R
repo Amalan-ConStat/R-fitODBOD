@@ -44,17 +44,14 @@
 #' \code{var}                   variance of Gamma distribution.
 #'
 #' @references
-#'
-#'
-#'
-#'
+#' Olshen, A. C. Transformations of the Pearson Type III Distribution.
+#' Ann. Math. Statist. 9 (1938), no. 3, 176--200.
 #'
 #' @seealso
-#'
-#'
+#' \code{\link[stats]{GammaDist}}
 #'
 #' @examples
-#' plotting the random variables and probability values
+#' #plotting the random variables and probability values
 #' col<-rainbow(4)
 #' a<-c(1,2,5,10)
 #' plot(0,0,main="Probability density graph",xlab="Random variable",ylab="Probability density values",
@@ -164,20 +161,17 @@ dGAMMA<-function(p,c,l)
 #'
 #' @return
 #' The output of \code{pGAMMA} gives the cumulative density values in vector form.
-
 #'
 #' @references
-#'
-#'
-#'
-#'
+#' Olshen, A. C. Transformations of the Pearson Type III Distribution.
+#' Ann. Math. Statist. 9 (1938), no. 3, 176--200.
 #'
 #' @seealso
-#'
+#' \code{\link[stats]{GammaDist}}
 #'
 #'
 #' @examples
-#' plotting the random variables and probability values
+#' #plotting the random variables and probability values
 #' col<-rainbow(4)
 #' a<-c(1,2,5,10)
 #' plot(0,0,main="Probability density graph",xlab="Random variable",ylab="Probability density values",
@@ -294,17 +288,14 @@ pGAMMA<-function(p,c,l)
 #' The output of \code{mazGAMMA} gives the moments about zero in vector form.
 #'
 #' @references
-#'
-#'
-#'
-#'
+#' Olshen, A. C. Transformations of the Pearson Type III Distribution.
+#' Ann. Math. Statist. 9 (1938), no. 3, 176--200.
 #'
 #' @seealso
-#'
-#'
+#' \code{\link[stats]{GammaDist}}
 #'
 #' @examples
-#' plotting the random variables and probability values
+#' #plotting the random variables and probability values
 #' col<-rainbow(4)
 #' a<-c(1,2,5,10)
 #' plot(0,0,main="Probability density graph",xlab="Random variable",ylab="Probability density values",
@@ -419,7 +410,9 @@ mazGAMMA<-function(r,c,l)
 #' \code{over.dis.para}     over dispersion value of the Gamma Binomial Distribution.
 #'
 #' @references
-#'
+#' Grassia, A., 1977. On a family of distributions with argument between 0 and 1
+#' obtained by transformation of the gamma and derived compound distributions.
+#' Australian Journal of Statistics, 19(2), pp.108-114.
 #'
 #' @examples
 #' #plotting the random variables and probability values
@@ -534,7 +527,9 @@ dGammaBin<-function(x,n,c,l)
 #' The output of \code{pGammaBin} gives cumulative probability  values in vector form.
 #'
 #' @references
-#'
+#' Grassia, A., 1977. On a family of distributions with argument between 0 and 1
+#' obtained by transformation of the gamma and derived compound distributions.
+#' Australian Journal of Statistics, 19(2), pp.108-114.
 #'
 #' @examples
 #' #plotting the random variables and probability values
@@ -605,7 +600,9 @@ pGammaBin<-function(x,n,c,l)
 #' The output of \code{NegLLGammaBin} will produce a single numeric value.
 #'
 #' @references
-#'
+#' Grassia, A., 1977. On a family of distributions with argument between 0 and 1
+#' obtained by transformation of the gamma and derived compound distributions.
+#' Australian Journal of Statistics, 19(2), pp.108-114.
 #'
 #' @examples
 #' No.D.D=0:7       #assigning the random variables
@@ -685,6 +682,9 @@ NegLLGammaBin<-function(x,freq,c,l)
 #' package.
 #'
 #' @references
+#' Grassia, A., 1977. On a family of distributions with argument between 0 and 1
+#' obtained by transformation of the gamma and derived compound distributions.
+#' Australian Journal of Statistics, 19(2), pp.108-114.
 #'
 #' @examples
 #' No.D.D=0:7                   #assigning the random variables
@@ -773,7 +773,9 @@ EstMLEGammaBin<-function(x,freq,c,l)
 #' extract specific outputs.
 #'
 #' @references
-#'
+#' Grassia, A., 1977. On a family of distributions with argument between 0 and 1
+#' obtained by transformation of the gamma and derived compound distributions.
+#' Australian Journal of Statistics, 19(2), pp.108-114.
 #'
 #' @examples
 #' No.D.D=0:7       #assigning the random variables
@@ -933,7 +935,9 @@ summary.fitGaB<-function(object,...)
 #' \code{over.dis.para}     over dispersion value of the Grassia II Binomial Distribution.
 #'
 #' @references
-#'
+#' Grassia, A., 1977. On a family of distributions with argument between 0 and 1
+#' obtained by transformation of the gamma and derived compound distributions.
+#' Australian Journal of Statistics, 19(2), pp.108-114.
 #'
 #' @examples
 #' #plotting the random variables and probability values
@@ -1047,7 +1051,9 @@ dGrassiaIIBin<-function(x,n,a,b)
 #' The output of \code{pGrassiaIIBin} gives cumulative probability  values in vector form.
 #'
 #' @references
-#'
+#' Grassia, A., 1977. On a family of distributions with argument between 0 and 1
+#' obtained by transformation of the gamma and derived compound distributions.
+#' Australian Journal of Statistics, 19(2), pp.108-114.
 #'
 #' @examples
 #' #plotting the random variables and probability values
@@ -1118,7 +1124,9 @@ pGrassiaIIBin<-function(x,n,a,b)
 #' The output of \code{NegLLGrassiaIIBin} will produce a single numeric value.
 #'
 #' @references
-#'
+#' Grassia, A., 1977. On a family of distributions with argument between 0 and 1
+#' obtained by transformation of the gamma and derived compound distributions.
+#' Australian Journal of Statistics, 19(2), pp.108-114.
 #'
 #' @examples
 #' No.D.D=0:7       #assigning the random variables
@@ -1198,6 +1206,9 @@ NegLLGrassiaIIBin<-function(x,freq,a,b)
 #' package.
 #'
 #' @references
+#' Grassia, A., 1977. On a family of distributions with argument between 0 and 1
+#' obtained by transformation of the gamma and derived compound distributions.
+#' Australian Journal of Statistics, 19(2), pp.108-114.
 #'
 #' @examples
 #' No.D.D=0:7                   #assigning the random variables
@@ -1285,7 +1296,9 @@ EstMLEGrassiaIIBin<-function(x,freq,a,b)
 #' extract specific outputs.
 #'
 #' @references
-#'
+#' Grassia, A., 1977. On a family of distributions with argument between 0 and 1
+#' obtained by transformation of the gamma and derived compound distributions.
+#' Australian Journal of Statistics, 19(2), pp.108-114.
 #'
 #' @examples
 #' No.D.D=0:7       #assigning the random variables

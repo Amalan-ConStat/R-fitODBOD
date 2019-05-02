@@ -1,8 +1,7 @@
 R-fitODBOD
 ================
 
-How to engage with "fitODBOD" the first time ?
-----------------------------------------------
+## How to engage with “fitODBOD” the first time ?
 
 ``` r
 ## Installing the package from GitHub
@@ -12,78 +11,37 @@ devtools::install_github("Amalan-ConStat/R-fitODBOD")
 install.packages("fitODBOD")
 ```
 
-Key Phrases
------------
+## Key Phrases
 
--   BOD (Binomial Outcome Data)
--   Over Dispersion
--   Under Dispersion
--   BMD (Binomial Mixture Distributions)
--   ABD (Alternate Binomial Distributions)
--   PMF (Probability Mass Function)
--   CPMF (Cumulative Probability Mass Function)
+  - BOD (Binomial Outcome Data)
+  - Over Dispersion
+  - Under Dispersion
+  - BMD (Binomial Mixture Distributions)
+  - ABD (Alternate Binomial Distributions)
+  - PMF (Probability Mass Function)
+  - CPMF (Cumulative Probability Mass Function)
 
-What does "fitODBOD" ?
-----------------------
+## What does “fitODBOD” ?
 
-You can understand BMD & ABD with PMF & CPMF. Further, BOD can be modeled using these Distributions
-
+You can understand BMD & ABD with PMF & CPMF. Further, BOD can be
+modeled using these
 Distributions
--------------
 
-<table style="width:93%;">
-<colgroup>
-<col width="47%" />
-<col width="45%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th align="left">Alternate Binomial Distrbutions</th>
-<th align="left">Binomial Mixture Distributions</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">1.Additive Binomial Distribution</td>
-<td align="left">1.Uniform Binomial Distribution</td>
-</tr>
-<tr class="even">
-<td align="left">2.Beta-Correlated Binomial Distribution</td>
-<td align="left">2.Triangular Binomial Distribution</td>
-</tr>
-<tr class="odd">
-<td align="left">3.COM Poisson Binomial Distribution</td>
-<td align="left">3.Beta-Binomial Distribution</td>
-</tr>
-<tr class="even">
-<td align="left">4.Correlated Binomial Distribution</td>
-<td align="left">4.Kumaraswamy Binomial Distribution</td>
-</tr>
-<tr class="odd">
-<td align="left">5.Multiplicative Binomial Distribution</td>
-<td align="left">5.Gaussian Hypergeometric Generalized Beta-Binomial Distribution</td>
-</tr>
-<tr class="even">
-<td align="left">6.Lovinson Multiplicative Binomial Distribution</td>
-<td align="left">6.McDonald Generalized Beta-Binomial Distribution</td>
-</tr>
-<tr class="odd">
-<td align="left"></td>
-<td align="left">7.Gamma Binomial Distribution</td>
-</tr>
-<tr class="even">
-<td align="left"></td>
-<td align="left">8.Grassia I Binomial Distribution</td>
-</tr>
-<tr class="odd">
-<td align="left"></td>
-<td align="left">9.Grassia II Binomial Distribution</td>
-</tr>
-</tbody>
-</table>
+## Distributions
 
-Just an example
----------------
+| Alternate Binomial Distrbutions                 | Binomial Mixture Distributions                                   |
+| :---------------------------------------------- | :--------------------------------------------------------------- |
+| 1.Additive Binomial Distribution                | 1.Uniform Binomial Distribution                                  |
+| 2.Beta-Correlated Binomial Distribution         | 2.Triangular Binomial Distribution                               |
+| 3.COM Poisson Binomial Distribution             | 3.Beta-Binomial Distribution                                     |
+| 4.Correlated Binomial Distribution              | 4.Kumaraswamy Binomial Distribution                              |
+| 5.Multiplicative Binomial Distribution          | 5.Gaussian Hypergeometric Generalized Beta-Binomial Distribution |
+| 6.Lovinson Multiplicative Binomial Distribution | 6.McDonald Generalized Beta-Binomial Distribution                |
+|                                                 | 7.Gamma Binomial Distribution                                    |
+|                                                 | 8.Grassia I Binomial Distribution                                |
+|                                                 | 9.Grassia II Binomial Distribution                               |
+
+## Just an example
 
 ### Modelling BOD using Beta-Binomial Distribution
 
@@ -110,9 +68,10 @@ Alcohol_data
 
 Hypothesis to check if above data follows Binomial Distribution
 
-*H*<sub>0</sub> : The Data follows the Binomial Distribution.
+\(H_0\) : The Data follows the Binomial Distribution.
 
-*H*<sub>1</sub> : The Data does not follow the Binomial Distribution.
+\(H_1\) : The Data does not follow the Binomial
+Distribution.
 
 ``` r
 #Checking if the above data  of Days and week2 follows Binomial Distribution
@@ -135,7 +94,8 @@ fitBin(Alcohol_data$Days,Alcohol_data$week2)
     ##  
     ##       X-squared : 2265.111   ,df : 6   ,p-value : 0
 
-According to p-value=0, *H*<sub>0</sub> is rejected at 5% significance level.
+According to p-value=\(0\), \(H_0\) is rejected at \(5\%\) significance
+level.
 
 ``` r
 #Estimating the parameters a and b using bbmle package mle2 function
@@ -147,9 +107,9 @@ b_est=bbmle::coef(BetaBin)[2]
 
 Now, Checking if above data follows Beta-Binomial Distribution
 
-*H*<sub>0</sub> : The Data follows the Beta-Binomial Distribution.
+\(H_0\) : The Data follows the Beta-Binomial Distribution.
 
-*H*<sub>1</sub> : The Data does not follow the Beta-Binomial Distribution.
+\(H_1\) : The Data does not follow the Beta-Binomial Distribution.
 
 ``` r
 #Checking if the above data follows Beta-Binomial Distribution
@@ -172,7 +132,9 @@ fitBetaBin(Alcohol_data$Days,Alcohol_data$week2,a_est,b_est)
     ##  
     ##           over dispersion : 0.390885
 
-p-value=0.1524 indicates *H*<sub>0</sub> is not rejected at 5% significance level. Clearly Beta-Binomial Distribution is a better suit for the Alcohol BOD.
+p-value=\(0.1524\) indicates \(H_0\) is not rejected at \(5\%\)
+significance level. Clearly Beta-Binomial Distribution is a better suit
+for the Alcohol BOD.
 
 Further
 
@@ -185,17 +147,28 @@ Est_Var_Bin<-var(rep(Alcohol_data$Days,c(1.66,13.79,49.19,97.48,115.89,82.67,32.
 Est_Var_BetaBin<-var(rep(Alcohol_data$Days,c(47.91,42.92,41.95,42.5,44.3,47.81,54.89,76.73)))
 ```
 
-| Type of Variance                                                  |    Values|
-|:------------------------------------------------------------------|---------:|
-| Actual                                                            |  5.787333|
-| From Expected frequencies of estimated Binomial Distribution      |  1.694534|
-| From Expected frequencies of estimated Beta-Binomial Distribution |  5.804344|
+| Type of Variance                                                  |   Values |
+| :---------------------------------------------------------------- | -------: |
+| Actual                                                            | 5.787333 |
+| From Expected frequencies of estimated Binomial Distribution      | 1.694534 |
+| From Expected frequencies of estimated Beta-Binomial Distribution | 5.804344 |
 
-![](README_files/figure-markdown_github/Printing%20variance%20and%20plotting%20frequencies-1.png)
+    ## Registered S3 methods overwritten by 'ggplot2':
+    ##   method         from 
+    ##   [.quosures     rlang
+    ##   c.quosures     rlang
+    ##   print.quosures rlang
 
-Variance(5.8043) from Beta-Binomial Distribution's estimated frequencies is closer to the Actual Variance(5.7873) of Alcohol BOD week 2 than variance(1.6945) of expected frequencies by Binomial Distribution.
+![](README_files/figure-gfm/Printing%20variance%20and%20plotting%20frequencies-1.png)<!-- -->
 
-According to the plot, it is clearly seen that Beta-Binomial estimated frequencies behave very close to actual frequency values than the estimate frequencies from Binomial distribution. Or the Red line is very similar and close to the Blue line than the Green line.
+Variance(\(5.8043\)) from Beta-Binomial Distribution’s estimated
+frequencies is closer to the Actual Variance(\(5.7873\)) of Alcohol BOD
+week 2 than variance(\(1.6945\)) of expected frequencies by Binomial
+Distribution.
 
-Thank You
----------
+According to the plot, it is clearly seen that Beta-Binomial estimated
+frequencies behave very close to actual frequency values than the
+estimate frequencies from Binomial distribution. Or the Red line is very
+similar and close to the Blue line than the Green line.
+
+## Thank You

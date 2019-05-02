@@ -45,7 +45,7 @@ Defined as \eqn{Ig(l,cln(1/p))= \int_0^{cln(1/p)} t^{l-1} e^{-t}dt } is the Lowe
 messages will be provided to go further.
 }
 \examples{
-plotting the random variables and probability values
+#plotting the random variables and probability values
 col<-rainbow(4)
 a<-c(1,2,5,10)
 plot(0,0,main="Probability density graph",xlab="Random variable",ylab="Probability density values",
@@ -78,8 +78,9 @@ mazGAMMA(1.9,5.5,6)
 
 }
 \references{
-
+Olshen, A. C. Transformations of the Pearson Type III Distribution.
+Ann. Math. Statist. 9 (1938), no. 3, 176--200.
 }
 \seealso{
-
+\code{\link[stats]{GammaDist}}
 }

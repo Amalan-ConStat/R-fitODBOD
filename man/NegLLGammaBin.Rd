@@ -38,5 +38,7 @@ NegLLGammaBin(No.D.D,Obs.fre.1,.3,.4)   #acquiring the negative log likelihood v
 
 }
 \references{
-
+Grassia, A., 1977. On a family of distributions with argument between 0 and 1
+obtained by transformation of the gamma and derived compound distributions.
+Australian Journal of Statistics, 19(2), pp.108-114.
 }

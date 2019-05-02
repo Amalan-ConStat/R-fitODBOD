@@ -40,15 +40,18 @@
 #' \code{var}        variance of Lovinson Multiplicative Binomial Distribution.
 #'
 #' @references
-#'
+#' Elamir, E.A., 2013. Multiplicative-Binomial Distribution: Some Results on
+#' Characterization, Inference and Random Data Generation. Journal of Statistical
+#' Theory and Applications, 12(1), pp.92-105.
 #'
 #' @examples
 #' #plotting the random variables and probability values
 #' col<-rainbow(5)
 #' a<-c(0.58,0.59,0.6,0.61,0.62)
 #' b<-c(0.022,0.023,0.024,0.025,0.026)
-#' plot(0,0,main="Lovinson Multiplicative binomial probability function graph",xlab="Binomial random variable",
-#' ylab="Probability function values",xlim = c(0,10),ylim = c(0,0.5))
+#' plot(0,0,main="Lovinson Multiplicative binomial probability
+#'      function graph",xlab="Binomial random variable",
+#'      ylab="Probability function values",xlim = c(0,10),ylim = c(0,0.5))
 #' for (i in 1:5)
 #' {
 #' lines(0:10,dLMBin(0:10,10,a[i],1+b[i])$pdf,col = col[i],lwd=2.85)
@@ -64,8 +67,9 @@
 #' col<-rainbow(5)
 #' a<-c(0.58,0.59,0.6,0.61,0.62)
 #' b<-c(0.022,0.023,0.024,0.025,0.026)
-#' plot(0,0,main="Lovinson Multiplicative binomial probability function graph",xlab="Binomial random variable",
-#' ylab="Probability function values",xlim = c(0,10),ylim = c(0,1))
+#' plot(0,0,main="Lovinson Multiplicative binomial probability
+#'      function graph",xlab="Binomial random variable",
+#'      ylab="Probability function values",xlim = c(0,10),ylim = c(0,1))
 #' for (i in 1:5)
 #' {
 #' lines(0:10,pLMBin(0:10,10,a[i],1+b[i]),col = col[i],lwd=2.85)
@@ -164,7 +168,7 @@ dLMBin<-function(x,n,p,phi)
 #' cumulative probability function values for the Lovinson Multiplicative Binomial Distribution.
 #'
 #' @usage
-#' pMultiBin(x,n,p,theta)
+#' pLMBin(x,n,p,phi)
 #'
 #' @param x        vector of binomial random variables.
 #' @param n        single value for no of binomial trials.
@@ -194,18 +198,18 @@ dLMBin<-function(x,n,p,phi)
 #' The output of \code{pLMBin} gives cumulative probability values in vector form.
 #'
 #' @references
-#'
-#'
-#'
-#'
+#' Elamir, E.A., 2013. Multiplicative-Binomial Distribution: Some Results on
+#' Characterization, Inference and Random Data Generation. Journal of Statistical
+#' Theory and Applications, 12(1), pp.92-105.
 #'
 #' @examples
 #' #plotting the random variables and probability values
 #' col<-rainbow(5)
 #' a<-c(0.58,0.59,0.6,0.61,0.62)
 #' b<-c(0.022,0.023,0.024,0.025,0.026)
-#' plot(0,0,main="Lovinson Multiplicative binomial probability function graph",xlab="Binomial random variable",
-#' ylab="Probability function values",xlim = c(0,10),ylim = c(0,0.5))
+#' plot(0,0,main="Lovinson Multiplicative binomial probability
+#'      function graph",xlab="Binomial random variable",
+#'      ylab="Probability function values",xlim = c(0,10),ylim = c(0,0.5))
 #' for (i in 1:5)
 #' {
 #' lines(0:10,dLMBin(0:10,10,a[i],1+b[i])$pdf,col = col[i],lwd=2.85)
@@ -220,8 +224,9 @@ dLMBin<-function(x,n,p,phi)
 #' col<-rainbow(5)
 #' a<-c(0.58,0.59,0.6,0.61,0.62)
 #' b<-c(0.022,0.023,0.024,0.025,0.026)
-#' plot(0,0,main="Lovinson Multiplicative binomial probability function graph",xlab="Binomial random variable",
-#' ylab="Probability function values",xlim = c(0,10),ylim = c(0,1))
+#' plot(0,0,main="Lovinson Multiplicative binomial probability
+#'      function graph",xlab="Binomial random variable",
+#'      ylab="Probability function values",xlim = c(0,10),ylim = c(0,1))
 #' for (i in 1:5)
 #' {
 #' lines(0:10,pLMBin(0:10,10,a[i],1+b[i]),col = col[i],lwd=2.85)
@@ -231,7 +236,7 @@ dLMBin<-function(x,n,p,phi)
 #' pLMBin(0:10,10,.58,10.022)     #acquiring the cumulative probability values
 #'
 #' @export
-pLMBin<-function(x,n,p,theta)
+pLMBin<-function(x,n,p,phi)
 {
   ans<-NULL
   #for each binomial random variable in the input vector the cumulative proability function
@@ -268,9 +273,9 @@ pLMBin<-function(x,n,p,theta)
 #' The output of \code{NegLLLMBin} will produce a single numeric value.
 #'
 #' @references
-#'
-#'
-#'
+#' Elamir, E.A., 2013. Multiplicative-Binomial Distribution: Some Results on
+#' Characterization, Inference and Random Data Generation. Journal of Statistical
+#' Theory and Applications, 12(1), pp.92-105.
 #'
 #' @examples
 #' No.D.D=0:7       #assigning the random variables
@@ -365,8 +370,9 @@ NegLLLMBin<-function(x,freq,p,phi)
 #' therefore output is of class of mle2.
 #'
 #' @references
-#'
-#'
+#' Elamir, E.A., 2013. Multiplicative-Binomial Distribution: Some Results on
+#' Characterization, Inference and Random Data Generation. Journal of Statistical
+#' Theory and Applications, 12(1), pp.92-105.
 #'
 #' @seealso
 #' \code{\link[bbmle]{mle2}}
@@ -453,9 +459,9 @@ EstMLELMBin<-function(x,freq,p,phi)
 #' can be used to extract specific outputs.
 #'
 #' @references
-#'
-#'
-#'
+#' Elamir, E.A., 2013. Multiplicative-Binomial Distribution: Some Results on
+#' Characterization, Inference and Random Data Generation. Journal of Statistical
+#' Theory and Applications, 12(1), pp.92-105.
 #'
 #' @seealso
 #' \code{\link[bbmle]{mle2}}

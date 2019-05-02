@@ -82,7 +82,9 @@ fitted(results)
 
 }
 \references{
-
+Elamir, E.A., 2013. Multiplicative-Binomial Distribution: Some Results on
+Characterization, Inference and Random Data Generation. Journal of Statistical
+Theory and Applications, 12(1), pp.92-105.
 }
 \seealso{
 \code{\link[bbmle]{mle2}}
