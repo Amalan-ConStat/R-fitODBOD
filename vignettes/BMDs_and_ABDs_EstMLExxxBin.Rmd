@@ -1,0 +1,230 @@
+---
+title: "Minimizing the Negative Log Likelihood for BMD and ABD"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Minimizing the Negative Log Likelihood for BMD and ABD}
+  %\VignetteEngine{knitr::rmarkdown}
+  \usepackage[utf8]{inputenc}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(fitODBOD)
+library(ggplot2)
+library(reshape2)
+library(grid)
+library(gridExtra)
+library(bbmle)
+```
+
+>IT WOULD BE CLEARLY BENEFICIAL FOR YOU BY USING THE RMD FILES IN THE GITHUB DIRECTORY FOR FURTHER EXPLANATION
+OR UNDERSTANDING OF THE R CODE FOR THE RESULTS OBTAINED IN THE VIGNETTES.
+
+# Negative Log Likelihood Estimation or Maximum Likelihood Estimation Technique
+
+All of the Binomial Mixture and Alternate Binomial distributions in this package use this technique. 
+This is very simple, by using the probability mass function we can develop the Likelihood function and then maximize
+it or develop the Negative Log Likelihood function and minimize it. Maximizing or minimizing means finding 
+appropriate values for the parameters in question which will provide a most maximum Likelihood value or least
+minimum Negative Log Likelihood value. 
+
+If we have one parameter to estimate it is possible to use brute force technique. When the number of parameters
+need to be estimated increases this is very time consuming. Similarly, if the parameter in estimation has a very
+broad domain also it would be difficult. 
+
+In situations with difficulty of such we can use functions such as `optim`,`mle`, `mle2`, `nlm`, `nlminb`. 
+`fitODBOD`is using the `mle2` function of the [`bbmle`](https://cran.r-project.org/package=bbmle) 
+package. There are situations where user defined functions without the help of `mle2`.
+
+## Functions which does not need `bbmle` package
+
+These situations occurring are very less in comparing to the number of distributions we have in `fitODBOD`.
+They genuinely occur when the parameter in need of estimation has a closed domain and that domain is very small.
+Here by small it is indicating a scenario of such as in-between zero and one or greater than zero.  
+
+```{r Printing data}
+# estimating parameter for p and alpha using Additive Binomial Distribution of Male_children data
+Male_Children
+```
+
+The distributions in relation are
+
+1. from Alternate Binomial Distribution - Additive Binomial Distribution
+
+There are two parameters to estimate, which are p and alpha. These parameters are unique values, therefore 
+estimating them once is enough. Time related to estimation is dependent on the data. 
+
+```{r printing estimated parameters for Additive Binomial Distribution,echo=FALSE}
+# estimating parameter for p and alpha using Additive Binomial Distribution
+Est_para<-suppressWarnings(EstMLEAddBin(Male_Children$No_of_Males,Male_Children$freq))
+cat("Estimated parameter p for Male_children data=",Est_para$p, "\n")
+cat("Estimated parameter alpha for Male_children data=",Est_para$alpha,"\n")
+```
+
+2. from Binomial Mixture Distribution - Triangular Binomial Distribution
+
+There is only one parameter that needs to be estimated, which is mode or c. This is in-between 
+zero and one. 
+      
+```{r printing estimated parameter for Triangular Binomial Distribution,echo=FALSE}      
+# estimating parameter for mode using Triangular Binomial Distribution of Male_children data
+Est_para<-suppressWarnings(EstMLETriBin(Male_Children$No_of_Males,Male_Children$freq))
+cat("Estimated parameter mode or c for Male_children data=",Est_para$mode, "\n")
+```      
+
+## Functions which does need `bbmle` package
+
+By Using the [vignette file](https://cran.r-project.org/package=bbmle) or 
+[manual pdf file](https://cran.r-project.org/package=bbmle) we can get to know how the `bbmle` 
+package works. Specifically looking into `mle2` function is necessary and also class of `mle2`. 
+Notable points related are in point form as 
+
+* coef
+* min 
+* nobs
+* minuslogl
+* method
+
+It is preferable to try them and understand the functions capability and process. You can achieve proper results 
+by looking at how the inputs should mentioned, because there is a specific format to follow.
+
+Below are instances of using the [`mle2`](https://www.rdocumentation.org/packages/bbmle/versions/1.0.20/topics/mle2) function.
+
+The distributions in relation are 
+
+### from Alternate Binomial distributions 
+
+1. Beta-Correlated Binomial distribution
+
+Here there are three parameters to be estimated which are cov, a and b. It should be mentioned that
+cov is a unique value but alpha and beta can take specific combinations.
+
+* cov is in the domain region of -infinity and +infinity.
+* a, b are domain in the region of greater than zero.
+
+```{r printing estimated parameters for Beta-Correlated Binomial Distribution, echo=FALSE}
+#estimating parameters for Beta-Correlated Binomial Distribution of Male_children data
+Est_para<-suppressWarnings(mle2(EstMLEBetaCorrBin,
+                           data=list(x=Male_Children$No_of_Males,freq=Male_Children$freq),
+                           start=list(cov=0.05,a=10,b=10)))
+cat("Estimated parameter covariance for Male_children data=",coef(Est_para)[1],"\n")
+cat("Estimated parameter a for Male_children data=",coef(Est_para)[2], "\n")
+cat("Estimated parameter b for Male_children data=",coef(Est_para)[3], "\n")
+```
+
+2. Correlated Binomial distribution
+
+Two parameters that needs to be estimated which are cov and p. They are unique values for the distribution.
+
+* cov is in the domain region of -infinity and +infinity.
+* p is in the domain region of zero and one.
+
+```{r printing estimated parameters for Correlated Binomial Distribution,echo=FALSE}
+#estimating parameters for Correlated Binomial Distribution of Male_children data
+Est_para<-suppressWarnings(mle2(EstMLECorrBin,
+                           data=list(x=Male_Children$No_of_Males,freq=Male_Children$freq),
+                           start=list(cov=0.0005,p=0.51)))
+cat("Estimated parameter p for Male_children data=",coef(Est_para)[1],"\n")
+cat("Estimated parameter covariance for Male_children data=",coef(Est_para)[2], "\n")
+```
+
+3. COM Poisson Binomial distribution
+
+Two parameters that needs to be estimated which are p and cov. They are unique values for the distribution.
+
+* cov is in the domain region of -infinity and +infinity.
+* p is in the domain region of zero and one.
+
+```{r printing estimated parameters for COM Poisson Binomial Distribution,echo=FALSE}
+#estimating parameters for COM Poisson Binomial Distribution of Male_children data
+Est_para<-suppressWarnings(mle2(EstMLECOMPBin,
+                           data=list(x=Male_Children$No_of_Males,freq=Male_Children$freq),
+                           start=list(v=0.0005,p=0.51)))
+cat("Estimated parameter p for Male_children data=",coef(Est_para)[1],"\n")
+cat("Estimated parameter covariance for Male_children data=",coef(Est_para)[2], "\n")
+```
+
+4. Multiplicative Binomial distribution
+
+Two parameters that needs to be estimated which are p and theta. Only p value is unique.
+
+* p is in the domain region of zero and one.
+* theta is in the domain region of greater than zero.
+
+```{r printing estimated parameters for Multiplicative Binomial Distribution,echo=FALSE}
+#estimating parameters for Multiplicative Binomial Distribution of Male_children data
+Est_para<-suppressWarnings(mle2(EstMLEMultiBin,
+                           data=list(x=Male_Children$No_of_Males,freq=Male_Children$freq),
+                           start=list(theta=15,p=0.51)))
+cat("Estimated parameter p for Male_children data=",coef(Est_para)[1],"\n")
+cat("Estimated parameter theta for Male_children data=",coef(Est_para)[2], "\n")
+```
+
+### from Binomial Mixture distributions
+
+1. Beta-Binomial distribution
+
+Two parameters to be estimated which are a and b. Together they have to represent a unique combination.
+
+* a,b in the domain region of greater than zero.
+
+```{r printing estimated parameters for Beta-Binomial Distribution,echo=FALSE}
+#estimating parameters for Beta-Binomial Distribution of Male_children data
+Est_para<-suppressWarnings(mle2(EstMLEBetaBin,
+                           data=list(x=Male_Children$No_of_Males,freq=Male_Children$freq),
+                           start=list(a=15,b=0.51)))
+cat("Estimated parameter a for Male_children data=",coef(Est_para)[1],"\n")
+cat("Estimated parameter b for Male_children data=",coef(Est_para)[2], "\n")
+```
+
+2. Kumaraswamy Binomial distribution
+
+Two parameters to be estimated which are a and b. Together they have to represent a unique combination.
+
+* a,b in the domain region of greater than zero.
+* it value or iteration value as a variable replacing the infinity in the summation.
+
+Here the number of iterations has to be estimated as well, which is time consuming. 
+therefore I haven't estimated it. 
+
+```{r printing estimated parameters for Kumaraswamy Binomial Distribution, echo=FALSE}
+#estimating parameters for Kumaraswamy Binomial Distribution of Male_children data
+Est_para<-suppressWarnings(mle2(EstMLEKumBin,
+                           data=list(x=Male_Children$No_of_Males,freq=Male_Children$freq),
+                           start=list(a=15,b=10,it=5000)))
+cat("Estimated parameter a for Male_children data=",coef(Est_para)[1],"\n")
+cat("Estimated parameter b for Male_children data=",coef(Est_para)[2], "\n")
+cat("Estimated parameter iteration for Male_children data=",coef(Est_para)[3], "\n")
+```
+
+3. GHGBB distribution
+
+Three parameters to be estimated which are a,b and c. They have to represent a unique combination as a whole.
+
+* a,b,c in the domain region of greater than zero.
+
+```{r printing estimated parameters for GHGBB Distribution, echo=FALSE}
+#estimating parameters for GHGBB Distribution of Male_children data
+Est_para<-suppressWarnings(mle2(EstMLEGHGBB,
+                           data=list(x=Male_Children$No_of_Males,freq=Male_Children$freq),
+                           start=list(a=15,b=10,c=20)))
+cat("Estimated parameter a for Male_children data=",coef(Est_para)[1],"\n")
+cat("Estimated parameter b for Male_children data=",coef(Est_para)[2], "\n")
+cat("Estimated parameter c for Male_children data=",coef(Est_para)[3], "\n")
+```
+
+4. McGBB distribution
+
+Three parameters to be estimated which are a,b and c. They have to represent a unique combination as a whole.
+
+* a,b,c in the domain region of greater than zero.
+
+```{r printing estimated parameters for McGBB Distribution, echo=FALSE}
+#estimating parameters for McGBB Distribution of Male_children data
+Est_para<-suppressWarnings(mle2(EstMLEMcGBB,
+                           data=list(x=Male_Children$No_of_Males,freq=Male_Children$freq),
+                           start=list(a=1,b=10,c=20)))
+cat("Estimated parameter a for Male_children data=",coef(Est_para)[1],"\n")
+cat("Estimated parameter b for Male_children data=",coef(Est_para)[2], "\n")
+cat("Estimated parameter c for Male_children data=",coef(Est_para)[3], "\n")
+```

@@ -1,0 +1,61 @@
+---
+title: "Negative Log Likelihood values of BMD and ABD"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Negative Log Likelihood values of BMD and ABD}
+  %\VignetteEngine{knitr::rmarkdown}
+  \usepackage[utf8]{inputenc}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(fitODBOD)
+library(ggplot2)
+library(reshape2)
+library(grid)
+library(gridExtra)
+library(bbmle)
+```
+
+>IT WOULD BE CLEARLY BENEFICIAL FOR YOU BY USING THE RMD FILES IN THE GITHUB DIRECTORY FOR FURTHER EXPLANATION
+OR UNDERSTANDING OF THE R CODE FOR THE RESULTS OBTAINED IN THE VIGNETTES. 
+
+## Calculating Negative Log Likelihood values 
+
+All Binomial Mixture distributions and Alternate Binomial distributions have Negative Log Likelihood functions. 
+Negative Log Likelihood value equations have been converted into functions. Using the Negative Log Likelihood values
+we can find the AIC(Akaike Information criteria), which is useful to compare fitted distributions for the
+same data-set.
+
+It should be noted that the Negative Log Likelihood function for Uniform Binomial distribution is not
+considered, because it provides less variety of shape for Binomial Outcome data.
+
+The functions are given below
+
+* Alternate Binomial Distribution
+1. NegLLAddBin
+2. NegLLBetaCorrBin
+3. NegLLCOMPBin
+4. NegLLCorrBin
+5. NegLLMultiBin
+
+* Binomial Mixture Distribution
+1. NegLLTriBin 
+2. NegLLBetaBin
+3. NegLLKumBin
+4. NegLLGHGBB
+5. NegLLMcGBB
+
+Below is an example of finding the Negative Log Likelihood value for Beta-Binomial distribution 
+of Male_children data. Before that, I am going to estimate the parameters which minimize the 
+Negative Log Likelihood value.
+
+```{r Estimating parameters and printing Negative Log Likelihood value, echo=FALSE}
+Est_para<-suppressWarnings(
+                          mle2(EstMLEBetaBin,
+                          data=list(x=Male_Children$No_of_Males,freq=Male_Children$freq),
+                          start = list(a=10,b=10)))
+Negllvalue<-NegLLBetaBin(Male_Children$No_of_Males,Male_Children$freq,
+                         coef(Est_para)[1],coef(Est_para)[2])
+cat("Minimized Negative Log Likelihood value for Male_children data =",Negllvalue)
+```

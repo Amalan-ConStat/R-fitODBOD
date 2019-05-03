@@ -1,0 +1,77 @@
+---
+title: "Maz values of Unit Bounded Distributions or Mixing Distributions"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Maz values of Unit Bounded Distributions or Mixing Distributions}
+  %\VignetteEngine{knitr::rmarkdown}
+  \usepackage[utf8]{inputenc}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(fitODBOD)
+library(ggplot2)
+library(reshape2)
+library(grid)
+library(gridExtra)
+```
+
+>IT WOULD BE CLEARLY BENEFICIAL FOR YOU BY USING THE RMD FILES IN THE GITHUB DIRECTORY FOR FURTHER EXPLANATION
+OR UNDERSTANDING OF THE R CODE FOR THE RESULTS OBTAINED IN THE VIGNETTES. 
+
+## Moment about zero values for all six Unit Bounded Distributions 
+
+Using Moment about zero values is useful to calculating mean, variance, skewness and kurtosis. 
+There is no useful need to plot the moment about zero values against how shape parameter values change.
+Therefore, I have not plotted it. 
+
+Below are the six functions which can produce moment about zero values.
+
+* `mazUNI` - producing moment about zero values for Uniform distribution.
+* `mazTRI` - producing moment about zero values for Triangular distribution.
+* `mazBETA` - producing moment about zero values for Beta distribution.
+* `mazKUM` - producing moment about zero values for Kumaraswamy distribution.
+* `mazGHGBeta` - producing moment about zero values for Gaussian Hyper-geometric Generalized Beta distribution.
+* `mazGBeta1` - producing moment about zero values for Generalized Beta Type 1 distribution.
+* `mazGamma` - producing moment about zero values for Gamma distribution.
+
+Consider the $r^{th}$ Moment about zero for the Beta distribution for when a random variable $P$ is given below
+
+$$E[P^r]= \prod_{i=0}^{r-1} \frac{(\alpha+i)}{(\alpha+\beta+i)} $$
+where $\alpha$ (a) and $\beta$ (b) are shape parameters($\alpha, \beta > 0$) . 
+
+* The mean is acquired by $$\mu= E[P]$$
+* The variance is acquired by $$ \sigma_2= E[P^2] - \mu^2 $$
+* The skewness is acquired by $$\gamma_1= \frac{E[(P- \mu)^3]}{(Var(P))^{(3/2)}} $$
+* The kurtosis is acquired by $$ \gamma_2= \frac{E[(P- \mu)^4]}{(Var(P))^{2}}$$
+
+Using the above four equations it is possible to find the mean, variance, skewness and kurtosis. It is 
+even possible to validate the mean and variance calculated from dxxx functions through the mazxxx
+functions.
+
+## Proving Mean is similar from dxxx and mazxxx functions
+
+Mean from dBETA compared with mazBETA function
+```{r Comparing the mean values, echo=FALSE}
+# a=3, b=9 and mean output
+cat("Mean from dBETA function for (a=3, b=9) =",dBETA(0.5,3,9)$mean,"\n")
+
+# a=3, b=9 and first moment 
+cat("Mean from mazBETA function for (a=3, b=9) =",mazBETA(1,3,9))
+```
+
+## Proving Variance is similar from dxxx and mazxxx functions
+
+Variance from dBETA compared with mazBETA function
+```{r Comparing the variance, echo=FALSE}
+# a=3,b=9 and variance output
+cat("Variance from dBETA function for (a=3,b=9) =",dBETA(0.5,3,9)$var,"\n")
+
+# a=3, b=9, first moment and second moment
+cat("Variance from mazBETA function for (a=3,b=9) =",mazBETA(2,3,9)-mazBETA(1,3,9)*mazBETA(1,3,9))
+```
+
+## Conclusion 
+
+According to the above outputs it clear that the mean and variance can be acquired using moment about 
+zero value functions.

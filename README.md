@@ -153,12 +153,6 @@ Est_Var_BetaBin<-var(rep(Alcohol_data$Days,c(47.91,42.92,41.95,42.5,44.3,47.81,5
 | From Expected frequencies of estimated Binomial Distribution      | 1.694534 |
 | From Expected frequencies of estimated Beta-Binomial Distribution | 5.804344 |
 
-    ## Registered S3 methods overwritten by 'ggplot2':
-    ##   method         from 
-    ##   [.quosures     rlang
-    ##   c.quosures     rlang
-    ##   print.quosures rlang
-
 ![](README_files/figure-gfm/Printing%20variance%20and%20plotting%20frequencies-1.png)<!-- -->
 
 Variance(\(5.8043\)) from Beta-Binomial Distribution’s estimated

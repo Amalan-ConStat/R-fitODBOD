@@ -1,0 +1,62 @@
+---
+title: "Moment Generating Function method for BMD and ABD"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Moment Generating Function method for BMD and ABD}
+  %\VignetteEngine{knitr::rmarkdown}
+  \usepackage[utf8]{inputenc}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(fitODBOD)
+```
+
+>IT WOULD BE CLEARLY BENEFICIAL FOR YOU BY USING THE RMD FILES IN THE GITHUB DIRECTORY FOR FURTHER EXPLANATION
+OR UNDERSTANDING OF THE R CODE FOR THE RESULTS OBTAINED IN THE VIGNETTES. 
+
+# Estimating the parameters using Moment Generating Function 
+
+In the eleven Binomial Mixture and Alternate Binomial Distributions only Beta-Binomial Distribution 
+is related to this technique. Moment Generating function only exists to Beta-Binomial Distribution.
+
+Let $Y=[Y_1,Y_2,...,Y_N]^T$ be a random sample of size $N$ from Beta-Binomial distribution with the 
+probability mass function. $n$ is fixed for all clusters. Therefore, shape parameters $\alpha$(a) and $\beta$(b) are estimated using the below equations as $\hat{\alpha}$ and $\hat{\beta}$.
+
+
+$$\hat{\alpha}= \frac{(n*m_1 -m_2)m_1}{n(m_2-m_1-{m_1}^2)+{m_1}^2} $$
+
+$$\hat{\beta}= \frac{(n*m_1-m_2)(n-m_1)}{n(m_2-m_1-{m_1}^2)+{m_1}^2} $$  
+where  $m_1=\sum_{i=1}^{N} \frac{y_i}{N}$ and $m_2= \sum_{i=1}^{N} \frac{{Y_i}^2}{N}$ are the first two
+sample moments. 
+
+These equations produce unique values for $\alpha$ (a) and $\beta$ (b). 
+
+Below is the code for estimating shape parameters using this technique and function used for this is 
+`EstMGFBetaBin`. 
+
+## Using the Chromosome data provided in the package.
+
+```{r Estimating parameters a and b for Chromosome data,echo=FALSE}
+Chromosome_data #printing the Chromosome_data
+
+# Estimating the parameters using EstMGFBetaBin and printing them
+Est_para<-EstMGFBetaBin(Chromosome_data$No.of.Asso,Chromosome_data$fre)
+cat("Estimated alpha parameter for Chromosome data =",Est_para$a,"\n")
+cat("Estimated beta parameter for Chromosome data =",Est_para$b)
+```
+
+## Using the Male Children data provided in the package
+
+```{r Estimating parameters a and b for Male_children data,echo=FALSE}
+Male_Children #printing the Male Children data
+
+# Estimating the parameters using EstMGFBetaBin and printing them
+Est_para<-EstMGFBetaBin(Male_Children$No_of_Males,Male_Children$freq)
+cat("Estimated alpha parameter Male_children data=",Est_para$a,"\n")
+cat("Estimated beta parameter Male_children data=",Est_para$b)
+
+```
+
+Further, we can use the above estimated parameters in the `fitBetaBin` function and check how good the 
+Beta-Binomial Distribution is fitted for a given Binomial outcome data. 
