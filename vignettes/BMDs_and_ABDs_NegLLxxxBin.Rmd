@@ -38,6 +38,7 @@ The functions are given below
 3. NegLLCOMPBin
 4. NegLLCorrBin
 5. NegLLMultiBin
+6. NegLLLMBin
 
 * Binomial Mixture Distribution
 1. NegLLTriBin 
@@ -45,6 +46,8 @@ The functions are given below
 3. NegLLKumBin
 4. NegLLGHGBB
 5. NegLLMcGBB
+6. NegLLGammaBin
+7. NegLLGrassiaIIBin
 
 Below is an example of finding the Negative Log Likelihood value for Beta-Binomial distribution 
 of Male_children data. Before that, I am going to estimate the parameters which minimize the 
