@@ -179,87 +179,167 @@ ABD_freq<-ggplot(ABD_Data)+theme_get()+
   plotly::plotly_build(ABD_freq)
 
 
-
+## ----plotting Expected frequencies with actual frequency for Triangular Binomial Distribution, warning=FALSE----
 # Estimating and fitting Triangular Binomial distribution
 Para_TriBin<-suppressWarnings(EstMLETriBin(BinRanVar,ActFreq))
+
+# printing the coefficients and using them
+coef(Para_TriBin)
+
 TriBin_c<-Para_TriBin$mode
 
+# Fitting Triangular Binomial Distribution
+TriBinFreq<-suppressWarnings(fitTriBin(BinRanVar, ActFreq, TriBin_c))
 
-TriBinFreq<-suppressWarnings(fitTriBin(BinRanVar, ActFreq, TriBin_c, print=F)$exp.freq)
+# printing the results of fitting Triangular Binomial Distribution
+print(TriBinFreq)
 
+## ----plotting Expected frequencies with actual frequency for Beta-Binomial Distribution, warning=FALSE----
 # Estimating and fitting Beta Correlated Binoial Distribution
 Para_BetaBin<-suppressWarnings(mle2(EstMLEBetaBin,
                        data=list(x=BinRanVar, freq=ActFreq),
                        start=list(a=10,b=10)))
+# printing the coefficients and using them
+coef(Para_BetaBin)
+
 BetaBin_a<-coef(Para_BetaBin)[1]
 BetaBin_b<-coef(Para_BetaBin)[2]
 
-BetaBinFreq<-suppressWarnings(fitBetaBin(BinRanVar, ActFreq,BetaBin_a,BetaBin_b,print=F)$exp.freq)
+# Fitting Beta-Binomial Distribution
+BetaBinFreq<-suppressWarnings(fitBetaBin(BinRanVar, ActFreq,BetaBin_a,BetaBin_b))
 
+# printing the results of fitting Beta-Binomial Distribution
+print(BetaBinFreq)
+
+## ----plotting Expected frequencies with actual frequency for Kumaraswamy Binomial Distribution, warning=FALSE----
 # Estimating and fitting Kumaraswamy Binomial Distribution
-
 Para_KumBin<-suppressWarnings(mle2(EstMLEKumBin,
                        data=list(x=BinRanVar, freq=ActFreq),
                        start=list(a=12.1,b=0.9,it=10000)))
+
+# printing the coefficients and using them
+coef(Para_KumBin)
+
 KumBin_a<-coef(Para_KumBin)[1]
 KumBin_b<-coef(Para_KumBin)[2]
 KumBin_it<-coef(Para_KumBin)[3]
 
-KumBinFreq<-suppressWarnings(fitKumBin(BinRanVar, ActFreq,KumBin_a,KumBin_b,KumBin_it*10,print=F)$exp.freq)
+# Fitting Kumaraswamy Binomial Distribution
+KumBinFreq<-suppressWarnings(fitKumBin(BinRanVar, ActFreq,KumBin_a,KumBin_b,KumBin_it*10))
 
+# printing the results of fitting Kumaraswamy Binomial Distribution
+print(KumBinFreq)
+
+## ----plotting Expected frequencies with actual frequency for GHGBB Distribution, warning=FALSE----
 # Estimating and fitting GHGBB Distribution
-
 Para_GHGBB<-suppressWarnings(mle2(EstMLEGHGBB,
                        data=list(x=BinRanVar, freq=ActFreq),
                        start=list(a=0.0021,b=0.19,c=0.3)))
+
+# printing the coefficients and using them
+coef(Para_GHGBB)
+
 GHGBB_a<-coef(Para_GHGBB)[1]
 GHGBB_b<-coef(Para_GHGBB)[2]
 GHGBB_c<-coef(Para_GHGBB)[3]
 
-GHGBBFreq<-suppressWarnings(fitGHGBB(BinRanVar, ActFreq,GHGBB_a,GHGBB_b,GHGBB_c,print=F)$exp.freq)
+# Fitting GHGBB Distribution
+GHGBBFreq<-suppressWarnings(fitGHGBB(BinRanVar, ActFreq,GHGBB_a,GHGBB_b,GHGBB_c))
 
+# printing the results of fitting GHGBB Distribution
+print(GHGBBFreq)
+
+## ----plotting Expected frequencies with actual frequency for McGBB Distribution, warning=FALSE----
 # Estimating and fitting McGBB Distribution
-
 Para_McGBB<-suppressWarnings(mle2(EstMLEMcGBB,
                        data=list(x=BinRanVar, freq=ActFreq),
                        start=list(a=21,b=0.19,c=0.1)))
+
+# printing the coefficients and using them
+coef(Para_McGBB)
+
 McGBB_a<-coef(Para_McGBB)[1]
 McGBB_b<-coef(Para_McGBB)[2]
 McGBB_c<-coef(Para_McGBB)[3]
 
-McGBBFreq<-suppressWarnings(fitMcGBB(BinRanVar, ActFreq,McGBB_a,McGBB_b,McGBB_c,print=F)$exp.freq)
+# Fitting McGBB Distribution
+McGBBFreq<-suppressWarnings(fitMcGBB(BinRanVar, ActFreq,McGBB_a,McGBB_b,McGBB_c))
+
+# printing the results of fitting McGBB Distribution
+print(McGBBFreq)
+
+## ----plotting Expected frequencies with actual frequency for Gamma Binomial Distribution, warning=FALSE----
+# Estimating and fitting Gamma Binoial Distribution
+Para_GammaBin<-suppressWarnings(mle2(EstMLEGammaBin,
+                                    data=list(x=BinRanVar, freq=ActFreq),
+                                    start=list(c=10,l=10)))
+# printing the coefficients and using them
+coef(Para_GammaBin)
+
+GammaBin_c<-coef(Para_GammaBin)[1]
+GammaBin_l<-coef(Para_GammaBin)[2]
+
+# Fitting Gamma Binomial Distribution
+GammaBinFreq<-suppressWarnings(fitGammaBin(BinRanVar, ActFreq,GammaBin_c,GammaBin_l))
+
+# printing the results of fitting Beta-Binomial Distribution
+print(GammaBinFreq)
+
+## ----plotting Expected frequencies with actual frequency for Grassia II Binomial Distribution, warning=FALSE----
+# Estimating and fitting Grassia II Binoial Distribution
+Para_GrassiaIIBin<-suppressWarnings(mle2(EstMLEGrassiaIIBin,
+                                    data=list(x=BinRanVar, freq=ActFreq),
+                                    start=list(a=10,b=10)))
+# printing the coefficients and using them
+coef(Para_GrassiaIIBin)
+
+GrassiaIIBin_a<-coef(Para_GrassiaIIBin)[1]
+GrassiaIIBin_b<-coef(Para_GrassiaIIBin)[2]
+
+# Fitting Grassia II Binomial Distribution
+GrassiaIIBinFreq<-suppressWarnings(fitGrassiaIIBin(BinRanVar, ActFreq,GrassiaIIBin_a,GrassiaIIBin_b))
+
+# printing the results of fitting Grassia II Binomial Distribution
+print(GrassiaIIBinFreq)
 
 # creating dataset for plotting
 
 BMD_Data<-tibble(
                   w=BinRanVar,
                   x=ActFreq,
-                  y=BinFreq,
-                  z=TriBinFreq,
-                  a=BetaBinFreq,
-                  b=KumBinFreq,
-                  c=GHGBBFreq,
-                  d=McGBBFreq
+                  y=fitted(BinFreq),
+                  z=fitted(TriBinFreq),
+                  a=fitted(BetaBinFreq),
+                  b=fitted(KumBinFreq),
+                  c=fitted(GHGBBFreq),
+                  d=fitted(McGBBFreq),
+                  e=fitted(GammaBinFreq),
+                  f=fitted(GrassiaIIBinFreq)
                 )
-names(BMD_Data)<-c("Bin_RV","Actual_Freq","EstFreq_BinD","EstFreq_TriBinD","EstFreq_BetaBinD","EstFreq_KumBinD","EstFreq_GHGBBD","EstFreq_McGBBD" )
+names(BMD_Data)<-c("Bin_RV","Actual_Freq","EstFreq_BinD","EstFreq_TriBinD","EstFreq_BetaBinD","EstFreq_KumBinD","EstFreq_GHGBBD",
+                   "EstFreq_McGBBD","EstFreq_GammaBinD","EstFreq_GrassiaIIBinD")
 
 ## ----plotting that dataset for BMD,fig.align='center',fig.height=7,fig.width=9,echo=FALSE----
 
-BMD_freq<-ggplot(ABD_Data)+theme_get()+
-                     geom_point(aes(x=BMD_Data$Bin_RV,y=BMD_Data$Actual_Freq),color="red",size=2)+
-                     geom_line(aes(x=BMD_Data$Bin_RV,y=BMD_Data$Actual_Freq),color="red",size=1)+
-                     geom_point(aes(x=BMD_Data$Bin_RV,y=BMD_Data$EstFreq_BinD),color="darkblue",size=2)+
-                     geom_line(aes(x=BMD_Data$Bin_RV,y=BMD_Data$EstFreq_BinD),color="darkblue",size=1)+
-                     geom_point(aes(x=BMD_Data$Bin_RV,y=BMD_Data$EstFreq_TriBinD),color="forestgreen",size=2)+
-                     geom_line(aes(x=BMD_Data$Bin_RV,y=BMD_Data$EstFreq_TriBinD),color="forestgreen",size=1)+
-                     geom_point(aes(x=BMD_Data$Bin_RV,y=BMD_Data$EstFreq_BetaBinD),color="yellow4",size=3.5)+
-                     geom_line(aes(x=BMD_Data$Bin_RV,y=BMD_Data$EstFreq_BetaBinD),color="yellow4",size=2.5)+
-                     geom_point(aes(x=BMD_Data$Bin_RV,y=BMD_Data$EstFreq_KumBinD),color="purple",size=2.75)+
-                     geom_line(aes(x=BMD_Data$Bin_RV,y=BMD_Data$EstFreq_KumBinD),color="purple",size=1.75)+
-                     geom_point(aes(x=BMD_Data$Bin_RV,y=BMD_Data$EstFreq_GHGBBD),color="orangered",size=2)+
-                     geom_line(aes(x=BMD_Data$Bin_RV,y=BMD_Data$EstFreq_GHGBBD),color="orangered",size=1)+
-                     geom_point(aes(x=BMD_Data$Bin_RV,y=BMD_Data$EstFreq_McGBBD),color="deeppink",size=2.25)+
-                     geom_line(aes(x=BMD_Data$Bin_RV,y=BMD_Data$EstFreq_McGBBD),color="deeppink",size=1.25)+
+BMD_freq<-ggplot(BMD_Data)+theme_get()+
+                     geom_point(aes(x=Bin_RV,y=Actual_Freq),color="red",size=2)+
+                     geom_line(aes(x=Bin_RV,y=Actual_Freq),color="red",size=1)+
+                     geom_point(aes(x=Bin_RV,y=EstFreq_BinD),color="darkblue",size=2)+
+                     geom_line(aes(x=Bin_RV,y=EstFreq_BinD),color="darkblue",size=1)+
+                     geom_point(aes(x=Bin_RV,y=EstFreq_TriBinD),color="forestgreen",size=2)+
+                     geom_line(aes(x=Bin_RV,y=EstFreq_TriBinD),color="forestgreen",size=1)+
+                     geom_point(aes(x=Bin_RV,y=EstFreq_BetaBinD),color="yellow4",size=3.5)+
+                     geom_line(aes(x=Bin_RV,y=EstFreq_BetaBinD),color="yellow4",size=2.5)+
+                     geom_point(aes(x=Bin_RV,y=EstFreq_KumBinD),color="purple",size=2.75)+
+                     geom_line(aes(x=Bin_RV,y=EstFreq_KumBinD),color="purple",size=1.75)+
+                     geom_point(aes(x=Bin_RV,y=EstFreq_GHGBBD),color="orangered",size=2)+
+                     geom_line(aes(x=Bin_RV,y=EstFreq_GHGBBD),color="orangered",size=1)+
+                     geom_point(aes(x=Bin_RV,y=EstFreq_McGBBD),color="deeppink",size=2.25)+
+                     geom_line(aes(x=Bin_RV,y=EstFreq_McGBBD),color="deeppink",size=1.25)+
+                     geom_point(aes(x=Bin_RV,y=EstFreq_GammaBinD),color="#7DBDBD",size=2.25)+
+                     geom_line(aes(x=Bin_RV,y=EstFreq_GammaBinD),color="#7DBDBD",size=1)+
+                     geom_point(aes(x=Bin_RV,y=EstFreq_GrassiaIIBinD),color="#FC92A3",size=1.25)+
+                     geom_line(aes(x=Bin_RV,y=EstFreq_GrassiaIIBinD),color="#FC92A3",size=0.75)+
                      ggtitle("Plot of fitted and actual frequencies of Alcohol BOD week2")+
                      xlab("Binomial Random Variables from 0 to 7")+
                      ylab("Frequency Values Estimated and Actual")+
@@ -271,7 +351,9 @@ BMD_freq<-ggplot(ABD_Data)+theme_get()+
                      annotate("text",x=0.15,y=108,label="Beta-Binomial",color="yellow4")+
                      annotate("text",x=6.5,y=120,label="Kumaraswamy Binomial",color="purple")+
                      annotate("text",x=6.95,y=116,label="GHGBB",color="orangered")+
-                     annotate("text",x=6.95,y=112,label="McGBB",color="deeppink")
+                     annotate("text",x=6.95,y=112,label="McGBB",color="deeppink")+
+                     annotate("text",x=6.95,y=108,label="Gamma Binomial",color="#7DBDBD")+
+                     annotate("text",x=6.95,y=104,label="Grassia II Binomial",color="#FC92A3")
 
 BMD_freq
 
