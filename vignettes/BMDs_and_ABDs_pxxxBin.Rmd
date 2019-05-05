@@ -31,6 +31,8 @@ which can develop the Cpmf values are
 * `pKumBin` - producing Cpmf values for Kumaraswamy Binomial Distribution.
 * `pGHGBB` - producing Cpmf values for Gaussian Hyper-geometric Generalized Beta-Binomial Distribution.
 * `pMcGBB` - producing Cpmf values for McDonald Generalized Beta-Binomial Distribution.
+* `pGammaBin` - producing Cpmf values for Gamma Binomial Distribution.
+* `pGrassiaIIBin` - producing Cpmf values for Grassia II Binomial Distribution.
 
 Special functions have been developed to generate plots with related to distributions
 with more than one parameter. These functions are
@@ -39,6 +41,8 @@ with more than one parameter. These functions are
 * `pKumBinplot` - plot function to Kumaraswamy Binomial Distribution.
 * `pGHGBBplot` - plot function to Gaussian Hyper-geometric Generalized Beta-Binomial Distribution.
 * `pMcGBBplot` - plot function to McDonald Generalized Beta-Binomial Distribution.
+* `pGammaBinplot` - plot function to Gamma Binomial Distribution.
+* `pGrassiaIIBinplot` - plot function to Grassia II Binomial Distribution.
 
 ## Cumulative Probability Mass Function values for Uniform Binomial Distribution
 
@@ -392,6 +396,134 @@ grid.arrange(b1c1,b1c1.5,b1c2,b1c2.5,nrow=2,
              top="Cpmf values changing when a=seq(0.5,100,by=0.1)")
 ```
 
+## Cumulative Probability Mass Function values for Gamma Binomial Distribution
+
+Gamma Binomial with two shape parameters a and b have more vivid Cpmf value patterns
+than Triangular Binomial distribution. It can be clearly seen in the given plot below.
+
+* a,b are in the domain region of above zero.
+
+```{r Gamma Binomial Distribution plot function,include=FALSE}
+pGammaBinplot<-function(a,b,plot_title,a_seq)
+{
+  if(a_seq==TRUE)
+  {
+    brv<-seq(0,15,by=1)
+    output<-matrix(ncol=length(a),nrow=length(brv))
+    for (i in 1:length(a))
+    {
+      output[,i]<-pGammaBin(brv,max(brv),a[i],b)
+    }
+    data<-data.frame(brv,output)
+    data<-melt(data,id.vars ="brv" )
+    p1<-ggplot(data,aes(brv,value,col=variable))+
+      geom_line()+guides(fill=FALSE,color=FALSE)+
+      xlab("Binomial Random Variable")+
+      ylab("Cpmf values")+
+      ggtitle(plot_title)
+    return(p1)
+  }
+  if(a_seq==FALSE)
+  {
+    brv<-seq(0,15,by=1)
+    output<-matrix(ncol =length(b) ,nrow=length(brv))
+    for (i in 1:length(b))
+    {
+      output[,i]<-pGammaBin(brv,max(brv),a,b[i])
+    }
+    data<-data.frame(brv,output)
+    data<-melt(data,id.vars ="brv" )
+    p1<-ggplot(data,aes(brv,value,col=variable))+
+      geom_line()+guides(fill=FALSE,color=FALSE)+
+      xlab("Binomial Random Variables")+
+      ylab("Cpmf values")+
+      ggtitle(plot_title)
+    return(p1)
+  }
+}
+```
+
+```{r Gamma Binomial Distribution plotting,fig.align='center',fig.width=9,fig.height=7}
+b10<-pGammaBinplot(a=seq(1,100,by=1),b=10,plot_title="and when b=10",a_seq= T)
+b50<-pGammaBinplot(a=seq(1,100,by=1),b=50,plot_title="and when b=50",a_seq= T)
+b100<-pGammaBinplot(a=seq(1,100,by=1),b=100,plot_title="and when b=100",a_seq= T)
+b200<-pGammaBinplot(a=seq(1,100,by=1),b=200,plot_title="and when b=200",a_seq= T)
+
+grid.arrange(b10,b50,b100,b200,nrow=2,top="Cpmf values changing when a=seq(1,100,by=1)")
+
+a10<-pGammaBinplot(b=seq(1,100,by=1),a=10,plot_title="and when a=10",a_seq= F)
+a50<-pGammaBinplot(b=seq(1,100,by=1),a=50,plot_title="and when a=50",a_seq= F)
+a100<-pGammaBinplot(b=seq(1,100,by=1),a=100,plot_title="and when a=100",a_seq= F)
+a200<-pGammaBinplot(b=seq(1,100,by=1),a=200,plot_title="and when a=200",a_seq= F)
+
+grid.arrange(a10,a50,a100,a200,nrow=2,top="Cpmf values changing when b=seq(1,100,by=1)")
+```
+
+
+## Cumulative Probability Mass Function values for Grassia II Binomial Distribution
+
+Grassia II Binomial with two shape parameters a and b have more vivid Cpmf value patterns
+than Triangular Binomial distribution. It can be clearly seen in the given plot below.
+
+* a,b are in the domain region of above zero.
+
+```{r Grassia II Binomial II Distribution plot function,include=FALSE}
+pGrassiaIIBinplot<-function(a,b,plot_title,a_seq)
+{
+  if(a_seq==TRUE)
+  {
+    brv<-seq(0,15,by=1)
+    output<-matrix(ncol=length(a),nrow=length(brv))
+    for (i in 1:length(a))
+    {
+      output[,i]<-pGrassiaIIBin(brv,max(brv),a[i],b)
+    }
+    data<-data.frame(brv,output)
+    data<-melt(data,id.vars ="brv" )
+    p1<-ggplot(data,aes(brv,value,col=variable))+
+      geom_line()+guides(fill=FALSE,color=FALSE)+
+      xlab("Binomial Random Variable")+
+      ylab("Cpmf values")+
+      ggtitle(plot_title)
+    return(p1)
+  }
+  if(a_seq==FALSE)
+  {
+    brv<-seq(0,15,by=1)
+    output<-matrix(ncol =length(b) ,nrow=length(brv))
+    for (i in 1:length(b))
+    {
+      output[,i]<-pGrassiaIIBin(brv,max(brv),a,b[i])
+    }
+    data<-data.frame(brv,output)
+    data<-melt(data,id.vars ="brv" )
+    p1<-ggplot(data,aes(brv,value,col=variable))+
+      geom_line()+guides(fill=FALSE,color=FALSE)+
+      xlab("Binomial Random Variables")+
+      ylab("Cpmf values")+
+      ggtitle(plot_title)
+    return(p1)
+  }
+}
+```
+
+```{r Grassia II Binomial Distribution plotting,fig.align='center',fig.width=9,fig.height=7}
+b1<-pGrassiaIIBinplot(a=seq(0.1,10,by=0.1),b=0.1,plot_title="and when b=0.1",a_seq= T)
+b25<-pGrassiaIIBinplot(a=seq(0.1,10,by=0.1),b=0.25,plot_title="and when b=0.25",a_seq= T)
+b35<-pGrassiaIIBinplot(a=seq(0.1,10,by=0.1),b=0.35,plot_title="and when b=0.35",a_seq= T)
+b40<-pGrassiaIIBinplot(a=seq(0.1,10,by=0.1),b=0.4,plot_title="and when b=0.4",a_seq= T)
+
+grid.arrange(b1,b25,b35,b40,nrow=2,top="Cpmf values changing when a=seq(0.1,10,by=0.1)")
+
+a1<-pGrassiaIIBinplot(b=seq(0.1,10,by=0.1),a=0.1,plot_title="and when a=0.1",a_seq= F)
+a25<-pGrassiaIIBinplot(b=seq(0.1,10,by=0.1),a=0.25,plot_title="and when a=0.25",a_seq= F)
+a5<-pGrassiaIIBinplot(b=seq(0.1,10,by=0.1),a=0.5,plot_title="and when a=0.5",a_seq= F)
+a10<-pGrassiaIIBinplot(b=seq(0.1,10,by=0.1),a=1,plot_title="and when a=1",a_seq= F)
+
+grid.arrange(a1,a25,a5,a10,nrow=2,top="Pmf values changing when b=seq(0.1,10,by=0.1)")
+```
+
+
 # Alternate Binomial Distributions
 
 with the help of Pmf values Cpmf values are generated. At situations they have been
@@ -404,6 +536,7 @@ values
 * `pCOMPBin` - producing Cpmf Values  for COM Poisson Binomial Distribution.
 * `pCorrBin` - producing Cpmf values  for Correlated Binomial Distribution.
 * `pMultiBin` - producing Cpmf values for Multiplicative Binomial Distribution.
+* `pLMBin` - producing Cpmf values for Lovinson Multiplicative Binomial Distribution.
 
 When there is more than one changing parameter in the distribution, there needs to
 be specific functions to plot the Cpmf values. Below given functions have the ability 
@@ -411,11 +544,12 @@ to do so
 
 * `pAddBinplot` - plot function to Additive Binomial Distribution.
 * `pBetaCorrBinplot` - plot function to Beta Correlated Binomial Distribution.
-* `pCOMPBin` - plot function to COM Poisson Binomial Distribution.
-* `pCorrBin` - plot function to Correlated Binomial Distribution.
-* `pMultiBin` - plot function to Multiplicative Binomial Distribution.
+* `pCOMPBinplot` - plot function to COM Poisson Binomial Distribution.
+* `pCorrBinplot` - plot function to Correlated Binomial Distribution.
+* `pMultiBinplot` - plot function to Multiplicative Binomial Distribution.
+* `pLMBinplot` - plot function to Lovinson Multiplicative Binomial Distribution.
 
-## Probability Mass Function values for Additive Binomial Distribution
+## Cumulative Probability Mass Function values for Additive Binomial Distribution
 
 Probability value and alpha parameter are unique values involved with this distribution.
 Slight changes in alpha and probability value can interest in very wide changes towards
@@ -490,7 +624,7 @@ grid.arrange(p.015,p.115,p.215,p.315,nrow=2,
              top="Cpmf values changing when alpha=seq(0.0001,0.05,by=0.0001)")
 ```
 
-## Probability Mass Function values for Beta-Correlated Binomial Distribution
+## Cumulative Probability Mass Function values for Beta-Correlated Binomial Distribution
 
 Three parameters are involved in producing Cpmf values for Beta-Correlated Binomial
 distribution. They are namely cov representing the covariance value from Correlated distribution 
@@ -583,7 +717,7 @@ grid.arrange(b10cov1,b10cov3,b10cov7,b10cov9,nrow=2,
              top="Cpmf values changing when a=seq(15,100,by=0.1)")
 ```
 
-## Probability Mass Function values for COM Poisson Binomial Distribution
+## Cumulative Probability Mass Function values for COM Poisson Binomial Distribution
 
 COM Poisson Binomial distribution has two parameters in concern which are probability value
 and covariance value. Considering the covariance is very special and useful as it can 
@@ -658,7 +792,7 @@ grid.arrange(p0.40,p0.45,p0.50,p0.55,nrow=2,
              top="Cpmf values changing when v=seq(-0.5,5.5,by=0.01)")
 ```
 
-## Probability Mass Function values for Correlated Binomial Distribution
+## Cumulative Probability Mass Function values for Correlated Binomial Distribution
 
 Correlated Binomial distribution simply considers the correlation among
 binary trials, which can result in over-dispersion. Rather than this the 
@@ -735,7 +869,7 @@ grid.arrange(p0.15,p0.25,p0.50,p0.75,nrow=2,
              top="Cpmf values changing when cov=seq(0.002,0.009,by=0.0001)")
 ```
 
-## Probability Mass Function values for Multiplicative Binomial Distribution
+## Cumulative Probability Mass Function values for Multiplicative Binomial Distribution
 
 Multiplicative Binomial Distribution also has two important parameters they
 are probability value p and theta parameter. Given below are the plots describing
@@ -809,3 +943,80 @@ p0.65<-pMultiBinplot(theta=seq(1.001,5,by=0.0001),p=0.65,
 grid.arrange(p0.35,p0.45,p0.55,p0.65,nrow=2,
              top="Cpmf values changing when theta=seq(1.001,5,by=0.0001)")
 ```
+
+## Cumulative Probability Mass Function values for Lovinson Multiplicative Binomial Distribution
+
+Lovinson Multiplicative Binomial Distribution also has two important parameters they
+are probability value p and phi parameter. Given below are the plots describing
+how Cpmf values change with respective to p and phi.
+
+* p is the probability value in between zero and one.
+* phi parameter is in the domain region of above zero. 
+
+```{r Lovinson Multiplicative Binomial distribution plot function, include=FALSE}
+pLMBinplot<-function(p,phi,plot_title,p_seq)
+{
+  if(p_seq==TRUE)
+  {
+    brv<-seq(0,15,by=1)
+    output<-matrix(ncol=length(p),nrow=length(brv))
+    for (i in 1:length(p))
+    {
+      output[,i]<-pLMBin(brv,max(brv),p[i],phi)
+    }
+    data<-data.frame(brv,output)
+    data<-melt(data,id.vars ="brv" )
+    p1<-ggplot(data,aes(brv,value,col=variable))+
+      geom_line()+guides(fill=FALSE,color=FALSE)+
+      xlab("Binomial Random Variable")+
+      ylab("Cpmf values")+
+      ggtitle(plot_title)
+    return(p1)
+  }
+  if(p_seq==FALSE)
+  {
+    brv<-seq(0,15,by=1)
+    output<-matrix(ncol =length(phi) ,nrow=length(brv))
+    for (i in 1:length(phi))
+    {
+      output[,i]<-pLMBin(brv,max(brv),p,phi[i])
+    }
+    data<-data.frame(brv,output)
+    data<-melt(data,id.vars ="brv" )
+    p1<-ggplot(data,aes(brv,value,col=variable))+
+      geom_line()+guides(fill=FALSE,color=FALSE)+
+      xlab("Binomial Random Variable")+
+      ylab("Cpmf values")+
+      ggtitle(plot_title)
+    return(p1)
+  }
+}
+```
+
+
+```{r Lovinson Multiplicative Binomial distribution plotting,fig.width=9,fig.height=7}
+phi1<-pLMBinplot(p=seq(0.01,0.99,by=0.001),phi=1,
+                      plot_title="and when phi=1",p_seq= T)
+phi1.25<-pLMBinplot(p=seq(0.01,0.99,by=0.001),phi=1.25,
+                         plot_title="and when phi=1.25",p_seq= T)
+phi1.75<-pLMBinplot(p=seq(0.01,0.99,by=0.001),phi=1.75,
+                         plot_title="and when phi=1.75",p_seq= T)
+phi2<-pLMBinplot(p=seq(0.01,0.99,by=0.001),phi=2,
+                      plot_title="and when phi=2",p_seq= T)
+
+grid.arrange(phi1,phi1.25,phi1.75,phi2,nrow=2,
+             top="Cpmf values changing when p=seq(0.01,0.99,by=0.001)")
+
+p0.35<-pLMBinplot(phi=seq(1.001,5,by=0.001),p=0.35,
+                     plot_title="and when p=0.35",p_seq= F)
+p0.45<-pLMBinplot(phi=seq(1.001,5,by=0.001),p=0.45,
+                     plot_title="and when p=0.45",p_seq= F)
+p0.55<-pLMBinplot(phi=seq(1.001,5,by=0.001),p=0.55,
+                     plot_title="and when p=0.55",p_seq= F)
+p0.65<-pLMBinplot(phi=seq(1.001,5,by=0.001),p=0.65,
+                     plot_title="and when p=0.65",p_seq= F)
+
+grid.arrange(p0.35,p0.45,p0.55,p0.65,nrow=2,
+             top="Cpmf values changing when phi=seq(1.001,5,by=0.001)")
+```
+

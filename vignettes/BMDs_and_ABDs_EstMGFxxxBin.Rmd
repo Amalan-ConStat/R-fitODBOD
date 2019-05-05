@@ -37,6 +37,10 @@ Below is the code for estimating shape parameters using this technique and funct
 
 ## Using the Chromosome data provided in the package.
 
+This `EstMGFBetaBin` function is of output of class `mgf`, where outputs include estimated `a` ,`b` parameters,
+minimized Negative Log Likelihood value `min`, Akaike Information Criterion (`AIC`) and function `call` with
+input arguments.
+
 ```{r Estimating parameters a and b for Chromosome data,echo=FALSE}
 Chromosome_data #printing the Chromosome_data
 

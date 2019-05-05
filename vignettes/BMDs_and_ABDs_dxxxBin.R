@@ -23,7 +23,7 @@ brv<-seq(0,15,by=1)
 mode<-seq(0.02,0.98,by=0.02)
 length(mode) #variables
 output<-matrix(ncol =length(mode) ,nrow=length(brv))
-for (i in 1:length(mode)) 
+for (i in 1:length(mode))
   {
    output[,i]<-dTriBin(brv,max(brv),mode[i])$pdf
   }
@@ -43,7 +43,7 @@ dBetaBinplot<-function(a,b,plot_title,a_seq)
   {
   brv<-seq(0,15,by=1)
   output<-matrix(ncol=length(a),nrow=length(brv))
-    for (i in 1:length(a)) 
+    for (i in 1:length(a))
     {
     output[,i]<-dBetaBin(brv,max(brv),a[i],b)$pdf
     }
@@ -60,7 +60,7 @@ dBetaBinplot<-function(a,b,plot_title,a_seq)
   {
   brv<-seq(0,15,by=1)
   output<-matrix(ncol =length(b) ,nrow=length(brv))
-    for (i in 1:length(b)) 
+    for (i in 1:length(b))
     {
     output[,i]<-dBetaBin(brv,max(brv),a,b[i])$pdf
     }
@@ -97,7 +97,7 @@ dKumBinplot<-function(a,b,plot_title,a_seq)
   {
   brv<-seq(0,15,by=1)
   output<-matrix(ncol=length(a),nrow=length(brv))
-    for (i in 1:length(a)) 
+    for (i in 1:length(a))
     {
     output[,i]<-dKumBin(brv,max(brv),a[i],b)$pdf
     }
@@ -114,7 +114,7 @@ dKumBinplot<-function(a,b,plot_title,a_seq)
   {
   brv<-seq(0,15,by=1)
   output<-matrix(ncol =length(b) ,nrow=length(brv))
-    for (i in 1:length(b)) 
+    for (i in 1:length(b))
     {
     output[,i]<-dKumBin(brv,max(brv),a,b[i])$pdf
     }
@@ -151,7 +151,7 @@ dGHGBBplot<-function(a,b,c,plot_title,a_seq,b_seq)
   {
   brv<-seq(0,15,by=1)
   output<-matrix(ncol=length(a),nrow=length(brv))
-    for (i in 1:length(a)) 
+    for (i in 1:length(a))
     {
     output[,i]<-dGHGBB(brv,max(brv),a[i],b,c)$pdf
     }
@@ -168,7 +168,7 @@ dGHGBBplot<-function(a,b,c,plot_title,a_seq,b_seq)
   {
   brv<-seq(0,15,by=1)
   output<-matrix(ncol =length(b) ,nrow=length(brv))
-    for (i in 1:length(b)) 
+    for (i in 1:length(b))
     {
     output[,i]<-dGHGBB(brv,max(brv),a,b[i],c)$pdf
     }
@@ -185,7 +185,7 @@ dGHGBBplot<-function(a,b,c,plot_title,a_seq,b_seq)
   {
   brv<-seq(0,15,by=1)
   output<-matrix(ncol =length(b) ,nrow=length(brv))
-    for (i in 1:length(c)) 
+    for (i in 1:length(c))
     {
     output[,i]<-dGHGBB(brv,max(brv),a,b,c[i])$pdf
     }
@@ -232,7 +232,7 @@ dMcGBBplot<-function(a,b,c,plot_title,a_seq,b_seq)
   {
   brv<-seq(0,15,by=1)
   output<-matrix(ncol=length(a),nrow=length(brv))
-    for (i in 1:length(a)) 
+    for (i in 1:length(a))
     {
     output[,i]<-dMcGBB(brv,max(brv),a[i],b,c)$pdf
     }
@@ -249,7 +249,7 @@ dMcGBBplot<-function(a,b,c,plot_title,a_seq,b_seq)
   {
   brv<-seq(0,15,by=1)
   output<-matrix(ncol =length(b) ,nrow=length(brv))
-    for (i in 1:length(b)) 
+    for (i in 1:length(b))
     {
     output[,i]<-dMcGBB(brv,max(brv),a,b[i],c)$pdf
     }
@@ -266,7 +266,7 @@ dMcGBBplot<-function(a,b,c,plot_title,a_seq,b_seq)
   {
   brv<-seq(0,15,by=1)
   output<-matrix(ncol =length(b) ,nrow=length(brv))
-    for (i in 1:length(c)) 
+    for (i in 1:length(c))
     {
     output[,i]<-dMcGBB(brv,max(brv),a,b,c[i])$pdf
     }
@@ -306,6 +306,114 @@ b1c2.5<-dMcGBBplot(a=seq(.5,100,by=.1),b=1,c=2.5,
 grid.arrange(b1c1,b1c1.5,b1c2,b1c2.5,nrow=2,
              top="Pmf values changing when a=seq(0.5,100,by=0.1)")
 
+## ----Gamma Binomial Distribution plot function,include=FALSE--------------
+dGammaBinplot<-function(a,b,plot_title,a_seq)
+{
+  if(a_seq==TRUE)
+  {
+    brv<-seq(0,15,by=1)
+    output<-matrix(ncol=length(a),nrow=length(brv))
+    for (i in 1:length(a))
+    {
+      output[,i]<-dGammaBin(brv,max(brv),a[i],b)$pdf
+    }
+    data<-data.frame(brv,output)
+    data<-melt(data,id.vars ="brv" )
+    p1<-ggplot(data,aes(brv,value,col=variable))+
+      geom_line()+guides(fill=FALSE,color=FALSE)+
+      xlab("Binomial Random Variable")+
+      ylab("Probability mass values")+
+      ggtitle(plot_title)
+    return(p1)
+  }
+  if(a_seq==FALSE)
+  {
+    brv<-seq(0,15,by=1)
+    output<-matrix(ncol =length(b) ,nrow=length(brv))
+    for (i in 1:length(b))
+    {
+      output[,i]<-dGammaBin(brv,max(brv),a,b[i])$pdf
+    }
+    data<-data.frame(brv,output)
+    data<-melt(data,id.vars ="brv" )
+    p1<-ggplot(data,aes(brv,value,col=variable))+
+      geom_line()+guides(fill=FALSE,color=FALSE)+
+      xlab("Binomial Random Variables")+
+      ylab("Probability mass values")+
+      ggtitle(plot_title)
+    return(p1)
+  }
+}
+
+## ----Gamma Binomial Distribution plotting,fig.align='center',fig.width=9,fig.height=7----
+b10<-dGammaBinplot(a=seq(1,100,by=1),b=10,plot_title="and when b=10",a_seq= T)
+b50<-dGammaBinplot(a=seq(1,100,by=1),b=50,plot_title="and when b=50",a_seq= T)
+b100<-dGammaBinplot(a=seq(1,100,by=1),b=100,plot_title="and when b=100",a_seq= T)
+b200<-dGammaBinplot(a=seq(1,100,by=1),b=200,plot_title="and when b=200",a_seq= T)
+
+grid.arrange(b10,b50,b100,b200,nrow=2,top="Pmf values changing when a=seq(1,100,by=1)")
+
+a10<-dGammaBinplot(b=seq(1,100,by=1),a=10,plot_title="and when a=10",a_seq= F)
+a50<-dGammaBinplot(b=seq(1,100,by=1),a=50,plot_title="and when a=50",a_seq= F)
+a100<-dGammaBinplot(b=seq(1,100,by=1),a=100,plot_title="and when a=100",a_seq= F)
+a200<-dGammaBinplot(b=seq(1,100,by=1),a=200,plot_title="and when a=200",a_seq= F)
+
+grid.arrange(a10,a50,a100,a200,nrow=2,top="Pmf values changing when b=seq(1,100,by=1)")
+
+## ----Grassia II Binomial II Distribution plot function,include=FALSE--------------
+dGrassiaIIBinplot<-function(a,b,plot_title,a_seq)
+{
+  if(a_seq==TRUE)
+  {
+    brv<-seq(0,15,by=1)
+    output<-matrix(ncol=length(a),nrow=length(brv))
+    for (i in 1:length(a))
+    {
+      output[,i]<-dGrassiaIIBin(brv,max(brv),a[i],b)$pdf
+    }
+    data<-data.frame(brv,output)
+    data<-melt(data,id.vars ="brv" )
+    p1<-ggplot(data,aes(brv,value,col=variable))+
+      geom_line()+guides(fill=FALSE,color=FALSE)+
+      xlab("Binomial Random Variable")+
+      ylab("Probability mass values")+
+      ggtitle(plot_title)
+    return(p1)
+  }
+  if(a_seq==FALSE)
+  {
+    brv<-seq(0,15,by=1)
+    output<-matrix(ncol =length(b) ,nrow=length(brv))
+    for (i in 1:length(b))
+    {
+      output[,i]<-dGrassiaIIBin(brv,max(brv),a,b[i])$pdf
+    }
+    data<-data.frame(brv,output)
+    data<-melt(data,id.vars ="brv" )
+    p1<-ggplot(data,aes(brv,value,col=variable))+
+      geom_line()+guides(fill=FALSE,color=FALSE)+
+      xlab("Binomial Random Variables")+
+      ylab("Probability mass values")+
+      ggtitle(plot_title)
+    return(p1)
+  }
+}
+
+## ----Grassia II Binomial Distribution plotting,fig.align='center',fig.width=9,fig.height=7----
+b1<-dGrassiaIIBinplot(a=seq(0.1,10,by=0.1),b=0.1,plot_title="and when b=0.1",a_seq= T)
+b25<-dGrassiaIIBinplot(a=seq(0.1,10,by=0.1),b=0.25,plot_title="and when b=0.25",a_seq= T)
+b35<-dGrassiaIIBinplot(a=seq(0.1,10,by=0.1),b=0.35,plot_title="and when b=0.35",a_seq= T)
+b40<-dGrassiaIIBinplot(a=seq(0.1,10,by=0.1),b=0.4,plot_title="and when b=0.4",a_seq= T)
+
+grid.arrange(b1,b25,b35,b40,nrow=2,top="Pmf values changing when a=seq(0.1,10,by=0.1)")
+
+a1<-dGrassiaIIBinplot(b=seq(0.1,10,by=0.1),a=0.1,plot_title="and when a=0.1",a_seq= F)
+a25<-dGrassiaIIBinplot(b=seq(0.1,10,by=0.1),a=0.25,plot_title="and when a=0.25",a_seq= F)
+a5<-dGrassiaIIBinplot(b=seq(0.1,10,by=0.1),a=0.5,plot_title="and when a=0.5",a_seq= F)
+a10<-dGrassiaIIBinplot(b=seq(0.1,10,by=0.1),a=1,plot_title="and when a=1",a_seq= F)
+
+grid.arrange(a1,a25,a5,a10,nrow=2,top="Pmf values changing when b=seq(0.1,10,by=0.1)")
+
 ## ----Additive Binomial Distribution plot function, include=FALSE---------
 dAddBinplot<-function(p,alpha,plot_title,p_seq)
 {
@@ -313,7 +421,7 @@ dAddBinplot<-function(p,alpha,plot_title,p_seq)
   {
   brv<-seq(0,15,by=1)
   output<-matrix(ncol=length(p),nrow=length(brv))
-    for (i in 1:length(p)) 
+    for (i in 1:length(p))
     {
     output[,i]<-dAddBin(brv,max(brv),p[i],alpha)$pdf
     }
@@ -330,7 +438,7 @@ dAddBinplot<-function(p,alpha,plot_title,p_seq)
   {
   brv<-seq(0,15,by=1)
   output<-matrix(ncol =length(alpha) ,nrow=length(brv))
-    for (i in 1:length(alpha)) 
+    for (i in 1:length(alpha))
     {
     output[,i]<-dAddBin(brv,max(brv),p,alpha[i])$pdf
     }
@@ -377,7 +485,7 @@ dBetaCorrBinplot<-function(a,b,cov,plot_title,a_seq,b_seq)
   {
   brv<-seq(0,15,by=1)
   output<-matrix(ncol=length(a),nrow=length(brv))
-    for (i in 1:length(a)) 
+    for (i in 1:length(a))
     {
     output[,i]<-dBetaCorrBin(brv,max(brv),cov,a[i],b)$pdf
     }
@@ -394,7 +502,7 @@ dBetaCorrBinplot<-function(a,b,cov,plot_title,a_seq,b_seq)
   {
   brv<-seq(0,15,by=1)
   output<-matrix(ncol =length(b) ,nrow=length(brv))
-    for (i in 1:length(b)) 
+    for (i in 1:length(b))
     {
     output[,i]<-dBetaCorrBin(brv,max(brv),cov,a,b[i])$pdf
     }
@@ -411,7 +519,7 @@ dBetaCorrBinplot<-function(a,b,cov,plot_title,a_seq,b_seq)
   {
   brv<-seq(0,15,by=1)
   output<-matrix(ncol =length(b) ,nrow=length(brv))
-    for (i in 1:length(c)) 
+    for (i in 1:length(c))
     {
     output[,i]<-dBetaCorrBin(brv,max(brv),cov[i],a,b)$pdf
     }
@@ -458,7 +566,7 @@ dCOMPBinplot<-function(p,v,plot_title,p_seq)
   {
   brv<-seq(0,15,by=1)
   output<-matrix(ncol=length(p),nrow=length(brv))
-    for (i in 1:length(p)) 
+    for (i in 1:length(p))
     {
     output[,i]<-dCOMPBin(brv,max(brv),p[i],v)$pdf
     }
@@ -475,7 +583,7 @@ dCOMPBinplot<-function(p,v,plot_title,p_seq)
   {
   brv<-seq(0,15,by=1)
   output<-matrix(ncol =length(v) ,nrow=length(brv))
-    for (i in 1:length(v)) 
+    for (i in 1:length(v))
     {
     output[,i]<-dCOMPBin(brv,max(brv),p,v[i])$pdf
     }
@@ -522,7 +630,7 @@ dCorrBinplot<-function(p,cov,plot_title,p_seq)
   {
   brv<-seq(0,15,by=1)
   output<-matrix(ncol=length(p),nrow=length(brv))
-    for (i in 1:length(p)) 
+    for (i in 1:length(p))
     {
     output[,i]<-dCorrBin(brv,max(brv),p[i],cov)$pdf
     }
@@ -539,7 +647,7 @@ dCorrBinplot<-function(p,cov,plot_title,p_seq)
   {
   brv<-seq(0,15,by=1)
   output<-matrix(ncol =length(cov) ,nrow=length(brv))
-    for (i in 1:length(cov)) 
+    for (i in 1:length(cov))
     {
     output[,i]<-dCorrBin(brv,max(brv),p,cov[i])$pdf
     }
@@ -586,7 +694,7 @@ dMultiBinplot<-function(p,theta,plot_title,p_seq)
   {
   brv<-seq(0,15,by=1)
   output<-matrix(ncol=length(p),nrow=length(brv))
-    for (i in 1:length(p)) 
+    for (i in 1:length(p))
     {
     output[,i]<-dMultiBin(brv,max(brv),p[i],theta)$pdf
     }
@@ -603,7 +711,7 @@ dMultiBinplot<-function(p,theta,plot_title,p_seq)
   {
   brv<-seq(0,15,by=1)
   output<-matrix(ncol =length(theta) ,nrow=length(brv))
-    for (i in 1:length(theta)) 
+    for (i in 1:length(theta))
     {
     output[,i]<-dMultiBin(brv,max(brv),p,theta[i])$pdf
     }
@@ -643,3 +751,66 @@ p0.75<-dMultiBinplot(theta=seq(1,20,by=0.01),p=0.925,
 grid.arrange(p0.10,p0.25,p0.50,p0.75,nrow=2,
              top="Pmf values changing when theta=seq(1,20,by=0.01)")
 
+## ----Lovinson Multiplicative Binomial Distribution plot function,include=FALSE----
+dLMBinplot<-function(p,phi,plot_title,p_seq)
+{
+  if(p_seq==TRUE)
+  {
+    brv<-seq(0,15,by=1)
+    output<-matrix(ncol=length(p),nrow=length(brv))
+    for (i in 1:length(p))
+    {
+      output[,i]<-dLMBin(brv,max(brv),p[i],phi)$pdf
+    }
+    data<-data.frame(brv,output)
+    data<-melt(data,id.vars ="brv" )
+    p1<-ggplot(data,aes(brv,value,col=variable))+
+      geom_line()+guides(fill=FALSE,color=FALSE)+
+      xlab("Binomial Random Variable")+
+      ylab("Probability Mass values")+
+      ggtitle(plot_title)
+    return(p1)
+  }
+  if(p_seq==FALSE)
+  {
+    brv<-seq(0,15,by=1)
+    output<-matrix(ncol =length(phi) ,nrow=length(brv))
+    for (i in 1:length(phi))
+    {
+      output[,i]<-dLMBin(brv,max(brv),p,phi[i])$pdf
+    }
+    data<-data.frame(brv,output)
+    data<-melt(data,id.vars ="brv" )
+    p1<-ggplot(data,aes(brv,value,col=variable))+
+      geom_line()+guides(fill=FALSE,color=FALSE)+
+      xlab("Binomial Random Variables")+
+      ylab("Probability Mass values")+
+      ggtitle(plot_title)
+    return(p1)
+  }
+}
+
+## ----Lovinson Multiplicative Binomial Distribution plotting,fig.align='center',fig.width=9,fig.height=7----
+phi1<-dLMBinplot(p=seq(0.01,0.99,by=0.01),phi=1,
+                      plot_title="and when phi=1",p_seq= T)
+phi5<-dLMBinplot(p=seq(0.01,0.99,by=0.01),phi=5,
+                      plot_title="and when phi=5",p_seq= T)
+phi10<-dLMBinplot(p=seq(0.01,0.99,by=0.01),phi=10,
+                       plot_title="and when phi=10",p_seq= T)
+phi50<-dLMBinplot(p=seq(0.01,0.99,by=0.01),phi=50,
+                       plot_title="and when phi=50",p_seq= T)
+
+grid.arrange(phi1,phi5,phi10,phi50,nrow=2,
+             top="Pmf values changing when p=seq(0.01,0.99,by=0.01)")
+
+p0.10<-dLMBinplot(phi=seq(1,20,by=0.01),p=0.01,
+                     plot_title="and when p=0.010",p_seq= F)
+p0.25<-dLMBinplot(phi=seq(1,20,by=0.01),p=0.015,
+                     plot_title="and when p=0.015",p_seq= F)
+p0.50<-dLMBinplot(phi=seq(1,20,by=0.01),p=0.90,
+                     plot_title="and when p=0.900",p_seq= F)
+p0.75<-dLMBinplot(phi=seq(1,20,by=0.01),p=0.925,
+                     plot_title="and when p=0.925",p_seq= F)
+
+grid.arrange(p0.10,p0.25,p0.50,p0.75,nrow=2,
+             top="Pmf values changing when phi=seq(1,20,by=0.01)")

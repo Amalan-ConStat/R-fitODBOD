@@ -36,6 +36,8 @@ for Binomial Mixture distributions are
 * `dKumBin` - producing Pmf values primarily for Kumaraswamy Binomial Distribution.
 * `dGHGBB` - producing Pmf values primarily for Gaussian Hyper-geometric Generalized Beta-Binomial Distribution.
 * `dMcGBB` - producing Pmf values primarily for McDonald Generalized Beta-Binomial Distribution.
+* `dGammaBin` - producing Pmf values primarily for Gamma Binomial Distribution.
+* `dGrassiaIIBin` - producing Pmf values primarily for Grassia II Binomial Distribution.
 
 When the no of shape parameters increase plotting variation of pmf values is difficult therefore special 
 Pmf plot functions are developed. They are namely
@@ -44,6 +46,8 @@ Pmf plot functions are developed. They are namely
 * `dKumBinplot` - plot function to Kumaraswamy Binomial Distribution.
 * `dGHGBBplot` - plot function to Gaussian Hyper-geometric Generalized Beta-Binomial Distribution.
 * `dMcGBBplot` - plot function to McDonald Generalized Beta-Binomial Distribution.
+* `dGammaBinplot` - plot function to Gamma Binomial Distribution.
+* `dGrassiaIIBinplot` - plot function Grassia II Binomial Distribution. 
 
 ## Probability Mass Function values for Uniform Binomial Distribution
 
@@ -405,6 +409,135 @@ grid.arrange(b1c1,b1c1.5,b1c2,b1c2.5,nrow=2,
              top="Pmf values changing when a=seq(0.5,100,by=0.1)")
 ```
 
+## Probability Mass Function values for Gamma Binomial Distribution
+
+Gamma Binomial Distribution has two shape parameters which influence the pmf values. They are namely 
+a and b. These two parameters are inherited from the Gamma distribution when mixing it to the 
+Binomial Distribution. Pmf values are plotted below according to a and b values change
+
+* a,b are in the domain region of above zero. 
+
+```{r Gamma Binomial Distribution plot function,include=FALSE}
+dGammaBinplot<-function(a,b,plot_title,a_seq)
+{
+  if(a_seq==TRUE)
+  {
+    brv<-seq(0,15,by=1)
+    output<-matrix(ncol=length(a),nrow=length(brv))
+    for (i in 1:length(a))
+    {
+      output[,i]<-dGammaBin(brv,max(brv),a[i],b)$pdf
+    }
+    data<-data.frame(brv,output)
+    data<-melt(data,id.vars ="brv" )
+    p1<-ggplot(data,aes(brv,value,col=variable))+
+      geom_line()+guides(fill=FALSE,color=FALSE)+
+      xlab("Binomial Random Variable")+
+      ylab("Probability mass values")+
+      ggtitle(plot_title)
+    return(p1)
+  }
+  if(a_seq==FALSE)
+  {
+    brv<-seq(0,15,by=1)
+    output<-matrix(ncol =length(b) ,nrow=length(brv))
+    for (i in 1:length(b))
+    {
+      output[,i]<-dGammaBin(brv,max(brv),a,b[i])$pdf
+    }
+    data<-data.frame(brv,output)
+    data<-melt(data,id.vars ="brv" )
+    p1<-ggplot(data,aes(brv,value,col=variable))+
+      geom_line()+guides(fill=FALSE,color=FALSE)+
+      xlab("Binomial Random Variables")+
+      ylab("Probability mass values")+
+      ggtitle(plot_title)
+    return(p1)
+  }
+}
+```
+
+```{r Gamma Binomial Distribution plotting,fig.align='center',fig.width=9,fig.height=7}
+b10<-dGammaBinplot(a=seq(1,100,by=1),b=10,plot_title="and when b=10",a_seq= T)
+b50<-dGammaBinplot(a=seq(1,100,by=1),b=50,plot_title="and when b=50",a_seq= T)
+b100<-dGammaBinplot(a=seq(1,100,by=1),b=100,plot_title="and when b=100",a_seq= T)
+b200<-dGammaBinplot(a=seq(1,100,by=1),b=200,plot_title="and when b=200",a_seq= T)
+
+grid.arrange(b10,b50,b100,b200,nrow=2,top="Pmf values changing when a=seq(1,100,by=1)")
+
+a10<-dGammaBinplot(b=seq(1,100,by=1),a=10,plot_title="and when a=10",a_seq= F)
+a50<-dGammaBinplot(b=seq(1,100,by=1),a=50,plot_title="and when a=50",a_seq= F)
+a100<-dGammaBinplot(b=seq(1,100,by=1),a=100,plot_title="and when a=100",a_seq= F)
+a200<-dGammaBinplot(b=seq(1,100,by=1),a=200,plot_title="and when a=200",a_seq= F)
+
+grid.arrange(a10,a50,a100,a200,nrow=2,top="Pmf values changing when b=seq(1,100,by=1)")
+```
+
+## Probability Mass Function values for Grassia II Binomial Distribution
+
+Grassia Binomial Distribution has two shape parameters which influence the pmf values. They are namely 
+a and b. Pmf values are plotted below according to a and b values change
+
+* a,b are in the domain region of above zero. 
+
+```{r Grassia II Binomial II Distribution plot function,include=FALSE}
+dGrassiaIIBinplot<-function(a,b,plot_title,a_seq)
+{
+  if(a_seq==TRUE)
+  {
+    brv<-seq(0,15,by=1)
+    output<-matrix(ncol=length(a),nrow=length(brv))
+    for (i in 1:length(a))
+    {
+      output[,i]<-dGrassiaIIBin(brv,max(brv),a[i],b)$pdf
+    }
+    data<-data.frame(brv,output)
+    data<-melt(data,id.vars ="brv" )
+    p1<-ggplot(data,aes(brv,value,col=variable))+
+      geom_line()+guides(fill=FALSE,color=FALSE)+
+      xlab("Binomial Random Variable")+
+      ylab("Probability mass values")+
+      ggtitle(plot_title)
+    return(p1)
+  }
+  if(a_seq==FALSE)
+  {
+    brv<-seq(0,15,by=1)
+    output<-matrix(ncol =length(b) ,nrow=length(brv))
+    for (i in 1:length(b))
+    {
+      output[,i]<-dGrassiaIIBin(brv,max(brv),a,b[i])$pdf
+    }
+    data<-data.frame(brv,output)
+    data<-melt(data,id.vars ="brv" )
+    p1<-ggplot(data,aes(brv,value,col=variable))+
+      geom_line()+guides(fill=FALSE,color=FALSE)+
+      xlab("Binomial Random Variables")+
+      ylab("Probability mass values")+
+      ggtitle(plot_title)
+    return(p1)
+  }
+}
+```
+
+
+```{r Grassia II Binomial Distribution plotting,fig.align='center',fig.width=9,fig.height=7}
+b1<-dGrassiaIIBinplot(a=seq(0.1,10,by=0.1),b=0.1,plot_title="and when b=0.1",a_seq= T)
+b25<-dGrassiaIIBinplot(a=seq(0.1,10,by=0.1),b=0.25,plot_title="and when b=0.25",a_seq= T)
+b35<-dGrassiaIIBinplot(a=seq(0.1,10,by=0.1),b=0.35,plot_title="and when b=0.35",a_seq= T)
+b40<-dGrassiaIIBinplot(a=seq(0.1,10,by=0.1),b=0.4,plot_title="and when b=0.4",a_seq= T)
+
+grid.arrange(b1,b25,b35,b40,nrow=2,top="Pmf values changing when a=seq(0.1,10,by=0.1)")
+
+a1<-dGrassiaIIBinplot(b=seq(0.1,10,by=0.1),a=0.1,plot_title="and when a=0.1",a_seq= F)
+a25<-dGrassiaIIBinplot(b=seq(0.1,10,by=0.1),a=0.25,plot_title="and when a=0.25",a_seq= F)
+a5<-dGrassiaIIBinplot(b=seq(0.1,10,by=0.1),a=0.5,plot_title="and when a=0.5",a_seq= F)
+a10<-dGrassiaIIBinplot(b=seq(0.1,10,by=0.1),a=1,plot_title="and when a=1",a_seq= F)
+
+grid.arrange(a1,a25,a5,a10,nrow=2,top="Pmf values changing when b=seq(0.1,10,by=0.1)")
+```
+
+
 # Alternate Binomial Distributions
 
 Alternate Binomial Distributions were developed for the purpose of replacing Binomial Distribution.
@@ -418,15 +551,17 @@ Alternate Binomial Distributions are
 * `dCOMPBin` - producing pmf values primarily for COM Poisson Binomial Distribution.
 * `dCorrBin` - producing pmf values primarily for Correlated Binomial Distribution.
 * `dMultiBin` - producing pmf values primarily for Multiplicative Binomial Distribution.
+* `dLMBin` - producing pmf values primarily for Lovinson Multiplicative Binomial Distribution.
 
 Specific functions were created for the purpose of making plot construction easy when there are more 
 than two parameters involved. These functions are namely
 
 * `dAddBinplot` - plot function to Additive Binomial Distribution.
 * `dBetaCorrBinplot` - plot function to Beta Correlated Binomial Distribution.
-* `dCOMPBin` - plot function to COM Poisson Binomial Distribution.
-* `dCorrBin` - plot function to Correlated Binomial Distribution.
-* `dMultiBin` - plot function to Multiplicative Binomial Distribution.
+* `dCOMPBinplot` - plot function to COM Poisson Binomial Distribution.
+* `dCorrBinplot` - plot function to Correlated Binomial Distribution.
+* `dMultiBinplot` - plot function to Multiplicative Binomial Distribution.
+* `dLMBinplot` - producing pmf values primarily for Lovinson Multiplicative Binomial Distribution.
 
 ## Probability Mass Function values for Additive Binomial Distribution
 
@@ -797,6 +932,7 @@ dMultiBinplot<-function(p,theta,plot_title,p_seq)
   }
 }
 ```
+
 ```{r Multiplicative Binomial Distribution plotting,fig.align='center',fig.width=9,fig.height=7}
 theta1<-dMultiBinplot(p=seq(0.01,0.99,by=0.01),theta=1,
                        plot_title="and when theta=1",p_seq= T)
@@ -822,3 +958,79 @@ p0.75<-dMultiBinplot(theta=seq(1,20,by=0.01),p=0.925,
 grid.arrange(p0.10,p0.25,p0.50,p0.75,nrow=2,
              top="Pmf values changing when theta=seq(1,20,by=0.01)")
 ```
+
+## Probability Mass Function values for Lovinson Multiplicative Binomial Distribution
+
+Similar to Multiplicative Binomial distribution. By changing values of phi parameter and p value
+we can clearly see how Pmf values change. Given below are the plots for that.
+
+* p is the probability value in between zero and one.
+* phi parameter is in the domain region of above zero. 
+
+```{r Lovinson Multiplicative Binomial Distribution plot function,include=FALSE}
+dLMBinplot<-function(p,phi,plot_title,p_seq)
+{
+  if(p_seq==TRUE)
+  {
+    brv<-seq(0,15,by=1)
+    output<-matrix(ncol=length(p),nrow=length(brv))
+    for (i in 1:length(p))
+    {
+      output[,i]<-dLMBin(brv,max(brv),p[i],phi)$pdf
+    }
+    data<-data.frame(brv,output)
+    data<-melt(data,id.vars ="brv" )
+    p1<-ggplot(data,aes(brv,value,col=variable))+
+      geom_line()+guides(fill=FALSE,color=FALSE)+
+      xlab("Binomial Random Variable")+
+      ylab("Probability Mass values")+
+      ggtitle(plot_title)
+    return(p1)
+  }
+  if(p_seq==FALSE)
+  {
+    brv<-seq(0,15,by=1)
+    output<-matrix(ncol =length(phi) ,nrow=length(brv))
+    for (i in 1:length(phi))
+    {
+      output[,i]<-dLMBin(brv,max(brv),p,phi[i])$pdf
+    }
+    data<-data.frame(brv,output)
+    data<-melt(data,id.vars ="brv" )
+    p1<-ggplot(data,aes(brv,value,col=variable))+
+      geom_line()+guides(fill=FALSE,color=FALSE)+
+      xlab("Binomial Random Variables")+
+      ylab("Probability Mass values")+
+      ggtitle(plot_title)
+    return(p1)
+  }
+}
+```
+
+```{r Lovinson Multiplicative Binomial Distribution plotting,fig.align='center',fig.width=9,fig.height=7}
+phi1<-dLMBinplot(p=seq(0.01,0.99,by=0.01),phi=1,
+                      plot_title="and when phi=1",p_seq= T)
+phi5<-dLMBinplot(p=seq(0.01,0.99,by=0.01),phi=5,
+                      plot_title="and when phi=5",p_seq= T)
+phi10<-dLMBinplot(p=seq(0.01,0.99,by=0.01),phi=10,
+                       plot_title="and when phi=10",p_seq= T)
+phi50<-dLMBinplot(p=seq(0.01,0.99,by=0.01),phi=50,
+                       plot_title="and when phi=50",p_seq= T)
+
+grid.arrange(phi1,phi5,phi10,phi50,nrow=2,
+             top="Pmf values changing when p=seq(0.01,0.99,by=0.01)")
+
+p0.10<-dLMBinplot(phi=seq(1,20,by=0.01),p=0.01,
+                     plot_title="and when p=0.010",p_seq= F)
+p0.25<-dLMBinplot(phi=seq(1,20,by=0.01),p=0.015,
+                     plot_title="and when p=0.015",p_seq= F)
+p0.50<-dLMBinplot(phi=seq(1,20,by=0.01),p=0.90,
+                     plot_title="and when p=0.900",p_seq= F)
+p0.75<-dLMBinplot(phi=seq(1,20,by=0.01),p=0.925,
+                     plot_title="and when p=0.925",p_seq= F)
+
+grid.arrange(p0.10,p0.25,p0.50,p0.75,nrow=2,
+             top="Pmf values changing when phi=seq(1,20,by=0.01)")
+
+```
+
