@@ -69,6 +69,7 @@ reference:
     contents:
         - fitBin
         - BODextract
+        - Overdispersion
   - title: Uniform Distribution
     desc: Unit Bounded Uniform Distribution
     contents:
@@ -108,9 +109,9 @@ reference:
   - title: Gamma Distribution
     desc: Unit Bounded Gamma Distribution
     contents:
-        - dGamma
-        - pGamma
-        - mazGamma
+        - dGAMMA
+        - pGAMMA
+        - mazGAMMA
   - title: Uniform Binomial Distribution
     desc:  Binomial Mixture Distribution
     contents:
