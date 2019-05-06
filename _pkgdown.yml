@@ -35,8 +35,8 @@ navbar:
     - text: "Version News"
       href: news/index.html
   right:
-    - icon: fa-google-plus
-      href: https://amalan-con-stat.netlify.com/
+    - icon: fa-user-circle
+      href: https://amalan-con-stat.netlify.com
     - icon: fa-twitter
       href: https://twitter.com/Amalan_Con_Stat
     - icon: fa-github
@@ -63,6 +63,7 @@ reference:
         - Plant_DiseaseData
         - Terror_data_ARG
         - Terror_data_USA
+        - Epidemic_Cold
   - title: Check for Over-dispersion
     desc: Prepare BOD for Analysis
     contents:
@@ -104,6 +105,12 @@ reference:
         - dGBeta1
         - pGBeta1
         - mazGBeta1
+  - title: Gamma Distribution
+    desc: Unit Bounded Gamma Distribution
+    contents:
+        - dGamma
+        - pGamma
+        - mazGamma
   - title: Uniform Binomial Distribution
     desc:  Binomial Mixture Distribution
     contents:
@@ -150,6 +157,22 @@ reference:
         - NegLLMcGBB
         - EstMLEMcGBB
         - fitMcGBB
+  - title: Gamma Binomial Distribution
+    desc: Binomial Mixture Distribution
+    contents:
+        - dGammaBin
+        - pGammaBin
+        - NegLLGammaBin
+        - EstMLEGammaBin
+        - fitGammaBin
+  - title: Grassia II Binomial Distribution
+    desc: Binomial Mixture Distribution
+    contents:
+        - dGrassiaIIBin
+        - pGrassiaIIBin
+        - NegLLGrassiaIIBin
+        - EstMLEGrassiaIIBin
+        - fitGrassiaIIBin
   - title: Additive Binomial Distribution
     desc: Alternate Binomial Distribution
     contents:
@@ -190,3 +213,11 @@ reference:
         - NegLLMultiBin
         - EstMLEMultiBin
         - fitMultiBin
+  - title: Lovinson Multiplicative Binomial Distribution
+    desc: Alternate Binomial Distribution
+    contents:
+        - dLMBin
+        - pLMBin
+        - NegLLLMBin
+        - EstMLELMBin
+        - fitLMBin
