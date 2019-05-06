@@ -1,0 +1,14 @@
+pandoc: '2.6'
+pkgdown: 1.3.0
+pkgdown_sha: ~
+articles:
+  BMDs_and_ABDs_dxxxBin: BMDs_and_ABDs_dxxxBin.html
+  BMDs_and_ABDs_EstMGFxxxBin: BMDs_and_ABDs_EstMGFxxxBin.html
+  BMDs_and_ABDs_EstMLExxxBin: BMDs_and_ABDs_EstMLExxxBin.html
+  BMDs_and_ABDs_fitxxxBin: BMDs_and_ABDs_fitxxxBin.html
+  BMDs_and_ABDs_NegLLxxxBin: BMDs_and_ABDs_NegLLxxxBin.html
+  BMDs_and_ABDs_pxxxBin: BMDs_and_ABDs_pxxxBin.html
+  Mixing_Distributions_dxxx: Mixing_Distributions_dxxx.html
+  Mixing_Distributions_mazxxx: Mixing_Distributions_mazxxx.html
+  Mixing_Distributions_pxxx: Mixing_Distributions_pxxx.html
+
