@@ -1,6 +1,24 @@
 R-fitODBOD
 ================
 
+[![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version-last-release/fitODBOD)](https://cran.r-project.org/package=fitODBOD)
+[![packageversion](https://img.shields.io/badge/Package%20version-1.2.0-orange.svg?style=flat-square)](commits/master)
+[![Rdoc](http://www.rdocumentation.org/badges/version/fitODBOD)](http://www.rdocumentation.org/packages/fitODBOD)
+
+![downloads](http://cranlogs.r-pkg.org/badges/grand-total/fitODBOD)
+![downloads](https://cranlogs.r-pkg.org/badges/fitODBOD)
+![downloads](http://cranlogs.r-pkg.org/badges/last-week/fitODBOD)
+
+[![Licence](https://img.shields.io/badge/licence-GPL--2-blue.svg)](https://www.gnu.org/licenses/old-licenses/gpl-2.0.html)
+[![GitHub
+license](https://img.shields.io/github/license/Amalan-ConStat/R-fitODBOD.svg?style=popout)](https://github.com/Amalan-ConStat/R-fitODBOD/blob/master/LICENSE)
+
+[![Project Status: Active - The project has reached a stable, usable
+state and is being actively
+developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
+[![GitHub
+issues](https://img.shields.io/github/issues/Amalan-ConStat/R-fitODBOD.svg?style=popout)](https://github.com/Amalan-ConStat/R-fitODBOD/issues)
+
 ## How to engage with “fitODBOD” the first time ?
 
 ``` r
@@ -163,6 +181,12 @@ Distribution.
 According to the plot, it is clearly seen that Beta-Binomial estimated
 frequencies behave very close to actual frequency values than the
 estimate frequencies from Binomial distribution. Or the Red line is very
-similar and close to the Blue line than the Green line.
+similar and close to the Blue line than the Green
+line.
 
 ## Thank You
+
+[![Twitter](https://img.shields.io/twitter/url/https/github.com/Amalan-ConStat/R-fitODBOD.svg?style=social)](https://twitter.com/intent/tweet?text=Wow:&url=https%3A%2F%2Fgithub.com%2FAmalan-ConStat%2FR-fitODBOD)
+
+[![](https://img.shields.io/badge/LinkedIn-Amalan%20Mahendran-black.svg?style=flat)](https://www.linkedin.com/in/amalan-mahendran-72b86b37/)
+[![](https://img.shields.io/badge/Research%20Gate-Amalan%20Mahendran-black.svg?style=flat)](https://www.researchgate.net/profile/Amalan_Mahendran)
