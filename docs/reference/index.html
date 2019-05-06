@@ -11,8 +11,8 @@
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/flatly/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
 
 <!-- Font Awesome icons -->
@@ -68,58 +68,76 @@
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fa fa-home fa-lg"></span>
+    <span class="fa fa-home"></span>
      
   </a>
 </li>
 <li>
-  <a href="../reference/index.html">Reference</a>
+  <a href="../reference/index.html">Functions</a>
 </li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    Articles
+    Documents
      
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/BMDs_and_ABDs_dxxxBin.html">Binomial Mixture and Alternate Binomial Distributions PMF values</a>
+      <a href="../articles/Mixing_Distributions_dxxx.html">Pdf values</a>
     </li>
     <li>
-      <a href="../articles/BMDs_and_ABDs_EstMGFxxxBin.html">Moment Generating Function method for BMD and ABD</a>
+      <a href="../articles/Mixing_Distributions_pxxx.html">Cpdf values</a>
     </li>
     <li>
-      <a href="../articles/BMDs_and_ABDs_EstMLExxxBin.html">Minimizing the Negative Log Likelihood for BMD and ABD</a>
+      <a href="../articles/Mixing_Distributions_mazxxx.html">maz values</a>
     </li>
     <li>
-      <a href="../articles/BMDs_and_ABDs_fitxxxBin.html">Modelling Binomial Outcome Data using ABDs and BMDs</a>
+      <a href="../articles/BMDs_and_ABDs_dxxxBin.html">Pmf values</a>
     </li>
     <li>
-      <a href="../articles/BMDs_and_ABDs_NegLLxxxBin.html">Negative Log Likelihood values of BMD and ABD</a>
+      <a href="../articles/BMDs_and_ABDs_pxxxBin.html">Cpmf values</a>
     </li>
     <li>
-      <a href="../articles/BMDs_and_ABDs_pxxxBin.html">Binomial Mixture and Alternate Binomial Distributions CPMF values</a>
+      <a href="../articles/BMDs_and_ABDs_NegLLxxxBin.html">NegLL values</a>
     </li>
     <li>
-      <a href="../articles/Mixing_Distributions_dxxx.html">Pdf values of Unit Bounded Distributions or Mixing Distributions</a>
+      <a href="../articles/BMDs_and_ABDs_EstMLExxxBin.html">Estimate using MLE</a>
     </li>
     <li>
-      <a href="../articles/Mixing_Distributions_mazxxx.html">Maz values of Unit Bounded Distributions or Mixing Distributions</a>
+      <a href="../articles/BMDs_and_ABDs_EstMGFxxxBin.html">Estimate using MGF</a>
     </li>
     <li>
-      <a href="../articles/Mixing_Distributions_pxxx.html">Cpdf values of Unit Bounded Distributions or Mixing Distributions</a>
+      <a href="../articles/BMDs_and_ABDs_fitxxxBin.html">Modelling BOD</a>
     </li>
   </ul>
 </li>
 <li>
-  <a href="../news/index.html">Changelog</a>
+  <a href="../news/index.html">Version News</a>
 </li>
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://github.com/Amalan-ConStat/R-fitODBOD">
-    <span class="fa fa-github fa-lg"></span>
+  <a href="https://amalan-con-stat.netlify.com/">
+    <span class="fa fa-google-plus"></span>
+     
+  </a>
+</li>
+<li>
+  <a href="https://twitter.com/Amalan_Con_Stat">
+    <span class="fa fa-twitter"></span>
+     
+  </a>
+</li>
+<li>
+  <a href="https://github.com/Amalan-ConStat">
+    <span class="fa fa-github"></span>
+     
+  </a>
+</li>
+<li>
+  <a href="https://www.linkedin.com/in/amalan-mahendran-72b86b37/">
+    <span class="fa fa-linkedin"></span>
      
   </a>
 </li>
@@ -149,8 +167,8 @@
     <tbody>
       <tr>
         <th colspan="2">
-          <h2 id="section-all-functions" class="hasAnchor"><a href="#section-all-functions" class="anchor"></a>All functions</h2>
-          <p class="section-desc"></p>
+          <h2 id="section-data" class="hasAnchor"><a href="#section-data" class="anchor"></a>Data</h2>
+          <p class="section-desc"><p>Binomial Outcome Data</p></p>
         </th>
       </tr>
       <tr>
@@ -159,12 +177,6 @@
           <p><code><a href="Alcohol_data.html">Alcohol_data</a></code> </p>
         </td>
         <td><p>Alcohol data</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="BODextract.html">BODextract()</a></code> </p>
-        </td>
-        <td><p>Binomial Data Extraction from Raw data</p></td>
       </tr><tr>
         
         <td>
@@ -180,331 +192,9 @@
       </tr><tr>
         
         <td>
-          <p><code><a href="dAddBin.html">dAddBin()</a></code> </p>
-        </td>
-        <td><p>Additive  Binomial Distribution</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="dBETA.html">dBETA()</a></code> </p>
-        </td>
-        <td><p>Beta Distribution</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="dBetaBin.html">dBetaBin()</a></code> </p>
-        </td>
-        <td><p>Beta-Binomial Distribution</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="dBetaCorrBin.html">dBetaCorrBin()</a></code> </p>
-        </td>
-        <td><p>Beta-Correlated  Binomial Distribution</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="dCOMPBin.html">dCOMPBin()</a></code> </p>
-        </td>
-        <td><p>COM Poisson Binomial Distribution</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="dCorrBin.html">dCorrBin()</a></code> </p>
-        </td>
-        <td><p>Correlated  Binomial Distribution</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="dGAMMA.html">dGAMMA()</a></code> </p>
-        </td>
-        <td><p>Gamma Distribution</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="dGammaBin.html">dGammaBin()</a></code> </p>
-        </td>
-        <td><p>Gamma Binomial Distribution</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="dGBeta1.html">dGBeta1()</a></code> </p>
-        </td>
-        <td><p>Generalized Beta Type-1 Distribution</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="dGHGBB.html">dGHGBB()</a></code> </p>
-        </td>
-        <td><p>Gaussian Hypergeometric Generalized Beta  Binomial Distribution</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="dGHGBeta.html">dGHGBeta()</a></code> </p>
-        </td>
-        <td><p>Gaussian Hypergeometric Generalized Beta Distribution</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="dGrassiaIIBin.html">dGrassiaIIBin()</a></code> </p>
-        </td>
-        <td><p>Grassia-II-Binomial Distribution</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="dKUM.html">dKUM()</a></code> </p>
-        </td>
-        <td><p>Kumaraswamy Distribution</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="dKumBin.html">dKumBin()</a></code> </p>
-        </td>
-        <td><p>Kumaraswamy Binomial Distribution</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="dLMBin.html">dLMBin()</a></code> </p>
-        </td>
-        <td><p>Lovinson Multiplicative  Binomial Distribution</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="dMcGBB.html">dMcGBB()</a></code> </p>
-        </td>
-        <td><p>McDonald Generalized Beta Binomial Distribution</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="dMultiBin.html">dMultiBin()</a></code> </p>
-        </td>
-        <td><p>Multiplicative  Binomial Distribution</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="dTRI.html">dTRI()</a></code> </p>
-        </td>
-        <td><p>Triangular Distribution Bounded Between [0,1]</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="dTriBin.html">dTriBin()</a></code> </p>
-        </td>
-        <td><p>Triangular Binomial Distribution</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="dUNI.html">dUNI()</a></code> </p>
-        </td>
-        <td><p>Uniform Distribution Bounded Between [0,1]</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="dUniBin.html">dUniBin()</a></code> </p>
-        </td>
-        <td><p>Uniform Binomial Distribution</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="Epidemic_Cold.html">Epidemic_Cold</a></code> </p>
-        </td>
-        <td><p>Family Epidemics</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="EstMGFBetaBin.html">EstMGFBetaBin()</a></code> </p>
-        </td>
-        <td><p>Estimating the shape parameters a and b for Beta-Binomial Distribution</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="EstMLEAddBin.html">EstMLEAddBin()</a></code> </p>
-        </td>
-        <td><p>Estimating the probability of success and alpha for Additive Binomial
-Distribution</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="EstMLEBetaBin.html">EstMLEBetaBin()</a></code> </p>
-        </td>
-        <td><p>Estimating the shape parameters a and b for Beta-Binomial Distribution</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="EstMLEBetaCorrBin.html">EstMLEBetaCorrBin()</a></code> </p>
-        </td>
-        <td><p>Estimating the covariance, alpha and beta parameter values for Beta-Correlated Binomial
-Distribution</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="EstMLECOMPBin.html">EstMLECOMPBin()</a></code> </p>
-        </td>
-        <td><p>Estimating the probability of success and v parameter for COM Poisson Binomial
-Distribution</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="EstMLECorrBin.html">EstMLECorrBin()</a></code> </p>
-        </td>
-        <td><p>Estimating the probability of success and correlation for Correlated Binomial
-Distribution</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="EstMLEGammaBin.html">EstMLEGammaBin()</a></code> </p>
-        </td>
-        <td><p>Estimating the shape parameters c and l for Gamma Binomial distribution</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="EstMLEGHGBB.html">EstMLEGHGBB()</a></code> </p>
-        </td>
-        <td><p>Estimating the shape parameters a,b and c for Gaussian Hypergeometric Generalized Beta  Binomial
-Distribution</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="EstMLEGrassiaIIBin.html">EstMLEGrassiaIIBin()</a></code> </p>
-        </td>
-        <td><p>Estimating the shape parameters a and b for Grassia II Binomial distribution</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="EstMLEKumBin.html">EstMLEKumBin()</a></code> </p>
-        </td>
-        <td><p>Estimating the shape parameters a and b and iterations for  Kumaraswamy Binomial Distribution</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="EstMLELMBin.html">EstMLELMBin()</a></code> </p>
-        </td>
-        <td><p>Estimating the probability of success and theta for Lovinson Multiplicative Binomial
-Distribution</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="EstMLEMcGBB.html">EstMLEMcGBB()</a></code> </p>
-        </td>
-        <td><p>Estimating the shape parameters a,b and c for McDonald Generalized Beta Binomial
-distribution</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="EstMLEMultiBin.html">EstMLEMultiBin()</a></code> </p>
-        </td>
-        <td><p>Estimating the probability of success and theta for Multiplicative Binomial
-Distribution</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="EstMLETriBin.html">EstMLETriBin()</a></code> </p>
-        </td>
-        <td><p>Estimating the mode value for Triangular Binomial Distribution</p></td>
-      </tr><tr>
-        
-        <td>
           <p><code><a href="Exam_data.html">Exam_data</a></code> </p>
         </td>
         <td><p>Exam Data</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="fitAddBin.html">fitAddBin()</a></code> </p>
-        </td>
-        <td><p>Fitting the Additive Binomial Distribution when binomial
-random variable, frequency, probability of success and alpha are given</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="fitBetaBin.html">fitBetaBin()</a></code> </p>
-        </td>
-        <td><p>Fitting the Beta-Binomial Distribution when binomial random variable, frequency and shape
-parameters a and b are given</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="fitBetaCorrBin.html">fitBetaCorrBin()</a></code> </p>
-        </td>
-        <td><p>Fitting the Beta-Correlated Binomial Distribution when binomial
-random variable, frequency, covariance, alpha and beta parameters are given</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="fitBin.html">fitBin()</a></code> </p>
-        </td>
-        <td><p>Fitting the Binomial Distribution when binomial random variable, frequency and probability
-value are given</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="fitCOMPBin.html">fitCOMPBin()</a></code> </p>
-        </td>
-        <td><p>Fitting the COM Poisson Binomial Distribution when binomial
-random variable, frequency, probability of success and v parameter are given</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="fitCorrBin.html">fitCorrBin()</a></code> </p>
-        </td>
-        <td><p>Fitting the Correlated Binomial Distribution when binomial
-random variable, frequency, probability of success and covariance are given</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="fitGammaBin.html">fitGammaBin()</a></code> </p>
-        </td>
-        <td><p>Fitting the Gamma Binomial distribution when binomial random variable,
-frequency and shape parameters are given</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="fitGHGBB.html">fitGHGBB()</a></code> </p>
-        </td>
-        <td><p>Fitting the Gaussian Hypergeometric Generalized Beta  Binomial Distribution when binomial
-random variable, frequency and shape parameters a,b and c are given</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="fitGrassiaIIBin.html">fitGrassiaIIBin()</a></code> </p>
-        </td>
-        <td><p>Fitting the Grassia II Binomial distribution when binomial random variable,
-frequency and shape parameters are given</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="fitKumBin.html">fitKumBin()</a></code> </p>
-        </td>
-        <td><p>Fitting the Kumaraswamy Binomial Distribution when binomial random variable, frequency and shape
-parameters a and b, iterations parameter it are given</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="fitLMBin.html">fitLMBin()</a></code> </p>
-        </td>
-        <td><p>Fitting the Lovinson Multiplicative Binomial Distribution when binomial
-random variable, frequency, probability of success and theta parameter are given</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="fitMcGBB.html">fitMcGBB()</a></code> </p>
-        </td>
-        <td><p>Fitting the McDonald Generalized Beta  Binomial distribution when binomial
-random variable, frequency and shape parameters are given</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="fitMultiBin.html">fitMultiBin()</a></code> </p>
-        </td>
-        <td><p>Fitting the Multiplicative Binomial Distribution when binomial
-random variable, frequency, probability of success and theta parameter are given</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="fitTriBin.html">fitTriBin()</a></code> </p>
-        </td>
-        <td><p>Fitting the Triangular Binomial Distribution when binomial random variable, frequency and mode
-value are given</p></td>
       </tr><tr>
         
         <td>
@@ -514,261 +204,9 @@ value are given</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="mazBETA.html">mazBETA()</a></code> </p>
-        </td>
-        <td><p>Beta Distribution</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="mazGAMMA.html">mazGAMMA()</a></code> </p>
-        </td>
-        <td><p>Gamma Distribution</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="mazGBeta1.html">mazGBeta1()</a></code> </p>
-        </td>
-        <td><p>Generalized Beta Type-1 Distribution</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="mazGHGBeta.html">mazGHGBeta()</a></code> </p>
-        </td>
-        <td><p>Gaussian Hypergeometric Generalized Beta Distribution</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="mazKUM.html">mazKUM()</a></code> </p>
-        </td>
-        <td><p>Kumaraswamy Distribution</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="mazTRI.html">mazTRI()</a></code> </p>
-        </td>
-        <td><p>Triangular Distribution Bounded Between [0,1]</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="mazUNI.html">mazUNI()</a></code> </p>
-        </td>
-        <td><p>Uniform Distribution Bounded Between [0,1]</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="NegLLAddBin.html">NegLLAddBin()</a></code> </p>
-        </td>
-        <td><p>Negative Log Likelihood value of Additive Binomial distribution</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="NegLLBetaBin.html">NegLLBetaBin()</a></code> </p>
-        </td>
-        <td><p>Negative Log Likelihood value of Beta-Binomial Distribution</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="NegLLBetaCorrBin.html">NegLLBetaCorrBin()</a></code> </p>
-        </td>
-        <td><p>Negative Log Likelihood value of Beta-Correlated Binomial distribution</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="NegLLCOMPBin.html">NegLLCOMPBin()</a></code> </p>
-        </td>
-        <td><p>Negative Log Likelihood value of COM Poisson Binomial distribution</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="NegLLCorrBin.html">NegLLCorrBin()</a></code> </p>
-        </td>
-        <td><p>Negative Log Likelihood value of Correlated Binomial distribution</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="NegLLGammaBin.html">NegLLGammaBin()</a></code> </p>
-        </td>
-        <td><p>Negative Log Likelihood value of Gamma Binomial Distribution</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="NegLLGHGBB.html">NegLLGHGBB()</a></code> </p>
-        </td>
-        <td><p>Negative Log Likelihood value of Gaussian Hypergeometric Generalized Beta Binomial Distribution</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="NegLLGrassiaIIBin.html">NegLLGrassiaIIBin()</a></code> </p>
-        </td>
-        <td><p>Negative Log Likelihood value of Grassia II Binomial Distribution</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="NegLLKumBin.html">NegLLKumBin()</a></code> </p>
-        </td>
-        <td><p>Negative Log Likelihood value of Kumaraswamy Binomial Distribution</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="NegLLLMBin.html">NegLLLMBin()</a></code> </p>
-        </td>
-        <td><p>Negative Log Likelihood value of Lovinson Multiplicative Binomial distribution</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="NegLLMcGBB.html">NegLLMcGBB()</a></code> </p>
-        </td>
-        <td><p>Negative Log Likelihood value of McDonald Generalized Beta  Binomial Distribution</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="NegLLMultiBin.html">NegLLMultiBin()</a></code> </p>
-        </td>
-        <td><p>Negative Log Likelihood value of Multiplicative Binomial distribution</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="NegLLTriBin.html">NegLLTriBin()</a></code> </p>
-        </td>
-        <td><p>Negative Log Likelihood value of Triangular Binomial Distribution</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="Overdispersion.html">Overdispersion()</a></code> </p>
-        </td>
-        <td><p>Overdispersion</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="pAddBin.html">pAddBin()</a></code> </p>
-        </td>
-        <td><p>Additive  Binomial Distribution</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="pBETA.html">pBETA()</a></code> </p>
-        </td>
-        <td><p>Beta Distribution</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="pBetaBin.html">pBetaBin()</a></code> </p>
-        </td>
-        <td><p>Beta-Binomial Distribution</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="pBetaCorrBin.html">pBetaCorrBin()</a></code> </p>
-        </td>
-        <td><p>Beta-Correlated  Binomial Distribution</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="pCOMPBin.html">pCOMPBin()</a></code> </p>
-        </td>
-        <td><p>COM Poisson Binomial Distribution</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="pCorrBin.html">pCorrBin()</a></code> </p>
-        </td>
-        <td><p>Correlated  Binomial Distribution</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="pGAMMA.html">pGAMMA()</a></code> </p>
-        </td>
-        <td><p>Gamma Distribution</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="pGammaBin.html">pGammaBin()</a></code> </p>
-        </td>
-        <td><p>Gamma Binomial Distribution</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="pGBeta1.html">pGBeta1()</a></code> </p>
-        </td>
-        <td><p>Generalized Beta Type-1 Distribution</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="pGHGBB.html">pGHGBB()</a></code> </p>
-        </td>
-        <td><p>Gaussian Hypergeometric Generalized Beta  Binomial Distribution</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="pGHGBeta.html">pGHGBeta()</a></code> </p>
-        </td>
-        <td><p>Gaussian Hypergeometric Generalized Beta Distribution</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="pGrassiaIIBin.html">pGrassiaIIBin()</a></code> </p>
-        </td>
-        <td><p>Grassia-II-Binomial Distribution</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="pKUM.html">pKUM()</a></code> </p>
-        </td>
-        <td><p>Kumaraswamy Distribution</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="pKumBin.html">pKumBin()</a></code> </p>
-        </td>
-        <td><p>Kumaraswamy Binomial Distribution</p></td>
-      </tr><tr>
-        
-        <td>
           <p><code><a href="Plant_DiseaseData.html">Plant_DiseaseData</a></code> </p>
         </td>
         <td><p>Plant Disease Incidence data</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="pLMBin.html">pLMBin()</a></code> </p>
-        </td>
-        <td><p>Lovinson Multiplicative  Binomial Distribution</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="pMcGBB.html">pMcGBB()</a></code> </p>
-        </td>
-        <td><p>McDonald Generalized Beta Binomial Distribution</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="pMultiBin.html">pMultiBin()</a></code> </p>
-        </td>
-        <td><p>Multiplicative  Binomial Distribution</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="pTRI.html">pTRI()</a></code> </p>
-        </td>
-        <td><p>Triangular Distribution Bounded Between [0,1]</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="pTriBin.html">pTriBin()</a></code> </p>
-        </td>
-        <td><p>Triangular Binomial Distribution</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="pUNI.html">pUNI()</a></code> </p>
-        </td>
-        <td><p>Uniform Distribution Bounded Between [0,1]</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="pUniBin.html">pUniBin()</a></code> </p>
-        </td>
-        <td><p>Uniform Binomial Distribution</p></td>
       </tr><tr>
         
         <td>
@@ -782,6 +220,606 @@ value are given</p></td>
         </td>
         <td><p>Terror Data USA</p></td>
       </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-check-for-over-dispersion" class="hasAnchor"><a href="#section-check-for-over-dispersion" class="anchor"></a>Check for Over-dispersion</h2>
+          <p class="section-desc"><p>Prepare BOD for Analysis</p></p>
+        </th>
+      </tr>
+      <tr>
+        
+        <td>
+          <p><code><a href="fitBin.html">fitBin()</a></code> </p>
+        </td>
+        <td><p>Fitting the Binomial Distribution when binomial random variable, frequency and probability
+value are given</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="BODextract.html">BODextract()</a></code> </p>
+        </td>
+        <td><p>Binomial Data Extraction from Raw data</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-uniform-distribution" class="hasAnchor"><a href="#section-uniform-distribution" class="anchor"></a>Uniform Distribution</h2>
+          <p class="section-desc"><p>Unit Bounded Uniform Distribution</p></p>
+        </th>
+      </tr>
+      <tr>
+        
+        <td>
+          <p><code><a href="dUNI.html">dUNI()</a></code> </p>
+        </td>
+        <td><p>Uniform Distribution Bounded Between [0,1]</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="pUNI.html">pUNI()</a></code> </p>
+        </td>
+        <td><p>Uniform Distribution Bounded Between [0,1]</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="mazUNI.html">mazUNI()</a></code> </p>
+        </td>
+        <td><p>Uniform Distribution Bounded Between [0,1]</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-triangular-distribution" class="hasAnchor"><a href="#section-triangular-distribution" class="anchor"></a>Triangular Distribution</h2>
+          <p class="section-desc"><p>Unit Bounded Triangular Distribution</p></p>
+        </th>
+      </tr>
+      <tr>
+        
+        <td>
+          <p><code><a href="dTRI.html">dTRI()</a></code> </p>
+        </td>
+        <td><p>Triangular Distribution Bounded Between [0,1]</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="pTRI.html">pTRI()</a></code> </p>
+        </td>
+        <td><p>Triangular Distribution Bounded Between [0,1]</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="mazTRI.html">mazTRI()</a></code> </p>
+        </td>
+        <td><p>Triangular Distribution Bounded Between [0,1]</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-beta-distribution" class="hasAnchor"><a href="#section-beta-distribution" class="anchor"></a>Beta Distribution</h2>
+          <p class="section-desc"><p>Unit Bounded Beta Distribution</p></p>
+        </th>
+      </tr>
+      <tr>
+        
+        <td>
+          <p><code><a href="dBETA.html">dBETA()</a></code> </p>
+        </td>
+        <td><p>Beta Distribution</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="pBETA.html">pBETA()</a></code> </p>
+        </td>
+        <td><p>Beta Distribution</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="mazBETA.html">mazBETA()</a></code> </p>
+        </td>
+        <td><p>Beta Distribution</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-kumaraswamy-distribution" class="hasAnchor"><a href="#section-kumaraswamy-distribution" class="anchor"></a>Kumaraswamy Distribution</h2>
+          <p class="section-desc"><p>Unit Bounded Kumaraswamy Distribution</p></p>
+        </th>
+      </tr>
+      <tr>
+        
+        <td>
+          <p><code><a href="dKUM.html">dKUM()</a></code> </p>
+        </td>
+        <td><p>Kumaraswamy Distribution</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="pKUM.html">pKUM()</a></code> </p>
+        </td>
+        <td><p>Kumaraswamy Distribution</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="mazKUM.html">mazKUM()</a></code> </p>
+        </td>
+        <td><p>Kumaraswamy Distribution</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-gaussian-hypergeometric-generalized-beta-distribution" class="hasAnchor"><a href="#section-gaussian-hypergeometric-generalized-beta-distribution" class="anchor"></a>Gaussian Hypergeometric Generalized Beta Distribution</h2>
+          <p class="section-desc"><p>Unit Bounded Gaussian Hypergeometric Generalized Beta Distribution</p></p>
+        </th>
+      </tr>
+      <tr>
+        
+        <td>
+          <p><code><a href="dGHGBeta.html">dGHGBeta()</a></code> </p>
+        </td>
+        <td><p>Gaussian Hypergeometric Generalized Beta Distribution</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="pGHGBeta.html">pGHGBeta()</a></code> </p>
+        </td>
+        <td><p>Gaussian Hypergeometric Generalized Beta Distribution</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="mazGHGBeta.html">mazGHGBeta()</a></code> </p>
+        </td>
+        <td><p>Gaussian Hypergeometric Generalized Beta Distribution</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-generalized-beta-distribution-type-" class="hasAnchor"><a href="#section-generalized-beta-distribution-type-" class="anchor"></a>Generalized Beta Distribution Type1</h2>
+          <p class="section-desc"><p>Unit Bounded Generalized Beta Distribution Type1</p></p>
+        </th>
+      </tr>
+      <tr>
+        
+        <td>
+          <p><code><a href="dGBeta1.html">dGBeta1()</a></code> </p>
+        </td>
+        <td><p>Generalized Beta Type-1 Distribution</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="pGBeta1.html">pGBeta1()</a></code> </p>
+        </td>
+        <td><p>Generalized Beta Type-1 Distribution</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="mazGBeta1.html">mazGBeta1()</a></code> </p>
+        </td>
+        <td><p>Generalized Beta Type-1 Distribution</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-uniform-binomial-distribution" class="hasAnchor"><a href="#section-uniform-binomial-distribution" class="anchor"></a>Uniform Binomial Distribution</h2>
+          <p class="section-desc"><p>Binomial Mixture Distribution</p></p>
+        </th>
+      </tr>
+      <tr>
+        
+        <td>
+          <p><code><a href="dUniBin.html">dUniBin()</a></code> </p>
+        </td>
+        <td><p>Uniform Binomial Distribution</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="pUniBin.html">pUniBin()</a></code> </p>
+        </td>
+        <td><p>Uniform Binomial Distribution</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-triangular-binomial-distribution" class="hasAnchor"><a href="#section-triangular-binomial-distribution" class="anchor"></a>Triangular Binomial Distribution</h2>
+          <p class="section-desc"><p>Binomial Mixture Distribution</p></p>
+        </th>
+      </tr>
+      <tr>
+        
+        <td>
+          <p><code><a href="dTriBin.html">dTriBin()</a></code> </p>
+        </td>
+        <td><p>Triangular Binomial Distribution</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="pTriBin.html">pTriBin()</a></code> </p>
+        </td>
+        <td><p>Triangular Binomial Distribution</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="NegLLTriBin.html">NegLLTriBin()</a></code> </p>
+        </td>
+        <td><p>Negative Log Likelihood value of Triangular Binomial Distribution</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="EstMLETriBin.html">EstMLETriBin()</a></code> </p>
+        </td>
+        <td><p>Estimating the mode value for Triangular Binomial Distribution</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="fitTriBin.html">fitTriBin()</a></code> </p>
+        </td>
+        <td><p>Fitting the Triangular Binomial Distribution when binomial random variable, frequency and mode
+value are given</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-beta-binomial-distribution" class="hasAnchor"><a href="#section-beta-binomial-distribution" class="anchor"></a>Beta-Binomial Distribution</h2>
+          <p class="section-desc"><p>Binomial Mixture Distribution</p></p>
+        </th>
+      </tr>
+      <tr>
+        
+        <td>
+          <p><code><a href="dBetaBin.html">dBetaBin()</a></code> </p>
+        </td>
+        <td><p>Beta-Binomial Distribution</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="pBetaBin.html">pBetaBin()</a></code> </p>
+        </td>
+        <td><p>Beta-Binomial Distribution</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="NegLLBetaBin.html">NegLLBetaBin()</a></code> </p>
+        </td>
+        <td><p>Negative Log Likelihood value of Beta-Binomial Distribution</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="EstMLEBetaBin.html">EstMLEBetaBin()</a></code> </p>
+        </td>
+        <td><p>Estimating the shape parameters a and b for Beta-Binomial Distribution</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="EstMGFBetaBin.html">EstMGFBetaBin()</a></code> </p>
+        </td>
+        <td><p>Estimating the shape parameters a and b for Beta-Binomial Distribution</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="fitBetaBin.html">fitBetaBin()</a></code> </p>
+        </td>
+        <td><p>Fitting the Beta-Binomial Distribution when binomial random variable, frequency and shape
+parameters a and b are given</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-kumaraswamy-binomial-distribution" class="hasAnchor"><a href="#section-kumaraswamy-binomial-distribution" class="anchor"></a>Kumaraswamy Binomial Distribution</h2>
+          <p class="section-desc"><p>Binomial Mixture Distribution</p></p>
+        </th>
+      </tr>
+      <tr>
+        
+        <td>
+          <p><code><a href="dKumBin.html">dKumBin()</a></code> </p>
+        </td>
+        <td><p>Kumaraswamy Binomial Distribution</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="pKumBin.html">pKumBin()</a></code> </p>
+        </td>
+        <td><p>Kumaraswamy Binomial Distribution</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="NegLLKumBin.html">NegLLKumBin()</a></code> </p>
+        </td>
+        <td><p>Negative Log Likelihood value of Kumaraswamy Binomial Distribution</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="EstMLEKumBin.html">EstMLEKumBin()</a></code> </p>
+        </td>
+        <td><p>Estimating the shape parameters a and b and iterations for  Kumaraswamy Binomial Distribution</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="fitKumBin.html">fitKumBin()</a></code> </p>
+        </td>
+        <td><p>Fitting the Kumaraswamy Binomial Distribution when binomial random variable, frequency and shape
+parameters a and b, iterations parameter it are given</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-gaussian-hypergeometric-generalized-beta-binomial-distribution" class="hasAnchor"><a href="#section-gaussian-hypergeometric-generalized-beta-binomial-distribution" class="anchor"></a>Gaussian Hypergeometric Generalized Beta-Binomial Distribution</h2>
+          <p class="section-desc"><p>Binomial Mixture Distribution</p></p>
+        </th>
+      </tr>
+      <tr>
+        
+        <td>
+          <p><code><a href="dGHGBB.html">dGHGBB()</a></code> </p>
+        </td>
+        <td><p>Gaussian Hypergeometric Generalized Beta  Binomial Distribution</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="pGHGBB.html">pGHGBB()</a></code> </p>
+        </td>
+        <td><p>Gaussian Hypergeometric Generalized Beta  Binomial Distribution</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="NegLLGHGBB.html">NegLLGHGBB()</a></code> </p>
+        </td>
+        <td><p>Negative Log Likelihood value of Gaussian Hypergeometric Generalized Beta Binomial Distribution</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="EstMLEGHGBB.html">EstMLEGHGBB()</a></code> </p>
+        </td>
+        <td><p>Estimating the shape parameters a,b and c for Gaussian Hypergeometric Generalized Beta  Binomial
+Distribution</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="fitGHGBB.html">fitGHGBB()</a></code> </p>
+        </td>
+        <td><p>Fitting the Gaussian Hypergeometric Generalized Beta  Binomial Distribution when binomial
+random variable, frequency and shape parameters a,b and c are given</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-mcdonald-generalized-beta-binomial-distribution" class="hasAnchor"><a href="#section-mcdonald-generalized-beta-binomial-distribution" class="anchor"></a>McDonald Generalized Beta-Binomial Distribution</h2>
+          <p class="section-desc"><p>Binomial Mixture Distribution</p></p>
+        </th>
+      </tr>
+      <tr>
+        
+        <td>
+          <p><code><a href="dMcGBB.html">dMcGBB()</a></code> </p>
+        </td>
+        <td><p>McDonald Generalized Beta Binomial Distribution</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="pMcGBB.html">pMcGBB()</a></code> </p>
+        </td>
+        <td><p>McDonald Generalized Beta Binomial Distribution</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="NegLLMcGBB.html">NegLLMcGBB()</a></code> </p>
+        </td>
+        <td><p>Negative Log Likelihood value of McDonald Generalized Beta  Binomial Distribution</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="EstMLEMcGBB.html">EstMLEMcGBB()</a></code> </p>
+        </td>
+        <td><p>Estimating the shape parameters a,b and c for McDonald Generalized Beta Binomial
+distribution</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="fitMcGBB.html">fitMcGBB()</a></code> </p>
+        </td>
+        <td><p>Fitting the McDonald Generalized Beta  Binomial distribution when binomial
+random variable, frequency and shape parameters are given</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-additive-binomial-distribution" class="hasAnchor"><a href="#section-additive-binomial-distribution" class="anchor"></a>Additive Binomial Distribution</h2>
+          <p class="section-desc"><p>Alternate Binomial Distribution</p></p>
+        </th>
+      </tr>
+      <tr>
+        
+        <td>
+          <p><code><a href="dAddBin.html">dAddBin()</a></code> </p>
+        </td>
+        <td><p>Additive  Binomial Distribution</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="pAddBin.html">pAddBin()</a></code> </p>
+        </td>
+        <td><p>Additive  Binomial Distribution</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="NegLLAddBin.html">NegLLAddBin()</a></code> </p>
+        </td>
+        <td><p>Negative Log Likelihood value of Additive Binomial distribution</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="EstMLEAddBin.html">EstMLEAddBin()</a></code> </p>
+        </td>
+        <td><p>Estimating the probability of success and alpha for Additive Binomial
+Distribution</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="fitAddBin.html">fitAddBin()</a></code> </p>
+        </td>
+        <td><p>Fitting the Additive Binomial Distribution when binomial
+random variable, frequency, probability of success and alpha are given</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-beta-correlated-binomial-distribution" class="hasAnchor"><a href="#section-beta-correlated-binomial-distribution" class="anchor"></a>Beta-Correlated Binomial Distribution</h2>
+          <p class="section-desc"><p>Alternate Binomial Distribution</p></p>
+        </th>
+      </tr>
+      <tr>
+        
+        <td>
+          <p><code><a href="dBetaCorrBin.html">dBetaCorrBin()</a></code> </p>
+        </td>
+        <td><p>Beta-Correlated  Binomial Distribution</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="pBetaCorrBin.html">pBetaCorrBin()</a></code> </p>
+        </td>
+        <td><p>Beta-Correlated  Binomial Distribution</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="NegLLBetaCorrBin.html">NegLLBetaCorrBin()</a></code> </p>
+        </td>
+        <td><p>Negative Log Likelihood value of Beta-Correlated Binomial distribution</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="EstMLEBetaCorrBin.html">EstMLEBetaCorrBin()</a></code> </p>
+        </td>
+        <td><p>Estimating the covariance, alpha and beta parameter values for Beta-Correlated Binomial
+Distribution</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="fitBetaCorrBin.html">fitBetaCorrBin()</a></code> </p>
+        </td>
+        <td><p>Fitting the Beta-Correlated Binomial Distribution when binomial
+random variable, frequency, covariance, alpha and beta parameters are given</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-com-poisson-binomial-distribution" class="hasAnchor"><a href="#section-com-poisson-binomial-distribution" class="anchor"></a>COM Poisson Binomial Distribution</h2>
+          <p class="section-desc"><p>Alternate Binomial Distribution</p></p>
+        </th>
+      </tr>
+      <tr>
+        
+        <td>
+          <p><code><a href="dCOMPBin.html">dCOMPBin()</a></code> </p>
+        </td>
+        <td><p>COM Poisson Binomial Distribution</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="pCOMPBin.html">pCOMPBin()</a></code> </p>
+        </td>
+        <td><p>COM Poisson Binomial Distribution</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="NegLLCOMPBin.html">NegLLCOMPBin()</a></code> </p>
+        </td>
+        <td><p>Negative Log Likelihood value of COM Poisson Binomial distribution</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="EstMLECOMPBin.html">EstMLECOMPBin()</a></code> </p>
+        </td>
+        <td><p>Estimating the probability of success and v parameter for COM Poisson Binomial
+Distribution</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="fitCOMPBin.html">fitCOMPBin()</a></code> </p>
+        </td>
+        <td><p>Fitting the COM Poisson Binomial Distribution when binomial
+random variable, frequency, probability of success and v parameter are given</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-correlated-binomial-distribution" class="hasAnchor"><a href="#section-correlated-binomial-distribution" class="anchor"></a>Correlated Binomial Distribution</h2>
+          <p class="section-desc"><p>Alternate Binomial Distribution</p></p>
+        </th>
+      </tr>
+      <tr>
+        
+        <td>
+          <p><code><a href="dCorrBin.html">dCorrBin()</a></code> </p>
+        </td>
+        <td><p>Correlated  Binomial Distribution</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="pCorrBin.html">pCorrBin()</a></code> </p>
+        </td>
+        <td><p>Correlated  Binomial Distribution</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="NegLLCorrBin.html">NegLLCorrBin()</a></code> </p>
+        </td>
+        <td><p>Negative Log Likelihood value of Correlated Binomial distribution</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="EstMLECorrBin.html">EstMLECorrBin()</a></code> </p>
+        </td>
+        <td><p>Estimating the probability of success and correlation for Correlated Binomial
+Distribution</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="fitCorrBin.html">fitCorrBin()</a></code> </p>
+        </td>
+        <td><p>Fitting the Correlated Binomial Distribution when binomial
+random variable, frequency, probability of success and covariance are given</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-multiplicative-binomial-distribution" class="hasAnchor"><a href="#section-multiplicative-binomial-distribution" class="anchor"></a>Multiplicative Binomial Distribution</h2>
+          <p class="section-desc"><p>Alternate Binomial Distribution</p></p>
+        </th>
+      </tr>
+      <tr>
+        
+        <td>
+          <p><code><a href="dMultiBin.html">dMultiBin()</a></code> </p>
+        </td>
+        <td><p>Multiplicative  Binomial Distribution</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="pMultiBin.html">pMultiBin()</a></code> </p>
+        </td>
+        <td><p>Multiplicative  Binomial Distribution</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="NegLLMultiBin.html">NegLLMultiBin()</a></code> </p>
+        </td>
+        <td><p>Negative Log Likelihood value of Multiplicative Binomial distribution</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="EstMLEMultiBin.html">EstMLEMultiBin()</a></code> </p>
+        </td>
+        <td><p>Estimating the probability of success and theta for Multiplicative Binomial
+Distribution</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="fitMultiBin.html">fitMultiBin()</a></code> </p>
+        </td>
+        <td><p>Fitting the Multiplicative Binomial Distribution when binomial
+random variable, frequency, probability of success and theta parameter are given</p></td>
+      </tr>
     </tbody>
     </table>
   </div>
@@ -789,14 +827,32 @@ value are given</p></td>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#section-all-functions">All functions</a></li>
+      <li><a href="#section-data">Data</a></li>
+      <li><a href="#section-check-for-over-dispersion">Check for Over-dispersion</a></li>
+      <li><a href="#section-uniform-distribution">Uniform Distribution</a></li>
+      <li><a href="#section-triangular-distribution">Triangular Distribution</a></li>
+      <li><a href="#section-beta-distribution">Beta Distribution</a></li>
+      <li><a href="#section-kumaraswamy-distribution">Kumaraswamy Distribution</a></li>
+      <li><a href="#section-gaussian-hypergeometric-generalized-beta-distribution">Gaussian Hypergeometric Generalized Beta Distribution</a></li>
+      <li><a href="#section-generalized-beta-distribution-type-">Generalized Beta Distribution Type1</a></li>
+      <li><a href="#section-uniform-binomial-distribution">Uniform Binomial Distribution</a></li>
+      <li><a href="#section-triangular-binomial-distribution">Triangular Binomial Distribution</a></li>
+      <li><a href="#section-beta-binomial-distribution">Beta-Binomial Distribution</a></li>
+      <li><a href="#section-kumaraswamy-binomial-distribution">Kumaraswamy Binomial Distribution</a></li>
+      <li><a href="#section-gaussian-hypergeometric-generalized-beta-binomial-distribution">Gaussian Hypergeometric Generalized Beta-Binomial Distribution</a></li>
+      <li><a href="#section-mcdonald-generalized-beta-binomial-distribution">McDonald Generalized Beta-Binomial Distribution</a></li>
+      <li><a href="#section-additive-binomial-distribution">Additive Binomial Distribution</a></li>
+      <li><a href="#section-beta-correlated-binomial-distribution">Beta-Correlated Binomial Distribution</a></li>
+      <li><a href="#section-com-poisson-binomial-distribution">COM Poisson Binomial Distribution</a></li>
+      <li><a href="#section-correlated-binomial-distribution">Correlated Binomial Distribution</a></li>
+      <li><a href="#section-multiplicative-binomial-distribution">Multiplicative Binomial Distribution</a></li>
     </ul>
   </div>
 </div>
 
       <footer>
       <div class="copyright">
-  <p>Developed by Amalan Mahendran, Pushpakanthie Wijekoon.</p>
+  <p>Developed by <a href='https://www.linkedin.com/in/amalan-mahendran-72b86b37/'>Amalan Mahendran</a>, <a href='https://sci.pdn.ac.lk/scs/staff/contactPushpa.php'>Pushpakanthie Wijekoon</a>.</p>
 </div>
 
 <div class="pkgdown">
