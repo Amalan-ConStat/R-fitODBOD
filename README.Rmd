@@ -45,7 +45,7 @@ You can understand BMD & ABD with PMF & CPMF. Further, BOD can be modeled using 
 
 ## Distributions
 
-| Alternate Binomial Distrbutions | Binomial Mixture Distributions |
+| Alternate Binomial Distributions | Binomial Mixture Distributions |
 |:--------------------------------|:-------------------------------|
 |1.Additive Binomial Distribution|1.Uniform Binomial Distribution |
 |2.Beta-Correlated Binomial Distribution|2.Triangular Binomial Distribution|
@@ -54,8 +54,7 @@ You can understand BMD & ABD with PMF & CPMF. Further, BOD can be modeled using 
 |5.Multiplicative Binomial Distribution|5.Gaussian Hypergeometric Generalized Beta-Binomial Distribution|
 |6.Lovinson Multiplicative Binomial Distribution|6.McDonald Generalized Beta-Binomial Distribution|
 ||7.Gamma Binomial Distribution|
-||8.Grassia I Binomial Distribution|
-||9.Grassia II Binomial Distribution|
+||8.Grassia II Binomial Distribution|
 
 
 ## Just an example
@@ -75,7 +74,9 @@ $H_1$ : The Data does not follow the Binomial Distribution.
 
 ```{r Fitting Binomial Distribution}
 #Checking if the above data  of Days and week2 follows Binomial Distribution
-fitBin(Alcohol_data$Days,Alcohol_data$week2)
+fitB<-fitBin(Alcohol_data$Days,Alcohol_data$week2)
+
+print(fitB)
 ```
 
 According to p-value=$0$, $H_0$ is rejected at $5\%$ significance level.
@@ -96,7 +97,9 @@ $H_1$ : The Data does not follow the Beta-Binomial Distribution.
 
 ```{r Fitting Beta-Binomial Distribution}
 #Checking if the above data follows Beta-Binomial Distribution
-fitBetaBin(Alcohol_data$Days,Alcohol_data$week2,a_est,b_est)
+fitBB<-fitBetaBin(Alcohol_data$Days,Alcohol_data$week2,a_est,b_est)
+
+print(fitBB)
 ```
 
 p-value=$0.1524$ indicates $H_0$ is not rejected at $5\%$ significance level.
@@ -107,10 +110,11 @@ Further
 #Actual Variance
 Act_Var<-var(rep(Alcohol_data$Days,Alcohol_data$week2))
 #Estimated Variance of Binomial Distribution
-Est_Var_Bin<-var(rep(Alcohol_data$Days,c(1.66,13.79,49.19,97.48,115.89,82.67,32.76,5.56)))
+Est_Var_Bin<-var(rep(Alcohol_data$Days,fitted(fitB)))
 #Estimated Variance of Beta-Binomial Distribution
-Est_Var_BetaBin<-var(rep(Alcohol_data$Days,c(47.91,42.92,41.95,42.5,44.3,47.81,54.89,76.73)))
+Est_Var_BetaBin<-var(rep(Alcohol_data$Days,fitted(fitBB)))
 ```
+
 ```{r Printing variance and plotting frequencies,echo=FALSE}
 Var_table<-tibble::tibble(x=c("Actual","From Expected frequencies of estimated Binomial Distribution"
                               ,"From Expected frequencies of estimated Beta-Binomial Distribution"),
@@ -118,20 +122,21 @@ Var_table<-tibble::tibble(x=c("Actual","From Expected frequencies of estimated B
 names(Var_table)<-c("Type of Variance","Values")
 knitr::kable(Var_table)
 
-results_data<-data.frame(
-  x=Alcohol_data$Days,
-  y=Alcohol_data$week2,
-  z=Est_Bin_Freq<-c(1.66,13.79,49.19,97.48,115.89,82.67,32.76,5.56),
-  a=Est_BetaBin_Freq<-c(47.91,42.92,41.95,42.5,44.3,47.81,54.89,76.73)
-                )
-suppressPackageStartupMessages(library(ggplot2))
-ggplot(results_data)+theme_get()+
-                     geom_point(aes(x=results_data$x,y=results_data$y),color="red")+
-                     geom_line(aes(x=results_data$x,y=results_data$y),color="red")+
-                     geom_point(aes(x=results_data$x,y=results_data$z),color="green")+
-                     geom_line(aes(x=results_data$x,y=results_data$z),color="green")+
-                     geom_point(aes(x=results_data$x,y=results_data$a),color="blue")+
-                     geom_line(aes(x=results_data$x,y=results_data$a),color="blue")+
+results_data<-tibble::tibble(
+                             "Days"=Alcohol_data$Days,
+                             "Week2"=Alcohol_data$week2,
+                             "BinomialFreq"=fitted(fitB),
+                             "BetaBinomialFreq"=fitted(fitBB)
+                             )
+
+library(ggplot2)
+plotBOD<-ggplot(results_data)+theme_get()+
+                     geom_point(aes(x=Days,y=Week2),color="red")+
+                     geom_line(aes(x=Days,y=Week2),color="red")+
+                     geom_point(aes(x=Days,y=BinomialFreq),color="green")+
+                     geom_line(aes(x=Days,y=BinomialFreq),color="green")+
+                     geom_point(aes(x=Days,y=BetaBinomialFreq),color="blue")+
+                     geom_line(aes(x=Days,y=BetaBinomialFreq),color="blue")+
                      ggtitle("Using ggplot to compare frequencies of Alcohol BOD")+
                      xlab("Binomial Random Variables from 0 to 7")+
                      ylab("Frequency Values Estimated and Actual")+
@@ -140,6 +145,8 @@ ggplot(results_data)+theme_get()+
                      annotate("text",x=1.5,y=55,label="Actual",color="Red")+
                      annotate("text",x=4.5,y=115,label="Binomial",color="Green")+
                      annotate("text",x=4.75,y=55,label="Beta-Binomial",color="Blue")
+
+plotly::plotly_build(plotBOD)
 ```
 
 Variance($5.8043$) from Beta-Binomial Distribution's estimated frequencies is closer to 

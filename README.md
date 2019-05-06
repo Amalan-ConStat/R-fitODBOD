@@ -50,7 +50,7 @@ Distributions
 
 ## Distributions
 
-| Alternate Binomial Distrbutions                 | Binomial Mixture Distributions                                   |
+| Alternate Binomial Distributions                | Binomial Mixture Distributions                                   |
 | :---------------------------------------------- | :--------------------------------------------------------------- |
 | 1.Additive Binomial Distribution                | 1.Uniform Binomial Distribution                                  |
 | 2.Beta-Correlated Binomial Distribution         | 2.Triangular Binomial Distribution                               |
@@ -59,8 +59,7 @@ Distributions
 | 5.Multiplicative Binomial Distribution          | 5.Gaussian Hypergeometric Generalized Beta-Binomial Distribution |
 | 6.Lovinson Multiplicative Binomial Distribution | 6.McDonald Generalized Beta-Binomial Distribution                |
 |                                                 | 7.Gamma Binomial Distribution                                    |
-|                                                 | 8.Grassia I Binomial Distribution                                |
-|                                                 | 9.Grassia II Binomial Distribution                               |
+|                                                 | 8.Grassia II Binomial Distribution                               |
 
 ## Just an example
 
@@ -96,11 +95,15 @@ Distribution.
 
 ``` r
 #Checking if the above data  of Days and week2 follows Binomial Distribution
-fitBin(Alcohol_data$Days,Alcohol_data$week2)
+fitB<-fitBin(Alcohol_data$Days,Alcohol_data$week2)
 ```
 
     ## Warning in fitBin(Alcohol_data$Days, Alcohol_data$week2): Chi-squared
     ## approximation may be doubtful because expected frequency is less than 5
+
+``` r
+print(fitB)
+```
 
     ## Call: 
     ## fitBin(x = Alcohol_data$Days, obs.freq = Alcohol_data$week2)
@@ -134,7 +137,9 @@ Now, Checking if above data follows Beta-Binomial Distribution
 
 ``` r
 #Checking if the above data follows Beta-Binomial Distribution
-fitBetaBin(Alcohol_data$Days,Alcohol_data$week2,a_est,b_est)
+fitBB<-fitBetaBin(Alcohol_data$Days,Alcohol_data$week2,a_est,b_est)
+
+print(fitBB)
 ```
 
     ## Call: 
@@ -163,9 +168,9 @@ Further
 #Actual Variance
 Act_Var<-var(rep(Alcohol_data$Days,Alcohol_data$week2))
 #Estimated Variance of Binomial Distribution
-Est_Var_Bin<-var(rep(Alcohol_data$Days,c(1.66,13.79,49.19,97.48,115.89,82.67,32.76,5.56)))
+Est_Var_Bin<-var(rep(Alcohol_data$Days,fitted(fitB)))
 #Estimated Variance of Beta-Binomial Distribution
-Est_Var_BetaBin<-var(rep(Alcohol_data$Days,c(47.91,42.92,41.95,42.5,44.3,47.81,54.89,76.73)))
+Est_Var_BetaBin<-var(rep(Alcohol_data$Days,fitted(fitBB)))
 ```
 
 | Type of Variance                                                  |   Values |
@@ -173,6 +178,12 @@ Est_Var_BetaBin<-var(rep(Alcohol_data$Days,c(47.91,42.92,41.95,42.5,44.3,47.81,5
 | Actual                                                            | 5.787333 |
 | From Expected frequencies of estimated Binomial Distribution      | 1.694534 |
 | From Expected frequencies of estimated Beta-Binomial Distribution | 5.804344 |
+
+    ## Registered S3 methods overwritten by 'ggplot2':
+    ##   method         from 
+    ##   [.quosures     rlang
+    ##   c.quosures     rlang
+    ##   print.quosures rlang
 
 ![](README_files/figure-gfm/Printing%20variance%20and%20plotting%20frequencies-1.png)<!-- -->
 
