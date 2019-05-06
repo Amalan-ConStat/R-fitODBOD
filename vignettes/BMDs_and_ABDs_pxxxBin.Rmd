@@ -57,7 +57,7 @@ data<-data.frame(brv,cpmfv)
 ggplot(data)+
   geom_line(aes(x=data$brv,y=data$cpmfv))+
   xlab("Binomial Random Variable")+
-  ylab("Cumlative Probability Mass Function values")+
+  ylab("Cumulative Probability Mass Function values")+
   ggtitle("Cpmf values changing")
   scale_x_continuous(breaks=seq(0,10,by=1))
 ```
@@ -520,7 +520,7 @@ a25<-pGrassiaIIBinplot(b=seq(0.1,10,by=0.1),a=0.25,plot_title="and when a=0.25",
 a5<-pGrassiaIIBinplot(b=seq(0.1,10,by=0.1),a=0.5,plot_title="and when a=0.5",a_seq= F)
 a10<-pGrassiaIIBinplot(b=seq(0.1,10,by=0.1),a=1,plot_title="and when a=1",a_seq= F)
 
-grid.arrange(a1,a25,a5,a10,nrow=2,top="Pmf values changing when b=seq(0.1,10,by=0.1)")
+grid.arrange(a1,a25,a5,a10,nrow=2,top="Cpmf values changing when b=seq(0.1,10,by=0.1)")
 ```
 
 
@@ -650,7 +650,7 @@ pBetaCorrBinplot<-function(a,b,cov,plot_title,a_seq,b_seq)
   p1<-ggplot(data,aes(brv,value,col=variable))+
       geom_line()+guides(fill=FALSE,color=FALSE)+
       xlab("Binomial Random Variable")+
-      ylab("Pmf values")+
+      ylab("Cpmf values")+
       ggtitle(plot_title)
       return(p1)
   }
@@ -667,7 +667,7 @@ pBetaCorrBinplot<-function(a,b,cov,plot_title,a_seq,b_seq)
   p1<-ggplot(data,aes(brv,value,col=variable))+
       geom_line()+guides(fill=FALSE,color=FALSE)+
       xlab("Binomial Random Variables")+
-      ylab("mf values")+
+      ylab("Cpmf values")+
       ggtitle(plot_title)
       return(p1)
   }

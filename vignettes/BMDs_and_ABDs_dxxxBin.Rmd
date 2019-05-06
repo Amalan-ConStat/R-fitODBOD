@@ -682,7 +682,7 @@ dBetaCorrBinplot<-function(a,b,cov,plot_title,a_seq,b_seq)
   p1<-ggplot(data,aes(brv,value,col=variable))+
       geom_line()+guides(fill=FALSE,color=FALSE)+
       xlab("Binomial Random Variables")+
-      ylab("mf values")+
+      ylab("Cpmf values")+
       ggtitle(plot_title)
       return(p1)
   }
@@ -699,7 +699,7 @@ dBetaCorrBinplot<-function(a,b,cov,plot_title,a_seq,b_seq)
   p1<-ggplot(data,aes(brv,value,col=variable))+
       geom_line()+guides(fill=FALSE,color=FALSE)+
       xlab("Binomial Random Variable")+
-      ylab("Cpmf values")+
+      ylab("Pmf values")+
       ggtitle(plot_title)
       return(p1)
   }

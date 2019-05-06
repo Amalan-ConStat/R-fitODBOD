@@ -259,7 +259,7 @@ frequencies. Therefore it is clear that most suitable distribution for alcohol d
 distribution, second choice is Multiplicative and COM Poisson Binomial distributions and final choice is 
 Correlated and Additive Binomial distributions.
 
-## Fitting Binoimal Mixture Distributions
+## Fitting Binomial Mixture Distributions
 
 In the eight BMD distributions except Uniform Binomial distribution others can be used for fitting the 
 Alcohol data week 2. Here also as above a plot was generated to compare estimated frequencies 
@@ -467,7 +467,7 @@ plotly::plotly_build(BMD_freq)
 
 Estimated frequencies from Triangular distribution are far more better than estimated
 frequencies from Binomial distribution. It is clear that Beta-Binomial, Kumaraswamy Binomial,
-Gamma Binoimal and Grassia II Binoimal distributions behave identically for the alcohol data 
+Gamma Binomial and Grassia II Binomial distributions behave identically for the alcohol data 
 of week 2. Also McDonald Generalized Beta-Binomial distribution too behave equally for the alcohol
 data of week 2. 
 
