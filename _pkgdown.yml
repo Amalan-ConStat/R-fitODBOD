@@ -1,0 +1,192 @@
+template:
+  params:
+    bootswatch: flatly
+
+development:
+  mode: release
+
+navbar:
+  title: fitODBOD
+  left:
+    - icon: fa-home
+      href: index.html
+    - text: Functions
+      href: reference/index.html
+    - text: Documents
+      menu:
+        - text: Pdf values
+          href: articles/Mixing_Distributions_dxxx.html
+        - text: Cpdf values
+          href: articles/Mixing_Distributions_pxxx.html
+        - text: maz values
+          href: articles/Mixing_Distributions_mazxxx.html
+        - text: Pmf values
+          href: articles/BMDs_and_ABDs_dxxxBin.html
+        - text: Cpmf values
+          href: articles/BMDs_and_ABDs_pxxxBin.html
+        - text: NegLL values
+          href: articles/BMDs_and_ABDs_NegLLxxxBin.html
+        - text: Estimate using MLE
+          href: articles/BMDs_and_ABDs_EstMLExxxBin.html
+        - text: Estimate using MGF
+          href: articles/BMDs_and_ABDs_EstMGFxxxBin.html
+        - text: Modelling BOD
+          href: articles/BMDs_and_ABDs_fitxxxBin.html
+    - text: "Version News"
+      href: news/index.html
+  right:
+    - icon: fa-google-plus
+      href: https://amalan-con-stat.netlify.com/
+    - icon: fa-twitter
+      href: https://twitter.com/Amalan_Con_Stat
+    - icon: fa-github
+      href: https://github.com/Amalan-ConStat
+    - icon: fa-linkedin
+      href: https://www.linkedin.com/in/amalan-mahendran-72b86b37/
+
+authors:
+  Amalan Mahendran:
+    href: https://www.linkedin.com/in/amalan-mahendran-72b86b37/
+  Pushpakanthie Wijekoon:
+    href: https://sci.pdn.ac.lk/scs/staff/contactPushpa.php
+
+
+reference:
+  - title: Data
+    desc: Binomial Outcome Data
+    contents:
+        - Alcohol_data
+        - Chromosome_data
+        - Course_data
+        - Exam_data
+        - Male_Children
+        - Plant_DiseaseData
+        - Terror_data_ARG
+        - Terror_data_USA
+  - title: Check for Over-dispersion
+    desc: Prepare BOD for Analysis
+    contents:
+        - fitBin
+        - BODextract
+  - title: Uniform Distribution
+    desc: Unit Bounded Uniform Distribution
+    contents:
+        - dUNI
+        - pUNI
+        - mazUNI
+  - title: Triangular Distribution
+    desc: Unit Bounded Triangular Distribution
+    contents:
+        - dTRI
+        - pTRI
+        - mazTRI
+  - title: Beta Distribution
+    desc: Unit Bounded Beta Distribution
+    contents:
+        - dBETA
+        - pBETA
+        - mazBETA
+  - title: Kumaraswamy Distribution
+    desc: Unit Bounded Kumaraswamy Distribution
+    contents:
+        - dKUM
+        - pKUM
+        - mazKUM
+  - title: Gaussian Hypergeometric Generalized Beta Distribution
+    desc: Unit Bounded Gaussian Hypergeometric Generalized Beta Distribution
+    contents:
+        - dGHGBeta
+        - pGHGBeta
+        - mazGHGBeta
+  - title: Generalized Beta Distribution Type1
+    desc: Unit Bounded Generalized Beta Distribution Type1
+    contents:
+        - dGBeta1
+        - pGBeta1
+        - mazGBeta1
+  - title: Uniform Binomial Distribution
+    desc:  Binomial Mixture Distribution
+    contents:
+        - dUniBin
+        - pUniBin
+  - title: Triangular Binomial Distribution
+    desc: Binomial Mixture Distribution
+    contents:
+        - dTriBin
+        - pTriBin
+        - NegLLTriBin
+        - EstMLETriBin
+        - fitTriBin
+  - title: Beta-Binomial Distribution
+    desc: Binomial Mixture Distribution
+    contents:
+        - dBetaBin
+        - pBetaBin
+        - NegLLBetaBin
+        - EstMLEBetaBin
+        - EstMGFBetaBin
+        - fitBetaBin
+  - title: Kumaraswamy Binomial Distribution
+    desc: Binomial Mixture Distribution
+    contents:
+        - dKumBin
+        - pKumBin
+        - NegLLKumBin
+        - EstMLEKumBin
+        - fitKumBin
+  - title: Gaussian Hypergeometric Generalized Beta-Binomial Distribution
+    desc: Binomial Mixture Distribution
+    contents:
+        - dGHGBB
+        - pGHGBB
+        - NegLLGHGBB
+        - EstMLEGHGBB
+        - fitGHGBB
+  - title: McDonald Generalized Beta-Binomial Distribution
+    desc: Binomial Mixture Distribution
+    contents:
+        - dMcGBB
+        - pMcGBB
+        - NegLLMcGBB
+        - EstMLEMcGBB
+        - fitMcGBB
+  - title: Additive Binomial Distribution
+    desc: Alternate Binomial Distribution
+    contents:
+        - dAddBin
+        - pAddBin
+        - NegLLAddBin
+        - EstMLEAddBin
+        - fitAddBin
+  - title: Beta-Correlated Binomial Distribution
+    desc: Alternate Binomial Distribution
+    contents:
+        - dBetaCorrBin
+        - pBetaCorrBin
+        - NegLLBetaCorrBin
+        - EstMLEBetaCorrBin
+        - fitBetaCorrBin
+  - title: COM Poisson Binomial Distribution
+    desc: Alternate Binomial Distribution
+    contents:
+        - dCOMPBin
+        - pCOMPBin
+        - NegLLCOMPBin
+        - EstMLECOMPBin
+        - fitCOMPBin
+  - title: Correlated Binomial Distribution
+    desc: Alternate Binomial Distribution
+    contents:
+        - dCorrBin
+        - pCorrBin
+        - NegLLCorrBin
+        - EstMLECorrBin
+        - fitCorrBin
+  - title: Multiplicative Binomial Distribution
+    desc: Alternate Binomial Distribution
+    contents:
+        - dMultiBin
+        - pMultiBin
+        - NegLLMultiBin
+        - EstMLEMultiBin
+        - fitMultiBin
