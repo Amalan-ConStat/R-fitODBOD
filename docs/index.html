@@ -119,7 +119,9 @@
 <!--/.navbar -->
 
       
-      </header><div class="row">
+      </header><script src="index_files/htmlwidgets-1.3/htmlwidgets.js"></script><script src="index_files/plotly-binding-4.9.0/plotly.js"></script><script src="index_files/typedarray-0.1/typedarray.min.js"></script><script src="index_files/jquery-1.11.3/jquery.min.js"></script><link href="index_files/crosstalk-1.0.0/css/crosstalk.css" rel="stylesheet">
+<script src="index_files/crosstalk-1.0.0/js/crosstalk.min.js"></script><link href="index_files/plotly-htmlwidgets-css-1.46.1/plotly-htmlwidgets.css" rel="stylesheet">
+<script src="index_files/plotly-main-1.46.1/plotly-latest.min.js"></script><div class="row">
   <div class="col-md-9 contents">
     
 
@@ -166,7 +168,7 @@
 <col width="49%">
 </colgroup>
 <thead><tr class="header">
-<th align="left">Alternate Binomial Distrbutions</th>
+<th align="left">Alternate Binomial Distributions</th>
 <th align="left">Binomial Mixture Distributions</th>
 </tr></thead>
 <tbody>
@@ -200,11 +202,7 @@
 </tr>
 <tr class="even">
 <td align="left"></td>
-<td align="left">8.Grassia I Binomial Distribution</td>
-</tr>
-<tr class="odd">
-<td align="left"></td>
-<td align="left">9.Grassia II Binomial Distribution</td>
+<td align="left">8.Grassia II Binomial Distribution</td>
 </tr>
 </tbody>
 </table>
@@ -232,9 +230,10 @@
 <p><span class="math inline">\(H_0\)</span> : The Data follows the Binomial Distribution.</p>
 <p><span class="math inline">\(H_1\)</span> : The Data does not follow the Binomial Distribution.</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" title="1"><span class="co">#Checking if the above data  of Days and week2 follows Binomial Distribution</span></a>
-<a class="sourceLine" id="cb6-2" title="2"><span class="kw"><a href="reference/fitBin.html">fitBin</a></span>(Alcohol_data<span class="op">$</span>Days,Alcohol_data<span class="op">$</span>week2)</a></code></pre></div>
+<a class="sourceLine" id="cb6-2" title="2">fitB&lt;-<span class="kw"><a href="reference/fitBin.html">fitBin</a></span>(Alcohol_data<span class="op">$</span>Days,Alcohol_data<span class="op">$</span>week2)</a></code></pre></div>
 <pre><code>## Warning in fitBin(Alcohol_data$Days, Alcohol_data$week2): Chi-squared
 ## approximation may be doubtful because expected frequency is less than 5</code></pre>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/print">print</a></span>(fitB)</a></code></pre></div>
 <pre><code>## Call: 
 ## fitBin(x = Alcohol_data$Days, obs.freq = Alcohol_data$week2)
 ## 
@@ -248,16 +247,18 @@
 ##  
 ##       X-squared : 2265.111   ,df : 6   ,p-value : 0</code></pre>
 <p>According to p-value=<span class="math inline">\(0\)</span>, <span class="math inline">\(H_0\)</span> is rejected at <span class="math inline">\(5\%\)</span> significance level.</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" title="1"><span class="co">#Estimating the parameters a and b using bbmle package mle2 function</span></a>
-<a class="sourceLine" id="cb9-2" title="2">BetaBin=bbmle<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/bbmle/topics/mle2">mle2</a></span>(EstMLEBetaBin,<span class="dt">data=</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(<span class="dt">x=</span>Alcohol_data<span class="op">$</span>Days,</a>
-<a class="sourceLine" id="cb9-3" title="3">                        <span class="dt">freq=</span>Alcohol_data<span class="op">$</span>week2), <span class="dt">start=</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(<span class="dt">a=</span><span class="fl">100.1</span>,<span class="dt">b=</span><span class="fl">100.1</span>))</a>
-<a class="sourceLine" id="cb9-4" title="4">a_est=bbmle<span class="op">::</span><span class="kw">coef</span>(BetaBin)[<span class="dv">1</span>]                    </a>
-<a class="sourceLine" id="cb9-5" title="5">b_est=bbmle<span class="op">::</span><span class="kw">coef</span>(BetaBin)[<span class="dv">2</span>]</a></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" title="1"><span class="co">#Estimating the parameters a and b using bbmle package mle2 function</span></a>
+<a class="sourceLine" id="cb10-2" title="2">BetaBin=bbmle<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/bbmle/topics/mle2">mle2</a></span>(EstMLEBetaBin,<span class="dt">data=</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(<span class="dt">x=</span>Alcohol_data<span class="op">$</span>Days,</a>
+<a class="sourceLine" id="cb10-3" title="3">                        <span class="dt">freq=</span>Alcohol_data<span class="op">$</span>week2), <span class="dt">start=</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(<span class="dt">a=</span><span class="fl">100.1</span>,<span class="dt">b=</span><span class="fl">100.1</span>))</a>
+<a class="sourceLine" id="cb10-4" title="4">a_est=bbmle<span class="op">::</span><span class="kw">coef</span>(BetaBin)[<span class="dv">1</span>]                    </a>
+<a class="sourceLine" id="cb10-5" title="5">b_est=bbmle<span class="op">::</span><span class="kw">coef</span>(BetaBin)[<span class="dv">2</span>]</a></code></pre></div>
 <p>Now, Checking if above data follows Beta-Binomial Distribution</p>
 <p><span class="math inline">\(H_0\)</span> : The Data follows the Beta-Binomial Distribution.</p>
 <p><span class="math inline">\(H_1\)</span> : The Data does not follow the Beta-Binomial Distribution.</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" title="1"><span class="co">#Checking if the above data follows Beta-Binomial Distribution</span></a>
-<a class="sourceLine" id="cb10-2" title="2"><span class="kw"><a href="reference/fitBetaBin.html">fitBetaBin</a></span>(Alcohol_data<span class="op">$</span>Days,Alcohol_data<span class="op">$</span>week2,a_est,b_est)</a></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" title="1"><span class="co">#Checking if the above data follows Beta-Binomial Distribution</span></a>
+<a class="sourceLine" id="cb11-2" title="2">fitBB&lt;-<span class="kw"><a href="reference/fitBetaBin.html">fitBetaBin</a></span>(Alcohol_data<span class="op">$</span>Days,Alcohol_data<span class="op">$</span>week2,a_est,b_est)</a>
+<a class="sourceLine" id="cb11-3" title="3"></a>
+<a class="sourceLine" id="cb11-4" title="4"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/print">print</a></span>(fitBB)</a></code></pre></div>
 <pre><code>## Call: 
 ## fitBetaBin(x = Alcohol_data$Days, obs.freq = Alcohol_data$week2, 
 ##     a = a_est, b = b_est)
@@ -275,12 +276,12 @@
 ##           over dispersion : 0.390885</code></pre>
 <p>p-value=<span class="math inline">\(0.1524\)</span> indicates <span class="math inline">\(H_0\)</span> is not rejected at <span class="math inline">\(5\%\)</span> significance level. Clearly Beta-Binomial Distribution is a better suit for the Alcohol BOD.</p>
 <p>Further</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" title="1"><span class="co">#Actual Variance</span></a>
-<a class="sourceLine" id="cb12-2" title="2">Act_Var&lt;-<span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/cor">var</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/rep">rep</a></span>(Alcohol_data<span class="op">$</span>Days,Alcohol_data<span class="op">$</span>week2))</a>
-<a class="sourceLine" id="cb12-3" title="3"><span class="co">#Estimated Variance of Binomial Distribution</span></a>
-<a class="sourceLine" id="cb12-4" title="4">Est_Var_Bin&lt;-<span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/cor">var</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/rep">rep</a></span>(Alcohol_data<span class="op">$</span>Days,<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="fl">1.66</span>,<span class="fl">13.79</span>,<span class="fl">49.19</span>,<span class="fl">97.48</span>,<span class="fl">115.89</span>,<span class="fl">82.67</span>,<span class="fl">32.76</span>,<span class="fl">5.56</span>)))</a>
-<a class="sourceLine" id="cb12-5" title="5"><span class="co">#Estimated Variance of Beta-Binomial Distribution</span></a>
-<a class="sourceLine" id="cb12-6" title="6">Est_Var_BetaBin&lt;-<span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/cor">var</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/rep">rep</a></span>(Alcohol_data<span class="op">$</span>Days,<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="fl">47.91</span>,<span class="fl">42.92</span>,<span class="fl">41.95</span>,<span class="fl">42.5</span>,<span class="fl">44.3</span>,<span class="fl">47.81</span>,<span class="fl">54.89</span>,<span class="fl">76.73</span>)))</a></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" title="1"><span class="co">#Actual Variance</span></a>
+<a class="sourceLine" id="cb13-2" title="2">Act_Var&lt;-<span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/cor">var</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/rep">rep</a></span>(Alcohol_data<span class="op">$</span>Days,Alcohol_data<span class="op">$</span>week2))</a>
+<a class="sourceLine" id="cb13-3" title="3"><span class="co">#Estimated Variance of Binomial Distribution</span></a>
+<a class="sourceLine" id="cb13-4" title="4">Est_Var_Bin&lt;-<span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/cor">var</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/rep">rep</a></span>(Alcohol_data<span class="op">$</span>Days,<span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/fitted.values">fitted</a></span>(fitB)))</a>
+<a class="sourceLine" id="cb13-5" title="5"><span class="co">#Estimated Variance of Beta-Binomial Distribution</span></a>
+<a class="sourceLine" id="cb13-6" title="6">Est_Var_BetaBin&lt;-<span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/cor">var</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/rep">rep</a></span>(Alcohol_data<span class="op">$</span>Days,<span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/fitted.values">fitted</a></span>(fitBB)))</a></code></pre></div>
 <table class="table table">
 <thead><tr class="header">
 <th align="left">Type of Variance</th>
@@ -301,8 +302,13 @@
 </tr>
 </tbody>
 </table>
-<p><img src="index_files/figure-html/Printing%20variance%20and%20plotting%20frequencies-1.png" width="700"></p>
-<p>Variance(<span class="math inline">\(5.8043\)</span>) from Beta-Binomial Distribution’s estimated frequencies is closer to the Actual Variance(<span class="math inline">\(5.7873\)</span>) of Alcohol BOD week 2 than variance(<span class="math inline">\(1.6945\)</span>) of expected frequencies by Binomial Distribution.</p>
+<pre><code>## Registered S3 methods overwritten by 'ggplot2':
+##   method         from 
+##   [.quosures     rlang
+##   c.quosures     rlang
+##   print.quosures rlang</code></pre>
+<div id="htmlwidget-8fc4af8d7687b3481e50" style="width:700px;height:432.632880098888px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-8fc4af8d7687b3481e50">{"x":{"data":[{"x":[0,1,2,3,4,5,6,7],"y":[42,47,54,40,49,40,43,84],"text":["Days: 0<br />Week2: 42","Days: 1<br />Week2: 47","Days: 2<br />Week2: 54","Days: 3<br />Week2: 40","Days: 4<br />Week2: 49","Days: 5<br />Week2: 40","Days: 6<br />Week2: 43","Days: 7<br />Week2: 84"],"type":"scatter","mode":"markers+lines","marker":{"autocolorscale":false,"color":"rgba(255,0,0,1)","opacity":1,"size":5.66929133858268,"symbol":"circle","line":{"width":1.88976377952756,"color":"rgba(255,0,0,1)"}},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","line":{"width":1.88976377952756,"color":"rgba(255,0,0,1)","dash":"solid"},"frame":null},{"x":[0,1,2,3,4,5,6,7],"y":[1.66,13.79,49.19,97.48,115.89,82.67,32.76,5.56],"text":["Days: 0<br />BinomialFreq:   1.66","Days: 1<br />BinomialFreq:  13.79","Days: 2<br />BinomialFreq:  49.19","Days: 3<br />BinomialFreq:  97.48","Days: 4<br />BinomialFreq: 115.89","Days: 5<br />BinomialFreq:  82.67","Days: 6<br />BinomialFreq:  32.76","Days: 7<br />BinomialFreq:   5.56"],"type":"scatter","mode":"markers+lines","marker":{"autocolorscale":false,"color":"rgba(0,255,0,1)","opacity":1,"size":5.66929133858268,"symbol":"circle","line":{"width":1.88976377952756,"color":"rgba(0,255,0,1)"}},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","line":{"width":1.88976377952756,"color":"rgba(0,255,0,1)","dash":"solid"},"frame":null},{"x":[0,1,2,3,4,5,6,7],"y":[47.91,42.92,41.95,42.5,44.3,47.81,54.89,76.73],"text":["Days: 0<br />BetaBinomialFreq: 47.91","Days: 1<br />BetaBinomialFreq: 42.92","Days: 2<br />BetaBinomialFreq: 41.95","Days: 3<br />BetaBinomialFreq: 42.50","Days: 4<br />BetaBinomialFreq: 44.30","Days: 5<br />BetaBinomialFreq: 47.81","Days: 6<br />BetaBinomialFreq: 54.89","Days: 7<br />BetaBinomialFreq: 76.73"],"type":"scatter","mode":"markers+lines","marker":{"autocolorscale":false,"color":"rgba(0,0,255,1)","opacity":1,"size":5.66929133858268,"symbol":"circle","line":{"width":1.88976377952756,"color":"rgba(0,0,255,1)"}},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","line":{"width":1.88976377952756,"color":"rgba(0,0,255,1)","dash":"solid"},"frame":null},{"x":[1.5],"y":[55],"text":"Actual","hovertext":"x: 1.5<br />y: 55","textfont":{"size":14.6645669291339,"color":"rgba(255,0,0,1)"},"type":"scatter","mode":"text","hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[4.5],"y":[115],"text":"Binomial","hovertext":"x: 4.5<br />y: 115","textfont":{"size":14.6645669291339,"color":"rgba(0,255,0,1)"},"type":"scatter","mode":"text","hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[4.75],"y":[55],"text":"Beta-Binomial","hovertext":"x: 4.75<br />y: 55","textfont":{"size":14.6645669291339,"color":"rgba(0,0,255,1)"},"type":"scatter","mode":"text","hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":45.3588829941669,"r":7.30593607305936,"b":41.7789743183678,"l":43.1050228310502},"plot_bgcolor":"rgba(235,235,235,1)","paper_bgcolor":"rgba(255,255,255,1)","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187},"title":{"text":"Using ggplot to compare frequencies of Alcohol BOD","font":{"color":"rgba(0,0,0,1)","family":"","size":17.5342465753425},"x":0,"xref":"paper"},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[-0.35,7.35],"tickmode":"array","ticktext":["0","1","2","3","4","5","6","7"],"tickvals":[0,1,2,3,4,5,6,7],"categoryorder":"array","categoryarray":["0","1","2","3","4","5","6","7"],"nticks":null,"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.65296803652968,"tickwidth":0.66417600664176,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.689497716895},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(255,255,255,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"y","title":{"text":"Binomial Random Variables from 0 to 7","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[-4.0515,121.6015],"tickmode":"array","ticktext":["0","10","20","30","40","50","60","70","80","90","100","110","120"],"tickvals":[0,10,20,30,40,50,60,70,80,90,100,110,120],"categoryorder":"array","categoryarray":["0","10","20","30","40","50","60","70","80","90","100","110","120"],"nticks":null,"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.65296803652968,"tickwidth":0.66417600664176,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.689497716895},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(255,255,255,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"x","title":{"text":"Frequency Values Estimated and Actual","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187}},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":null,"line":{"color":null,"width":0,"linetype":[]},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":false,"legend":{"bgcolor":"rgba(255,255,255,1)","bordercolor":"transparent","borderwidth":1.88976377952756,"font":{"color":"rgba(0,0,0,1)","family":"","size":11.689497716895}},"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","showSendToCloud":false},"source":"A","attrs":{"5d90db169aa":{"x":{},"y":{},"type":"scatter"},"5d90742b74d6":{"x":{},"y":{}},"5d902235c8e":{"x":{},"y":{}},"5d9020e01efc":{"x":{},"y":{}},"5d9019f35e3e":{"x":{},"y":{}},"5d903fe51494":{"x":{},"y":{}},"5d906603f05":{"x":{},"y":{}},"5d9038084a4b":{"x":{},"y":{}},"5d901b656c04":{"x":{},"y":{}}},"cur_data":"5d90db169aa","visdat":{"5d90db169aa":["function (y) ","x"],"5d90742b74d6":["function (y) ","x"],"5d902235c8e":["function (y) ","x"],"5d9020e01efc":["function (y) ","x"],"5d9019f35e3e":["function (y) ","x"],"5d903fe51494":["function (y) ","x"],"5d906603f05":["function (y) ","x"],"5d9038084a4b":["function (y) ","x"],"5d901b656c04":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script><p>Variance(<span class="math inline">\(5.8043\)</span>) from Beta-Binomial Distribution’s estimated frequencies is closer to the Actual Variance(<span class="math inline">\(5.7873\)</span>) of Alcohol BOD week 2 than variance(<span class="math inline">\(1.6945\)</span>) of expected frequencies by Binomial Distribution.</p>
 <p>According to the plot, it is clearly seen that Beta-Binomial estimated frequencies behave very close to actual frequency values than the estimate frequencies from Binomial distribution. Or the Red line is very similar and close to the Blue line than the Green line.</p>
 </div>
 </div>
