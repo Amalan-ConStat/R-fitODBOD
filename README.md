@@ -67,11 +67,7 @@ Distributions
 
 ``` r
 library(fitODBOD)
-```
 
-    ## Hello, This is Amalan. For more details refer --> https://amalan-constat.github.io/R-fitODBOD/index.html
-
-``` r
 #Looking at the BOD
 Alcohol_data
 ```
@@ -88,20 +84,15 @@ Alcohol_data
 
 Hypothesis to check if above data follows Binomial Distribution
 
-\(H_0\) : The Data follows the Binomial Distribution.
+H<sub>0</sub> : The Data follows the Binomial Distribution.
 
-\(H_1\) : The Data does not follow the Binomial
+H<sub>1</sub> : The Data does not follow the Binomial
 Distribution.
 
 ``` r
 #Checking if the above data  of Days and week2 follows Binomial Distribution
 fitB<-fitBin(Alcohol_data$Days,Alcohol_data$week2)
-```
 
-    ## Warning in fitBin(Alcohol_data$Days, Alcohol_data$week2): Chi-squared
-    ## approximation may be doubtful because expected frequency is less than 5
-
-``` r
 print(fitB)
 ```
 
@@ -118,7 +109,7 @@ print(fitB)
     ##  
     ##       X-squared : 2265.111   ,df : 6   ,p-value : 0
 
-According to p-value=\(0\), \(H_0\) is rejected at \(5\%\) significance
+According to p-value= 0, H<sub>0</sub> is rejected at 5% significance
 level.
 
 ``` r
@@ -131,9 +122,9 @@ b_est=bbmle::coef(BetaBin)[2]
 
 Now, Checking if above data follows Beta-Binomial Distribution
 
-\(H_0\) : The Data follows the Beta-Binomial Distribution.
+H<sub>0</sub> : The Data follows the Beta-Binomial Distribution.
 
-\(H_1\) : The Data does not follow the Beta-Binomial Distribution.
+H<sub>1</sub> : The Data does not follow the Beta-Binomial Distribution.
 
 ``` r
 #Checking if the above data follows Beta-Binomial Distribution
@@ -158,7 +149,7 @@ print(fitBB)
     ##  
     ##           over dispersion : 0.390885
 
-p-value=\(0.1524\) indicates \(H_0\) is not rejected at \(5\%\)
+p-value=0.1524 indicates H<sub>0</sub> is not rejected at 5%
 significance level. Clearly Beta-Binomial Distribution is a better suit
 for the Alcohol BOD.
 
@@ -179,18 +170,11 @@ Est_Var_BetaBin<-var(rep(Alcohol_data$Days,fitted(fitBB)))
 | From Expected frequencies of estimated Binomial Distribution      | 1.694534 |
 | From Expected frequencies of estimated Beta-Binomial Distribution | 5.804344 |
 
-    ## Registered S3 methods overwritten by 'ggplot2':
-    ##   method         from 
-    ##   [.quosures     rlang
-    ##   c.quosures     rlang
-    ##   print.quosures rlang
-
 ![](README_files/figure-gfm/Printing%20variance%20and%20plotting%20frequencies-1.png)<!-- -->
 
-Variance(\(5.8043\)) from Beta-Binomial Distribution’s estimated
-frequencies is closer to the Actual Variance(\(5.7873\)) of Alcohol BOD
-week 2 than variance(\(1.6945\)) of expected frequencies by Binomial
-Distribution.
+Variance(5.8043) from Beta-Binomial Distribution’s estimated frequencies
+is closer to the Actual Variance(5.7873) of Alcohol BOD week 2 than
+variance(1.6945) of expected frequencies by Binomial Distribution.
 
 According to the plot, it is clearly seen that Beta-Binomial estimated
 frequencies behave very close to actual frequency values than the

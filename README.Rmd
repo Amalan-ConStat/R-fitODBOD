@@ -4,7 +4,7 @@ output: github_document
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = TRUE,warning = FALSE,message = FALSE)
 ```
 
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version-last-release/fitODBOD)](https://cran.r-project.org/package=fitODBOD)
@@ -68,9 +68,9 @@ Alcohol_data
 
 Hypothesis to check if above data follows Binomial Distribution
 
-$H_0$ : The Data follows the Binomial Distribution. 
+H~0~ : The Data follows the Binomial Distribution. 
 
-$H_1$ : The Data does not follow the Binomial Distribution.
+H~1~ : The Data does not follow the Binomial Distribution.
 
 ```{r Fitting Binomial Distribution}
 #Checking if the above data  of Days and week2 follows Binomial Distribution
@@ -79,7 +79,7 @@ fitB<-fitBin(Alcohol_data$Days,Alcohol_data$week2)
 print(fitB)
 ```
 
-According to p-value=$0$, $H_0$ is rejected at $5\%$ significance level.
+According to p-value= 0, H~0~ is rejected at 5\% significance level.
 
 ```{r Estimating shape parameters a,b using given BOD,warning=FALSE}
 #Estimating the parameters a and b using bbmle package mle2 function
@@ -91,9 +91,9 @@ b_est=bbmle::coef(BetaBin)[2]
 
 Now, Checking if above data follows Beta-Binomial Distribution
 
-$H_0$ : The Data follows the Beta-Binomial Distribution. 
+H~0~ : The Data follows the Beta-Binomial Distribution. 
 
-$H_1$ : The Data does not follow the Beta-Binomial Distribution.
+H~1~ : The Data does not follow the Beta-Binomial Distribution.
 
 ```{r Fitting Beta-Binomial Distribution}
 #Checking if the above data follows Beta-Binomial Distribution
@@ -102,7 +102,7 @@ fitBB<-fitBetaBin(Alcohol_data$Days,Alcohol_data$week2,a_est,b_est)
 print(fitBB)
 ```
 
-p-value=$0.1524$ indicates $H_0$ is not rejected at $5\%$ significance level.
+p-value=0.1524 indicates H~0~ is not rejected at 5\% significance level.
 Clearly Beta-Binomial Distribution is a better suit for the Alcohol BOD.
 
 Further 
@@ -149,8 +149,8 @@ plotBOD<-ggplot(results_data)+theme_get()+
 plotly::plotly_build(plotBOD)
 ```
 
-Variance($5.8043$) from Beta-Binomial Distribution's estimated frequencies is closer to 
-the Actual Variance($5.7873$) of Alcohol BOD week 2 than variance($1.6945$) of expected frequencies by 
+Variance(5.8043) from Beta-Binomial Distribution's estimated frequencies is closer to 
+the Actual Variance(5.7873) of Alcohol BOD week 2 than variance(1.6945) of expected frequencies by 
 Binomial Distribution.
 
 According to the plot, it is clearly seen that Beta-Binomial estimated frequencies behave very close to actual

@@ -2,7 +2,8 @@
 #' @export
 AIC.fit<-function(object,...)
 {
-  return(object$AIC)
+  AICvalue<-object$AIC
+  return(AICvalue)
 }
 
 #' @method residuals fit

@@ -19,7 +19,5 @@ Imports: hypergeo,
 Suggests: testthat, 
       bbmle,
       devtools,
-    covr
-VignetteBuilder: knitr
-BuildVignettes: yes
+      covr
 Encoding: UTF-8

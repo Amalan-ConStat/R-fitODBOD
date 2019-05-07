@@ -113,3 +113,4 @@ Est_para<-suppressWarnings(mle2(EstMLEGrassiaIIBin,
                                 start=list(a=15,b=0.51)))
 cat("Estimated parameter a for Chromosome data=",coef(Est_para)[1],"\n")
 cat("Estimated parameter b for Chromosome data=",coef(Est_para)[2], "\n")
+
