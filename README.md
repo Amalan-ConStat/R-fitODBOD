@@ -22,6 +22,8 @@ issues](https://img.shields.io/github/issues/Amalan-ConStat/R-fitODBOD.svg?style
 [![rpackages.io
 rank](http://www.rpackages.io/badge/fitODBOD.svg)](http://www.rpackages.io/package/fitODBOD)
 
+# fitODBOD <img src="man/figures/logo.png" align="right" alt="" width="150" />
+
 ## How to engage with “fitODBOD” the first time ?
 
 ``` r
