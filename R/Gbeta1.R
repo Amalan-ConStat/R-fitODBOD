@@ -748,12 +748,12 @@ NegLLMcGBB<-function(x,freq,a,b,c)
 #' Obs.fre.1=c(47,54,43,40,40,41,39,95)  #assigning the corresponding frequencies
 #'
 #' #estimating the parameters using maximum log likelihood value and assigning it
-#'
+#' \dontrun{
 #' parameters=suppressWarnings(bbmle::mle2(EstMLEMcGBB,start = list(a=0.1,b=0.1,c=0.2),
 #' data = list(x=No.D.D,freq=Obs.fre.1)))
 #'
 #' bbmle::coef(parameters)         #extracting the parameters
-#'
+#'         }
 #' @export
 EstMLEMcGBB<-function(x,freq,a,b,c)
 {
@@ -856,7 +856,7 @@ EstMLEMcGBB<-function(x,freq,a,b,c)
 #' Obs.fre.1=c(47,54,43,40,40,41,39,95)          #assigning the corresponding frequencies
 #'
 #' #estimating the parameters using maximum log likelihood value and assigning it
-#'
+#' \dontrun{
 #' parameters=suppressWarnings(bbmle::mle2(EstMLEMcGBB,start = list(a=0.1,b=0.1,c=0.2),
 #' data = list(x=No.D.D,freq=Obs.fre.1)))
 #'
@@ -873,6 +873,7 @@ EstMLEMcGBB<-function(x,freq,a,b,c)
 #'
 #' #extracting the residuals
 #' residuals(results)
+#'         }
 #'
 #' @export
  fitMcGBB<-function(x,obs.freq,a,b,c)
