@@ -64,6 +64,7 @@ Obs.fre.1=c(47,54,43,40,40,41,39,95)            #assigning the corresponding the
 
 #assigning the estimated probability value
 
+
 paddbin=suppressWarnings(EstMLEAddBin(No.D.D,Obs.fre.1)$p)
 
 #assigning the estimated alpha value
@@ -78,6 +79,7 @@ AIC(results)
 
 #extract fitted values
 fitted(results)
+
 
 }
 \references{
