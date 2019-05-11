@@ -2,7 +2,7 @@ R-fitODBOD
 ================
 
 [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version-last-release/fitODBOD)](https://cran.r-project.org/package=fitODBOD)
-[![packageversion](https://img.shields.io/badge/Package%20version-1.2.0-orange.svg?style=flat-square)](commits/master)
+[![packageversion](https://img.shields.io/badge/Package%20version-1.3.0-orange.svg?style=flat-square)](commits/master)
 [![Rdoc](http://www.rdocumentation.org/badges/version/fitODBOD)](http://www.rdocumentation.org/packages/fitODBOD)
 
 ![downloads](http://cranlogs.r-pkg.org/badges/grand-total/fitODBOD)
@@ -21,9 +21,6 @@ issues](https://img.shields.io/github/issues/Amalan-ConStat/R-fitODBOD.svg?style
 
 [![rpackages.io
 rank](http://www.rpackages.io/badge/fitODBOD.svg)](http://www.rpackages.io/package/fitODBOD)
-
-[![AppVeyor build
-status](https://ci.appveyor.com/api/projects/status/github/Amalan-ConStat/R-fitODBOD?branch=master&svg=true)](https://ci.appveyor.com/project/Amalan-ConStat/R-fitODBOD)
 
 # fitODBOD <img src="man/figures/logo.png" align="right" alt="" width="150" />
 
