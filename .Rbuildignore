@@ -1,0 +1,16 @@
+^.*\.Rproj$
+^\.Rproj\.user$
+^LICENSE$
+^README\.md$
+^NEWS\.md$
+^\.gitignore$
+^README\.Rmd$
+^README_files$
+^CONDUCT\.md$
+^\.travis\.yml$
+^codecov\.yml$
+^_pkgdown\.yml$
+^docs$
+^pkgdown$
+^vignettes$
+^appveyor\.yml$
