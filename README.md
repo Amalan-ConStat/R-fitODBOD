@@ -28,6 +28,8 @@ status](https://travis-ci.org/Amalan-ConStat/R-fitODBOD.svg?branch=master)](http
 status](https://ci.appveyor.com/api/projects/status/github/Amalan-ConStat/R-fitODBOD?branch=master&svg=true)](https://ci.appveyor.com/project/Amalan-ConStat/R-fitODBOD)
 [![Codecov test
 coverage](https://codecov.io/gh/Amalan-ConStat/R-fitODBOD/branch/master/graph/badge.svg)](https://codecov.io/gh/Amalan-ConStat/R-fitODBOD?branch=master)
+[![Coveralls test
+coverage](https://coveralls.io/repos/github/Amalan-ConStat/R-fitODBOD/badge.svg)](https://coveralls.io/r/Amalan-ConStat/R-fitODBOD?branch=master)
 
 # fitODBOD <img src="man/figures/logo.png" align="right" alt="" width="150" />
 
