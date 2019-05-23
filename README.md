@@ -24,8 +24,6 @@ rank](http://www.rpackages.io/badge/fitODBOD.svg)](http://www.rpackages.io/packa
 
 [![Travis build
 status](https://travis-ci.org/Amalan-ConStat/R-fitODBOD.svg?branch=master)](https://travis-ci.org/Amalan-ConStat/R-fitODBOD)
-[![AppVeyor build
-status](https://ci.appveyor.com/api/projects/status/github/Amalan-ConStat/R-fitODBOD?branch=master&svg=true)](https://ci.appveyor.com/project/Amalan-ConStat/R-fitODBOD)
 [![Codecov test
 coverage](https://codecov.io/gh/Amalan-ConStat/R-fitODBOD/branch/master/graph/badge.svg)](https://codecov.io/gh/Amalan-ConStat/R-fitODBOD?branch=master)
 
