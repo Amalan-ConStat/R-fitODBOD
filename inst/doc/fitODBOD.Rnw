@@ -1,0 +1,4 @@
+%\VignetteIndexEntry{User fitODBOD}
+\documentclass{article}
+\begin{document}
+\end{document}
