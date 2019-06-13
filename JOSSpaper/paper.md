@@ -1,6 +1,6 @@
 ---
 title: '``fitODBOD``: An R Package to Model Binomial Outcome Data using Binomial Mixture
-   and Alternate Binomial Distributions.'
+  and Alternate Binomial Distributions.'
 authors:
 - affiliation: 1
   name: Amalan Mahendran
@@ -8,8 +8,12 @@ authors:
 - affiliation: 1
   name: Prof. Pushpakanthie Wijekoon
   orcid: 0000-0003-4242-1017
-date: '2019-05-25'
-bibliography: paper.bib
+date: '2019-06-13'
+output:
+  html_document:
+    df_print: paged
+  pdf_document: default
+bibliography: Ref.bib
 tags:
 - R
 - fitODBOD
@@ -59,8 +63,7 @@ Such data are frequently mentioned in fields of Toxicology, Biology,
 Clinical Medicine, Epidemiology and much more. One may attempt to fit
 the BOD using the traditional Binomial distribution, as it is
 characterized using the number of identical trials *n* and the
-probability of success parameter *p*. The parameter *p* (*p* 
-![](http://latex.codecogs.com/gif.latex?%5Cfn_jvn%20%5Clarge%20%5Cin) [0, 1]) 
+probability of success parameter *p*. The parameter *p* (*p* $\in$ [0, 1]) 
 is usually assumed to be a constant from trial to trial and
 the trials are independent. In many empirical situations, it has been
 frequently observed that the actual observed variance of the BOD is
@@ -78,18 +81,17 @@ constructed the Gaussian Hypergeometric Generalized Beta-Binomial
 distribution, @Karlis2008 wrote the article on the
 Triangular Binomial distribution. Also, @grassia1977 mentioned the 
 Gamma Binomial and Grassia II Binomial distributions. The Beta-Binomial 
-distribution is clearly explained in @trenkler1996. Initially the concept 
+distribution is clearly explained in @johnson1995. Initially the concept 
 of mixing the Binomial distribution with an unit bounded continuous distribution 
 was done by @Horsnell, which led to the Uniform Binomial distribution. 
 Recently, @Manoj2013 had developed the McDonald Generalized Beta-Binomial 
 distribution. Based on this research only the development of **``fitODBOD``**
 (version 1.1.0) package was released to CRAN in February, 2018. 
-Recently the package **``fitODBOD``** became available in GitHub 
-(<https://github.com/Amalan-ConStat/R-fitODBOD>) too after severe 
-changes which made the package more flexible and convenient for researchers 
-who intend to use it.
+Recently this package became available in [GitHub](https://github.com/Amalan-ConStat/R-fitODBOD) 
+and has its own [website](https://amalan-constat.github.io/R-fitODBOD/index.html), 
+which has made the package more convenient for researchers who intend to use it.
 
-Further new types of Binomial distributions were developed replacing the
+Further, new types of Binomial distributions were developed replacing the
 traditional Binomial distribution, which are called as Alternate
 Binomial distributions. @Multiplicative has developed the Multiplicative
 Binomial distribution, while recently @Lovinson has done more
@@ -97,9 +99,9 @@ research to form the Lovinson Multiplicative Binomial distribution. COM
 Poisson Binomial distribution was introduced first by @COMPoisson. 
 The comparison of Beta-Correlated Binomial distribution with
 Correlated Binomial distribution was done by @Correlated.
-Version 1.3.0 holds all the distributions mentioned above and
-in the future more distributions which were developed to fit the BOD will
-be added to the **``fitODBOD``** package as version updates.
+Version 1.4.0 of **``fitODBOD``**(@fitODBOD) holds all the distributions mentioned 
+above and in the future more distributions developed to fit the BOD will
+be added to the package as major version updates.
 
 # Modelling
 
@@ -109,7 +111,7 @@ steps have to be used when using this package.
 1.  Extract the data in a meaningful way (**BODextract** function).
 2.  Check whether the Binomial distribution can be fitted and if not
     test the Over-dispersion (**fitBin** function) by using Pearson
-    Chi-square Goodness of Fit test.
+    Chi-square Goodness of fit test.
 3.  If Over-dispersion exists, estimate the parameters for each
     distribution for the given data separately (**EstTriBin**,
     **EstMLEBetaBin**, **EstMGFBetaBin**, **EstMLEKumBin**,
@@ -118,84 +120,78 @@ steps have to be used when using this package.
     **EstMLECOMPBin**, **EstMLECorrBin**, **EstMLELMBin**,
     **EstMLEMultiBin** functions).
 4.  Based on the above estimated parameters corresponding models can be
-    fitted (**fitTriBin**, **fitBetaBin**, **fitKumBin**, **fitGHGBB**,
-    **fitGammaBin**, **fitGrassiaIIBin**, **fitMcGBB**, **fitAddBin**,
+    fitted (**fitTriBin**, **fitBetaBin**, **fitKumBin**, **fitGammaBin**, 
+    **fitGrassiaIIBin**,**fitGHGBB**, **fitMcGBB**, **fitAddBin**,
     **fitBetaCorrBin**, **fitCOMPBin**, **fitCorrBin**, **fitLMBin**,
     **fitMultiBin** functions).
 5.  Finally, compare the results and choose the best-fitted distribution
     for the data by using a plot or table.
 
-Below is the table and series of code to complete the steps from 1 to 5 for the
+Below is the series of code to complete the steps from 1 to 4 for the
 Beta-Binomial distribution. Similarly, it is possible to fit other FBMD
 and ABD for the purpose of finding the most suitable distribution to
-fit the given BOD. Using a table to summarize the result is quite
-useful, where it will contain the expected frequencies, chi-squared
-values, p-values, estimated parameters, Negative Log Likelihood values
-and Over-dispersion of the Binomial Mixture distributions.
+fit the given BOD. 
 
-```r
+```{r}
 library("bbmle") # Loading packages 
 library("fitODBOD")
 
 # step 1: print the alcohol consumption data set 
 print(Alcohol_data)
+```
+According to the below hypothesis Binomial distribution will be tested for the 
+given BOD.
 
-# step 2: Checking if the Binomial Distribution can be fitted for Week 1
-fdBin<-fitBin(Alcohol_data$Days, Alcohol_data$week1)
+<p align= "center"> Null Hypothesis : Data follows the Binomial Distribution. </p>
+<p align= "center"> Alternate Hypothesis : Data does not follow the Binomial Distribution. </p>
 
-# step 3: estimating the shape parameters a,b for Week 1
+```r
+# step 2: Checking if the Binomial Distribution can be fitted for Week 2
+fdBin<-fitBin(Alcohol_data$Days, Alcohol_data$week2)
+print(fdBin)
+
+# step 3: estimating the shape parameters a,b for Week 2
 estimate = bbmle::mle2(EstMLEBetaBin, start = list(a = 0.1, b = 0.1),  
-                       data = list(x = Alcohol_data$Days, freq = Alcohol_data$week1))
+                       data = list(x = Alcohol_data$Days, freq = Alcohol_data$week2))
 
-# extracting the estimated shape parameters a and b for Week 1
+# extracting the estimated shape parameters a and b for Week 2
 a1 = bbmle::coef(estimate)[1] ; b1 = bbmle::coef(estimate)[2]
 print(c(a1,b1)) #printing the estimated shape parameters a and b 
-
-# step 4: fitting the Beta Binomial Distribution for estimated shape parameters to Week 1
-fdBB<-fitBetaBin(Alcohol_data$Days, Alcohol_data$week1, a1, b1)
-
-# step 5: table of observed frequencies, expected frequencies from Binomial and 
-# Beta-Binomial distributions
-tibble::tibble(
-               'BinomialRandomVariable'= c(Alcohol_data$Days,"Sum"),
-               'ObservedFreq'= c(Alcohol_data$week1,sum(Alcohol_data$week1)),
-               'FittedBinomial'= c(fitted(fdBin),sum(fitted(fdBin))),
-               'ObservedFreq-FittedBinomial' = c((Alcohol_data$week1-fitted(fdBin)),
-                                                 sum((Alcohol_data$week1-fitted(fdBin)))),
-               'FittedBetaBinomial' = c(fitted(fdBB),sum(fitted(fdBB))),
-               'ObservedFreq-FittedBetaBinomial' = c((Alcohol_data$week1-fitted(fdBB)),
-                                                    sum((Alcohol_data$week1-fitted(fdBB)))),
-              )  %>% knitr::kable(format = "markdown")
-
 ```
 
-|BinomialRandomVariable | ObservedFreq| FittedBinomial| ObservedFreq-FittedBinomial| FittedBetaBinomial| ObservedFreq-FittedBetaBinomial|
-|:----------------------|------------:|--------------:|---------------------------:|------------------:|-------------------------------:|
-|0                      |           47|           1.59|                       45.41|              54.62|                           -7.62|
-|1                      |           54|          13.41|                       40.59|              42.00|                           12.00|
-|2                      |           43|          48.30|                       -5.30|              38.90|                            4.10|
-|3                      |           40|          96.68|                      -56.68|              38.54|                            1.46|
-|4                      |           40|         116.11|                      -76.11|              40.07|                           -0.07|
-|5                      |           41|          83.66|                      -42.66|              44.00|                           -3.00|
-|6                      |           39|          33.49|                        5.51|              53.09|                          -14.09|
-|7                      |           95|           5.75|                       89.25|              87.78|                            7.22|
-|Sum                    |          399|         398.99|                        0.01|             399.00|                            0.00|
+Below hypothesis will check the suitability to fit the Beta-Binomial distribution.
+
+<p align= "center"> Null Hypothesis : Data follows the Beta-Binomial Distribution. </p>
+<p align= "center"> Alternate Hypothesis : Data does not follow the Beta-Binomial Distribution. </p>
+
+```r
+# step 4: fitting the Beta Binomial Distribution for estimated shape parameters to Week 2
+fdBB<-fitBetaBin(Alcohol_data$Days, Alcohol_data$week2, a1, b1)
+print(fdBB)
+
+# step 5: Using a table to summarize the result is quite useful, where it will contain 
+# the expected frequencies, chi-squared values, p-values, estimated parameters, 
+# Negative Log Likelihood values and Over-dispersion of the Binomial Mixture distributions.
+```
+
+The best distribution to fit the given BOD from ABD and/or FBMD is thoroughly discussed in the
+[website](https://amalan-constat.github.io/R-fitODBOD/articles/BMDs_and_ABDs_fitxxxBin.html) 
+with the help of plots. 
 
 # Conclusion
 
 The **``fitODBOD``** package is constructed for the main purpose of fitting
 the given BOD and being able to choose the best-fitted Binomial Mixture
-and Alternate Binomial Distributions. The package has functions to
+and/or Alternate Binomial Distributions. The package has functions to
 calculate PMF, CPMF and Negative Log Likelihood of Triangular Binomial,
 Beta-Binomial, Kumaraswamy Binomial, Gamma Binomial, Grassia II
 Binomial, GHGBB, McGBB, Additive Binomial, Beta-Correlated Binomial, COM
 Poisson Binomial, Correlated Binomial, Lovinson Multiplicative and
-Multiplicative Binomial Binomial distributions. Further, there are
+Multiplicative Binomial distributions. Further, there are
 functions for probability density, cumulative density and moment about
-zero values for Triangular, Beta, Kumaraswamy, Gamma, Grassia II,
-Gaussian Hypergeometric Generalized Beta and Generalized Beta of First
-kind distributions. Using the above steps mentioned of the article, the
-most fitted Binomial Mixture distribution or/and Alternate Binomial
-distribution is decided.
+zero values for Triangular, Beta, Kumaraswamy, Gamma, Gaussian Hypergeometric 
+Generalized Beta and Generalized Beta of First kind distributions. Using the 
+above steps mentioned of the article, the most fitted Binomial Mixture 
+distribution and/or Alternate Binomial distribution is decided.
 
 # References
