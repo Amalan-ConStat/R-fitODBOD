@@ -815,7 +815,7 @@ changes. Below given plot explains the situation of how Pmf values change with
 regarding to cov and p.
 
 * p is the probability value in between zero and one.
-* cov is the covaraince value in between negative infinity and positive infinity.
+* cov is the covariance value in between negative infinity and positive infinity.
 
 ```{r Correlated Binomial Distribution plot function,include=FALSE}
 dCorrBinplot<-function(p,cov,plot_title,p_seq)

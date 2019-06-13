@@ -33,8 +33,8 @@ By inspection of the epidemic time charts, it was possible to identify new or pr
 into the household by the onset of a cold after a lapse of 10 days since the last such case in the same home.
 Two such cases occurring on the same or succeeding days were classified as multiple primaries. Thereafter, the
 links in the epidemic chain of spread were defined by an interval of one day or more between successive cases
-in the same family. These family epidemics could then be described thus 1-2-1, 1-1-1-0, 2-1-0, etc. It must be e
-mphasized that although this method of classification is somewhat arbitrary, it was completed before the
+in the same family. These family epidemics could then be described thus 1-2-1, 1-1-1-0, 2-1-0, etc. It must be
+emphasized that although this method of classification is somewhat arbitrary, it was completed before the
 corresponding theoretical distributions were worked out and the interval chosen agrees with the distribution
 of presumptive incubation periods of the common cold seen in field surveys (e.g. Badger, Dingle, Feller,
 Hodges, Jordan, and Rammelkamp, 1953).

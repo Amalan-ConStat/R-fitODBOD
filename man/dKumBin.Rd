@@ -60,7 +60,7 @@ Defined as \eqn{B(a,b)} is the beta function.
 messages will be provided to go further.
 }
 \examples{
-\dontrun{
+#dontrun{}
 #plotting the random variables and probability values
 col<-rainbow(5)
 a<-c(1,2,5,10,.85)
@@ -89,7 +89,7 @@ points(0:10,pKumBin(0:10,10,a[i],a[i]),col = col[i])
 }
 
 pKumBin(0:10,10,4,2)    #acquiring the cumulative probability values
-      }
+
 
 }
 \references{

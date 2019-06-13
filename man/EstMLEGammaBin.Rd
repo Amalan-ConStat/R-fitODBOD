@@ -11,7 +11,7 @@ EstMLEGammaBin(x,freq,c,l)
 
 \item{freq}{vector of frequencies.}
 
-\item{c}{single value for shape paramter c.}
+\item{c}{single value for shape parameter c.}
 
 \item{l}{single value for shape parameter l.}
 }

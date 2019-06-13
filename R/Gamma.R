@@ -666,7 +666,7 @@ NegLLGammaBin<-function(x,freq,c,l)
 #'
 #' @param x                   vector of binomial random variables.
 #' @param freq                vector of frequencies.
-#' @param c                   single value for shape paramter c.
+#' @param c                   single value for shape parameter c.
 #' @param l                   single value for shape parameter l.
 #'
 #' @details

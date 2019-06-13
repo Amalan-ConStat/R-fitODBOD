@@ -15,7 +15,7 @@ fitBin(x,obs.freq,p=0)
 \item{p}{single value for probability.}
 }
 \value{
-The output of \code{fitBin} gives the class format \code{fitB} and \code{fit} consisting alist
+The output of \code{fitBin} gives the class format \code{fitB} and \code{fit} consisting a list
 
 \code{bin.ran.var} binomial random variables.
 

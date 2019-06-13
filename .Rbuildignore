@@ -14,13 +14,4 @@
 ^pkgdown$
 ^appveyor\.yml$
 ^JOSSpaper$
-^vignettes/Mixing_Distributions_pxxx$
-^vignettes/Mixing_Distributions_mazxxx$
-^vignettes/Mixing_Distributions_dxxx$
-^vignettes/BMDs_and_ABDs_pxxxBin$
-^vignettes/BMDs_and_ABDs_NegLLxxxBin$
-^vignettes/BMDs_and_ABDs_fitxxxBin$
-^vignettes/BMDs_and_ABDs_EstMLExxxBin$
-^vignettes/BMDs_and_ABDs_EstMGFxxxBin$
-^vignettes/BMDs_and_ABDs_dxxxBin$
-^vignettes/BMDs_and_ABDs_dxxxBin_files/$
+^vignettes$

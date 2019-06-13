@@ -43,7 +43,7 @@ are given.
 No.D.D=0:7   #assigning the random variables
 Obs.fre.1=c(47,54,43,40,40,41,39,95)   #assigning the corresponding frequencies
 
-\dontrun{
+#dontrun{}
 results<-EstMLETriBin(No.D.D,Obs.fre.1)    #estimating the mode value and extracting the mode value
 
 # extract the mode value and summary
@@ -51,7 +51,7 @@ coef(results)
 summary(results)
 
 AIC(results)  #show the AIC value
-        }
+
 
 }
 \references{

@@ -1,7 +1,0 @@
-\documentclass{article}
-\usepackage{pdfpages}
-%\VignetteIndexEntry{fitODBOD Manual}
-
-\begin{document}
-\includepdf[pages=-, fitpaper=true]{fitODBOD.pdf}
-\end{document}

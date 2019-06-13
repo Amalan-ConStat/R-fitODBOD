@@ -23,3 +23,13 @@
 - New dataset Epidemic_Cold has been added.
 - Vignettes changed based on changes for the functions.
 - Updated R compatibility to version 3.6.0.
+
+# Version 1.4.0 
+
+## submitted on 12th June 2019
+
+- updated the R version limitation from 3.6.0 to 3.5.0. 
+- removed some spelling mistakes. 
+- added vignettes to the website. 
+- updated codecov, appveyor and travis.
+- Description file updated with package website.

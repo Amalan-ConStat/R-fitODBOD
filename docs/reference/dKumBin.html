@@ -8,6 +8,13 @@
 
 <title>Kumaraswamy Binomial Distribution — dKumBin • fitODBOD</title>
 
+<!-- favicons -->
+<link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png" />
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
@@ -66,7 +73,7 @@ cumulative probability function values for the Kumaraswamy Binomial Distribution
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">fitODBOD</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.3.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.4.0</span>
       </span>
     </div>
 
@@ -236,7 +243,7 @@ of Applied Probability and Statistics, 27(5), 511-521.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'>
+    <pre class="examples"><div class='input'><span class='co'>#dontrun{}</span>
 <span class='co'>#plotting the random variables and probability values</span>
 <span class='no'>col</span><span class='kw'>&lt;-</span><span class='fu'><a href='https://www.rdocumentation.org/packages/grDevices/topics/palettes'>rainbow</a></span>(<span class='fl'>5</span>)
 <span class='no'>a</span><span class='kw'>&lt;-</span><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>1</span>,<span class='fl'>2</span>,<span class='fl'>5</span>,<span class='fl'>10</span>,<span class='fl'>.85</span>)
@@ -246,10 +253,8 @@ of Applied Probability and Statistics, 27(5), 511-521.</p>
 <span class='fu'><a href='https://www.rdocumentation.org/packages/graphics/topics/lines'>lines</a></span>(<span class='fl'>0</span>:<span class='fl'>10</span>,<span class='fu'>dKumBin</span>(<span class='fl'>0</span>:<span class='fl'>10</span>,<span class='fl'>10</span>,<span class='no'>a</span>[<span class='no'>i</span>],<span class='no'>a</span>[<span class='no'>i</span>])$<span class='no'>pdf</span>,<span class='kw'>col</span> <span class='kw'>=</span> <span class='no'>col</span>[<span class='no'>i</span>],<span class='kw'>lwd</span><span class='kw'>=</span><span class='fl'>2.85</span>)
 <span class='fu'><a href='https://www.rdocumentation.org/packages/graphics/topics/points'>points</a></span>(<span class='fl'>0</span>:<span class='fl'>10</span>,<span class='fu'>dKumBin</span>(<span class='fl'>0</span>:<span class='fl'>10</span>,<span class='fl'>10</span>,<span class='no'>a</span>[<span class='no'>i</span>],<span class='no'>a</span>[<span class='no'>i</span>])$<span class='no'>pdf</span>,<span class='kw'>col</span> <span class='kw'>=</span> <span class='no'>col</span>[<span class='no'>i</span>],<span class='kw'>pch</span><span class='kw'>=</span><span class='fl'>16</span>)
 }</div><div class='img'><img src='dKumBin-1.png' alt='' width='700' height='433' /></div><div class='input'>
-
 <span class='fu'>dKumBin</span>(<span class='fl'>0</span>:<span class='fl'>10</span>,<span class='fl'>10</span>,<span class='fl'>4</span>,<span class='fl'>2</span>)$<span class='no'>pdf</span>  <span class='co'>#extracting the pdf values</span></div><div class='output co'>#&gt;  [1] 0.001975149 0.007809184 0.019157313 0.037217684 0.062388592 0.093788564
 #&gt;  [7] 0.128616482 0.161328867 0.182611506 0.178122531 0.126984127</div><div class='input'><span class='fu'>dKumBin</span>(<span class='fl'>0</span>:<span class='fl'>10</span>,<span class='fl'>10</span>,<span class='fl'>4</span>,<span class='fl'>2</span>)$<span class='no'>mean</span> <span class='co'>#extracting the mean</span></div><div class='output co'>#&gt; [1] 7.111111</div><div class='input'><span class='fu'>dKumBin</span>(<span class='fl'>0</span>:<span class='fl'>10</span>,<span class='fl'>10</span>,<span class='fl'>4</span>,<span class='fl'>2</span>)$<span class='no'>var</span>  <span class='co'>#extracting the variance</span></div><div class='output co'>#&gt; [1] 4.54321</div><div class='input'><span class='fu'>dKumBin</span>(<span class='fl'>0</span>:<span class='fl'>10</span>,<span class='fl'>10</span>,<span class='fl'>4</span>,<span class='fl'>2</span>)$<span class='no'>over.dis.para</span> <span class='co'>#extracting the over dispersion value</span></div><div class='output co'>#&gt; [1] 0.1346154</div><div class='input'>
-
 <span class='co'>#plotting the random variables and cumulative probability values</span>
 <span class='no'>col</span><span class='kw'>&lt;-</span><span class='fu'><a href='https://www.rdocumentation.org/packages/grDevices/topics/palettes'>rainbow</a></span>(<span class='fl'>5</span>)
 <span class='no'>a</span><span class='kw'>&lt;-</span><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>1</span>,<span class='fl'>2</span>,<span class='fl'>5</span>,<span class='fl'>10</span>,<span class='fl'>.85</span>)
@@ -259,9 +264,9 @@ of Applied Probability and Statistics, 27(5), 511-521.</p>
 <span class='fu'><a href='https://www.rdocumentation.org/packages/graphics/topics/lines'>lines</a></span>(<span class='fl'>0</span>:<span class='fl'>10</span>,<span class='fu'><a href='pKumBin.html'>pKumBin</a></span>(<span class='fl'>0</span>:<span class='fl'>10</span>,<span class='fl'>10</span>,<span class='no'>a</span>[<span class='no'>i</span>],<span class='no'>a</span>[<span class='no'>i</span>]),<span class='kw'>col</span> <span class='kw'>=</span> <span class='no'>col</span>[<span class='no'>i</span>])
 <span class='fu'><a href='https://www.rdocumentation.org/packages/graphics/topics/points'>points</a></span>(<span class='fl'>0</span>:<span class='fl'>10</span>,<span class='fu'><a href='pKumBin.html'>pKumBin</a></span>(<span class='fl'>0</span>:<span class='fl'>10</span>,<span class='fl'>10</span>,<span class='no'>a</span>[<span class='no'>i</span>],<span class='no'>a</span>[<span class='no'>i</span>]),<span class='kw'>col</span> <span class='kw'>=</span> <span class='no'>col</span>[<span class='no'>i</span>])
 }</div><div class='img'><img src='dKumBin-2.png' alt='' width='700' height='433' /></div><div class='input'>
-
 <span class='fu'><a href='pKumBin.html'>pKumBin</a></span>(<span class='fl'>0</span>:<span class='fl'>10</span>,<span class='fl'>10</span>,<span class='fl'>4</span>,<span class='fl'>2</span>)    <span class='co'>#acquiring the cumulative probability values</span></div><div class='output co'>#&gt;  [1] 0.001975149 0.009784333 0.028941647 0.066159331 0.128547923 0.222336487
 #&gt;  [7] 0.350952969 0.512281836 0.694893342 0.873015873 1.000000000</div><div class='input'>
+
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
