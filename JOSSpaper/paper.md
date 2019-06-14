@@ -23,8 +23,7 @@ tags:
 - ABD
 affiliations:
 - index: 1
-  name: Department of Statistics and Computer Science, Faculty of Science, University
-    of Peradeniya.
+  name: Department of Statistics and Computer Science, Faculty of Science, University of Peradeniya.
 ---
 
 # Summary
