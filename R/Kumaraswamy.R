@@ -433,7 +433,7 @@ mazKUM<-function(r,a,b)
 #' of Applied Probability and Statistics, 27(5), 511-521.
 #'
 #' @examples
-#' #dontrun{}
+#' \dontrun{
 #' #plotting the random variables and probability values
 #' col<-rainbow(5)
 #' a<-c(1,2,5,10,.85)
@@ -462,7 +462,7 @@ mazKUM<-function(r,a,b)
 #' }
 #'
 #' pKumBin(0:10,10,4,2)    #acquiring the cumulative probability values
-#'
+#'          }
 #'
 #' @export
 dKumBin<-function(x,n,a,b,it=25000)
@@ -597,7 +597,7 @@ dKumBin<-function(x,n,a,b,it=25000)
 #' of Applied Probability and Statistics, 27(5), 511-521.
 #'
 #' @examples
-#' #dontrun{}
+#' \dontrun{
 #' #plotting the random variables and probability values
 #' col<-rainbow(5)
 #' a<-c(1,2,5,10,.85)
@@ -626,7 +626,7 @@ dKumBin<-function(x,n,a,b,it=25000)
 #' }
 #'
 #' pKumBin(0:10,10,4,2)    #acquiring the cumulative probability values
-#'
+#'         }
 #'
 #' @export
 pKumBin<-function(x,n,a,b,it=25000)
@@ -679,9 +679,9 @@ pKumBin<-function(x,n,a,b,it=25000)
 #' No.D.D=0:7          #assigning the random variables
 #' Obs.fre.1=c(47,54,43,40,40,41,39,95)  #assigning the corresponding frequencies
 #'
-#' #dontrun{}
+#' \dontrun{
 #' NegLLKumBin(No.D.D,Obs.fre.1,1.3,4.4) #acquiring the negative log likelihood value
-#'
+#'         }
 #'
 #' @export
 NegLLKumBin<-function(x,freq,a,b,it=25000)
@@ -797,12 +797,12 @@ NegLLKumBin<-function(x,freq,a,b,it=25000)
 #' Obs.fre.1=c(47,54,43,40,40,41,39,95)  #assigning the corresponding frequencies
 #'
 #' #estimating the parameters using maximum log likelihood value and assigning it
-#' #dontrun{}
+#' \dontrun{
 #' parameters1=suppressWarnings(bbmle::mle2(EstMLEKumBin,start = list(a=10.1,b=1.1,it=10000),
 #' data = list(x=No.D.D,freq=Obs.fre.1)))
 #'
 #' bbmle::coef(parameters1)   #extracting the parameters
-#'
+#'         }
 #'
 #' @export
 EstMLEKumBin<-function(x,freq,a,b,it)
@@ -897,7 +897,7 @@ EstMLEKumBin<-function(x,freq,a,b,it)
 #' Obs.fre.1=c(47,54,43,40,40,41,39,95)   #assigning the corresponding frequencies
 #'
 #' #estimating the parameters using maximum log likelihood value and assigning it
-#' #dontrun{}
+#' \dontrun{
 #' parameters=suppressWarnings(bbmle::mle2(EstMLEKumBin,start = list(a=10.1,b=1.1,it=10000),
 #'           data = list(x=No.D.D,freq=Obs.fre.1)))
 #'
@@ -915,7 +915,7 @@ EstMLEKumBin<-function(x,freq,a,b,it)
 #'
 #' #extracting the residuals
 #' residuals(results)
-#'
+#'          }
 #'
 #' @export
 fitKumBin<-function(x,obs.freq,a,b,it)
