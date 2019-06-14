@@ -6,7 +6,7 @@ authors:
   name: Amalan Mahendran
   orcid: 0000-0002-0643-9052
 - affiliation: 1
-  name: Prof. Pushpakanthie Wijekoon
+  name: Pushpakanthie Wijekoon
   orcid: 0000-0003-4242-1017
 date: '2019-06-13'
 output:
