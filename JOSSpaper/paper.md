@@ -126,56 +126,8 @@ steps have to be used when using this package.
 5.  Finally, compare the results and choose the best-fitting distribution
     for the data by using a plot or table.
 
-Below is the series of code to complete the steps from 1 to 4 for the
-Beta-Binomial distribution. Similarly, it is possible to fit other FBMD
-and ABD for the purpose of finding the most suitable distribution to
-fit the given BOD. 
-
-```{r}
-library("bbmle") # Loading packages 
-library("fitODBOD")
-
-# step 1: print the alcohol consumption data set 
-print(Alcohol_data)
-```
-According to the below hypothesis Binomial distribution will be tested for the 
-given BOD.
-
-<p align= "center"> Null Hypothesis : Data follows the Binomial Distribution. </p>
-<p align= "center"> Alternate Hypothesis : Data does not follow the Binomial Distribution. </p>
-
-```r
-# step 2: Checking if the Binomial Distribution can be fitted for Week 2
-fdBin<-fitBin(Alcohol_data$Days, Alcohol_data$week2)
-print(fdBin)
-
-# step 3: estimating the shape parameters a,b for Week 2
-estimate = bbmle::mle2(EstMLEBetaBin, start = list(a = 0.1, b = 0.1),  
-                       data = list(x = Alcohol_data$Days, freq = Alcohol_data$week2))
-
-# extracting the estimated shape parameters a and b for Week 2
-a1 = bbmle::coef(estimate)[1] ; b1 = bbmle::coef(estimate)[2]
-print(c(a1,b1)) #printing the estimated shape parameters a and b 
-```
-
-Below hypothesis will check the suitability to fit the Beta-Binomial distribution.
-
-<p align= "center"> Null Hypothesis : Data follows the Beta-Binomial Distribution. </p>
-<p align= "center"> Alternate Hypothesis : Data does not follow the Beta-Binomial Distribution. </p>
-
-```r
-# step 4: fitting the Beta Binomial Distribution for estimated shape parameters to Week 2
-fdBB<-fitBetaBin(Alcohol_data$Days, Alcohol_data$week2, a1, b1)
-print(fdBB)
-
-# step 5: Using a table to summarize the result is quite useful, where it will contain 
-# the expected frequencies, chi-squared values, p-values, estimated parameters, 
-# Negative Log Likelihood values and Over-dispersion of the Binomial Mixture distributions.
-```
-
-The best distribution to fit the given BOD from ABD and/or FBMD is thoroughly discussed in the
-[website](https://amalan-constat.github.io/R-fitODBOD/articles/BMDs_and_ABDs_fitxxxBin.html) 
-with the help of plots. 
+Series of code to complete the steps from 1 to 5 are thoroughly discussed in 
+the [website.](https://amalan-constat.github.io/R-fitODBOD/articles/BMDs_and_ABDs_fitxxxBin.html) 
 
 # Conclusion
 
