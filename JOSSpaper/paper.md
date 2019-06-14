@@ -144,4 +144,13 @@ Generalized Beta and Generalized Beta of First kind distributions. Using the
 above steps mentioned of the article, the best-fitting Binomial Mixture 
 distribution and/or Alternate Binomial distribution is decided.
 
+# Main Dependicies
+
+**``fitODBOD``** package has two main dependicies from CRAN. Functions from 
+**``hypergeo``** are used for applications of GHGBB and Gaussian Hypergeometric 
+Generalized Beta distribution. **``stats``** functions are used for integration 
+situations for the Triangular Binoimal distribution. Finally, **``bbmle``** 
+package is not a dependency but a suitable suggestion to complete the parameter 
+estimation of ABD and FBMD.
+
 # References
