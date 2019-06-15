@@ -15,7 +15,7 @@ Extracted from
 Karlis, D. & Xekalaki, E., 2008. The Polygonal Distribution. In Advances in Mathematical and Statistical
 Modeling. Boston: Birkhuser Boston, pp. 21-33.
 
-Available at: \url{http://dx.doi.org/10.1007/978-0-8176-4626-4_2}.
+Available at: \url{https://doi.org/10.1007/978-0-8176-4626-4_2}.
 }
 \usage{
 Course_data

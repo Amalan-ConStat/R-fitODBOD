@@ -86,12 +86,12 @@ mazKUM(1.9,5.5,6)
 Kumaraswamy, P. (1980). A generalized probability density function for double-bounded random processes.
 Journal of Hydrology, 46(1), 79-88.
 
-Available at : \url{http://dx.doi.org/10.1016/0022-1694(80)90036-0}.
+Available at : \url{https://doi.org/10.1016/0022-1694(80)90036-0}.
 
 Jones, M. C. (2009). Kumaraswamy's distribution: A beta-type distribution with some tractability advantages.
 Statistical Methodology, 6(1), 70-81.
 
-Available at : \url{http://dx.doi.org/10.1016/j.stamet.2008.04.001}.
+Available at : \url{https://doi.org/10.1016/j.stamet.2008.04.001}.
 }
 \seealso{
 \code{\link[extraDistr]{Kumaraswamy}}

@@ -84,7 +84,7 @@ pGHGBB(0:7,7,1.3,0.3,1.3)     #acquiring the cumulative probability values
 Rodriguez-Avi, J., Conde-Sanchez, A., Saez-Castillo, A. J., & Olmo-Jimenez, M. J. (2007). A generalization
 of the beta-binomial distribution. Journal of the Royal Statistical Society. Series C (Applied Statistics), 56(1), 51-61.
 
-Available at : \url{http://dx.doi.org/10.1111/j.1467-9876.2007.00564.x}
+Available at : \url{https://doi.org/10.1111/j.1467-9876.2007.00564.x}
 
 Pearson, J., 2009. Computation of Hypergeometric Functions. Transformation, (September), p.1--123.
 }
