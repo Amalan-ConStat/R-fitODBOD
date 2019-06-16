@@ -5,7 +5,7 @@
 \title{Estimating the shape parameters a,b and c for Gaussian Hypergeometric Generalized Beta  Binomial
 Distribution}
 \usage{
-EstMLEGHGBB(x,freq,a,b,c)
+EstMLEGHGBB(x,freq,a,b,c,...)
 }
 \arguments{
 \item{x}{vector of binomial random variables.}
@@ -17,10 +17,12 @@ EstMLEGHGBB(x,freq,a,b,c)
 \item{b}{single value for shape parameter beta representing b.}
 
 \item{c}{single value for shape parameter lambda representing c.}
+
+\item{...}{mle2 function inputs except data and estimating parameter.}
 }
 \value{
-\code{EstMLEGHGBB} here is used as a input parameter for the \code{mle2} function of
-\pkg{bbmle} package.
+\code{EstMLEGHGBB} here is used as a wrapper for the \code{mle2} function of
+\pkg{bbmle} package therefore output is of class of mle2.
 }
 \description{
 The function will estimate the shape parameters using the maximum log likelihood method  for
@@ -40,8 +42,7 @@ No.D.D=0:7           #assigning the random variables
 Obs.fre.1=c(47,54,43,40,40,41,39,95)     #assigning the corresponding frequencies
 
 #estimating the parameters using maximum log likelihood value and assigning it
-parameters=suppressWarnings(bbmle::mle2(EstMLEGHGBB,start = list(a=0.1,b=0.1,c=0.2),
-data = list(x=No.D.D,freq=Obs.fre.1)))
+parameters=EstMLEGHGBB(No.D.D,Obs.fre.1,a=0.1,b=0.2,c=0.5)
 
 bbmle::coef(parameters)   #extracting the parameters
 

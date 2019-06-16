@@ -705,13 +705,14 @@ NegLLMcGBB<-function(x,freq,a,b,c)
 #' variables and corresponding frequencies are given.
 #'
 #' @usage
-#' EstMLEMcGBB(x,freq,a,b,c)
+#' EstMLEMcGBB(x,freq,a,b,c,...)
 #'
 #' @param x                  vector of binomial random variables.
 #' @param freq               vector of frequencies.
 #' @param a                  single value for shape parameter alpha representing as a.
 #' @param b                  single value for shape parameter beta representing as b.
 #' @param c                  single value for shape parameter gamma representing as c.
+#' @param ...                mle2 function inputs except data and estimating parameter.
 #'
 #' @details
 #' \deqn{0 < a,b,c}
@@ -722,8 +723,8 @@ NegLLMcGBB<-function(x,freq,a,b,c)
 #' error messages will be provided to go further.
 #'
 #' @return
-#' \code{EstMLEMcGBB} here is used as a input parameter for the \code{mle2} function of \pkg{bbmle}
-#' package.
+#' \code{EstMLEMcGBB} here is used as a wrapper for the \code{mle2} function of \pkg{bbmle} package
+#' therefore output is of class of mle2.
 #'
 #' @references
 #' Manoj, C., Wijekoon, P. & Yapa, R.D., 2013. The McDonald Generalized Beta-Binomial Distribution: A New
@@ -748,14 +749,31 @@ NegLLMcGBB<-function(x,freq,a,b,c)
 #' Obs.fre.1=c(47,54,43,40,40,41,39,95)  #assigning the corresponding frequencies
 #'
 #' #estimating the parameters using maximum log likelihood value and assigning it
-#'
-#' parameters=suppressWarnings(bbmle::mle2(EstMLEMcGBB,start = list(a=0.1,b=0.1,c=0.2),
-#' data = list(x=No.D.D,freq=Obs.fre.1)))
+#' parameters=EstMLEMcGBB(x=No.D.D,freq=Obs.fre.1,a=0.1,b=0.1,c=0.2)
 #'
 #' bbmle::coef(parameters)         #extracting the parameters
 #'
 #' @export
-EstMLEMcGBB<-function(x,freq,a,b,c)
+EstMLEMcGBB<-function(x,freq,a,b,c,...)
+{
+  suppressWarnings2 <-function(expr, regex=character())
+  {
+    withCallingHandlers(expr, warning=function(w)
+    {
+      if (length(regex) == 1 && length(grep(regex, conditionMessage(w))))
+      {
+        invokeRestart("muffleWarning")
+      }
+    }                  )
+  }
+  output<-suppressWarnings2(bbmle::mle2(.EstMLEMcGBB,data=list(x=x,freq=freq),
+                                        start = list(a=a,b=b,c=c),...),"NaNs produced")
+  return(output)
+}
+
+
+#' @export
+.EstMLEMcGBB<-function(x,freq,a,b,c)
 {
   #with respective to using bbmle package function mle2 there is no need impose any restrictions
   #therefor the output is directly a single numeric value for the negative log likelihood value of
@@ -857,8 +875,7 @@ EstMLEMcGBB<-function(x,freq,a,b,c)
 #'
 #' #estimating the parameters using maximum log likelihood value and assigning it
 #' \dontrun{
-#' parameters=suppressWarnings(bbmle::mle2(EstMLEMcGBB,start = list(a=0.1,b=0.1,c=0.2),
-#' data = list(x=No.D.D,freq=Obs.fre.1)))
+#' parameters=EstMLEMcGBB(x=No.D.D,freq=Obs.fre.1,a=0.1,b=0.1,c=3.2)
 #'
 #' aMcGBB=bbmle::coef(parameters)[1]         #assigning the estimated a
 #' bMcGBB=bbmle::coef(parameters)[2]         #assigning the estimated b
@@ -948,7 +965,7 @@ print.fitMB<-function(x,...)
   cat("\nChi-squared test for Mc-Donald Generalized Beta-Binomial Distribution \n\t
       Observed Frequency : ",x$obs.freq,"\n\t
       expected Frequency : ",x$exp.freq,"\n\t
-      estimated a parameter :",x$a, "  ,estimated b parameter :",x$b," ,estimated c parameter :",x$c,"\n\t
+      estimated a parameter :",x$a, "  ,estimated b parameter :",x$b,"\n\t, estimated c parameter :",x$c,"\n\t
       X-squared :",x$statistic,"  ,df :",x$df,"  ,p-value :",x$p.value,"\n\t
       over dispersion :",x$over.dis.para,"\n")
 }
@@ -962,7 +979,7 @@ summary.fitMB<-function(object,...)
   cat("\nChi-squared test for Mc-Donald Generalized Beta-Binomial Distribution \n\t
       Observed Frequency : ",object$obs.freq,"\n\t
       expected Frequency : ",object$exp.freq,"\n\t
-      estimated a parameter :",object$a,"  ,estimated b parameter :",object$b," ,estimated c value :",object$it,"\n\t
+      estimated a parameter :",object$a,"  ,estimated b parameter :",object$b,"\n\t, estimated c value :",object$it,"\n\t
       X-squared :",object$statistic,"  ,df :",object$df,"  ,p-value :",object$p.value,"\n\t
       over dispersion :",object$over.dis.para,"\n\t
       Negative Loglikehood value :",object$NegLL,"\n\t

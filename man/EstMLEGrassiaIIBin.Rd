@@ -4,7 +4,7 @@
 \alias{EstMLEGrassiaIIBin}
 \title{Estimating the shape parameters a and b for Grassia II Binomial distribution}
 \usage{
-EstMLEGrassiaIIBin(x,freq,a,b)
+EstMLEGrassiaIIBin(x,freq,a,b,...)
 }
 \arguments{
 \item{x}{vector of binomial random variables.}
@@ -14,10 +14,12 @@ EstMLEGrassiaIIBin(x,freq,a,b)
 \item{a}{single value for shape parameter a.}
 
 \item{b}{single value for shape parameter b.}
+
+\item{...}{mle2 function inputs except data and estimating parameter.}
 }
 \value{
-\code{EstMLEGrassiaIIBin} here is used as a input parameter for the \code{mle2} function of \pkg{bbmle}
-package.
+\code{EstMLEGrassiaIIBin} here is used as a wrapper for the \code{mle2} function of \pkg{bbmle} package
+therefore output is of class of mle2.
 }
 \description{
 The function will estimate the shape parameters using the maximum log likelihood method
@@ -37,10 +39,10 @@ No.D.D=0:7                   #assigning the random variables
 Obs.fre.1=c(47,54,43,40,40,41,39,95)  #assigning the corresponding frequencies
 
 #estimating the parameters using maximum log likelihood value and assigning it
-parameters=suppressWarnings(bbmle::mle2(EstMLEGrassiaIIBin,start = list(a=0.1,b=0.1),
-data = list(x=No.D.D,freq=Obs.fre.1)))
+parameters=EstMLEGrassiaIIBin(x=No.D.D,freq=Obs.fre.1,a=0.1,b=0.1)
 
 bbmle::coef(parameters)         #extracting the parameters
+
 }
 \references{
 Grassia, A., 1977. On a family of distributions with argument between 0 and 1

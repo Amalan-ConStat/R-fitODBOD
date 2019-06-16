@@ -4,7 +4,7 @@
 \alias{EstMLEGammaBin}
 \title{Estimating the shape parameters c and l for Gamma Binomial distribution}
 \usage{
-EstMLEGammaBin(x,freq,c,l)
+EstMLEGammaBin(x,freq,c,l,...)
 }
 \arguments{
 \item{x}{vector of binomial random variables.}
@@ -14,10 +14,12 @@ EstMLEGammaBin(x,freq,c,l)
 \item{c}{single value for shape parameter c.}
 
 \item{l}{single value for shape parameter l.}
+
+\item{...}{mle2 function inputs except data and estimating parameter.}
 }
 \value{
-\code{EstMLEGammaBin} here is used as a input parameter for the \code{mle2} function of \pkg{bbmle}
-package.
+\code{EstMLEGammaBin} here is used as a wrapper for the \code{mle2} function of \pkg{bbmle} package
+therefore output is of class of mle2.
 }
 \description{
 The function will estimate the shape parameters using the maximum log likelihood method
@@ -37,8 +39,7 @@ No.D.D=0:7                   #assigning the random variables
 Obs.fre.1=c(47,54,43,40,40,41,39,95)  #assigning the corresponding frequencies
 
 #estimating the parameters using maximum log likelihood value and assigning it
-parameters=suppressWarnings(bbmle::mle2(EstMLEGammaBin,start = list(c=0.1,l=0.1),
-data = list(x=No.D.D,freq=Obs.fre.1)))
+parameters=EstMLEGammaBin(x=No.D.D,freq=Obs.fre.1,c=0.1,l=0.1)
 
 bbmle::coef(parameters)         #extracting the parameters
 

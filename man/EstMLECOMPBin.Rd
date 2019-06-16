@@ -5,7 +5,7 @@
 \title{Estimating the probability of success and v parameter for COM Poisson Binomial
 Distribution}
 \usage{
-EstMLECOMPBin(x,freq,p,v)
+EstMLECOMPBin(x,freq,p,v,...)
 }
 \arguments{
 \item{x}{vector of binomial random variables.}
@@ -15,9 +15,11 @@ EstMLECOMPBin(x,freq,p,v)
 \item{p}{single value for probability of success.}
 
 \item{v}{single value for v.}
+
+\item{...}{mle2 function inputs except data and estimating parameter.}
 }
 \value{
-\code{EstMLECOMPBin} here is used as a input parameter for the \code{mle2} function of \pkg{bbmle} package
+\code{EstMLECOMPBin} here is used as a wrapper for the \code{mle2} function of \pkg{bbmle} package
 therefore output is of class of mle2.
 }
 \description{
@@ -39,8 +41,7 @@ No.D.D=0:7               #assigning the random variables
 Obs.fre.1=c(47,54,43,40,40,41,39,95)     #assigning the corresponding frequencies
 
 #estimating the parameters using maximum log likelihood value and assigning it
-parameters=suppressWarnings(bbmle::mle2(EstMLECOMPBin,start = list(p=0.5,v=0.1),
-                       data = list(x=No.D.D,freq=Obs.fre.1)))
+parameters=EstMLECOMPBin(x=No.D.D,freq=Obs.fre.1,p=0.5,v=0.1)
 
 bbmle::coef(parameters)           #extracting the parameters
 

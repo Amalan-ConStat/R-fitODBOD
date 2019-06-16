@@ -662,12 +662,13 @@ NegLLGammaBin<-function(x,freq,c,l)
 #' are given.
 #'
 #' @usage
-#' EstMLEGammaBin(x,freq,c,l)
+#' EstMLEGammaBin(x,freq,c,l,...)
 #'
 #' @param x                   vector of binomial random variables.
 #' @param freq                vector of frequencies.
 #' @param c                   single value for shape parameter c.
 #' @param l                   single value for shape parameter l.
+#' @param ...                 mle2 function inputs except data and estimating parameter.
 #'
 #' @details
 #' \deqn{0 < c,l}
@@ -678,8 +679,8 @@ NegLLGammaBin<-function(x,freq,c,l)
 #' error messages will be provided to go further.
 #'
 #' @return
-#' \code{EstMLEGammaBin} here is used as a input parameter for the \code{mle2} function of \pkg{bbmle}
-#' package.
+#' \code{EstMLEGammaBin} here is used as a wrapper for the \code{mle2} function of \pkg{bbmle} package
+#' therefore output is of class of mle2.
 #'
 #' @references
 #' Grassia, A., 1977. On a family of distributions with argument between 0 and 1
@@ -691,13 +692,30 @@ NegLLGammaBin<-function(x,freq,c,l)
 #' Obs.fre.1=c(47,54,43,40,40,41,39,95)  #assigning the corresponding frequencies
 #'
 #' #estimating the parameters using maximum log likelihood value and assigning it
-#' parameters=suppressWarnings(bbmle::mle2(EstMLEGammaBin,start = list(c=0.1,l=0.1),
-#' data = list(x=No.D.D,freq=Obs.fre.1)))
+#' parameters=EstMLEGammaBin(x=No.D.D,freq=Obs.fre.1,c=0.1,l=0.1)
 #'
 #' bbmle::coef(parameters)         #extracting the parameters
 #'
 #' @export
-EstMLEGammaBin<-function(x,freq,c,l)
+EstMLEGammaBin<-function(x,freq,c,l,...)
+{
+  suppressWarnings2 <-function(expr, regex=character())
+  {
+    withCallingHandlers(expr, warning=function(w)
+    {
+      if (length(regex) == 1 && length(grep(regex, conditionMessage(w))))
+      {
+        invokeRestart("muffleWarning")
+      }
+    }                  )
+  }
+  output<-suppressWarnings2(bbmle::mle2(.EstMLEGammaBin,data=list(x=x,freq=freq),
+                                        start = list(c=c,l=l),...),"NaNs produced")
+  return(output)
+}
+
+#' @export
+.EstMLEGammaBin<-function(x,freq,c,l)
 {
   #with respective to using bbmle package function mle2 there is no need impose any restrictions
   #therefor the output is directly a single numeric value for the negative log likelihood value of
@@ -782,8 +800,7 @@ EstMLEGammaBin<-function(x,freq,c,l)
 #' Obs.fre.1=c(47,54,43,40,40,41,39,95)          #assigning the corresponding frequencies
 #'
 #' #estimating the parameters using maximum log likelihood value and assigning it
-#' parameters=suppressWarnings(bbmle::mle2(EstMLEGammaBin,start = list(c=0.1,l=0.1),
-#' data = list(x=No.D.D,freq=Obs.fre.1)))
+#' parameters=EstMLEGammaBin(x=No.D.D,freq=Obs.fre.1,c=0.1,l=0.1)
 #'
 #' cGBin=bbmle::coef(parameters)[1]         #assigning the estimated c
 #' lGBin=bbmle::coef(parameters)[2]         #assigning the estimated l
@@ -1186,12 +1203,13 @@ NegLLGrassiaIIBin<-function(x,freq,a,b)
 #' are given.
 #'
 #' @usage
-#' EstMLEGrassiaIIBin(x,freq,a,b)
+#' EstMLEGrassiaIIBin(x,freq,a,b,...)
 #'
 #' @param x                   vector of binomial random variables.
 #' @param freq                vector of frequencies.
 #' @param a                   single value for shape parameter a.
 #' @param b                   single value for shape parameter b.
+#' @param ...                 mle2 function inputs except data and estimating parameter.
 #'
 #' @details
 #' \deqn{0 < a,b}
@@ -1202,8 +1220,8 @@ NegLLGrassiaIIBin<-function(x,freq,a,b)
 #' error messages will be provided to go further.
 #'
 #' @return
-#' \code{EstMLEGrassiaIIBin} here is used as a input parameter for the \code{mle2} function of \pkg{bbmle}
-#' package.
+#' \code{EstMLEGrassiaIIBin} here is used as a wrapper for the \code{mle2} function of \pkg{bbmle} package
+#' therefore output is of class of mle2.
 #'
 #' @references
 #' Grassia, A., 1977. On a family of distributions with argument between 0 and 1
@@ -1215,12 +1233,31 @@ NegLLGrassiaIIBin<-function(x,freq,a,b)
 #' Obs.fre.1=c(47,54,43,40,40,41,39,95)  #assigning the corresponding frequencies
 #'
 #' #estimating the parameters using maximum log likelihood value and assigning it
-#' parameters=suppressWarnings(bbmle::mle2(EstMLEGrassiaIIBin,start = list(a=0.1,b=0.1),
-#' data = list(x=No.D.D,freq=Obs.fre.1)))
+#' parameters=EstMLEGrassiaIIBin(x=No.D.D,freq=Obs.fre.1,a=0.1,b=0.1)
 #'
 #' bbmle::coef(parameters)         #extracting the parameters
+#'
 #' @export
-EstMLEGrassiaIIBin<-function(x,freq,a,b)
+EstMLEGrassiaIIBin<-function(x,freq,a,b,...)
+{
+  suppressWarnings2 <-function(expr, regex=character())
+  {
+    withCallingHandlers(expr, warning=function(w)
+    {
+      if (length(regex) == 1 && length(grep(regex, conditionMessage(w))))
+      {
+        invokeRestart("muffleWarning")
+      }
+    }                  )
+  }
+  output<-suppressWarnings2(bbmle::mle2(.EstMLEGrassiaIIBin,data=list(x=x,freq=freq),
+                                        start = list(a=a,b=b),...),"NaNs produced")
+  return(output)
+}
+
+
+#' @export
+.EstMLEGrassiaIIBin<-function(x,freq,a,b)
 {
   #with respective to using bbmle package function mle2 there is no need impose any restrictions
   #therefor the output is directly a single numeric value for the negative log likelihood value of
@@ -1305,8 +1342,7 @@ EstMLEGrassiaIIBin<-function(x,freq,a,b)
 #' Obs.fre.1=c(47,54,43,40,40,41,39,95)          #assigning the corresponding frequencies
 #'
 #' #estimating the parameters using maximum log likelihood value and assigning it
-#' parameters=suppressWarnings(bbmle::mle2(EstMLEGrassiaIIBin,start = list(a=0.1,b=0.1),
-#' data = list(x=No.D.D,freq=Obs.fre.1)))
+#' parameters=EstMLEGrassiaIIBin(x=No.D.D,freq=Obs.fre.1,a=0.1,b=0.1)
 #'
 #' aGIIBin=bbmle::coef(parameters)[1]         #assigning the estimated a
 #' bGIIBin=bbmle::coef(parameters)[2]         #assigning the estimated b

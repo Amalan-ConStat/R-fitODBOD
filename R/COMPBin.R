@@ -335,12 +335,13 @@ NegLLCOMPBin<-function(x,freq,p,v)
 #' variables and corresponding frequencies are given.
 #'
 #' @usage
-#' EstMLECOMPBin(x,freq,p,v)
+#' EstMLECOMPBin(x,freq,p,v,...)
 #'
 #' @param x       vector of binomial random variables.
 #' @param freq    vector of frequencies.
 #' @param p       single value for probability of success.
 #' @param v       single value for v.
+#' @param ...     mle2 function inputs except data and estimating parameter.
 #'
 #' @details
 #' \deqn{x = 0,1,2,...}
@@ -352,7 +353,7 @@ NegLLCOMPBin<-function(x,freq,p,v)
 #' necessary error messages will be provided to go further.
 #'
 #' @return
-#' \code{EstMLECOMPBin} here is used as a input parameter for the \code{mle2} function of \pkg{bbmle} package
+#' \code{EstMLECOMPBin} here is used as a wrapper for the \code{mle2} function of \pkg{bbmle} package
 #' therefore output is of class of mle2.
 #'
 #' @references
@@ -367,13 +368,30 @@ NegLLCOMPBin<-function(x,freq,p,v)
 #' Obs.fre.1=c(47,54,43,40,40,41,39,95)     #assigning the corresponding frequencies
 #'
 #' #estimating the parameters using maximum log likelihood value and assigning it
-#' parameters=suppressWarnings(bbmle::mle2(EstMLECOMPBin,start = list(p=0.5,v=0.1),
-#'                        data = list(x=No.D.D,freq=Obs.fre.1)))
+#' parameters=EstMLECOMPBin(x=No.D.D,freq=Obs.fre.1,p=0.5,v=0.1)
 #'
 #' bbmle::coef(parameters)           #extracting the parameters
 #'
+#'@export
+EstMLECOMPBin<-function(x,freq,p,v,...)
+{
+  suppressWarnings2 <-function(expr, regex=character())
+  {
+    withCallingHandlers(expr, warning=function(w)
+    {
+      if (length(regex) == 1 && length(grep(regex, conditionMessage(w))))
+      {
+        invokeRestart("muffleWarning")
+      }
+    }                  )
+  }
+  output<-suppressWarnings2(bbmle::mle2(.EstMLECOMPBin,data=list(x=x,freq=freq),
+                                        start = list(p=p,v=v),...),"NaNs produced")
+  return(output)
+}
+
 #' @export
-EstMLECOMPBin<-function(x,freq,p,v)
+.EstMLECOMPBin<-function(x,freq,p,v)
 {
   #with respective to using bbmle package function mle2 there is no need impose any restrictions
   #therefor the output is directly a single numeric value for the negative log likelihood value of
@@ -458,8 +476,7 @@ EstMLECOMPBin<-function(x,freq,p,v)
 #' Obs.fre.1=c(47,54,43,40,40,41,39,95)      #assigning the corresponding frequencies
 #'
 #' #estimating the parameters using maximum log likelihood value and assigning it
-#' parameters=suppressWarnings(bbmle::mle2(EstMLECOMPBin,start = list(p=0.5,v=0.050),
-#'            data = list(x=No.D.D,freq=Obs.fre.1)))
+#' parameters=EstMLECOMPBin(x=No.D.D,freq=Obs.fre.1,p=0.5,v=0.050)
 #'
 #' pCOMPBin=bbmle::coef(parameters)[1]
 #' vCOMPBin=bbmle::coef(parameters)[2]

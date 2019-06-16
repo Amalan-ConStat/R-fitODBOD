@@ -423,13 +423,14 @@ NegLLCorrBin<-function(x,freq,p,cov)
 #' variables and corresponding frequencies are given.
 #'
 #' @usage
-#' EstMLECorrBin(x,freq,p,cov)
+#' EstMLECorrBin(x,freq,p,cov,...)
 #'
 #'
 #' @param x       vector of binomial random variables.
 #' @param freq    vector of frequencies.
 #' @param p       single value for probability of success.
 #' @param cov     single value for covariance.
+#' @param ...     mle2 function inputs except data and estimating parameter.
 #'
 #' @details
 #' \deqn{x = 0,1,2,...}
@@ -441,7 +442,7 @@ NegLLCorrBin<-function(x,freq,p,cov)
 #' necessary error messages will be provided to go further.
 #'
 #' @return
-#' \code{EstMLECorrBin} here is used as a input parameter for the \code{mle2} function of \pkg{bbmle} package
+#' \code{EstMLECorrBin} here is used as a wrapper for the \code{mle2} function of \pkg{bbmle} package
 #' therefore output is of class of mle2.
 #'
 #' @references
@@ -466,13 +467,31 @@ NegLLCorrBin<-function(x,freq,p,cov)
 #' Obs.fre.1=c(47,54,43,40,40,41,39,95)     #assigning the corresponding frequencies
 #'
 #' #estimating the parameters using maximum log likelihood value and assigning it
-#' parameters=suppressWarnings(bbmle::mle2(EstMLECorrBin,start = list(p=0.5,cov=0.0050),
-#'                        data = list(x=No.D.D,freq=Obs.fre.1)))
+#' parameters=EstMLECorrBin(x=No.D.D,freq=Obs.fre.1,p=0.5,cov=0.0050)
 #'
 #' bbmle::coef(parameters)           #extracting the parameters
 #'
+#'@export
+EstMLECorrBin<-function(x,freq,p,cov,...)
+{
+  suppressWarnings2 <-function(expr, regex=character())
+  {
+    withCallingHandlers(expr, warning=function(w)
+    {
+      if (length(regex) == 1 && length(grep(regex, conditionMessage(w))))
+      {
+        invokeRestart("muffleWarning")
+      }
+    }                  )
+  }
+  output<-suppressWarnings2(bbmle::mle2(.EstMLECorrBin,data=list(x=x,freq=freq),
+                                        start = list(p=p,cov=cov),...),"NaNs produced")
+  return(output)
+}
+
+
 #' @export
-EstMLECorrBin<-function(x,freq,p,cov)
+.EstMLECorrBin<-function(x,freq,p,cov)
 {
   #with respective to using bbmle package function mle2 there is no need impose any restrictions
   #therefor the output is directly a single numeric value for the negative log likelihood value of
@@ -566,8 +585,7 @@ EstMLECorrBin<-function(x,freq,p,cov)
 #' Obs.fre.1=c(47,54,43,40,40,41,39,95)      #assigning the corresponding frequencies
 #'
 #' #estimating the parameters using maximum log likelihood value and assigning it
-#' parameters=suppressWarnings(bbmle::mle2(EstMLECorrBin,start = list(p=0.5,cov=0.0050),
-#'            data = list(x=No.D.D,freq=Obs.fre.1)))
+#' parameters=EstMLECorrBin(x=No.D.D,freq=Obs.fre.1,p=0.5,cov=0.0050)
 #'
 #' pCorrBin=bbmle::coef(parameters)[1]
 #' covCorrBin=bbmle::coef(parameters)[2]

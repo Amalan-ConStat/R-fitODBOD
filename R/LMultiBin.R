@@ -352,12 +352,13 @@ NegLLLMBin<-function(x,freq,p,phi)
 #' variables and corresponding frequencies are given.
 #'
 #' @usage
-#' EstMLELMBin(x,freq,p,phi)
+#' EstMLELMBin(x,freq,p,phi,...)
 #'
 #' @param x                 vector of binomial random variables.
 #' @param freq              vector of frequencies.
 #' @param p                 single value for probability of success.
 #' @param phi               single value for phi parameter.
+#' @param ...               mle2 function inputs except data and estimating parameter.
 #'
 #' @details
 #' \deqn{freq \ge 0}
@@ -366,8 +367,8 @@ NegLLLMBin<-function(x,freq,p,phi)
 #' \deqn{0 < phi }
 #'
 #' @return
-#' \code{EstMLELMBin} here is used as a input parameter for the \code{mle2} function of \pkg{bbmle} package
-#' therefore output is of class of mle2.
+#' \code{EstMLELMBin} here is used as a wrapper for the \code{mle2} function of
+#' \pkg{bbmle} package therefore output is of class of mle2.
 #'
 #' @references
 #' Elamir, E.A., 2013. Multiplicative-Binomial Distribution: Some Results on
@@ -382,13 +383,30 @@ NegLLLMBin<-function(x,freq,p,phi)
 #' Obs.fre.1=c(47,54,43,40,40,41,39,95)    #assigning the corresponding frequencies
 #'
 #' #estimating the parameters using maximum log likelihood value and assigning it
-#' parameters=suppressWarnings(bbmle::mle2(EstMLELMBin,start = list(p=0.5,phi=15),
-#'            data = list(x=No.D.D,freq=Obs.fre.1)))
+#' parameters=EstMLELMBin(x=No.D.D,freq=Obs.fre.1,p=0.5,phi=15)
 #'
 #' bbmle::coef(parameters)           #extracting the parameters
 #'
 #' @export
-EstMLELMBin<-function(x,freq,p,phi)
+EstMLELMBin<-function(x,freq,p,phi,...)
+{
+  suppressWarnings2 <-function(expr, regex=character())
+  {
+    withCallingHandlers(expr, warning=function(w)
+    {
+      if (length(regex) == 1 && length(grep(regex, conditionMessage(w))))
+      {
+        invokeRestart("muffleWarning")
+      }
+    }                  )
+  }
+  output<-suppressWarnings2(bbmle::mle2(.EstMLELMBin,data=list(x=x,freq=freq),
+                                        start = list(p=p,phi=phi),...),"NaNs produced")
+  return(output)
+}
+
+#' @export
+.EstMLELMBin<-function(x,freq,p,phi)
 {
   #with respective to using bbmle package function mle2 there is no need impose any restrictions
   #therefor the output is directly a single numeric value for the negative log likelihood value of
@@ -471,8 +489,7 @@ EstMLELMBin<-function(x,freq,p,phi)
 #' Obs.fre.1=c(47,54,43,40,40,41,39,95)     #assigning the corresponding frequencies
 #'
 #' #estimating the parameters using maximum log likelihood value and assigning it
-#' parameters=suppressWarnings(bbmle::mle2(EstMLELMBin,start = list(p=0.1,phi=.3),
-#'           data = list(x=No.D.D,freq=Obs.fre.1)))
+#' parameters=EstMLELMBin(x=No.D.D,freq=Obs.fre.1,p=0.1,phi=.3)
 #'
 #' pLMBin=bbmle::coef(parameters)[1]    #assigning the estimated probability value
 #' phiLMBin=bbmle::coef(parameters)[2]  #assigning the estimated phi value

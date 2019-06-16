@@ -5,7 +5,7 @@
 \title{Estimating the probability of success and correlation for Correlated Binomial
 Distribution}
 \usage{
-EstMLECorrBin(x,freq,p,cov)
+EstMLECorrBin(x,freq,p,cov,...)
 }
 \arguments{
 \item{x}{vector of binomial random variables.}
@@ -15,9 +15,11 @@ EstMLECorrBin(x,freq,p,cov)
 \item{p}{single value for probability of success.}
 
 \item{cov}{single value for covariance.}
+
+\item{...}{mle2 function inputs except data and estimating parameter.}
 }
 \value{
-\code{EstMLECorrBin} here is used as a input parameter for the \code{mle2} function of \pkg{bbmle} package
+\code{EstMLECorrBin} here is used as a wrapper for the \code{mle2} function of \pkg{bbmle} package
 therefore output is of class of mle2.
 }
 \description{
@@ -39,8 +41,7 @@ No.D.D=0:7               #assigning the random variables
 Obs.fre.1=c(47,54,43,40,40,41,39,95)     #assigning the corresponding frequencies
 
 #estimating the parameters using maximum log likelihood value and assigning it
-parameters=suppressWarnings(bbmle::mle2(EstMLECorrBin,start = list(p=0.5,cov=0.0050),
-                       data = list(x=No.D.D,freq=Obs.fre.1)))
+parameters=EstMLECorrBin(x=No.D.D,freq=Obs.fre.1,p=0.5,cov=0.0050)
 
 bbmle::coef(parameters)           #extracting the parameters
 

@@ -15,9 +15,9 @@ License: GPL-2
 LazyData: TRUE
 RoxygenNote: 6.1.1
 Imports: hypergeo,
-    stats
-Suggests: testthat, 
-      bbmle,
+    stats,
+    bbmle
+Suggests: testthat,
       devtools,
       covr
 Encoding: UTF-8

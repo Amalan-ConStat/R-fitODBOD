@@ -5,7 +5,7 @@
 \title{Estimating the covariance, alpha and beta parameter values for Beta-Correlated Binomial
 Distribution}
 \usage{
-EstMLEBetaCorrBin(x,freq,cov,a,b)
+EstMLEBetaCorrBin(x,freq,cov,a,b,...)
 }
 \arguments{
 \item{x}{vector of binomial random variables.}
@@ -17,9 +17,11 @@ EstMLEBetaCorrBin(x,freq,cov,a,b)
 \item{a}{single value for alpha parameter.}
 
 \item{b}{single value for beta parameter.}
+
+\item{...}{mle2 function inputs except data and estimating parameter.}
 }
 \value{
-\code{EstMLEBetaCorrBin} here is used as a input parameter for the \code{mle2} function of \pkg{bbmle} package
+\code{EstMLEBetaCorrBin} here is used as a wrapper for the \code{mle2} function of \pkg{bbmle} package
 therefore output is of class of mle2.
 }
 \description{
@@ -41,8 +43,7 @@ No.D.D=0:7               #assigning the random variables
 Obs.fre.1=c(47,54,43,40,40,41,39,95)     #assigning the corresponding frequencies
 
 #estimating the parameters using maximum log likelihood value and assigning it
-parameters=suppressWarnings(bbmle::mle2(EstMLEBetaCorrBin,start = list(cov=0.0050,a=10,b=10),
-                       data = list(x=No.D.D,freq=Obs.fre.1)))
+parameters=EstMLEBetaCorrBin(x=No.D.D,freq=Obs.fre.1,cov=0.0050,a=10,b=10)
 
 bbmle::coef(parameters)           #extracting the parameters
 

@@ -450,7 +450,7 @@ NegLLBetaCorrBin<-function(x,freq,cov,a,b)
 #' variables and corresponding frequencies are given.
 #'
 #' @usage
-#' EstMLEBetaCorrBin(x,freq,cov,a,b)
+#' EstMLEBetaCorrBin(x,freq,cov,a,b,...)
 #'
 #'
 #' @param x       vector of binomial random variables.
@@ -458,6 +458,7 @@ NegLLBetaCorrBin<-function(x,freq,cov,a,b)
 #' @param cov     single value for covariance.
 #' @param a       single value for alpha parameter.
 #' @param b       single value for beta parameter.
+#' @param ...     mle2 function inputs except data and estimating parameter.
 #'
 #' @details
 #' \deqn{x = 0,1,2,...}
@@ -469,7 +470,7 @@ NegLLBetaCorrBin<-function(x,freq,cov,a,b)
 #' necessary error messages will be provided to go further.
 #'
 #' @return
-#' \code{EstMLEBetaCorrBin} here is used as a input parameter for the \code{mle2} function of \pkg{bbmle} package
+#' \code{EstMLEBetaCorrBin} here is used as a wrapper for the \code{mle2} function of \pkg{bbmle} package
 #' therefore output is of class of mle2.
 #'
 #' @references
@@ -486,13 +487,30 @@ NegLLBetaCorrBin<-function(x,freq,cov,a,b)
 #' Obs.fre.1=c(47,54,43,40,40,41,39,95)     #assigning the corresponding frequencies
 #'
 #' #estimating the parameters using maximum log likelihood value and assigning it
-#' parameters=suppressWarnings(bbmle::mle2(EstMLEBetaCorrBin,start = list(cov=0.0050,a=10,b=10),
-#'                        data = list(x=No.D.D,freq=Obs.fre.1)))
+#' parameters=EstMLEBetaCorrBin(x=No.D.D,freq=Obs.fre.1,cov=0.0050,a=10,b=10)
 #'
 #' bbmle::coef(parameters)           #extracting the parameters
 #'
+#'@export
+EstMLEBetaCorrBin<-function(x,freq,cov,a,b,...)
+{
+  suppressWarnings2 <-function(expr, regex=character())
+  {
+    withCallingHandlers(expr, warning=function(w)
+    {
+      if (length(regex) == 1 && length(grep(regex, conditionMessage(w))))
+      {
+        invokeRestart("muffleWarning")
+      }
+    }                  )
+  }
+  output<-suppressWarnings2(bbmle::mle2(.EstMLEBetaCorrBin,data=list(x=x,freq=freq),
+                                        start = list(a=a,b=b,cov=cov),...),"NaNs produced")
+  return(output)
+}
+
 #' @export
-EstMLEBetaCorrBin<-function(x,freq,cov,a,b)
+.EstMLEBetaCorrBin<-function(x,freq,cov,a,b)
 {
   #with respective to using bbmle package function mle2 there is no need impose any restrictions
   #therefor the output is directly a single numeric value for the negative log likelihood value of
@@ -594,8 +612,7 @@ EstMLEBetaCorrBin<-function(x,freq,cov,a,b)
 #' Obs.fre.1=c(47,54,43,40,40,41,39,95)      #assigning the corresponding frequencies
 #'
 #' #estimating the parameters using maximum log likelihood value and assigning it
-#' parameters=suppressWarnings(bbmle::mle2(EstMLEBetaCorrBin,start = list(cov=0.0050,a=10,b=10),
-#'            data = list(x=No.D.D,freq=Obs.fre.1)))
+#' parameters=EstMLEBetaCorrBin(x=No.D.D,freq=Obs.fre.1,cov=0.0050,a=10,b=10)
 #'
 #' covBetaCorrBin=bbmle::coef(parameters)[1]
 #' aBetaCorrBin=bbmle::coef(parameters)[2]

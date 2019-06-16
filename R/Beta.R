@@ -714,13 +714,14 @@ NegLLBetaBin<-function(x,freq,a,b)
 #' random variables and corresponding frequencies are given.
 #'
 #' @usage
-#' EstMLEBetaBin(x,freq,a,b)
+#' EstMLEBetaBin(x,freq,a,b,...)
 #'
 #'
-#' @param x                  vector of binomial random variables.
-#' @param freq               vector of frequencies.
-#' @param a                  single value for shape parameter alpha representing as a.
-#' @param b                  single value for shape parameter beta representing as b.
+#' @param x             vector of binomial random variables.
+#' @param freq          vector of frequencies.
+#' @param a             single value for shape parameter alpha representing as a.
+#' @param b             single value for shape parameter beta representing as b.
+#' @param ...           mle2 function inputs except data and estimating parameter.
 #'
 #'
 #' @details
@@ -732,7 +733,7 @@ NegLLBetaBin<-function(x,freq,a,b)
 #'  messages will be provided to go further.
 #'
 #' @return
-#' \code{EstMLEBetaBin} here is used as a input parameter for the \code{mle2} function of \pkg{bbmle} package
+#' \code{EstMLEBetaBin} here is used as a wrapper for the \code{mle2} function of \pkg{bbmle} package
 #' therefore output is of class of mle2.
 #'
 #' @references
@@ -758,16 +759,32 @@ NegLLBetaBin<-function(x,freq,a,b)
 #' Obs.fre.1=c(47,54,43,40,40,41,39,95)   #assigning the corresponding frequencies
 #'
 #' #estimating the parameters using maximum log likelihood value and assigning it
-#' parameters=suppressWarnings(bbmle::mle2(EstMLEBetaBin,start = list(a=0.1,b=0.1),
-#' data = list(x=No.D.D,freq=Obs.fre.1)))
+#' estimate=EstMLEBetaBin(No.D.D,Obs.fre.1,a=0.1,b=0.1)
 #'
-#' bbmle::coef(parameters)   #extracting the parameters
+#' bbmle::coef(estimate)   #extracting the parameters
 #'
 #' #estimating the parameters using moment generating function methods
 #' EstMGFBetaBin(No.D.D,Obs.fre.1)
 #'
+#'@export
+EstMLEBetaBin<-function(x,freq,a,b,...)
+{
+  suppressWarnings2 <-function(expr, regex=character())
+  {
+    withCallingHandlers(expr, warning=function(w)
+    {
+      if (length(regex) == 1 && length(grep(regex, conditionMessage(w))))
+      {
+        invokeRestart("muffleWarning")
+      }
+    }                  )
+  }
+  suppressWarnings2(bbmle::mle2(.EstMLEBetaBin,data=list(x=x,freq=freq),
+                      start = list(a=a,b=b),...),"NaNs produced")
+}
+
 #' @export
-EstMLEBetaBin<-function(x,freq,a,b)
+.EstMLEBetaBin<-function(x,freq,a,b)
 {
   #with respective to using bbmle package function mle2 there is no need impose any restrictions
   #therefor the output is directly a single numeric value for the negative log likelihood value of
@@ -840,10 +857,9 @@ EstMLEBetaBin<-function(x,freq,a,b)
 #' Obs.fre.1=c(47,54,43,40,40,41,39,95)   #assigning the corresponding frequencies
 #'
 #' #estimating the parameters using maximum log likelihood value and assigning it
-#' parameters=suppressWarnings(bbmle::mle2(EstMLEBetaBin,start = list(a=0.1,b=0.1),
-#' data = list(x=No.D.D,freq=Obs.fre.1)))
+#' estimate=EstMLEBetaBin(No.D.D,Obs.fre.1,a=0.1,b=0.1)
 #'
-#' bbmle::coef(parameters)   #extracting the parameters
+#' bbmle::coef(estimate)   #extracting the parameters
 #'
 #' #estimating the parameters using moment generating function methods
 #' results<-EstMGFBetaBin(No.D.D,Obs.fre.1)
@@ -1006,8 +1022,7 @@ AIC.mgf<-function(object,...)
 #' Obs.fre.1=c(47,54,43,40,40,41,39,95)  #assigning the corresponding frequencies
 #'
 #' #estimating the parameters using maximum log likelihood value and assigning it
-#' parameters=suppressWarnings(bbmle::mle2(EstMLEBetaBin,start = list(a=0.1,b=0.1),
-#' data = list(x=No.D.D,freq=Obs.fre.1)))
+#' parameters=EstMLEBetaBin(No.D.D,Obs.fre.1,0.1,0.1)
 #'
 #' bbmle::coef(parameters)   #extracting the parameters a and b
 #' aBetaBin=bbmle::coef(parameters)[1]  #assigning the parameter a
@@ -1125,8 +1140,3 @@ summary.fitBB<-function(object,...)
       Negative Loglikehood value :",object$NegLL,"\n\t
       AIC value :",object$AIC,"\n")
 }
-
-
-#' @importFrom bbmle mle2
-#' @importFrom stats integrate
-#' @importFrom stats pchisq
