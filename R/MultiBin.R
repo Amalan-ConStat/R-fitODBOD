@@ -361,12 +361,13 @@ NegLLMultiBin<-function(x,freq,p,theta)
 #' variables and corresponding frequencies are given.
 #'
 #' @usage
-#' EstMLEMultiBin(x,freq,p,theta)
+#' EstMLEMultiBin(x,freq,p,theta,...)
 #'
 #' @param x                 vector of binomial random variables.
 #' @param freq              vector of frequencies.
 #' @param p                 single value for probability of success.
 #' @param theta             single value for theta parameter.
+#' @param ...               mle2 function inputs except data and estimating parameter.
 #'
 #' @details
 #' \deqn{freq \ge 0}
@@ -375,8 +376,8 @@ NegLLMultiBin<-function(x,freq,p,theta)
 #' \deqn{0 < theta }
 #'
 #' @return
-#' \code{EstMLEMultiBin} here is used as a input parameter for the \code{mle2} function of \pkg{bbmle} package
-#' therefore output is of class of mle2.
+#' \code{EstMLEMultiBin} here is used as a wrapper for the \code{mle2} function of
+#' \pkg{bbmle} package therefore output is of class of mle2.
 #'
 #' @references
 #' Johnson, N. L., Kemp, A. W., & Kotz, S. (2005). Univariate discrete distributions (Vol. 444).
@@ -398,13 +399,31 @@ NegLLMultiBin<-function(x,freq,p,theta)
 #' Obs.fre.1=c(47,54,43,40,40,41,39,95)    #assigning the corresponding frequencies
 #'
 #' #estimating the parameters using maximum log likelihood value and assigning it
-#' parameters=suppressWarnings(bbmle::mle2(EstMLEMultiBin,start = list(p=0.5,theta=15),
-#'            data = list(x=No.D.D,freq=Obs.fre.1)))
+#' parameters=EstMLEMultiBin(x=No.D.D,freq=Obs.fre.1,p=0.5,theta=15)
 #'
 #' bbmle::coef(parameters)           #extracting the parameters
 #'
 #' @export
-EstMLEMultiBin<-function(x,freq,p,theta)
+EstMLEMultiBin<-function(x,freq,p,theta,...)
+{
+  suppressWarnings2 <-function(expr, regex=character())
+  {
+    withCallingHandlers(expr, warning=function(w)
+    {
+      if (length(regex) == 1 && length(grep(regex, conditionMessage(w))))
+      {
+        invokeRestart("muffleWarning")
+      }
+    }                  )
+  }
+  output<-suppressWarnings2(bbmle::mle2(.EstMLEMultiBin,data=list(x=x,freq=freq),
+                                        start = list(p=p,theta=theta),...),"NaNs produced")
+  return(output)
+}
+
+
+#' @export
+.EstMLEMultiBin<-function(x,freq,p,theta)
 {
   #with respective to using bbmle package function mle2 there is no need impose any restrictions
   #therefor the output is directly a single numeric value for the negative log likelihood value of
@@ -494,8 +513,7 @@ EstMLEMultiBin<-function(x,freq,p,theta)
 #' Obs.fre.1=c(47,54,43,40,40,41,39,95)     #assigning the corresponding frequencies
 #'
 #' #estimating the parameters using maximum log likelihood value and assigning it
-#' parameters=suppressWarnings(bbmle::mle2(EstMLEMultiBin,start = list(p=0.1,theta=.3),
-#'           data = list(x=No.D.D,freq=Obs.fre.1)))
+#' parameters=EstMLEMultiBin(x=No.D.D,freq=Obs.fre.1,p=0.1,theta=.3)
 #'
 #' pMultiBin=bbmle::coef(parameters)[1]    #assigning the estimated probability value
 #' thetaMultiBin=bbmle::coef(parameters)[2]  #assigning the estimated theta value

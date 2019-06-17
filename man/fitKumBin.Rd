@@ -74,8 +74,7 @@ Obs.fre.1=c(47,54,43,40,40,41,39,95)   #assigning the corresponding frequencies
 
 #estimating the parameters using maximum log likelihood value and assigning it
 \dontrun{
-parameters=suppressWarnings(bbmle::mle2(EstMLEKumBin,start = list(a=10.1,b=1.1,it=10000),
-          data = list(x=No.D.D,freq=Obs.fre.1)))
+parameters=EstMLEKumBin(x=No.D.D,freq=Obs.fre.1,a=10.1,b=1.1,it=10000)
 
 bbmle::coef(parameters)    #extracting the parameters
 aKumBin=bbmle::coef(parameters)[1] #assigning the estimated a

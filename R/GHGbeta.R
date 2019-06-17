@@ -1074,7 +1074,8 @@ print.fitGB<-function(x,...)
   cat("\nChi-squared test for Gaussian Hypergeometric Generalized Beta-Binomial Distribution \n\t
       Observed Frequency : ",x$obs.freq,"\n\t
       expected Frequency : ",x$exp.freq,"\n\t
-      estimated a parameter :",x$a, "  ,estimated b parameter :",x$b,"\n\t, estimated c parameter :",x$c,"\n\t
+      estimated a parameter :",x$a, "  ,estimated b parameter :",x$b,",\n\t
+      estimated c parameter :",x$c,"\n\t
       X-squared :",x$statistic,"  ,df :",x$df,"  ,p-value :",x$p.value,"\n\t
       over dispersion :",x$over.dis.para,"\n")
 }
@@ -1088,7 +1089,8 @@ summary.fitGB<-function(object,...)
   cat("\nChi-squared test for Gaussian Hypergeometric Generalized Beta-Binomial Distribution \n\t
       Observed Frequency : ",object$obs.freq,"\n\t
       expected Frequency : ",object$exp.freq,"\n\t
-      estimated a parameter :",object$a," ,estimated b parameter :",object$b,"\n\t, estimated c value :",object$it,"\n\t
+      estimated a parameter :",object$a," ,estimated b parameter :",object$b,",\n\t
+      estimated c parameter :",object$c,"\n\t
       X-squared :",object$statistic,"  ,df :",object$df,"  ,p-value :",object$p.value,"\n\t
       over dispersion :",object$over.dis.para,"\n\t
       Negative Loglikehood value :",object$NegLL,"\n\t

@@ -762,7 +762,7 @@ NegLLKumBin<-function(x,freq,a,b,it=25000)
 #' corresponding frequencies are given
 #'
 #' @usage
-#' EstMLEKumBin(x,freq,a,b,it)
+#' EstMLEKumBin(x,freq,a,b,it,...)
 #'
 #'
 #' @param x                 vector of binomial random variables.
@@ -771,6 +771,7 @@ NegLLKumBin<-function(x,freq,a,b,it=25000)
 #' @param b                 single value for shape parameter beta representing as b.
 #' @param it                number of iterations to converge as a proper probability function
 #'                          replacing infinity.
+#' @param ...               mle2 function inputs except data and estimating parameter.
 #'
 #' @details
 #' \deqn{0 < a,b}
@@ -782,7 +783,7 @@ NegLLKumBin<-function(x,freq,a,b,it=25000)
 #' error messages will be provided to go further.
 #'
 #' @return
-#' \code{EstMLEKumBin} here is used as a input parameter for the \code{mle2} function of
+#' \code{EstMLEKumBin} here is used as a wrapper for the \code{mle2} function of
 #' \pkg{bbmle} package therefore output is of class of mle2.
 #'
 #' @references
@@ -798,14 +799,30 @@ NegLLKumBin<-function(x,freq,a,b,it=25000)
 #'
 #' #estimating the parameters using maximum log likelihood value and assigning it
 #' \dontrun{
-#' parameters1=suppressWarnings(bbmle::mle2(EstMLEKumBin,start = list(a=10.1,b=1.1,it=10000),
-#' data = list(x=No.D.D,freq=Obs.fre.1)))
+#' parameters1=EstMLEKumBin(x=No.D.D,freq=Obs.fre.1,a=10.1,b=1.1,it=10000)
 #'
 #' bbmle::coef(parameters1)   #extracting the parameters
 #'         }
-#'
 #' @export
-EstMLEKumBin<-function(x,freq,a,b,it)
+EstMLEKumBin<-function(x,freq,a,b,it,...)
+{
+  suppressWarnings2 <-function(expr, regex=character())
+  {
+    withCallingHandlers(expr, warning=function(w)
+    {
+      if (length(regex) == 1 && length(grep(regex, conditionMessage(w))))
+      {
+        invokeRestart("muffleWarning")
+      }
+    }                  )
+  }
+  output<-suppressWarnings2(bbmle::mle2(.EstMLEKumBin,data=list(x=x,freq=freq),
+                                        start = list(a=a,b=b,it=it),...),"NaNs produced")
+  return(output)
+}
+
+#' @export
+.EstMLEKumBin<-function(x,freq,a,b,it)
 {
   #with respective to using bbmle package function mle2 there is no need impose any restrictions
   #therefor the output is directly a single numeric value for the negative log likelihood value of
@@ -898,8 +915,7 @@ EstMLEKumBin<-function(x,freq,a,b,it)
 #'
 #' #estimating the parameters using maximum log likelihood value and assigning it
 #' \dontrun{
-#' parameters=suppressWarnings(bbmle::mle2(EstMLEKumBin,start = list(a=10.1,b=1.1,it=10000),
-#'           data = list(x=No.D.D,freq=Obs.fre.1)))
+#' parameters=EstMLEKumBin(x=No.D.D,freq=Obs.fre.1,a=10.1,b=1.1,it=10000)
 #'
 #' bbmle::coef(parameters)    #extracting the parameters
 #' aKumBin=bbmle::coef(parameters)[1] #assigning the estimated a
@@ -990,7 +1006,8 @@ print.fitKB<-function(x,...)
   cat("\nChi-squared test for Kumaraswamy Binomial Distribution \n\t
       Observed Frequency : ",x$obs.freq,"\n\t
       expected Frequency : ",x$exp.freq,"\n\t
-      estimated a parameter :",x$a, "  ,estimated b parameter :",x$b," ,estimated it value :",x$it,"\n\t
+      estimated a parameter :",x$a, "  ,estimated b parameter :",x$b,",\n\t
+      estimated it value :",x$it,"\n\t
       X-squared :",x$statistic,"  ,df :",x$df,"  ,p-value :",x$p.value,"\n\t
       over dispersion :",x$over.dis.para,"\n")
 }
@@ -1004,7 +1021,8 @@ summary.fitKB<-function(object,...)
   cat("\nChi-squared test for Kumaraswamy Binomial Distribution \n\t
       Observed Frequency : ",object$obs.freq,"\n\t
       expected Frequency : ",object$exp.freq,"\n\t
-      estimated a parameter :",object$a,"  ,estimated b parameter :",object$b," ,estimated it value :",object$it,"\n\t
+      estimated a parameter :",object$a,"  ,estimated b parameter :",object$b,",\n\t
+      estimated it value :",object$it,"\n\t
       X-squared :",object$statistic,"  ,df :",object$df,"  ,p-value :",object$p.value,"\n\t
       over dispersion :",object$over.dis.para,"\n\t
       Negative Loglikehood value :",object$NegLL,"\n\t

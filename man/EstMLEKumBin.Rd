@@ -4,7 +4,7 @@
 \alias{EstMLEKumBin}
 \title{Estimating the shape parameters a and b and iterations for  Kumaraswamy Binomial Distribution}
 \usage{
-EstMLEKumBin(x,freq,a,b,it)
+EstMLEKumBin(x,freq,a,b,it,...)
 }
 \arguments{
 \item{x}{vector of binomial random variables.}
@@ -17,9 +17,11 @@ EstMLEKumBin(x,freq,a,b,it)
 
 \item{it}{number of iterations to converge as a proper probability function
 replacing infinity.}
+
+\item{...}{mle2 function inputs except data and estimating parameter.}
 }
 \value{
-\code{EstMLEKumBin} here is used as a input parameter for the \code{mle2} function of
+\code{EstMLEKumBin} here is used as a wrapper for the \code{mle2} function of
 \pkg{bbmle} package therefore output is of class of mle2.
 }
 \description{
@@ -42,12 +44,10 @@ Obs.fre.1=c(47,54,43,40,40,41,39,95)  #assigning the corresponding frequencies
 
 #estimating the parameters using maximum log likelihood value and assigning it
 \dontrun{
-parameters1=suppressWarnings(bbmle::mle2(EstMLEKumBin,start = list(a=10.1,b=1.1,it=10000),
-data = list(x=No.D.D,freq=Obs.fre.1)))
+parameters1=EstMLEKumBin(x=No.D.D,freq=Obs.fre.1,a=10.1,b=1.1,it=10000)
 
 bbmle::coef(parameters1)   #extracting the parameters
         }
-
 }
 \references{
 Li, X. H., Huang, Y. Y., & Zhao, X. Y. (2011). The Kumaraswamy Binomial Distribution. Chinese Journal
