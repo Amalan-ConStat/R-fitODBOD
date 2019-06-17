@@ -15,19 +15,19 @@ test_that("NAN values are avoided",{
 context("Chi-squared issues")
 test_that("Chi-squared approximation issues",{
           expect_that(fitGrassiaIIBin(0:4,c(12,15,11,5,10),0.16,0.013),
-          gives_warning("Chi-squared approximation is not suitable because expected frequency approximates to zero"))
+          shows_message("Chi-squared approximation is not suitable because expected frequency approximates to zero"))
           })
 test_that("Chi-squared approximation issues",{
           expect_that(fitGrassiaIIBin(0:6,c(2,5,4,40,40,4,3),0.1,3),
-          gives_warning("Chi-squared approximation may be doubtful because expected frequency is less than 5"))
+          shows_message("Chi-squared approximation may be doubtful because expected frequency is less than 5"))
           })
 
 context("Degree of Freedom")
 test_that("Degree of freedom less than zero",{
           expect_that(fitGrassiaIIBin(c(0,1,2),c(8,9,13),3.03,1.6),
-          gives_warning("Degrees of freedom cannot be less than or equal to zero"))
+          throws_error("Degrees of freedom cannot be less than or equal to zero"))
           })
 test_that("Degree of freedom equal to zero",{
           expect_that(fitGrassiaIIBin(c(0,1,2),c(10,11,12),6.1,6.03),
-          gives_warning("Degrees of freedom cannot be less than or equal to zero"))
+          throws_error("Degrees of freedom cannot be less than or equal to zero"))
           })
