@@ -24,7 +24,7 @@ test_that("Chi-squared approximation issues",{
 
 context("Degree of Freedom")
 test_that("Degree of freedom less than zero",{
-          expect_that(fitKumBin(c(1,2),c(17,11),5.1,1.3,10000),
+          expect_that(fitKumBin(c(0,1,2),c(11,12,12),12.1,11.3,10000),
           throws_error("Degrees of freedom cannot be less than or equal to zero"))
           })
 test_that("Degree of freedom equal to zero",{

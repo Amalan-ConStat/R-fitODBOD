@@ -24,7 +24,7 @@ test_that("Chi-squared approximation issues",{
 
 context("Degree of Freedom")
 test_that("Degree of freedom less than zero",{
-        expect_that(fitBetaCorrBin(1,2,0.003,0.1,0.03),
+        expect_that(fitBetaCorrBin(c(0,1,2,3),c(10,11,12,34),0.003,0.41,0.23),
         throws_error("Degrees of freedom cannot be less than or equal to zero"))
         })
 test_that("Degree of freedom equal to zero",{

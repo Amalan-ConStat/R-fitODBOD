@@ -24,7 +24,7 @@ test_that("Chi-squared approximation issues",{
 
 context("Degree of Freedom")
 test_that("Degree of freedom less than zero",{
-          expect_that(fitMcGBB(1,2,0.1,0.03,6),
+          expect_that(fitMcGBB(c(0,1,2,3),c(10,11,12,12),0.1,0.3,15),
           throws_error("Degrees of freedom cannot be less than or equal to zero"))
           })
 test_that("Degree of freedom equal to zero",{

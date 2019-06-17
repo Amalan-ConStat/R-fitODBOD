@@ -14,13 +14,13 @@ test_that("NAN values are avoided",{
 
 context("Chi-squared issues")
 test_that("Chi-squared approximation issues",{
-        expect_that(fitBin(0:7,c(47,54,43,40,40,41,39,95),0.003),
+        expect_that(fitBin(1:7,c(147,94,83,40,18,5,1)),
         shows_message("Chi-squared approximation is not suitable because expected frequency approximates to zero"))
         })
 
 context("Degree of Freedom")
 test_that("Degree of freedom less than zero",{
-        expect_that(fitBin(1,2),
+        expect_that(fitBin(c(1,2),c(10,12)),
         throws_error("Degrees of freedom cannot be less than or equal to zero"))
         })
 test_that("Degree of freedom equal to zero",{

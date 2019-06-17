@@ -14,4 +14,3 @@
 ^pkgdown$
 ^appveyor\.yml$
 ^JOSSpaper$
-^vignettes$
