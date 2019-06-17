@@ -33,3 +33,12 @@
 - added vignettes to the website. 
 - updated codecov, appveyor and travis.
 - Description file updated with package website.
+
+# Version 1.4.1
+
+## submitted on 
+
+- Updated EstMLExxx functions as wrappers of bbmle::mle2 function.
+- Changed the fitxxxBin warnings to errors and messages.
+- Examples no longer have inconsistencies in = and <-. 
+- Article under review in JOSS.
