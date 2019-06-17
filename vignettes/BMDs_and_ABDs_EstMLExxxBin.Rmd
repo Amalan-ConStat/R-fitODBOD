@@ -57,7 +57,7 @@ and `ml`, where the outputs can be extracted by the methods `print`, `summary`, 
 
 ```{r printing estimated parameters for Additive Binomial Distribution,echo=FALSE}
 # estimating parameter for p and alpha using Additive Binomial Distribution
-Est_para<-suppressWarnings(EstMLEAddBin(Chromosome_data$No.of.Asso,Chromosome_data$fre))
+Est_para<-EstMLEAddBin(Chromosome_data$No.of.Asso,Chromosome_data$fre)
 cat("Estimated parameter p for Chromosome data=",Est_para$p, "\n")
 cat("Estimated parameter alpha for Chromosome data=",Est_para$alpha,"\n")
 ```
@@ -70,7 +70,7 @@ where the outputs can be extracted by the methods `print`, `summary`, `coef` and
       
 ```{r printing estimated parameter for Triangular Binomial Distribution,echo=FALSE}      
 # estimating parameter for mode using Triangular Binomial Distribution of Chromosome data
-Est_para<-suppressWarnings(EstMLETriBin(Chromosome_data$No.of.Asso,Chromosome_data$fre))
+Est_para<-EstMLETriBin(Chromosome_data$No.of.Asso,Chromosome_data$fre)
 cat("Estimated parameter mode or c for Chromosome data=",Est_para$mode, "\n")
 ```      
 
@@ -106,9 +106,8 @@ cov is a unique value but alpha and beta can take specific combinations.
 
 ```{r printing estimated parameters for Beta-Correlated Binomial Distribution, echo=FALSE}
 #estimating parameters for Beta-Correlated Binomial Distribution of Chromosome data
-Est_para<-suppressWarnings(mle2(EstMLEBetaCorrBin,
-                           data=list(x=Chromosome_data$No.of.Asso,freq=Chromosome_data$fre),
-                           start=list(cov=0.05,a=10,b=10)))
+Est_para<-EstMLEBetaCorrBin(x=Chromosome_data$No.of.Asso,freq=Chromosome_data$fre,
+                            cov=0.05,a=10,b=10)
 cat("Estimated parameter covariance for Chromosome data=",coef(Est_para)[1],"\n")
 cat("Estimated parameter a for Chromosome data=",coef(Est_para)[2], "\n")
 cat("Estimated parameter b for Chromosome data=",coef(Est_para)[3], "\n")
@@ -123,9 +122,8 @@ Two parameters that needs to be estimated which are cov and p. They are unique v
 
 ```{r printing estimated parameters for Correlated Binomial Distribution,echo=FALSE}
 #estimating parameters for Correlated Binomial Distribution of Chromosome data
-Est_para<-suppressWarnings(mle2(EstMLECorrBin,
-                           data=list(x=Chromosome_data$No.of.Asso,freq=Chromosome_data$fre),
-                           start=list(cov=0.0005,p=0.51)))
+Est_para<-EstMLECorrBin(x=Chromosome_data$No.of.Asso,freq=Chromosome_data$fre,
+                        cov=0.0005,p=0.51)
 cat("Estimated parameter p for Chromosome data=",coef(Est_para)[1],"\n")
 cat("Estimated parameter covariance for Chromosome data=",coef(Est_para)[2], "\n")
 ```
@@ -139,9 +137,8 @@ Two parameters that needs to be estimated which are p and cov. They are unique v
 
 ```{r printing estimated parameters for COM Poisson Binomial Distribution,echo=FALSE}
 #estimating parameters for COM Poisson Binomial Distribution of Chromosome data
-Est_para<-suppressWarnings(mle2(EstMLECOMPBin,
-                           data=list(x=Chromosome_data$No.of.Asso,freq=Chromosome_data$fre),
-                           start=list(v=0.0005,p=0.51)))
+Est_para<-EstMLECOMPBin(x=Chromosome_data$No.of.Asso,freq=Chromosome_data$fre,
+                        v=0.0005,p=0.51)
 cat("Estimated parameter p for Chromosome data=",coef(Est_para)[1],"\n")
 cat("Estimated parameter covariance for Chromosome data=",coef(Est_para)[2], "\n")
 ```
@@ -155,9 +152,8 @@ Two parameters that needs to be estimated which are p and theta. Only p value is
 
 ```{r printing estimated parameters for Multiplicative Binomial Distribution,echo=FALSE}
 #estimating parameters for Multiplicative Binomial Distribution of Chromosome data
-Est_para<-suppressWarnings(mle2(EstMLEMultiBin,
-                           data=list(x=Chromosome_data$No.of.Asso,freq=Chromosome_data$fre),
-                           start=list(theta=15,p=0.51)))
+Est_para<-EstMLEMultiBin(x=Chromosome_data$No.of.Asso,freq=Chromosome_data$fre,
+                         theta=15,p=0.51)
 cat("Estimated parameter p for Chromosome data=",coef(Est_para)[1],"\n")
 cat("Estimated parameter theta for Chromosome data=",coef(Est_para)[2], "\n")
 ```
@@ -171,9 +167,8 @@ Two parameters that needs to be estimated which are p and phi. Only p value is u
 
 ```{r printing estimated parameters for Lovinson Multiplicative Binomial Distribution,echo=FALSE}
 #estimating parameters for Lovinson Multiplicative Binomial Distribution of Chromosome data
-Est_para<-suppressWarnings(mle2(EstMLELMBin,
-                                data=list(x=Chromosome_data$No.of.Asso,freq=Chromosome_data$fre),
-                                start=list(phi=15,p=0.51)))
+Est_para<-EstMLELMBin(x=Chromosome_data$No.of.Asso,freq=Chromosome_data$fre,
+                      phi=15,p=0.51)
 cat("Estimated parameter p for Chromosome data=",coef(Est_para)[1],"\n")
 cat("Estimated parameter phi for Chromosome data=",coef(Est_para)[2], "\n")
 ```
@@ -188,9 +183,8 @@ Two parameters to be estimated which are a and b. Together they have to represen
 
 ```{r printing estimated parameters for Beta-Binomial Distribution,echo=FALSE}
 #estimating parameters for Beta-Binomial Distribution of Chromosome data
-Est_para<-suppressWarnings(mle2(EstMLEBetaBin,
-                           data=list(x=Chromosome_data$No.of.Asso,freq=Chromosome_data$fre),
-                           start=list(a=15,b=0.51)))
+Est_para<-EstMLEBetaBin(x=Chromosome_data$No.of.Asso,freq=Chromosome_data$fre,
+                        a=15,b=0.51)
 cat("Estimated parameter a for Chromosome data=",coef(Est_para)[1],"\n")
 cat("Estimated parameter b for Chromosome data=",coef(Est_para)[2], "\n")
 ```
@@ -205,11 +199,10 @@ Two parameters to be estimated which are a and b. Together they have to represen
 Here the number of iterations has to be estimated as well, which is time consuming. 
 therefore I haven't estimated it. 
 
-```{r printing estimated parameters for Kumaraswamy Binomial Distribution, echo=FALSE}
+```{r printing estimated parameters for Kumaraswamy Binomial Distribution, echo=FALSE,eval=FALSE}
 #estimating parameters for Kumaraswamy Binomial Distribution of Chromosome data
-Est_para<-suppressWarnings(mle2(EstMLEKumBin,
-                           data=list(x=Chromosome_data$No.of.Asso,freq=Chromosome_data$fre),
-                           start=list(a=15,b=10,it=5000)))
+Est_para<-EstMLEKumBin(x=Chromosome_data$No.of.Asso,freq=Chromosome_data$fre,
+                       a=15,b=10,it=7500)
 cat("Estimated parameter a for Chromosome data=",coef(Est_para)[1],"\n")
 cat("Estimated parameter b for Chromosome data=",coef(Est_para)[2], "\n")
 cat("Estimated parameter iteration for Chromosome data=",coef(Est_para)[3], "\n")
@@ -223,9 +216,8 @@ Three parameters to be estimated which are a,b and c. They have to represent a u
 
 ```{r printing estimated parameters for GHGBB Distribution, echo=FALSE}
 #estimating parameters for GHGBB Distribution of Chromosome data
-Est_para<-suppressWarnings(mle2(EstMLEGHGBB,
-                           data=list(x=Chromosome_data$No.of.Asso,freq=Chromosome_data$fre),
-                           start=list(a=15,b=10,c=20)))
+Est_para<-EstMLEGHGBB(x=Chromosome_data$No.of.Asso,freq=Chromosome_data$fre,
+                      a=15,b=10,c=20)
 cat("Estimated parameter a for Chromosome data=",coef(Est_para)[1],"\n")
 cat("Estimated parameter b for Chromosome data=",coef(Est_para)[2], "\n")
 cat("Estimated parameter c for Chromosome data=",coef(Est_para)[3], "\n")
@@ -239,9 +231,8 @@ Three parameters to be estimated which are a,b and c. They have to represent a u
 
 ```{r printing estimated parameters for McGBB Distribution, echo=FALSE}
 #estimating parameters for McGBB Distribution of Chromosome data
-Est_para<-suppressWarnings(mle2(EstMLEMcGBB,
-                           data=list(x=Chromosome_data$No.of.Asso,freq=Chromosome_data$fre),
-                           start=list(a=1,b=10,c=20)))
+Est_para<-EstMLEMcGBB(x=Chromosome_data$No.of.Asso,freq=Chromosome_data$fre,
+                      a=12,b=10,c=20)
 cat("Estimated parameter a for Chromosome data=",coef(Est_para)[1],"\n")
 cat("Estimated parameter b for Chromosome data=",coef(Est_para)[2], "\n")
 cat("Estimated parameter c for Chromosome data=",coef(Est_para)[3], "\n")
@@ -255,9 +246,8 @@ Two parameters to be estimated which are a and b. Together they have to represen
 
 ```{r printing estimated parameters for Gamma Binomial Distribution,echo=FALSE}
 #estimating parameters for Gamma Binomial Distribution of Chromosome data
-Est_para<-suppressWarnings(mle2(EstMLEGammaBin,
-                                data=list(x=Chromosome_data$No.of.Asso,freq=Chromosome_data$fre),
-                                start=list(c=15,l=0.51)))
+Est_para<-EstMLEGammaBin(x=Chromosome_data$No.of.Asso,freq=Chromosome_data$fre,
+                         c=15,l=0.51)
 cat("Estimated parameter c for Chromosome data=",coef(Est_para)[1],"\n")
 cat("Estimated parameter l for Chromosome data=",coef(Est_para)[2], "\n")
 ```
@@ -270,9 +260,8 @@ Two parameters to be estimated which are a and b. Together they have to represen
 
 ```{r printing estimated parameters for Grassia II Binomial Distribution,echo=FALSE}
 #estimating parameters for Grassia II Binomial Distribution of Chromosome data
-Est_para<-suppressWarnings(mle2(EstMLEGrassiaIIBin,
-                                data=list(x=Chromosome_data$No.of.Asso,freq=Chromosome_data$fre),
-                                start=list(a=15,b=0.51)))
+Est_para<-EstMLEGrassiaIIBin(x=Chromosome_data$No.of.Asso,freq=Chromosome_data$fre,
+                             a=15,b=0.51)
 cat("Estimated parameter a for Chromosome data=",coef(Est_para)[1],"\n")
 cat("Estimated parameter b for Chromosome data=",coef(Est_para)[2], "\n")
 ```

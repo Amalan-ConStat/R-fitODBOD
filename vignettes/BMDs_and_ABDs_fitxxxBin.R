@@ -15,14 +15,14 @@ BinRanVar<-Alcohol_data$Days
 ActFreq<-Alcohol_data$week2
 
 # Fitting Binomial Distribution
-BinFreq<-suppressWarnings(fitBin(BinRanVar,ActFreq))
+BinFreq<-fitBin(BinRanVar,ActFreq)
 
 # printing the results of fitting Binomial distribution
 print(BinFreq)
 
 ## ----plotting Expected frequencies with actual frequency for Additive Binomial Distribution, warning=FALSE----
 # Estimating and fitting Additive Binomial distribution
-Para_AddBin<-suppressWarnings(EstMLEAddBin(BinRanVar,ActFreq))
+Para_AddBin<-EstMLEAddBin(BinRanVar,ActFreq)
 
 # printing the coefficients and using them
 coef(Para_AddBin)
@@ -31,7 +31,7 @@ AddBin_p<-Para_AddBin$p
 AddBin_alpha<-Para_AddBin$alpha
 
 # Fitting Additive Binomial Distribution
-AddBinFreq<-suppressWarnings(fitAddBin(BinRanVar, ActFreq, AddBin_p, AddBin_alpha))
+AddBinFreq<-fitAddBin(BinRanVar, ActFreq, AddBin_p, AddBin_alpha)
 
 # printing the results of fitting Additive Binomial Distribution
 print(AddBinFreq)

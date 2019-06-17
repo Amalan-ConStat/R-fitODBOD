@@ -60,8 +60,8 @@
 #'
 #' @examples
 #' #plotting the random variables and probability values
-#' col<-rainbow(4)
-#' a<-c(1,2,5,10)
+#' col <- rainbow(4)
+#' a <- c(1,2,5,10)
 #' plot(0,0,main="Probability density graph",xlab="Random variable",ylab="Probability density values",
 #' xlim = c(0,1),ylim = c(0,4))
 #' for (i in 1:4)
@@ -74,8 +74,8 @@
 #' dBETA(seq(0,1,by=0.01),2,3)$var   #extracting the variance
 #'
 #' #plotting the random variables and cumulative probability values
-#' col<-rainbow(4)
-#' a<-c(1,2,5,10)
+#' col <- rainbow(4)
+#' a <- c(1,2,5,10)
 #' plot(0,0,main="Cumulative density graph",xlab="Random variable",ylab="Cumulative density values",
 #' xlim = c(0,1),ylim = c(0,1))
 #' for (i in 1:4)
@@ -780,10 +780,9 @@ EstMLEBetaBin<-function(x,freq,a,b,...)
     }                  )
   }
   suppressWarnings2(bbmle::mle2(.EstMLEBetaBin,data=list(x=x,freq=freq),
-                      start = list(a=a,b=b),...),"NaNs produced")
+                      start = list(a=a,b=b),...),"NaN")
 }
 
-#' @export
 .EstMLEBetaBin<-function(x,freq,a,b)
 {
   #with respective to using bbmle package function mle2 there is no need impose any restrictions
@@ -1076,19 +1075,19 @@ fitBetaBin<-function(x,obs.freq,a,b)
     #checking if df is less than or equal to zero
     if(df<0 | df==0)
     {
-      warning("Degrees of freedom cannot be less than or equal to zero")
+      stop("Degrees of freedom cannot be less than or equal to zero")
     }
     #checking if any of the expected frequencies are less than five and greater than zero, if so
     #a warning message is provided in interpreting the results
     if(min(exp.freq)<5 && min(exp.freq) > 0)
     {
-      warning("Chi-squared approximation may be doubtful because expected frequency is less than 5")
+      message("Chi-squared approximation may be doubtful because expected frequency is less than 5")
     }
     #checking if expected frequency is zero, if so providing a warning message in interpreting
     #the results
     if(min(exp.freq)==0)
     {
-      warning("Chi-squared approximation is not suitable because expected frequency approximates to zero")
+      message("Chi-squared approximation is not suitable because expected frequency approximates to zero")
     }
     #calculating Negative Log Likelihood value and AIC
     NegLL<-NegLLBetaBin(x,obs.freq,a,b)

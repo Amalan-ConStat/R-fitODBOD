@@ -391,8 +391,6 @@ BODextract<-function(data)
 #' No.D.D=0:7      #assigning the random variables
 #' Obs.fre.1=c(47,54,43,40,40,41,39,95)  #assigning the corresponding frequencies
 #'
-#' #fitting when the random variable,frequencies,probability value are given.
-#' fitBin(No.D.D,Obs.fre.1,p=0.7)
 #'
 #' #fitting when the random variable,frequencies are given.
 #' fitBin(No.D.D,Obs.fre.1)
@@ -436,19 +434,19 @@ fitBin<-function(x,obs.freq,p=0)
         #checking if df is less than or equal to zero
         if(df<0 | df==0)
         {
-          warning("Degrees of freedom cannot be less than or equal to zero")
+          stop("Degrees of freedom cannot be less than or equal to zero")
         }
         #checking if any of the expected frequencies are less than five and greater than zero, if so
         #a warning message is provided in interpreting the results
         if(min(exp.freq)<5 && min(exp.freq) > 0)
         {
-          warning("Chi-squared approximation may be doubtful because expected frequency is less than 5")
+          message("Chi-squared approximation may be doubtful because expected frequency is less than 5")
         }
         #checking if expected frequency is zero, if so providing a warning message in interpreting
         #the results
         if(min(exp.freq)==0)
         {
-          warning("Chi-squared approximation is not suitable because expected frequency approximates to zero")
+          message("Chi-squared approximation is not suitable because expected frequency approximates to zero")
         }
         #the final output is in a list format containing the calculated values
         final<-list("bin.ran.var"=x,"obs.freq"=obs.freq,"exp.freq"=exp.freq,"statistic"=round(statistic,4),
@@ -467,13 +465,13 @@ fitBin<-function(x,obs.freq,p=0)
         #a warning message is provided in interpreting the results
         if(min(exp.freq)<5 && min(exp.freq) > 0)
         {
-          warning("Chi-squared approximation may be doubtful because expected frequency is less than 5")
+          message("Chi-squared approximation may be doubtful because expected frequency is less than 5")
         }
         #checking if expected frequency is zero, if so providing a warning message in interpreting
         #the results
         if(min(exp.freq)==0)
         {
-          warning("Chi-squared approximation is not suitable because expected frequency approximates to zero")
+          message("Chi-squared approximation is not suitable because expected frequency approximates to zero")
         }
         #the final output is in a list format containing the calculated values
         final<-list("bin.ran.var"=x,"obs.freq"=obs.freq,"exp.freq"=exp.freq,

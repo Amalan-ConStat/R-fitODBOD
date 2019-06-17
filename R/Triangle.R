@@ -873,6 +873,22 @@ NegLLTriBin<-function(x,freq,mode)
 #' @export
 EstMLETriBin<-function(x,freq)
 {
+  suppressWarnings2 <-function(expr, regex=character())
+  {
+    withCallingHandlers(expr, warning=function(w)
+    {
+      if (length(regex) == 1 && length(grep(regex, conditionMessage(w))))
+      {
+        invokeRestart("muffleWarning")
+      }
+    }                  )
+  }
+  suppressWarnings2(.EstMLETriBin(x=x,freq=freq),"NaN")
+}
+
+#' @export
+.EstMLETriBin<-function(x,freq)
+{
   #checking if inputs consist NA(not assigned)values, infinite values or NAN(not a number)values if so
   #creating an error message as well as stopping the function progress.
   if(any(is.na(c(x,freq))) | any(is.infinite(c(x,freq))) | any(is.nan(c(x,freq))) )
@@ -1095,19 +1111,19 @@ fitTriBin<-function(x,obs.freq,mode)
     #checking if df is less than or equal to zero
     if(df<0 | df==0)
     {
-      warning("Degrees of freedom cannot be less than or equal to zero")
+      stop("Degrees of freedom cannot be less than or equal to zero")
     }
     #checking if any of the expected frequencies are less than five and greater than zero, if so
     #a warning message is provided in interpreting the results
     if(min(exp.freq)<5 && min(exp.freq) > 0)
     {
-      warning("Chi-squared approximation may be doubtful because expected frequency is less than 5")
+      message("Chi-squared approximation may be doubtful because expected frequency is less than 5")
     }
     #checking if expected frequency is zero, if so providing a warning message in interpreting
     #the results
     if(min(exp.freq)==0)
     {
-      warning("Chi-squared approximation is not suitable because expected frequency approximates to zero")
+      message("Chi-squared approximation is not suitable because expected frequency approximates to zero")
     }
     #calculating Negative log likelihood value and AIC
     NegLL<-NegLLTriBin(x,obs.freq,mode)

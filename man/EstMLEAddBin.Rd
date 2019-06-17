@@ -45,7 +45,7 @@ Obs.fre.1=c(47,54,43,40,40,41,39,95)     #assigning the corresponding frequencie
 
 \dontrun{
 #estimating the probability value and alpha value
-results<-suppressWarnings(EstMLEAddBin(No.D.D,Obs.fre.1))
+results<-EstMLEAddBin(No.D.D,Obs.fre.1)
 
 #printing the summary of results
 summary(results)
@@ -53,7 +53,6 @@ summary(results)
 #extracting the estimated parameters
 coef(results)
          }
-
 }
 \references{
 Johnson, N. L., Kemp, A. W., & Kotz, S. (2005). Univariate discrete distributions (Vol. 444).

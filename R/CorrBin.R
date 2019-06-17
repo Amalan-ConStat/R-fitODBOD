@@ -485,7 +485,7 @@ EstMLECorrBin<-function(x,freq,p,cov,...)
     }                  )
   }
   output<-suppressWarnings2(bbmle::mle2(.EstMLECorrBin,data=list(x=x,freq=freq),
-                                        start = list(p=p,cov=cov),...),"NaNs produced")
+                                        start = list(p=p,cov=cov),...),"NaN")
   return(output)
 }
 
@@ -624,22 +624,22 @@ fitCorrBin<-function(x,obs.freq,p,cov)
     #p value of chi-squared test statistic is calculated
     p.value<-1-stats::pchisq(statistic,df)
 
+    #checking if df is less than or equal to zero
+    if(df<0 | df==0)
+    {
+      stop("Degrees of freedom cannot be less than or equal to zero")
+    }
     #checking if any of the expected frequencies are less than five and greater than zero, if so
     #a warning message is provided in interpreting the results
     if(min(exp.freq)<5 && min(exp.freq) > 0)
     {
-      warning("Chi-squared approximation may be doubtful because expected frequency is less than 5")
-    }
-    #checking if df is less than or equal to zero
-    if(df<0 | df==0)
-    {
-      warning("Degrees of freedom cannot be less than or equal to zero")
+      message("Chi-squared approximation may be doubtful because expected frequency is less than 5")
     }
     #checking if expected frequency is zero, if so providing a warning message in interpreting
     #the results
     if(min(exp.freq)==0)
     {
-      warning("Chi-squared approximation is not suitable because expected frequency approximates to zero")
+      message("Chi-squared approximation is not suitable because expected frequency approximates to zero")
     }
     #calculating Negative log likelihood value and AIC
     NegLL<-NegLLCorrBin(x,obs.freq,p,cov)

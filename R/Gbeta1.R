@@ -767,7 +767,7 @@ EstMLEMcGBB<-function(x,freq,a,b,c,...)
     }                  )
   }
   output<-suppressWarnings2(bbmle::mle2(.EstMLEMcGBB,data=list(x=x,freq=freq),
-                                        start = list(a=a,b=b,c=c),...),"NaNs produced")
+                                        start = list(a=a,b=b,c=c),...),"NaN")
   return(output)
 }
 
@@ -921,19 +921,19 @@ EstMLEMcGBB<-function(x,freq,a,b,c,...)
     #checking if df is less than or equal to zero
     if(df<0 | df==0)
     {
-      warning("Degrees of freedom cannot be less than or equal to zero")
+      stop("Degrees of freedom cannot be less than or equal to zero")
     }
     #checking if any of the expected frequencies are less than five and greater than zero, if so
     #a warning message is provided in interpreting the results
     if(min(exp.freq)<5 && min(exp.freq) > 0)
     {
-      warning("Chi-squared approximation may be doubtful because expected frequency is less than 5")
+      message("Chi-squared approximation may be doubtful because expected frequency is less than 5")
     }
     #checking if expected frequency is zero, if so providing a warning message in interpreting
     #the results
     if(min(exp.freq)==0)
     {
-      warning("Chi-squared approximation is not suitable because expected frequency approximates to zero")
+      message("Chi-squared approximation is not suitable because expected frequency approximates to zero")
     }
     #calculating Negative Loglikelihood value and AIC
     NegLL<-NegLLMcGBB(x,obs.freq,a,b,c)

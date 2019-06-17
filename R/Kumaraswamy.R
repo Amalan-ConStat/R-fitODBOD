@@ -817,7 +817,7 @@ EstMLEKumBin<-function(x,freq,a,b,it,...)
     }                  )
   }
   output<-suppressWarnings2(bbmle::mle2(.EstMLEKumBin,data=list(x=x,freq=freq),
-                                        start = list(a=a,b=b,it=it),...),"NaNs produced")
+                                        start = list(a=a,b=b,it=it),...),"NaN")
   return(output)
 }
 
@@ -962,19 +962,19 @@ fitKumBin<-function(x,obs.freq,a,b,it)
     #checking if df is less than or equal to zero
     if(df<0 | df==0)
     {
-      warning("Degrees of freedom cannot be less than or equal to zero")
+      stop("Degrees of freedom cannot be less than or equal to zero")
     }
     #checking if any of the expected frequencies are less than five and greater than zero, if so
     #a warning message is provided in interpreting the results
     if(min(exp.freq)<5 && min(exp.freq) > 0)
     {
-      warning("Chi-squared approximation may be doubtful because expected frequency is less than 5")
+      message("Chi-squared approximation may be doubtful because expected frequency is less than 5")
     }
     #checking if expected frequency is zero, if so providing a warning message in interpreting
     #the results
     if(min(exp.freq)==0)
     {
-      warning("Chi-squared approximation is not suitable because expected frequency approximates to zero")
+      message("Chi-squared approximation is not suitable because expected frequency approximates to zero")
     }
     #calculating Negative Loglikelihood value and AIC
     NegLL<-NegLLKumBin(x,obs.freq,a,b,it)

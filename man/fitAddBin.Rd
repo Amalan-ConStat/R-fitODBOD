@@ -64,10 +64,10 @@ Obs.fre.1=c(47,54,43,40,40,41,39,95)            #assigning the corresponding the
 
 #assigning the estimated probability value
 \dontrun{
-paddbin=suppressWarnings(EstMLEAddBin(No.D.D,Obs.fre.1)$p)
+paddbin=EstMLEAddBin(No.D.D,Obs.fre.1)$p
 
 #assigning the estimated alpha value
-alphaaddbin=suppressWarnings(EstMLEAddBin(No.D.D,Obs.fre.1)$alpha)
+alphaaddbin=EstMLEAddBin(No.D.D,Obs.fre.1)$alpha
 
 #fitting when the random variable,frequencies,probability and alpha are given
 results<-fitAddBin(No.D.D,Obs.fre.1,paddbin,alphaaddbin)

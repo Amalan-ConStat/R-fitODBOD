@@ -58,9 +58,9 @@
 #'
 #' @examples
 #' #plotting the random variables and probability values
-#' col<-rainbow(5)
-#' a<-c(0.58,0.59,0.6,0.61,0.62)
-#' b<-c(0.022,0.023,0.024,0.025,0.026)
+#' col <- rainbow(5)
+#' a <- c(0.58,0.59,0.6,0.61,0.62)
+#' b <- c(0.022,0.023,0.024,0.025,0.026)
 #' plot(0,0,main="Additive binomial probability function graph",xlab="Binomial random variable",
 #' ylab="Probability function values",xlim = c(0,10),ylim = c(0,0.5))
 #' for (i in 1:5)
@@ -74,9 +74,9 @@
 #' dAddBin(0:10,10,0.58,0.022)$var     #extracting the variance
 #'
 #' #plotting the random variables and cumulative probability values
-#' col<-rainbow(5)
-#' a<-c(0.58,0.59,0.6,0.61,0.62)
-#' b<-c(0.022,0.023,0.024,0.025,0.026)
+#' col <- rainbow(5)
+#' a <- c(0.58,0.59,0.6,0.61,0.62)
+#' b <- c(0.022,0.023,0.024,0.025,0.026)
 #' plot(0,0,main="Additive binomial probability function graph",xlab="Binomial random variable",
 #' ylab="Probability function values",xlim = c(0,10),ylim = c(0,1))
 #' for (i in 1:5)
@@ -220,9 +220,9 @@ dAddBin<-function(x,n,p,alpha)
 #'
 #' @examples
 #' #plotting the random variables and probability values
-#' col<-rainbow(5)
-#' a<-c(0.58,0.59,0.6,0.61,0.62)
-#' b<-c(0.022,0.023,0.024,0.025,0.026)
+#' col <- rainbow(5)
+#' a <- c(0.58,0.59,0.6,0.61,0.62)
+#' b <- c(0.022,0.023,0.024,0.025,0.026)
 #' plot(0,0,main="Additive binomial probability function graph",xlab="Binomial random variable",
 #' ylab="Probability function values",xlim = c(0,10),ylim = c(0,0.5))
 #' for (i in 1:5)
@@ -236,9 +236,9 @@ dAddBin<-function(x,n,p,alpha)
 #' dAddBin(0:10,10,0.58,0.022)$var     #extracting the variance
 #'
 #' #plotting the random variables and cumulative probability values
-#' col<-rainbow(5)
-#' a<-c(0.58,0.59,0.6,0.61,0.62)
-#' b<-c(0.022,0.023,0.024,0.025,0.026)
+#' col <- rainbow(5)
+#' a <- c(0.58,0.59,0.6,0.61,0.62)
+#' b <- c(0.022,0.023,0.024,0.025,0.026)
 #' plot(0,0,main="Additive binomial probability function graph",xlab="Binomial random variable",
 #' ylab="Probability function values",xlim = c(0,10),ylim = c(0,1))
 #' for (i in 1:5)
@@ -301,8 +301,8 @@ pAddBin<-function(x,n,p,alpha)
 #' Jorge G. Morel and Nagaraj K. Neerchal. Overdispersion Models in SAS. SAS Institute, 2012.
 #'
 #' @examples
-#' No.D.D=0:7          #assigning the random variables
-#' Obs.fre.1=c(47,54,43,40,40,41,39,95)         #assigning the corresponding frequencies
+#' No.D.D <- 0:7          #assigning the random variables
+#' Obs.fre.1 <- c(47,54,43,40,40,41,39,95)         #assigning the corresponding frequencies
 #'
 #' NegLLAddBin(No.D.D,Obs.fre.1,.5,.03)         #acquiring the negative log likelihood value
 #'
@@ -430,12 +430,12 @@ NegLLAddBin<-function(x,freq,p,alpha)
 #' Jorge G. Morel and Nagaraj K. Neerchal. Overdispersion Models in SAS. SAS Institute, 2012.
 #'
 #' @examples
-#' No.D.D=0:7         #assigning the random variables
-#' Obs.fre.1=c(47,54,43,40,40,41,39,95)     #assigning the corresponding frequencies
+#' No.D.D <- 0:7         #assigning the random variables
+#' Obs.fre.1 <- c(47,54,43,40,40,41,39,95)     #assigning the corresponding frequencies
 #'
 #' \dontrun{
 #' #estimating the probability value and alpha value
-#' results<-suppressWarnings(EstMLEAddBin(No.D.D,Obs.fre.1))
+#' results <- EstMLEAddBin(No.D.D,Obs.fre.1)
 #'
 #' #printing the summary of results
 #' summary(results)
@@ -443,9 +443,23 @@ NegLLAddBin<-function(x,freq,p,alpha)
 #' #extracting the estimated parameters
 #' coef(results)
 #'          }
-#'
 #' @export
 EstMLEAddBin<-function(x,freq)
+{
+  suppressWarnings2 <-function(expr, regex=character())
+  {
+    withCallingHandlers(expr, warning=function(w)
+    {
+      if (length(regex) == 1 && length(grep(regex, conditionMessage(w))))
+      {
+        invokeRestart("muffleWarning")
+      }
+    }                  )
+  }
+  suppressWarnings2(.EstMLEAddBin(x=x,freq=freq),"NaN")
+}
+
+.EstMLEAddBin<-function(x,freq)
 {
   #checking if inputs consist NA(not assigned)values, infinite values or NAN(not a number)values if so
   #creating an error message as well as stopping the function progress.
@@ -659,18 +673,18 @@ coef.mlAB<-function(object,...)
 #' Jorge G. Morel and Nagaraj K. Neerchal. Overdispersion Models in SAS. SAS Institute, 2012.
 #'
 #' @examples
-#' No.D.D=0:7         #assigning the random variables
-#' Obs.fre.1=c(47,54,43,40,40,41,39,95)            #assigning the corresponding the frequencies
+#' No.D.D <- 0:7         #assigning the random variables
+#' Obs.fre.1 <- c(47,54,43,40,40,41,39,95)            #assigning the corresponding the frequencies
 #'
 #' #assigning the estimated probability value
 #' \dontrun{
-#' paddbin=suppressWarnings(EstMLEAddBin(No.D.D,Obs.fre.1)$p)
+#' paddbin <- EstMLEAddBin(No.D.D,Obs.fre.1)$p
 #'
 #' #assigning the estimated alpha value
-#' alphaaddbin=suppressWarnings(EstMLEAddBin(No.D.D,Obs.fre.1)$alpha)
+#' alphaaddbin <- EstMLEAddBin(No.D.D,Obs.fre.1)$alpha
 #'
 #' #fitting when the random variable,frequencies,probability and alpha are given
-#' results<-fitAddBin(No.D.D,Obs.fre.1,paddbin,alphaaddbin)
+#' results <- fitAddBin(No.D.D,Obs.fre.1,paddbin,alphaaddbin)
 #' results
 #'
 #' #extracting the AIC value
@@ -707,19 +721,19 @@ fitAddBin<-function(x,obs.freq,p,alpha)
     #checking if df is less than or equal to zero
     if(df<0 | df==0)
     {
-      warning("Degrees of freedom cannot be less than or equal to zero")
+      stop("Degrees of freedom cannot be less than or equal to zero")
     }
     #checking if any of the expected frequencies are less than five and greater than zero, if so
     #a warning message is provided in interpreting the results
     if(min(exp.freq)<5 && min(exp.freq) > 0)
     {
-      warning("Chi-squared approximation may be doubtful because expected frequency is less than 5")
+      message("Chi-squared approximation may be doubtful because expected frequency is less than 5")
     }
     #checking if expected frequency is zero, if so providing a warning message in interpreting
     #the results
     if(min(exp.freq)==0)
     {
-      warning("Chi-squared approximation is not suitable because expected frequency approximates to zero")
+      message("Chi-squared approximation is not suitable because expected frequency approximates to zero")
     }
 
     #calculating Negative log likelihood value and AIC
