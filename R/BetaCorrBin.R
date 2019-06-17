@@ -65,9 +65,9 @@
 #'
 #' @examples
 #' #plotting the random variables and probability values
-#' col<-rainbow(5)
-#' a<-c(9.0,10,11,12,13)
-#' b<-c(8.0,8.1,8.2,8.3,8.4)
+#' col <- rainbow(5)
+#' a <- c(9.0,10,11,12,13)
+#' b <- c(8.0,8.1,8.2,8.3,8.4)
 #' plot(0,0,main="Beta-Correlated binomial probability function graph",xlab="Binomial random variable",
 #' ylab="Probability function values",xlim = c(0,10),ylim = c(0,0.5))
 #' for (i in 1:5)
@@ -84,9 +84,9 @@
 #' dBetaCorrBin(0:10,10,0.001,10,13)$maxcorr  #extracting the maximum correlation value
 #'
 #' #plotting the random variables and cumulative probability values
-#' col<-rainbow(5)
-#' a<-c(9.0,10,11,12,13)
-#' b<-c(8.0,8.1,8.2,8.3,8.4)
+#' col <- rainbow(5)
+#' a <- c(9.0,10,11,12,13)
+#' b <- c(8.0,8.1,8.2,8.3,8.4)
 #' plot(0,0,main="Beta-Correlated binomial probability function graph",xlab="Binomial random variable",
 #' ylab="Probability function values",xlim = c(0,10),ylim = c(0,1))
 #' for (i in 1:5)
@@ -254,9 +254,9 @@ dBetaCorrBin<-function(x,n,cov,a,b)
 #'
 #' @examples
 #' #plotting the random variables and probability values
-#' col<-rainbow(5)
-#' a<-c(9.0,10,11,12,13)
-#' b<-c(8.0,8.1,8.2,8.3,8.4)
+#' col <- rainbow(5)
+#' a <- c(9.0,10,11,12,13)
+#' b <- c(8.0,8.1,8.2,8.3,8.4)
 #' plot(0,0,main="Beta-Correlated binomial probability function graph",xlab="Binomial random variable",
 #' ylab="Probability function values",xlim = c(0,10),ylim = c(0,0.5))
 #' for (i in 1:5)
@@ -273,9 +273,9 @@ dBetaCorrBin<-function(x,n,cov,a,b)
 #' dBetaCorrBin(0:10,10,0.001,10,13)$maxcorr  #extracting the maximum correlation value
 #'
 #' #plotting the random variables and cumulative probability values
-#' col<-rainbow(5)
-#' a<-c(9.0,10,11,12,13)
-#' b<-c(8.0,8.1,8.2,8.3,8.4)
+#' col <- rainbow(5)
+#' a <- c(9.0,10,11,12,13)
+#' b <- c(8.0,8.1,8.2,8.3,8.4)
 #' plot(0,0,main="Beta-Correlated binomial probability function graph",xlab="Binomial random variable",
 #' ylab="Probability function values",xlim = c(0,10),ylim = c(0,1))
 #' for (i in 1:5)
@@ -336,8 +336,8 @@ pBetaCorrBin<-function(x,n,cov,a,b)
 #'
 #'
 #' @examples
-#' No.D.D=0:7         #assigning the random variables
-#' Obs.fre.1=c(47,54,43,40,40,41,39,95)      #assigning the corresponding frequencies
+#' No.D.D <- 0:7         #assigning the random variables
+#' Obs.fre.1 <- c(47,54,43,40,40,41,39,95)      #assigning the corresponding frequencies
 #'
 #' NegLLBetaCorrBin(No.D.D,Obs.fre.1,0.001,9.03,10)     #acquiring the negative log likelihood value
 #'
@@ -483,11 +483,11 @@ NegLLBetaCorrBin<-function(x,freq,cov,a,b)
 #' \code{\link[bbmle]{mle2}}
 #'
 #' @examples
-#' No.D.D=0:7               #assigning the random variables
-#' Obs.fre.1=c(47,54,43,40,40,41,39,95)     #assigning the corresponding frequencies
+#' No.D.D <- 0:7               #assigning the random variables
+#' Obs.fre.1 <- c(47,54,43,40,40,41,39,95)     #assigning the corresponding frequencies
 #'
 #' #estimating the parameters using maximum log likelihood value and assigning it
-#' parameters=EstMLEBetaCorrBin(x=No.D.D,freq=Obs.fre.1,cov=0.0050,a=10,b=10)
+#' parameters <- EstMLEBetaCorrBin(x=No.D.D,freq=Obs.fre.1,cov=0.0050,a=10,b=10)
 #'
 #' bbmle::coef(parameters)           #extracting the parameters
 #'
@@ -509,7 +509,7 @@ EstMLEBetaCorrBin<-function(x,freq,cov,a,b,...)
   return(output)
 }
 
-#' @export
+
 .EstMLEBetaCorrBin<-function(x,freq,cov,a,b)
 {
   #with respective to using bbmle package function mle2 there is no need impose any restrictions
@@ -608,18 +608,18 @@ EstMLEBetaCorrBin<-function(x,freq,cov,a,b,...)
 #' Available at: \url{http://www.tandfonline.com/doi/abs/10.1080/03610928508828990} .
 #'
 #' @examples
-#' No.D.D=0:7                    #assigning the random variables
-#' Obs.fre.1=c(47,54,43,40,40,41,39,95)      #assigning the corresponding frequencies
+#' No.D.D <- 0:7                    #assigning the random variables
+#' Obs.fre.1 <- c(47,54,43,40,40,41,39,95)      #assigning the corresponding frequencies
 #'
 #' #estimating the parameters using maximum log likelihood value and assigning it
-#' parameters=EstMLEBetaCorrBin(x=No.D.D,freq=Obs.fre.1,cov=0.0050,a=10,b=10)
+#' parameters <- EstMLEBetaCorrBin(x=No.D.D,freq=Obs.fre.1,cov=0.0050,a=10,b=10)
 #'
-#' covBetaCorrBin=bbmle::coef(parameters)[1]
-#' aBetaCorrBin=bbmle::coef(parameters)[2]
-#' bBetaCorrBin=bbmle::coef(parameters)[3]
+#' covBetaCorrBin <- bbmle::coef(parameters)[1]
+#' aBetaCorrBin <- bbmle::coef(parameters)[2]
+#' bBetaCorrBin <- bbmle::coef(parameters)[3]
 #'
 #' #fitting when the random variable,frequencies,covariance, a and b are given
-#' results<-fitBetaCorrBin(No.D.D,Obs.fre.1,covBetaCorrBin,aBetaCorrBin,bBetaCorrBin)
+#' results <- fitBetaCorrBin(No.D.D,Obs.fre.1,covBetaCorrBin,aBetaCorrBin,bBetaCorrBin)
 #' results
 #'
 #' #extract AIC value

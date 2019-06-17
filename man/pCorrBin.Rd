@@ -47,9 +47,9 @@ necessary error messages will be provided to go further.
 }
 \examples{
 #plotting the random variables and probability values
-col<-rainbow(5)
-a<-c(0.58,0.59,0.6,0.61,0.62)
-b<-c(0.022,0.023,0.024,0.025,0.026)
+col <- rainbow(5)
+a <- c(0.58,0.59,0.6,0.61,0.62)
+b <- c(0.022,0.023,0.024,0.025,0.026)
 plot(0,0,main="Correlated binomial probability function graph",xlab="Binomial random variable",
 ylab="Probability function values",xlim = c(0,10),ylim = c(0,0.5))
 for (i in 1:5)
@@ -66,9 +66,9 @@ dCorrBin(0:10,10,0.58,0.022)$mincorr  #extracting the minimum correlation value
 dCorrBin(0:10,10,0.58,0.022)$maxcorr  #extracting the maximum correlation value
 
 #plotting the random variables and cumulative probability values
-col<-rainbow(5)
-a<-c(0.58,0.59,0.6,0.61,0.62)
-b<-c(0.022,0.023,0.024,0.025,0.026)
+col <- rainbow(5)
+a <- c(0.58,0.59,0.6,0.61,0.62)
+b <- c(0.022,0.023,0.024,0.025,0.026)
 plot(0,0,main="Correlated binomial probability function graph",xlab="Binomial random variable",
 ylab="Probability function values",xlim = c(0,10),ylim = c(0,1))
 for (i in 1:5)

@@ -53,8 +53,8 @@ necessary error messages will be provided to go further.
 }
 \examples{
 #plotting the random variables and probability values
-col<-rainbow(5)
-a<-c(.1,.2,.3,1.5,2.15)
+col <- rainbow(5)
+a <- c(.1,.2,.3,1.5,2.15)
 plot(0,0,main="Probability density graph",xlab="Random variable",ylab="Probability density values",
 xlim = c(0,1),ylim = c(0,10))
 for (i in 1:5)
@@ -67,8 +67,8 @@ dGHGBeta(seq(0,1,by=0.01),7,1.6312,0.3913,0.6659)$mean  #extracting the mean
 dGHGBeta(seq(0,1,by=0.01),7,1.6312,0.3913,0.6659)$var   #extracting the variance
 
 #plotting the random variables and cumulative probability values
-col<-rainbow(6)
-a<-c(.1,.2,.3,1.5,2.1,3)
+col <- rainbow(6)
+a <- c(.1,.2,.3,1.5,2.1,3)
 plot(0,0,main="Cumulative density graph",xlab="Random variable",ylab="Cumulative density values",
 xlim = c(0,1),ylim = c(0,1))
 for (i in 1:6)

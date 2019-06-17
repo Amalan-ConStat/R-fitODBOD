@@ -30,8 +30,8 @@ variables and vector of corresponding frequencies are given with the shape param
 \deqn{x = 0,1,2,...}
 }
 \examples{
-No.D.D=0:7            #assigning the random variables
-Obs.fre.1=c(47,54,43,40,40,41,39,95)    #assigning the corresponding frequencies
+No.D.D <- 0:7            #assigning the random variables
+Obs.fre.1 <- c(47,54,43,40,40,41,39,95)    #assigning the corresponding frequencies
 
 NegLLMcGBB(No.D.D,Obs.fre.1,.2,.3,1)    #acquiring the negative log likelihood value
 

@@ -676,8 +676,8 @@ coef.mlAB<-function(object,...)
 #' No.D.D <- 0:7         #assigning the random variables
 #' Obs.fre.1 <- c(47,54,43,40,40,41,39,95)            #assigning the corresponding the frequencies
 #'
-#' #assigning the estimated probability value
 #' \dontrun{
+#' #assigning the estimated probability value
 #' paddbin <- EstMLEAddBin(No.D.D,Obs.fre.1)$p
 #'
 #' #assigning the estimated alpha value

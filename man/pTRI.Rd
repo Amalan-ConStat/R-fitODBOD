@@ -44,8 +44,8 @@ necessary error messages will be provided to go further.
 }
 \examples{
 #plotting the random variables and probability values
-col<-rainbow(4)
-x<-seq(0.2,0.8,by=0.2)
+col <- rainbow(4)
+x <- seq(0.2,0.8,by=0.2)
 plot(0,0,main="Probability density graph",xlab="Random variable",
 ylab="Probability density values",xlim = c(0,1),ylim = c(0,3))
 for (i in 1:4)
@@ -58,8 +58,8 @@ dTRI(seq(0,1,by=0.01),0.3)$mean    #extracting the mean
 dTRI(seq(0,1,by=0.01),0.3)$var     #extracting the variance
 
 #plotting the random variables and cumulative probability values
-col<-rainbow(4)
-x<-seq(0.2,0.8,by=0.2)
+col <- rainbow(4)
+x <- seq(0.2,0.8,by=0.2)
 plot(0,0,main="Cumulative density graph",xlab="Random variable",
 ylab="Cumulative density values",xlim = c(0,1),ylim = c(0,1))
 for (i in 1:4)

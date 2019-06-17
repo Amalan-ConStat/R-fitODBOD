@@ -67,19 +67,19 @@ and over dispersion value so that it can be seen if this distribution fits the d
 error messages will be provided to go further.
 }
 \examples{
-No.D.D=0:7       #assigning the random variables
-Obs.fre.1=c(47,54,43,40,40,41,39,95)          #assigning the corresponding frequencies
+No.D.D <- 0:7       #assigning the random variables
+Obs.fre.1 <- c(47,54,43,40,40,41,39,95)          #assigning the corresponding frequencies
 
-#estimating the parameters using maximum log likelihood value and assigning it
 \dontrun{
-parameters=EstMLEMcGBB(x=No.D.D,freq=Obs.fre.1,a=0.1,b=0.1,c=3.2)
+#estimating the parameters using maximum log likelihood value and assigning it
+parameters <- EstMLEMcGBB(x=No.D.D,freq=Obs.fre.1,a=0.1,b=0.1,c=3.2)
 
-aMcGBB=bbmle::coef(parameters)[1]         #assigning the estimated a
-bMcGBB=bbmle::coef(parameters)[2]         #assigning the estimated b
-cMcGBB=bbmle::coef(parameters)[3]         #assigning the estimated c
+aMcGBB <- bbmle::coef(parameters)[1]         #assigning the estimated a
+bMcGBB <- bbmle::coef(parameters)[2]         #assigning the estimated b
+cMcGBB <- bbmle::coef(parameters)[3]         #assigning the estimated c
 
 #fitting when the random variable,frequencies,shape parameter values are given.
-results<-fitMcGBB(No.D.D,Obs.fre.1,aMcGBB,bMcGBB,cMcGBB)
+results <- fitMcGBB(No.D.D,Obs.fre.1,aMcGBB,bMcGBB,cMcGBB)
 results
 
 #extracting the expected frequencies

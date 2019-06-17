@@ -60,8 +60,8 @@
 #'
 #' @examples
 #' #plotting the random variables and probability values
-#' col<-rainbow(5)
-#' a<-c(.1,.2,.3,1.5,2.15)
+#' col <- rainbow(5)
+#' a <- c(.1,.2,.3,1.5,2.15)
 #' plot(0,0,main="Probability density graph",xlab="Random variable",ylab="Probability density values",
 #' xlim = c(0,1),ylim = c(0,10))
 #' for (i in 1:5)
@@ -74,8 +74,8 @@
 #' dGHGBeta(seq(0,1,by=0.01),7,1.6312,0.3913,0.6659)$var   #extracting the variance
 #'
 #' #plotting the random variables and cumulative probability values
-#' col<-rainbow(6)
-#' a<-c(.1,.2,.3,1.5,2.1,3)
+#' col <- rainbow(6)
+#' a <- c(.1,.2,.3,1.5,2.1,3)
 #' plot(0,0,main="Cumulative density graph",xlab="Random variable",ylab="Cumulative density values",
 #' xlim = c(0,1),ylim = c(0,1))
 #' for (i in 1:6)
@@ -215,8 +215,8 @@
 #'
 #' @examples
 #' #plotting the random variables and probability values
-#' col<-rainbow(5)
-#' a<-c(.1,.2,.3,1.5,2.15)
+#' col <- rainbow(5)
+#' a <- c(.1,.2,.3,1.5,2.15)
 #' plot(0,0,main="Probability density graph",xlab="Random variable",ylab="Probability density values",
 #' xlim = c(0,1),ylim = c(0,10))
 #' for (i in 1:5)
@@ -229,8 +229,8 @@
 #' dGHGBeta(seq(0,1,by=0.01),7,1.6312,0.3913,0.6659)$var   #extracting the variance
 #'
 #' #plotting the random variables and cumulative probability values
-#' col<-rainbow(6)
-#' a<-c(.1,.2,.3,1.5,2.1,3)
+#' col <- rainbow(6)
+#' a <- c(.1,.2,.3,1.5,2.1,3)
 #' plot(0,0,main="Cumulative density graph",xlab="Random variable",ylab="Cumulative density values",
 #' xlim = c(0,1),ylim = c(0,1))
 #' for (i in 1:6)
@@ -372,8 +372,8 @@ pGHGBeta<-function(p,n,a,b,c)
 #'
 #' @examples
 #' #plotting the random variables and probability values
-#' col<-rainbow(5)
-#' a<-c(.1,.2,.3,1.5,2.15)
+#' col <- rainbow(5)
+#' a <- c(.1,.2,.3,1.5,2.15)
 #' plot(0,0,main="Probability density graph",xlab="Random variable",ylab="Probability density values",
 #' xlim = c(0,1),ylim = c(0,10))
 #' for (i in 1:5)
@@ -386,8 +386,8 @@ pGHGBeta<-function(p,n,a,b,c)
 #' dGHGBeta(seq(0,1,by=0.01),7,1.6312,0.3913,0.6659)$var   #extracting the variance
 #'
 #' #plotting the random variables and cumulative probability values
-#' col<-rainbow(6)
-#' a<-c(.1,.2,.3,1.5,2.1,3)
+#' col <- rainbow(6)
+#' a <- c(.1,.2,.3,1.5,2.1,3)
 #' plot(0,0,main="Cumulative density graph",xlab="Random variable",ylab="Cumulative density values",
 #' xlim = c(0,1),ylim = c(0,1))
 #' for (i in 1:6)
@@ -539,8 +539,8 @@ mazGHGBeta<-function(r,n,a,b,c)
 #'
 #' @examples
 #' #plotting the random variables and probability values
-#' col<-rainbow(6)
-#' a<-c(.1,.2,.3,1.5,2.1,3)
+#' col <- rainbow(6)
+#' a <- c(.1,.2,.3,1.5,2.1,3)
 #' plot(0,0,main="GHGBB probability function graph",xlab="Binomial random variable",
 #' ylab="Probability function values",xlim = c(0,7),ylim = c(0,0.9))
 #' for (i in 1:6)
@@ -555,8 +555,8 @@ mazGHGBeta<-function(r,n,a,b,c)
 #' dGHGBB(0:7,7,1.3,0.3,1.3)$over.dis.par  #extracting the over dispersion value
 #'
 #' #plotting the random variables and cumulative probability values
-#' col<-rainbow(4)
-#' a<-c(1,2,5,10)
+#' col <- rainbow(4)
+#' a <- c(1,2,5,10)
 #' plot(0,0,main="Cumulative probability function graph",xlab="Binomial random variable",
 #' ylab="Cumulative probability function values",xlim = c(0,7),ylim = c(0,1))
 #' for (i in 1:4)
@@ -686,8 +686,8 @@ dGHGBB<-function(x,n,a,b,c)
 #'
 #' @examples
 #' #plotting the random variables and probability values
-#' col<-rainbow(6)
-#' a<-c(.1,.2,.3,1.5,2.1,3)
+#' col <- rainbow(6)
+#' a <- c(.1,.2,.3,1.5,2.1,3)
 #' plot(0,0,main="GHGBB probability function graph",xlab="Binomial random variable",
 #' ylab="Probability function values",xlim = c(0,7),ylim = c(0,0.9))
 #' for (i in 1:6)
@@ -702,8 +702,8 @@ dGHGBB<-function(x,n,a,b,c)
 #' dGHGBB(0:7,7,1.3,0.3,1.3)$over.dis.par  #extracting the over dispersion value
 #'
 #' #plotting the random variables and cumulative probability values
-#' col<-rainbow(4)
-#' a<-c(1,2,5,10)
+#' col <- rainbow(4)
+#' a <- c(1,2,5,10)
 #' plot(0,0,main="Cumulative probability function graph",xlab="Binomial random variable",
 #' ylab="Cumulative probability function values",xlim = c(0,7),ylim = c(0,1))
 #' for (i in 1:4)
@@ -766,8 +766,8 @@ pGHGBB<-function(x,n,a,b,c)
 #' \code{\link[hypergeo]{hypergeo_powerseries}}
 #'
 #' @examples
-#' No.D.D=0:7                    #assigning the random variables
-#' Obs.fre.1=c(47,54,43,40,40,41,39,95)     #assigning the corresponding frequencies
+#' No.D.D <- 0:7                    #assigning the random variables
+#' Obs.fre.1 <- c(47,54,43,40,40,41,39,95)     #assigning the corresponding frequencies
 #' NegLLGHGBB(No.D.D,Obs.fre.1,.2,.3,1)     #acquiring the negative log likelihood value
 #'
 #' @export
@@ -865,11 +865,11 @@ NegLLGHGBB<-function(x,freq,a,b,c)
 #' \code{\link[bbmle]{mle2}}
 #'
 #' @examples
-#' No.D.D=0:7           #assigning the random variables
-#' Obs.fre.1=c(47,54,43,40,40,41,39,95)     #assigning the corresponding frequencies
+#' No.D.D <- 0:7           #assigning the random variables
+#' Obs.fre.1 <- c(47,54,43,40,40,41,39,95)     #assigning the corresponding frequencies
 #'
 #' #estimating the parameters using maximum log likelihood value and assigning it
-#' parameters=EstMLEGHGBB(No.D.D,Obs.fre.1,a=0.1,b=0.2,c=0.5)
+#' parameters <- EstMLEGHGBB(No.D.D,Obs.fre.1,a=0.1,b=0.2,c=0.5)
 #'
 #' bbmle::coef(parameters)   #extracting the parameters
 #'
@@ -892,7 +892,6 @@ EstMLEGHGBB<-function(x,freq,a,b,c,...)
 }
 
 
-#' @export
 .EstMLEGHGBB<-function(x,freq,a,b,c)
 {
   #with respective to using bbmle package function mle2 there is no need impose any restrictions
@@ -980,19 +979,19 @@ EstMLEGHGBB<-function(x,freq,a,b,c,...)
 #' \code{\link[bbmle]{mle2}}
 #'
 #' @examples
-#' No.D.D=0:7        #assigning the random variables
-#' Obs.fre.1=c(47,54,43,40,40,41,39,95)       #assigning the corresponding frequencies
+#' No.D.D <- 0:7        #assigning the random variables
+#' Obs.fre.1 <- c(47,54,43,40,40,41,39,95)       #assigning the corresponding frequencies
 #'
 #' #estimating the parameters using maximum log likelihood value and assigning it
-#' parameters=EstMLEGHGBB(No.D.D,Obs.fre.1,0.1,20,1.3)
+#' parameters <- EstMLEGHGBB(No.D.D,Obs.fre.1,0.1,20,1.3)
 #'
 #' bbmle::coef(parameters)         #extracting the parameters
-#' aGHGBB=bbmle::coef(parameters)[1]  #assigning the estimated a
-#' bGHGBB=bbmle::coef(parameters)[2]  #assigning the estimated b
-#' cGHGBB=bbmle::coef(parameters)[3]  #assigning the estimated c
+#' aGHGBB <- bbmle::coef(parameters)[1]  #assigning the estimated a
+#' bGHGBB <- bbmle::coef(parameters)[2]  #assigning the estimated b
+#' cGHGBB <- bbmle::coef(parameters)[3]  #assigning the estimated c
 #'
 #' #fitting when the random variable,frequencies,shape parameter values are given.
-#' results<-fitGHGBB(No.D.D,Obs.fre.1,aGHGBB,bGHGBB,cGHGBB)
+#' results <- fitGHGBB(No.D.D,Obs.fre.1,aGHGBB,bGHGBB,cGHGBB)
 #' results
 #'
 #' #extracting the expected frequencies

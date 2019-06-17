@@ -60,17 +60,17 @@ fits the data.
 \deqn{0 < theta }
 }
 \examples{
-No.D.D=0:7       #assigning the random variables
-Obs.fre.1=c(47,54,43,40,40,41,39,95)     #assigning the corresponding frequencies
+No.D.D <- 0:7       #assigning the random variables
+Obs.fre.1 <- c(47,54,43,40,40,41,39,95)     #assigning the corresponding frequencies
 
 #estimating the parameters using maximum log likelihood value and assigning it
-parameters=EstMLEMultiBin(x=No.D.D,freq=Obs.fre.1,p=0.1,theta=.3)
+parameters <- EstMLEMultiBin(x=No.D.D,freq=Obs.fre.1,p=0.1,theta=.3)
 
-pMultiBin=bbmle::coef(parameters)[1]    #assigning the estimated probability value
-thetaMultiBin=bbmle::coef(parameters)[2]  #assigning the estimated theta value
+pMultiBin <- bbmle::coef(parameters)[1]    #assigning the estimated probability value
+thetaMultiBin <- bbmle::coef(parameters)[2]  #assigning the estimated theta value
 
 #fitting when the random variable,frequencies,probability and theta are given
-results<-fitMultiBin(No.D.D,Obs.fre.1,pMultiBin,thetaMultiBin)
+results <- fitMultiBin(No.D.D,Obs.fre.1,pMultiBin,thetaMultiBin)
 results
 
 #extracting the AIC value

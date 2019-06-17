@@ -41,8 +41,8 @@ The mean, variance and over dispersion are denoted as
 }
 \examples{
 #plotting the random variables and probability values
-col<-rainbow(5)
-a<-c(1,2,5,10,0.2)
+col <- rainbow(5)
+a <- c(1,2,5,10,0.2)
 plot(0,0,main="Gamma-binomial probability function graph",xlab="Binomial random variable",
 ylab="Probability function values",xlim = c(0,10),ylim = c(0,0.5))
 for (i in 1:5)
@@ -57,8 +57,8 @@ dGammaBin(0:10,10,4,.2)$var    #extracting the variance
 dGammaBin(0:10,10,4,.2)$over.dis.para  #extracting the over dispersion value
 
 #plotting the random variables and cumulative probability values
-col<-rainbow(4)
-a<-c(1,2,5,10)
+col <- rainbow(4)
+a <- c(1,2,5,10)
 plot(0,0,main="Cumulative probability function graph",xlab="Binomial random variable",
 ylab="Cumulative probability function values",xlim = c(0,10),ylim = c(0,1))
 for (i in 1:4)
@@ -68,6 +68,7 @@ points(0:10,pGammaBin(0:10,10,a[i],a[i]),col = col[i])
 }
 
 pGammaBin(0:10,10,4,.2)   #acquiring the cumulative probability values
+
 }
 \references{
 Grassia, A., 1977. On a family of distributions with argument between 0 and 1

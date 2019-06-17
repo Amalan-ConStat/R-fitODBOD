@@ -60,8 +60,8 @@
 #'
 #' @examples
 #' #plotting the random variables and probability values
-#' col<-rainbow(5)
-#' a<-c(.1,.2,.3,1.5,2.15)
+#' col <- rainbow(5)
+#' a <- c(.1,.2,.3,1.5,2.15)
 #' plot(0,0,main="Probability density graph",xlab="Random variable",ylab="Probability density values",
 #' xlim = c(0,1),ylim = c(0,10))
 #' for (i in 1:5)
@@ -177,8 +177,8 @@ dGBeta1<-function(p,a,b,c)
 #'
 #' @examples
 #' #plotting the random variables and probability values
-#' col<-rainbow(5)
-#' a<-c(.1,.2,.3,1.5,2.15)
+#' col <- rainbow(5)
+#' a <- c(.1,.2,.3,1.5,2.15)
 #' plot(0,0,main="Probability density graph",xlab="Random variable",ylab="Probability density values",
 #' xlim = c(0,1),ylim = c(0,10))
 #' for (i in 1:5)
@@ -303,8 +303,8 @@ pGBeta1<-function(p,a,b,c)
 #'
 #' @examples
 #' #plotting the random variables and probability values
-#' col<-rainbow(5)
-#' a<-c(.1,.2,.3,1.5,2.15)
+#' col <- rainbow(5)
+#' a <- c(.1,.2,.3,1.5,2.15)
 #' plot(0,0,main="Probability density graph",xlab="Random variable",ylab="Probability density values",
 #' xlim = c(0,1),ylim = c(0,10))
 #' for (i in 1:5)
@@ -426,8 +426,8 @@ mazGBeta1<-function(r,a,b,c)
 #'
 #' @examples
 #' #plotting the random variables and probability values
-#' col<-rainbow(5)
-#' a<-c(1,2,5,10,0.6)
+#' col <- rainbow(5)
+#' a <- c(1,2,5,10,0.6)
 #' plot(0,0,main="Mcdonald generalized beta-binomial probability function graph",
 #' xlab="Binomial random variable",ylab="Probability function values",xlim = c(0,10),ylim = c(0,0.5))
 #' for (i in 1:5)
@@ -442,8 +442,8 @@ mazGBeta1<-function(r,a,b,c)
 #' dMcGBB(0:10,10,4,2,1)$over.dis.para   #extracting the over dispersion value
 #'
 #' #plotting the random variables and cumulative probability values
-#' col<-rainbow(4)
-#' a<-c(1,2,5,10)
+#' col <- rainbow(4)
+#' a <- c(1,2,5,10)
 #' plot(0,0,main="Cumulative probability function graph",xlab="Binomial random variable",
 #' ylab="Cumulative probability function values",xlim = c(0,10),ylim = c(0,1))
 #' for (i in 1:4)
@@ -565,8 +565,8 @@ dMcGBB<-function(x,n,a,b,c)
 #'
 #' @examples
 #' #plotting the random variables and probability values
-#' col<-rainbow(5)
-#' a<-c(1,2,5,10,0.6)
+#' col <- rainbow(5)
+#' a <- c(1,2,5,10,0.6)
 #' plot(0,0,main="Mcdonald generalized beta-binomial probability function graph",
 #' xlab="Binomial random variable",ylab="Probability function values",xlim = c(0,10),ylim = c(0,0.5))
 #' for (i in 1:5)
@@ -581,8 +581,8 @@ dMcGBB<-function(x,n,a,b,c)
 #' dMcGBB(0:10,10,4,2,1)$over.dis.para   #extracting the over dispersion value
 #'
 #' #plotting the random variables and cumulative probability values
-#' col<-rainbow(4)
-#' a<-c(1,2,5,10)
+#' col <- rainbow(4)
+#' a <- c(1,2,5,10)
 #' plot(0,0,main="Cumulative probability function graph",xlab="Binomial random variable",
 #' ylab="Cumulative probability function values",xlim = c(0,10),ylim = c(0,1))
 #' for (i in 1:4)
@@ -646,8 +646,8 @@ pMcGBB<-function(x,n,a,b,c)
 #' Available at: \url{http://www.tandfonline.com/doi/full/10.1080/03610918.2015.1088024}.
 #'
 #' @examples
-#' No.D.D=0:7            #assigning the random variables
-#' Obs.fre.1=c(47,54,43,40,40,41,39,95)    #assigning the corresponding frequencies
+#' No.D.D <- 0:7            #assigning the random variables
+#' Obs.fre.1 <- c(47,54,43,40,40,41,39,95)    #assigning the corresponding frequencies
 #'
 #' NegLLMcGBB(No.D.D,Obs.fre.1,.2,.3,1)    #acquiring the negative log likelihood value
 #'
@@ -745,14 +745,15 @@ NegLLMcGBB<-function(x,freq,a,b,c)
 #' \code{\link[bbmle]{mle2}}
 #'
 #' @examples
-#' No.D.D=0:7                   #assigning the random variables
-#' Obs.fre.1=c(47,54,43,40,40,41,39,95)  #assigning the corresponding frequencies
+#' No.D.D <- 0:7                   #assigning the random variables
+#' Obs.fre.1 <- c(47,54,43,40,40,41,39,95)  #assigning the corresponding frequencies
 #'
+#' \dontrun{
 #' #estimating the parameters using maximum log likelihood value and assigning it
-#' parameters=EstMLEMcGBB(x=No.D.D,freq=Obs.fre.1,a=0.1,b=0.1,c=0.2)
+#' parameters <- EstMLEMcGBB(x=No.D.D,freq=Obs.fre.1,a=0.1,b=0.1,c=0.2)
 #'
 #' bbmle::coef(parameters)         #extracting the parameters
-#'
+#'         }
 #' @export
 EstMLEMcGBB<-function(x,freq,a,b,c,...)
 {
@@ -772,7 +773,6 @@ EstMLEMcGBB<-function(x,freq,a,b,c,...)
 }
 
 
-#' @export
 .EstMLEMcGBB<-function(x,freq,a,b,c)
 {
   #with respective to using bbmle package function mle2 there is no need impose any restrictions
@@ -870,19 +870,19 @@ EstMLEMcGBB<-function(x,freq,a,b,c,...)
 #' \code{\link[bbmle]{mle2}}
 #'
 #' @examples
-#' No.D.D=0:7       #assigning the random variables
-#' Obs.fre.1=c(47,54,43,40,40,41,39,95)          #assigning the corresponding frequencies
+#' No.D.D <- 0:7       #assigning the random variables
+#' Obs.fre.1 <- c(47,54,43,40,40,41,39,95)          #assigning the corresponding frequencies
 #'
-#' #estimating the parameters using maximum log likelihood value and assigning it
 #' \dontrun{
-#' parameters=EstMLEMcGBB(x=No.D.D,freq=Obs.fre.1,a=0.1,b=0.1,c=3.2)
+#' #estimating the parameters using maximum log likelihood value and assigning it
+#' parameters <- EstMLEMcGBB(x=No.D.D,freq=Obs.fre.1,a=0.1,b=0.1,c=3.2)
 #'
-#' aMcGBB=bbmle::coef(parameters)[1]         #assigning the estimated a
-#' bMcGBB=bbmle::coef(parameters)[2]         #assigning the estimated b
-#' cMcGBB=bbmle::coef(parameters)[3]         #assigning the estimated c
+#' aMcGBB <- bbmle::coef(parameters)[1]         #assigning the estimated a
+#' bMcGBB <- bbmle::coef(parameters)[2]         #assigning the estimated b
+#' cMcGBB <- bbmle::coef(parameters)[3]         #assigning the estimated c
 #'
 #' #fitting when the random variable,frequencies,shape parameter values are given.
-#' results<-fitMcGBB(No.D.D,Obs.fre.1,aMcGBB,bMcGBB,cMcGBB)
+#' results <- fitMcGBB(No.D.D,Obs.fre.1,aMcGBB,bMcGBB,cMcGBB)
 #' results
 #'
 #' #extracting the expected frequencies

@@ -70,8 +70,8 @@
 #'
 #' @examples
 #' #plotting the random variables and probability values
-#' col<-rainbow(4)
-#' x<-seq(0.2,0.8,by=0.2)
+#' col <- rainbow(4)
+#' x <- seq(0.2,0.8,by=0.2)
 #' plot(0,0,main="Probability density graph",xlab="Random variable",
 #' ylab="Probability density values",xlim = c(0,1),ylim = c(0,3))
 #' for (i in 1:4)
@@ -84,8 +84,8 @@
 #' dTRI(seq(0,1,by=0.01),0.3)$var     #extracting the variance
 #'
 #' #plotting the random variables and cumulative probability values
-#' col<-rainbow(4)
-#' x<-seq(0.2,0.8,by=0.2)
+#' col <- rainbow(4)
+#' x <- seq(0.2,0.8,by=0.2)
 #' plot(0,0,main="Cumulative density graph",xlab="Random variable",
 #' ylab="Cumulative density values",xlim = c(0,1),ylim = c(0,1))
 #' for (i in 1:4)
@@ -212,8 +212,8 @@ dTRI<-function(p,mode)
 #'
 #' @examples
 #' #plotting the random variables and probability values
-#' col<-rainbow(4)
-#' x<-seq(0.2,0.8,by=0.2)
+#' col <- rainbow(4)
+#' x <- seq(0.2,0.8,by=0.2)
 #' plot(0,0,main="Probability density graph",xlab="Random variable",
 #' ylab="Probability density values",xlim = c(0,1),ylim = c(0,3))
 #' for (i in 1:4)
@@ -226,8 +226,8 @@ dTRI<-function(p,mode)
 #' dTRI(seq(0,1,by=0.01),0.3)$var     #extracting the variance
 #'
 #' #plotting the random variables and cumulative probability values
-#' col<-rainbow(4)
-#' x<-seq(0.2,0.8,by=0.2)
+#' col <- rainbow(4)
+#' x <- seq(0.2,0.8,by=0.2)
 #' plot(0,0,main="Cumulative density graph",xlab="Random variable",
 #' ylab="Cumulative density values",xlim = c(0,1),ylim = c(0,1))
 #' for (i in 1:4)
@@ -350,8 +350,8 @@ pTRI<-function(p,mode)
 #'
 #' @examples
 #' #plotting the random variables and probability values
-#' col<-rainbow(4)
-#' x<-seq(0.2,0.8,by=0.2)
+#' col <- rainbow(4)
+#' x <- seq(0.2,0.8,by=0.2)
 #' plot(0,0,main="Probability density graph",xlab="Random variable",
 #' ylab="Probability density values",xlim = c(0,1),ylim = c(0,3))
 #' for (i in 1:4)
@@ -364,8 +364,8 @@ pTRI<-function(p,mode)
 #' dTRI(seq(0,1,by=0.01),0.3)$var     #extracting the variance
 #'
 #' #plotting the random variables and cumulative probability values
-#' col<-rainbow(4)
-#' x<-seq(0.2,0.8,by=0.2)
+#' col <- rainbow(4)
+#' x <- seq(0.2,0.8,by=0.2)
 #' plot(0,0,main="Cumulative density graph",xlab="Random variable",
 #' ylab="Cumulative density values",xlim = c(0,1),ylim = c(0,1))
 #' for (i in 1:4)
@@ -486,8 +486,8 @@ mazTRI<-function(r,mode)
 #'
 #' @examples
 #' #plotting the random variables and probability values
-#' col<-rainbow(7)
-#' x<-seq(0.1,0.7,by=0.1)
+#' col <- rainbow(7)
+#' x <- seq(0.1,0.7,by=0.1)
 #' plot(0,0,main="Triangular binomial probability function graph",xlab="Binomial random variable",
 #' ylab="Probability function values",xlim = c(0,10),ylim = c(0,.3))
 #' for (i in 1:7)
@@ -502,8 +502,8 @@ mazTRI<-function(r,mode)
 #' dTriBin(0:10,10,.4)$over.dis.para  #extracting the over dispersion value
 #'
 #' #plotting the random variables and cumulative probability values
-#' col<-rainbow(7)
-#' x<-seq(0.1,0.7,by=0.1)
+#' col <- rainbow(7)
+#' x <- seq(0.1,0.7,by=0.1)
 #' plot(0,0,main="Triangular binomial probability function graph",xlab="Binomial random variable",
 #' ylab="Probability function values",xlim = c(0,10),ylim = c(0,1))
 #' for (i in 1:7)
@@ -644,8 +644,8 @@ dTriBin<-function(x,n,mode)
 #'
 #' @examples
 #' #plotting the random variables and probability values
-#' col<-rainbow(7)
-#' x<-seq(0.1,0.7,by=0.1)
+#' col <- rainbow(7)
+#' x <- seq(0.1,0.7,by=0.1)
 #' plot(0,0,main="Triangular binomial probability function graph",xlab="Binomial random variable",
 #' ylab="Probability function values",xlim = c(0,10),ylim = c(0,.3))
 #' for (i in 1:7)
@@ -660,8 +660,8 @@ dTriBin<-function(x,n,mode)
 #' dTriBin(0:10,10,.4)$over.dis.para  #extracting the over dispersion value
 #'
 #' #plotting the random variables and cumulative probability values
-#' col<-rainbow(7)
-#' x<-seq(0.1,0.7,by=0.1)
+#' col <- rainbow(7)
+#' x <- seq(0.1,0.7,by=0.1)
 #' plot(0,0,main="Triangular binomial probability function graph",xlab="Binomial random variable",
 #' ylab="Probability function values",xlim = c(0,10),ylim = c(0,1))
 #' for (i in 1:7)
@@ -726,8 +726,8 @@ pTriBin<-function(x,n,mode)
 #' Available at: \url{http://www.sciencedomain.org/abstract.php?iid=699&id=6&aid=6427}.
 #'
 #' @examples
-#' No.D.D=0:7    #assigning the Random variables
-#' Obs.fre.1=c(47,54,43,40,40,41,39,95) #assigning the corresponding frequencies
+#' No.D.D <- 0:7    #assigning the Random variables
+#' Obs.fre.1 <- c(47,54,43,40,40,41,39,95) #assigning the corresponding frequencies
 #'
 #' NegLLTriBin(No.D.D,Obs.fre.1,.023)   #acquiring the Negative log likelihood value
 #'
@@ -857,11 +857,12 @@ NegLLTriBin<-function(x,freq,mode)
 #' Available at: \url{http://www.sciencedomain.org/abstract.php?iid=699&id=6&aid=6427}.
 #'
 #' @examples
-#' No.D.D=0:7   #assigning the random variables
-#' Obs.fre.1=c(47,54,43,40,40,41,39,95)   #assigning the corresponding frequencies
+#' No.D.D <- 0:7   #assigning the random variables
+#' Obs.fre.1 <- c(47,54,43,40,40,41,39,95)   #assigning the corresponding frequencies
 #'
 #' \dontrun{
-#' results<-EstMLETriBin(No.D.D,Obs.fre.1)    #estimating the mode value and extracting the mode value
+#' #estimating the mode value and extracting the mode value
+#' results <- EstMLETriBin(No.D.D,Obs.fre.1)
 #'
 #' # extract the mode value and summary
 #' coef(results)
@@ -886,7 +887,7 @@ EstMLETriBin<-function(x,freq)
   suppressWarnings2(.EstMLETriBin(x=x,freq=freq),"NaN")
 }
 
-#' @export
+
 .EstMLETriBin<-function(x,freq)
 {
   #checking if inputs consist NA(not assigned)values, infinite values or NAN(not a number)values if so
@@ -1069,13 +1070,13 @@ coef.mlTRI<-function(object,...)
 #' Available at: \url{http://www.sciencedomain.org/abstract.php?iid=699&id=6&aid=6427}.
 #'
 #' @examples
-#' No.D.D=0:7      #assigning the random variables
-#' Obs.fre.1=c(47,54,43,40,40,41,39,95)  #assigning the corresponding frequencies
+#' No.D.D <- 0:7      #assigning the random variables
+#' Obs.fre.1 <- c(47,54,43,40,40,41,39,95)  #assigning the corresponding frequencies
 #'
-#' modeTriBin=EstMLETriBin(No.D.D,Obs.fre.1)$mode  #assigning the extracted the mode value
+#' modeTriBin <- EstMLETriBin(No.D.D,Obs.fre.1)$mode  #assigning the extracted the mode value
 #'
 #' #fitting when the random variable,frequencies,mode value are given.
-#' results<-fitTriBin(No.D.D,Obs.fre.1,modeTriBin)
+#' results <- fitTriBin(No.D.D,Obs.fre.1,modeTriBin)
 #' results
 #'
 #' #extract AIC value

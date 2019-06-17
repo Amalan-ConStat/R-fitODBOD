@@ -41,8 +41,8 @@ The mean, variance and over dispersion are denoted as
 }
 \examples{
 #plotting the random variables and probability values
-col<-rainbow(5)
-a<-c(0.3,0.4,0.5,0.6,0.8)
+col <- rainbow(5)
+a <- c(0.3,0.4,0.5,0.6,0.8)
 plot(0,0,main="Grassia II binomial probability function graph",xlab="Binomial random variable",
 ylab="Probability function values",xlim = c(0,10),ylim = c(0,0.5))
 for (i in 1:5)
@@ -57,8 +57,8 @@ dGrassiaIIBin(0:10,10,4,.2)$var    #extracting the variance
 dGrassiaIIBin(0:10,10,4,.2)$over.dis.para  #extracting the over dispersion value
 
 #plotting the random variables and cumulative probability values
-col<-rainbow(4)
-a<-c(0.3,0.4,0.5,0.6)
+col <- rainbow(4)
+a <- c(0.3,0.4,0.5,0.6)
 plot(0,0,main="Cumulative probability function graph",xlab="Binomial random variable",
 ylab="Cumulative probability function values",xlim = c(0,10),ylim = c(0,1))
 for (i in 1:4)

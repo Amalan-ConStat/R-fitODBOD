@@ -462,4 +462,3 @@ pUniBin<-function(x,n)
 
 #'
 #' @import stats
-#'

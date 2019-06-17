@@ -40,12 +40,12 @@ variables and corresponding frequencies are given.
 necessary error messages will be provided to go further.
 }
 \examples{
-No.D.D=0:7         #assigning the random variables
-Obs.fre.1=c(47,54,43,40,40,41,39,95)     #assigning the corresponding frequencies
+No.D.D <- 0:7         #assigning the random variables
+Obs.fre.1 <- c(47,54,43,40,40,41,39,95)     #assigning the corresponding frequencies
 
 \dontrun{
 #estimating the probability value and alpha value
-results<-EstMLEAddBin(No.D.D,Obs.fre.1)
+results <- EstMLEAddBin(No.D.D,Obs.fre.1)
 
 #printing the summary of results
 summary(results)

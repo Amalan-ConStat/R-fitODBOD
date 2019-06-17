@@ -62,17 +62,17 @@ and degree of freedom so that it can be seen if this distribution fits the data.
 necessary error messages will be provided to go further.
 }
 \examples{
-No.D.D=0:7                    #assigning the random variables
-Obs.fre.1=c(47,54,43,40,40,41,39,95)      #assigning the corresponding frequencies
+No.D.D <- 0:7                    #assigning the random variables
+Obs.fre.1 <- c(47,54,43,40,40,41,39,95)      #assigning the corresponding frequencies
 
 #estimating the parameters using maximum log likelihood value and assigning it
-parameters=EstMLECOMPBin(x=No.D.D,freq=Obs.fre.1,p=0.5,v=0.050)
+parameters <- EstMLECOMPBin(x=No.D.D,freq=Obs.fre.1,p=0.5,v=0.050)
 
-pCOMPBin=bbmle::coef(parameters)[1]
-vCOMPBin=bbmle::coef(parameters)[2]
+pCOMPBin <- bbmle::coef(parameters)[1]
+vCOMPBin <- bbmle::coef(parameters)[2]
 
 #fitting when the random variable,frequencies,probability and v parameter are given
-results<-fitCOMPBin(No.D.D,Obs.fre.1,pCOMPBin,vCOMPBin)
+results <- fitCOMPBin(No.D.D,Obs.fre.1,pCOMPBin,vCOMPBin)
 results
 
 #extracting the AIC value

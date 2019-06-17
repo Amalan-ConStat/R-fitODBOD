@@ -25,8 +25,8 @@ function simplifies the data into more presentable way to the user.
 necessary error messages will be provided to go further
 }
 \examples{
-datapoints=sample(0:10,340,replace=TRUE) #creating a sample set of observations
+datapoints <- sample(0:10,340,replace=TRUE) #creating a sample set of observations
 BODextract(datapoints)                   #extracting binomial outcome data from observations
-Random.variable=BODextract(datapoints)$RV #extracting the binomial random variables
+Random.variable <- BODextract(datapoints)$RV #extracting the binomial random variables
 
 }

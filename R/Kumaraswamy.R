@@ -57,8 +57,8 @@
 #'
 #' @examples
 #' #plotting the random variables and probability values
-#' col<-rainbow(4)
-#' a<-c(1,2,5,10)
+#' col <- rainbow(4)
+#' a <- c(1,2,5,10)
 #' plot(0,0,main="Probability density graph",xlab="Random variable",ylab="Probability density values",
 #' xlim = c(0,1),ylim = c(0,6))
 #' for (i in 1:4)
@@ -71,8 +71,8 @@
 #' dKUM(seq(0,1,by=0.01),2,3)$var   #extracting the variance
 #'
 #' #plotting the random variables and cumulative probability values
-#' col<-rainbow(4)
-#' a<-c(1,2,5,10)
+#' col <- rainbow(4)
+#' a <- c(1,2,5,10)
 #' plot(0,0,main="Cumulative density graph",xlab="Random variable",ylab="Cumulative density values",
 #' xlim = c(0,1),ylim = c(0,1))
 #' for (i in 1:4)
@@ -182,8 +182,8 @@ dKUM<-function(p,a,b)
 #'
 #' @examples
 #' #plotting the random variables and probability values
-#' col<-rainbow(4)
-#' a<-c(1,2,5,10)
+#' col <- rainbow(4)
+#' a <- c(1,2,5,10)
 #' plot(0,0,main="Probability density graph",xlab="Random variable",ylab="Probability density values",
 #' xlim = c(0,1),ylim = c(0,6))
 #' for (i in 1:4)
@@ -196,8 +196,8 @@ dKUM<-function(p,a,b)
 #' dKUM(seq(0,1,by=0.01),2,3)$var   #extracting the variance
 #'
 #' #plotting the random variables and cumulative probability values
-#' col<-rainbow(4)
-#' a<-c(1,2,5,10)
+#' col <- rainbow(4)
+#' a <- c(1,2,5,10)
 #' plot(0,0,main="Cumulative density graph",xlab="Random variable",ylab="Cumulative density values",
 #' xlim = c(0,1),ylim = c(0,1))
 #' for (i in 1:4)
@@ -304,8 +304,8 @@ pKUM<-function(p,a,b)
 #'
 #' @examples
 #' #plotting the random variables and probability values
-#' col<-rainbow(4)
-#' a<-c(1,2,5,10)
+#' col <- rainbow(4)
+#' a <- c(1,2,5,10)
 #' plot(0,0,main="Probability density graph",xlab="Random variable",ylab="Probability density values",
 #' xlim = c(0,1),ylim = c(0,6))
 #' for (i in 1:4)
@@ -318,8 +318,8 @@ pKUM<-function(p,a,b)
 #' dKUM(seq(0,1,by=0.01),2,3)$var   #extracting the variance
 #'
 #' #plotting the random variables and cumulative probability values
-#' col<-rainbow(4)
-#' a<-c(1,2,5,10)
+#' col <- rainbow(4)
+#' a <- c(1,2,5,10)
 #' plot(0,0,main="Cumulative density graph",xlab="Random variable",ylab="Cumulative density values",
 #' xlim = c(0,1),ylim = c(0,1))
 #' for (i in 1:4)
@@ -435,8 +435,8 @@ mazKUM<-function(r,a,b)
 #' @examples
 #' \dontrun{
 #' #plotting the random variables and probability values
-#' col<-rainbow(5)
-#' a<-c(1,2,5,10,.85)
+#' col <- rainbow(5)
+#' a <- c(1,2,5,10,.85)
 #' plot(0,0,main="Kumaraswamy binomial probability function graph",xlab="Binomial random variable",
 #' ylab="Probability function values",xlim = c(0,10),ylim = c(0,0.5))
 #' for (i in 1:5)
@@ -451,8 +451,8 @@ mazKUM<-function(r,a,b)
 #' dKumBin(0:10,10,4,2)$over.dis.para #extracting the over dispersion value
 #'
 #' #plotting the random variables and cumulative probability values
-#' col<-rainbow(5)
-#' a<-c(1,2,5,10,.85)
+#' col <- rainbow(5)
+#' a <- c(1,2,5,10,.85)
 #' plot(0,0,main="Cumulative probability function graph",xlab="Binomial random variable",
 #' ylab="Cumulative probability function values",xlim = c(0,10),ylim = c(0,1))
 #' for (i in 1:5)
@@ -599,8 +599,8 @@ dKumBin<-function(x,n,a,b,it=25000)
 #' @examples
 #' \dontrun{
 #' #plotting the random variables and probability values
-#' col<-rainbow(5)
-#' a<-c(1,2,5,10,.85)
+#' col <- rainbow(5)
+#' a <- c(1,2,5,10,.85)
 #' plot(0,0,main="Kumaraswamy binomial probability function graph",xlab="Binomial random variable",
 #' ylab="Probability function values",xlim = c(0,10),ylim = c(0,0.5))
 #' for (i in 1:5)
@@ -615,8 +615,8 @@ dKumBin<-function(x,n,a,b,it=25000)
 #' dKumBin(0:10,10,4,2)$over.dis.para #extracting the over dispersion value
 #'
 #' #plotting the random variables and cumulative probability values
-#' col<-rainbow(5)
-#' a<-c(1,2,5,10,.85)
+#' col <- rainbow(5)
+#' a <- c(1,2,5,10,.85)
 #' plot(0,0,main="Cumulative probability function graph",xlab="Binomial random variable",
 #' ylab="Cumulative probability function values",xlim = c(0,10),ylim = c(0,1))
 #' for (i in 1:5)
@@ -676,8 +676,8 @@ pKumBin<-function(x,n,a,b,it=25000)
 #' of Applied Probability and Statistics, 27(5), 511-521.
 #'
 #' @examples
-#' No.D.D=0:7          #assigning the random variables
-#' Obs.fre.1=c(47,54,43,40,40,41,39,95)  #assigning the corresponding frequencies
+#' No.D.D <- 0:7          #assigning the random variables
+#' Obs.fre.1 <- c(47,54,43,40,40,41,39,95)  #assigning the corresponding frequencies
 #'
 #' \dontrun{
 #' NegLLKumBin(No.D.D,Obs.fre.1,1.3,4.4) #acquiring the negative log likelihood value
@@ -794,12 +794,12 @@ NegLLKumBin<-function(x,freq,a,b,it=25000)
 #' \code{\link[bbmle]{mle2}}
 #'
 #' @examples
-#' No.D.D=0:7     #assigning the random variables
-#' Obs.fre.1=c(47,54,43,40,40,41,39,95)  #assigning the corresponding frequencies
+#' No.D.D <- 0:7     #assigning the random variables
+#' Obs.fre.1 <- c(47,54,43,40,40,41,39,95)  #assigning the corresponding frequencies
 #'
-#' #estimating the parameters using maximum log likelihood value and assigning it
 #' \dontrun{
-#' parameters1=EstMLEKumBin(x=No.D.D,freq=Obs.fre.1,a=10.1,b=1.1,it=10000)
+#' #estimating the parameters using maximum log likelihood value and assigning it
+#' parameters1 <- EstMLEKumBin(x=No.D.D,freq=Obs.fre.1,a=10.1,b=1.1,it=10000)
 #'
 #' bbmle::coef(parameters1)   #extracting the parameters
 #'         }
@@ -821,7 +821,7 @@ EstMLEKumBin<-function(x,freq,a,b,it,...)
   return(output)
 }
 
-#' @export
+
 .EstMLEKumBin<-function(x,freq,a,b,it)
 {
   #with respective to using bbmle package function mle2 there is no need impose any restrictions
@@ -910,20 +910,20 @@ EstMLEKumBin<-function(x,freq,a,b,it,...)
 #' \code{\link[bbmle]{mle2}}
 #'
 #' @examples
-#' No.D.D=0:7   #assigning the random variables
-#' Obs.fre.1=c(47,54,43,40,40,41,39,95)   #assigning the corresponding frequencies
+#' No.D.D <- 0:7   #assigning the random variables
+#' Obs.fre.1 <- c(47,54,43,40,40,41,39,95)   #assigning the corresponding frequencies
 #'
-#' #estimating the parameters using maximum log likelihood value and assigning it
 #' \dontrun{
-#' parameters=EstMLEKumBin(x=No.D.D,freq=Obs.fre.1,a=10.1,b=1.1,it=10000)
+#' #estimating the parameters using maximum log likelihood value and assigning it
+#' parameters <- EstMLEKumBin(x=No.D.D,freq=Obs.fre.1,a=10.1,b=1.1,it=10000)
 #'
 #' bbmle::coef(parameters)    #extracting the parameters
-#' aKumBin=bbmle::coef(parameters)[1] #assigning the estimated a
-#' bKumBin=bbmle::coef(parameters)[2] #assigning the estimated b
-#' itKumBin=bbmle::coef(parameters)[3] #assigning the estimated iterations
+#' aKumBin <- bbmle::coef(parameters)[1] #assigning the estimated a
+#' bKumBin <- bbmle::coef(parameters)[2] #assigning the estimated b
+#' itKumBin <- bbmle::coef(parameters)[3] #assigning the estimated iterations
 #'
 #' #fitting when the random variable,frequencies,shape parameter values are given.
-#' results<-fitKumBin(No.D.D,Obs.fre.1,aKumBin,bKumBin,itKumBin*100)
+#' results <- fitKumBin(No.D.D,Obs.fre.1,aKumBin,bKumBin,itKumBin*100)
 #' results
 #'
 #' #extracting the expected frequencies

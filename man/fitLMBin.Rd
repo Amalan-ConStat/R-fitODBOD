@@ -60,17 +60,17 @@ fits the data.
 \deqn{0 < phi }
 }
 \examples{
-No.D.D=0:7       #assigning the random variables
-Obs.fre.1=c(47,54,43,40,40,41,39,95)     #assigning the corresponding frequencies
+No.D.D <- 0:7       #assigning the random variables
+Obs.fre.1 <- c(47,54,43,40,40,41,39,95)     #assigning the corresponding frequencies
 
 #estimating the parameters using maximum log likelihood value and assigning it
-parameters=EstMLELMBin(x=No.D.D,freq=Obs.fre.1,p=0.1,phi=.3)
+parameters <- EstMLELMBin(x=No.D.D,freq=Obs.fre.1,p=0.1,phi=.3)
 
 pLMBin=bbmle::coef(parameters)[1]    #assigning the estimated probability value
-phiLMBin=bbmle::coef(parameters)[2]  #assigning the estimated phi value
+phiLMBin <- bbmle::coef(parameters)[2]  #assigning the estimated phi value
 
 #fitting when the random variable,frequencies,probability and phi are given
-results<-fitLMBin(No.D.D,Obs.fre.1,pLMBin,phiLMBin)
+results <- fitLMBin(No.D.D,Obs.fre.1,pLMBin,phiLMBin)
 results
 
 #extracting the AIC value

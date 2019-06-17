@@ -67,9 +67,9 @@ necessary error messages will be provided to go further.
 }
 \examples{
 #plotting the random variables and probability values
-col<-rainbow(5)
-a<-c(9.0,10,11,12,13)
-b<-c(8.0,8.1,8.2,8.3,8.4)
+col <- rainbow(5)
+a <- c(9.0,10,11,12,13)
+b <- c(8.0,8.1,8.2,8.3,8.4)
 plot(0,0,main="Beta-Correlated binomial probability function graph",xlab="Binomial random variable",
 ylab="Probability function values",xlim = c(0,10),ylim = c(0,0.5))
 for (i in 1:5)
@@ -86,9 +86,9 @@ dBetaCorrBin(0:10,10,0.001,10,13)$mincorr  #extracting the minimum correlation v
 dBetaCorrBin(0:10,10,0.001,10,13)$maxcorr  #extracting the maximum correlation value
 
 #plotting the random variables and cumulative probability values
-col<-rainbow(5)
-a<-c(9.0,10,11,12,13)
-b<-c(8.0,8.1,8.2,8.3,8.4)
+col <- rainbow(5)
+a <- c(9.0,10,11,12,13)
+b <- c(8.0,8.1,8.2,8.3,8.4)
 plot(0,0,main="Beta-Correlated binomial probability function graph",xlab="Binomial random variable",
 ylab="Probability function values",xlim = c(0,10),ylim = c(0,1))
 for (i in 1:5)

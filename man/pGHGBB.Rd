@@ -51,8 +51,8 @@ messages will be provided to go further.
 }
 \examples{
 #plotting the random variables and probability values
-col<-rainbow(6)
-a<-c(.1,.2,.3,1.5,2.1,3)
+col <- rainbow(6)
+a <- c(.1,.2,.3,1.5,2.1,3)
 plot(0,0,main="GHGBB probability function graph",xlab="Binomial random variable",
 ylab="Probability function values",xlim = c(0,7),ylim = c(0,0.9))
 for (i in 1:6)
@@ -67,8 +67,8 @@ dGHGBB(0:7,7,1.3,0.3,1.3)$var      #extracting the variance
 dGHGBB(0:7,7,1.3,0.3,1.3)$over.dis.par  #extracting the over dispersion value
 
 #plotting the random variables and cumulative probability values
-col<-rainbow(4)
-a<-c(1,2,5,10)
+col <- rainbow(4)
+a <- c(1,2,5,10)
 plot(0,0,main="Cumulative probability function graph",xlab="Binomial random variable",
 ylab="Cumulative probability function values",xlim = c(0,7),ylim = c(0,1))
 for (i in 1:4)

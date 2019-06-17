@@ -54,8 +54,8 @@ messages will be provided to go further.
 \examples{
 \dontrun{
 #plotting the random variables and probability values
-col<-rainbow(5)
-a<-c(1,2,5,10,.85)
+col <- rainbow(5)
+a <- c(1,2,5,10,.85)
 plot(0,0,main="Kumaraswamy binomial probability function graph",xlab="Binomial random variable",
 ylab="Probability function values",xlim = c(0,10),ylim = c(0,0.5))
 for (i in 1:5)
@@ -70,8 +70,8 @@ dKumBin(0:10,10,4,2)$var  #extracting the variance
 dKumBin(0:10,10,4,2)$over.dis.para #extracting the over dispersion value
 
 #plotting the random variables and cumulative probability values
-col<-rainbow(5)
-a<-c(1,2,5,10,.85)
+col <- rainbow(5)
+a <- c(1,2,5,10,.85)
 plot(0,0,main="Cumulative probability function graph",xlab="Binomial random variable",
 ylab="Cumulative probability function values",xlim = c(0,10),ylim = c(0,1))
 for (i in 1:5)

@@ -46,8 +46,8 @@ messages will be provided to go further.
 }
 \examples{
 #plotting the random variables and probability values
-col<-rainbow(4)
-a<-c(1,2,5,10)
+col <- rainbow(4)
+a <- c(1,2,5,10)
 plot(0,0,main="Probability density graph",xlab="Random variable",ylab="Probability density values",
 xlim = c(0,1),ylim = c(0,4))
 for (i in 1:4)
@@ -60,8 +60,8 @@ dGAMMA(seq(0,1,by=0.01),5,6)$mean  #extracting the mean
 dGAMMA(seq(0,1,by=0.01),5,6)$var   #extracting the variance
 
 #plotting the random variables and cumulative probability values
-col<-rainbow(4)
-a<-c(1,2,5,10)
+col <- rainbow(4)
+a <- c(1,2,5,10)
 plot(0,0,main="Cumulative density graph",xlab="Random variable",ylab="Cumulative density values",
 xlim = c(0,1),ylim = c(0,1))
 for (i in 1:4)

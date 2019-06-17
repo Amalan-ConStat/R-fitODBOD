@@ -298,9 +298,9 @@
 #' \code{Freq}  corresponding frequencies in vector form
 #'
 #' @examples
-#' datapoints=sample(0:10,340,replace=TRUE) #creating a sample set of observations
+#' datapoints <- sample(0:10,340,replace=TRUE) #creating a sample set of observations
 #' BODextract(datapoints)                   #extracting binomial outcome data from observations
-#' Random.variable=BODextract(datapoints)$RV #extracting the binomial random variables
+#' Random.variable <- BODextract(datapoints)$RV #extracting the binomial random variables
 #'
 #' @export
 BODextract<-function(data)
@@ -388,8 +388,8 @@ BODextract<-function(data)
 #' \code{call} the inputs of the function.
 #'
 #' @examples
-#' No.D.D=0:7      #assigning the random variables
-#' Obs.fre.1=c(47,54,43,40,40,41,39,95)  #assigning the corresponding frequencies
+#' No.D.D <- 0:7      #assigning the random variables
+#' Obs.fre.1 <- c(47,54,43,40,40,41,39,95)  #assigning the corresponding frequencies
 #'
 #'
 #' #fitting when the random variable,frequencies are given.

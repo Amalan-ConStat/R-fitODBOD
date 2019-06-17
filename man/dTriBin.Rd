@@ -53,8 +53,8 @@ necessary error messages will be provided to go further.
 }
 \examples{
 #plotting the random variables and probability values
-col<-rainbow(7)
-x<-seq(0.1,0.7,by=0.1)
+col <- rainbow(7)
+x <- seq(0.1,0.7,by=0.1)
 plot(0,0,main="Triangular binomial probability function graph",xlab="Binomial random variable",
 ylab="Probability function values",xlim = c(0,10),ylim = c(0,.3))
 for (i in 1:7)
@@ -69,8 +69,8 @@ dTriBin(0:10,10,.4)$var        #extracting the variance
 dTriBin(0:10,10,.4)$over.dis.para  #extracting the over dispersion value
 
 #plotting the random variables and cumulative probability values
-col<-rainbow(7)
-x<-seq(0.1,0.7,by=0.1)
+col <- rainbow(7)
+x <- seq(0.1,0.7,by=0.1)
 plot(0,0,main="Triangular binomial probability function graph",xlab="Binomial random variable",
 ylab="Probability function values",xlim = c(0,10),ylim = c(0,1))
 for (i in 1:7)

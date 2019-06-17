@@ -45,9 +45,9 @@
 #'
 #' @examples
 #' #plotting the random variables and probability values
-#' col<-rainbow(5)
-#' a<-c(0.58,0.59,0.6,0.61,0.62)
-#' b<-c(0.022,0.023,0.024,0.025,0.026)
+#' col <- rainbow(5)
+#' a <- c(0.58,0.59,0.6,0.61,0.62)
+#' b <- c(0.022,0.023,0.024,0.025,0.026)
 #' plot(0,0,main="COM Poisson Binomial probability function graph",xlab="Binomial random variable",
 #' ylab="Probability function values",xlim = c(0,10),ylim = c(0,0.5))
 #' for (i in 1:5)
@@ -61,9 +61,9 @@
 #' dCOMPBin(0:10,10,0.58,0.022)$var      #extracting the variance
 #'
 #' #plotting the random variables and cumulative probability values
-#' col<-rainbow(5)
-#' a<-c(0.58,0.59,0.6,0.61,0.62)
-#' b<-c(0.022,0.023,0.024,0.025,0.026)
+#' col <- rainbow(5)
+#' a <- c(0.58,0.59,0.6,0.61,0.62)
+#' b <- c(0.022,0.023,0.024,0.025,0.026)
 #' plot(0,0,main="COM Poisson Binomial probability function graph",xlab="Binomial random variable",
 #' ylab="Probability function values",xlim = c(0,10),ylim = c(0,1))
 #' for (i in 1:5)
@@ -184,9 +184,9 @@ dCOMPBin<-function(x,n,p,v)
 #'
 #' @examples
 #' #plotting the random variables and probability values
-#' col<-rainbow(5)
-#' a<-c(0.58,0.59,0.6,0.61,0.62)
-#' b<-c(0.022,0.023,0.024,0.025,0.026)
+#' col <- rainbow(5)
+#' a <- c(0.58,0.59,0.6,0.61,0.62)
+#' b <- c(0.022,0.023,0.024,0.025,0.026)
 #' plot(0,0,main="COM Poisson Binomial probability function graph",xlab="Binomial random variable",
 #' ylab="Probability function values",xlim = c(0,10),ylim = c(0,0.5))
 #' for (i in 1:5)
@@ -200,9 +200,9 @@ dCOMPBin<-function(x,n,p,v)
 #' dCOMPBin(0:10,10,0.58,0.022)$var      #extracting the variance
 #'
 #' #plotting the random variables and cumulative probability values
-#' col<-rainbow(5)
-#' a<-c(0.58,0.59,0.6,0.61,0.62)
-#' b<-c(0.022,0.023,0.024,0.025,0.026)
+#' col <- rainbow(5)
+#' a <- c(0.58,0.59,0.6,0.61,0.62)
+#' b <- c(0.022,0.023,0.024,0.025,0.026)
 #' plot(0,0,main="COM Poisson Binomial probability function graph",xlab="Binomial random variable",
 #' ylab="Probability function values",xlim = c(0,10),ylim = c(0,1))
 #' for (i in 1:5)
@@ -261,8 +261,8 @@ pCOMPBin<-function(x,n,p,v)
 #' Available at: \url{http://conteudo.icmc.usp.br/CMS/Arquivos/arquivos_enviados/BIBLIOTECA_113_NSE_90.pdf}
 #'
 #' @examples
-#' No.D.D=0:7         #assigning the random variables
-#' Obs.fre.1=c(47,54,43,40,40,41,39,95)      #assigning the corresponding frequencies
+#' No.D.D <- 0:7         #assigning the random variables
+#' Obs.fre.1 <- c(47,54,43,40,40,41,39,95)      #assigning the corresponding frequencies
 #'
 #' NegLLCOMPBin(No.D.D,Obs.fre.1,.5,.03)     #acquiring the negative log likelihood value
 #'
@@ -364,11 +364,11 @@ NegLLCOMPBin<-function(x,freq,p,v)
 #' Available at: \url{http://conteudo.icmc.usp.br/CMS/Arquivos/arquivos_enviados/BIBLIOTECA_113_NSE_90.pdf}
 #'
 #' @examples
-#' No.D.D=0:7               #assigning the random variables
-#' Obs.fre.1=c(47,54,43,40,40,41,39,95)     #assigning the corresponding frequencies
+#' No.D.D <- 0:7               #assigning the random variables
+#' Obs.fre.1 <- c(47,54,43,40,40,41,39,95)     #assigning the corresponding frequencies
 #'
 #' #estimating the parameters using maximum log likelihood value and assigning it
-#' parameters=EstMLECOMPBin(x=No.D.D,freq=Obs.fre.1,p=0.5,v=0.1)
+#' parameters <- EstMLECOMPBin(x=No.D.D,freq=Obs.fre.1,p=0.5,v=0.1)
 #'
 #' bbmle::coef(parameters)           #extracting the parameters
 #'
@@ -390,7 +390,6 @@ EstMLECOMPBin<-function(x,freq,p,v,...)
   return(output)
 }
 
-#' @export
 .EstMLECOMPBin<-function(x,freq,p,v)
 {
   #with respective to using bbmle package function mle2 there is no need impose any restrictions
@@ -472,17 +471,17 @@ EstMLECOMPBin<-function(x,freq,p,v,...)
 #' Available at: \url{http://conteudo.icmc.usp.br/CMS/Arquivos/arquivos_enviados/BIBLIOTECA_113_NSE_90.pdf}
 #'
 #' @examples
-#' No.D.D=0:7                    #assigning the random variables
-#' Obs.fre.1=c(47,54,43,40,40,41,39,95)      #assigning the corresponding frequencies
+#' No.D.D <- 0:7                    #assigning the random variables
+#' Obs.fre.1 <- c(47,54,43,40,40,41,39,95)      #assigning the corresponding frequencies
 #'
 #' #estimating the parameters using maximum log likelihood value and assigning it
-#' parameters=EstMLECOMPBin(x=No.D.D,freq=Obs.fre.1,p=0.5,v=0.050)
+#' parameters <- EstMLECOMPBin(x=No.D.D,freq=Obs.fre.1,p=0.5,v=0.050)
 #'
-#' pCOMPBin=bbmle::coef(parameters)[1]
-#' vCOMPBin=bbmle::coef(parameters)[2]
+#' pCOMPBin <- bbmle::coef(parameters)[1]
+#' vCOMPBin <- bbmle::coef(parameters)[2]
 #'
 #' #fitting when the random variable,frequencies,probability and v parameter are given
-#' results<-fitCOMPBin(No.D.D,Obs.fre.1,pCOMPBin,vCOMPBin)
+#' results <- fitCOMPBin(No.D.D,Obs.fre.1,pCOMPBin,vCOMPBin)
 #' results
 #'
 #' #extracting the AIC value

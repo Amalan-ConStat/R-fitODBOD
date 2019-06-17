@@ -52,8 +52,8 @@ The mean, variance and over dispersion are denoted as
 }
 \examples{
 #plotting the random variables and probability values
-col<-rainbow(5)
-a<-c(1,2,5,10,0.6)
+col <- rainbow(5)
+a <- c(1,2,5,10,0.6)
 plot(0,0,main="Mcdonald generalized beta-binomial probability function graph",
 xlab="Binomial random variable",ylab="Probability function values",xlim = c(0,10),ylim = c(0,0.5))
 for (i in 1:5)
@@ -68,8 +68,8 @@ dMcGBB(0:10,10,4,2,1)$var             #extracting the variance
 dMcGBB(0:10,10,4,2,1)$over.dis.para   #extracting the over dispersion value
 
 #plotting the random variables and cumulative probability values
-col<-rainbow(4)
-a<-c(1,2,5,10)
+col <- rainbow(4)
+a <- c(1,2,5,10)
 plot(0,0,main="Cumulative probability function graph",xlab="Binomial random variable",
 ylab="Cumulative probability function values",xlim = c(0,10),ylim = c(0,1))
 for (i in 1:4)
