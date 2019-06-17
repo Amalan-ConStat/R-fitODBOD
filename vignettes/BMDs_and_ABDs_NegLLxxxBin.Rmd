@@ -54,10 +54,9 @@ of Male_children data. Before that, I am going to estimate the parameters which 
 Negative Log Likelihood value.
 
 ```{r Estimating parameters and printing Negative Log Likelihood value, echo=FALSE}
-Est_para<-suppressWarnings(
-                          mle2(EstMLEBetaBin,
-                          data=list(x=Male_Children$No_of_Males,freq=Male_Children$freq),
-                          start = list(a=10,b=10)))
+Est_para<-EstMLEBetaBin(x=Male_Children$No_of_Males,freq=Male_Children$freq,
+                        a=10,b=10)
+
 Negllvalue<-NegLLBetaBin(Male_Children$No_of_Males,Male_Children$freq,
                          coef(Est_para)[1],coef(Est_para)[2])
 cat("Minimized Negative Log Likelihood value for Male_children data =",Negllvalue)

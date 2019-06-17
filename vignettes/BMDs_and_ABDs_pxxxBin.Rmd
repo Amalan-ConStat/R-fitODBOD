@@ -58,7 +58,8 @@ ggplot(data)+
   geom_line(aes(x=data$brv,y=data$cpmfv))+
   xlab("Binomial Random Variable")+
   ylab("Cumulative Probability Mass Function values")+
-  ggtitle("Cpmf values changing")
+  ggtitle("Cpmf values changing")+
+  ggthemes::theme_clean()+
   scale_x_continuous(breaks=seq(0,10,by=1))
 ```
 
@@ -83,6 +84,7 @@ ggplot(data,aes(brv,value,col=variable))+
   geom_line()+guides(fill=FALSE,color=FALSE)+
   xlab("Binomial Random Variable")+
   ylab("Cumulative Probability Mass values")+
+  ggthemes::theme_clean()+
   ggtitle("Cpmf values changing for c=seq(0.02,0.98,by=0.01)")
   scale_x_continuous(breaks=seq(0,15,by=1))
 ```
@@ -111,6 +113,7 @@ pBetaBinplot<-function(a,b,plot_title,a_seq)
       geom_line()+guides(fill=FALSE,color=FALSE)+
       xlab("Binomial Random Variable")+
       ylab("Cpmf values")+
+      ggthemes::theme_clean()+
       ggtitle(plot_title)
       return(p1)
   }
@@ -128,6 +131,7 @@ pBetaBinplot<-function(a,b,plot_title,a_seq)
       geom_line()+guides(fill=FALSE,color=FALSE)+
       xlab("Binomial Random Variable")+
       ylab("Cpmf values")+
+      ggthemes::theme_clean()+
       ggtitle(plot_title)
       return(p1)
   }
@@ -176,6 +180,7 @@ pKumBinplot<-function(a,b,plot_title,a_seq)
       geom_line()+guides(fill=FALSE,color=FALSE)+
       xlab("Binomial Random Variable")+
       ylab("Cpmf values")+
+      ggthemes::theme_clean()+
       ggtitle(plot_title)
       return(p1)
   }
@@ -193,6 +198,7 @@ pKumBinplot<-function(a,b,plot_title,a_seq)
       geom_line()+guides(fill=FALSE,color=FALSE)+
       xlab("Binomial Random Variable")+
       ylab("Cpmf values")+
+      ggthemes::theme_clean()+
       ggtitle(plot_title)
       return(p1)
   }
@@ -240,6 +246,7 @@ pGHGBBplot<-function(a,b,c,plot_title,a_seq,b_seq)
       geom_line()+guides(fill=FALSE,color=FALSE)+
       xlab("Binomial Random Variable")+
       ylab("Cpmf values")+
+      ggthemes::theme_clean()+
       ggtitle(plot_title)
       return(p1)
   }
@@ -257,6 +264,7 @@ pGHGBBplot<-function(a,b,c,plot_title,a_seq,b_seq)
       geom_line()+guides(fill=FALSE,color=FALSE)+
       xlab("Binomial Random Variable")+
       ylab("Cpmf values")+
+      ggthemes::theme_clean()+
       ggtitle(plot_title)
       return(p1)
   }
@@ -274,6 +282,7 @@ pGHGBBplot<-function(a,b,c,plot_title,a_seq,b_seq)
       geom_line()+guides(fill=FALSE,color=FALSE)+
       xlab("Binomial Random Variable")+
       ylab("Cpmf values")+
+      ggthemes::theme_clean()+
       ggtitle(plot_title)
       return(p1)
   }
@@ -330,6 +339,7 @@ pMcGBBplot<-function(a,b,c,plot_title,a_seq,b_seq)
       geom_line()+guides(fill=FALSE,color=FALSE)+
       xlab("Binomial Random Variable")+
       ylab("Cpmf values")+
+      ggthemes::theme_clean()+
       ggtitle(plot_title)
       return(p1)
   }
@@ -347,6 +357,7 @@ pMcGBBplot<-function(a,b,c,plot_title,a_seq,b_seq)
       geom_line()+guides(fill=FALSE,color=FALSE)+
       xlab("Binomial Random Variable")+
       ylab("Cpmf values")+
+      ggthemes::theme_clean()+
       ggtitle(plot_title)
       return(p1)
   }
@@ -364,6 +375,7 @@ pMcGBBplot<-function(a,b,c,plot_title,a_seq,b_seq)
       geom_line()+guides(fill=FALSE,color=FALSE)+
       xlab("Binomial Random Variable")+
       ylab("Cpmf values")+
+      ggthemes::theme_clean()+
       ggtitle(plot_title)
       return(p1)
   }
@@ -420,6 +432,7 @@ pGammaBinplot<-function(a,b,plot_title,a_seq)
       geom_line()+guides(fill=FALSE,color=FALSE)+
       xlab("Binomial Random Variable")+
       ylab("Cpmf values")+
+      ggthemes::theme_clean()+
       ggtitle(plot_title)
     return(p1)
   }
@@ -437,6 +450,7 @@ pGammaBinplot<-function(a,b,plot_title,a_seq)
       geom_line()+guides(fill=FALSE,color=FALSE)+
       xlab("Binomial Random Variables")+
       ylab("Cpmf values")+
+      ggthemes::theme_clean()+
       ggtitle(plot_title)
     return(p1)
   }
@@ -484,6 +498,7 @@ pGrassiaIIBinplot<-function(a,b,plot_title,a_seq)
       geom_line()+guides(fill=FALSE,color=FALSE)+
       xlab("Binomial Random Variable")+
       ylab("Cpmf values")+
+      ggthemes::theme_clean()+
       ggtitle(plot_title)
     return(p1)
   }
@@ -501,6 +516,7 @@ pGrassiaIIBinplot<-function(a,b,plot_title,a_seq)
       geom_line()+guides(fill=FALSE,color=FALSE)+
       xlab("Binomial Random Variables")+
       ylab("Cpmf values")+
+      ggthemes::theme_clean()+
       ggtitle(plot_title)
     return(p1)
   }
@@ -575,6 +591,7 @@ pAddBinplot<-function(p,alpha,plot_title,p_seq)
       geom_line()+guides(fill=FALSE,color=FALSE)+
       xlab("Binomial Random Variable")+
       ylab("Cpmf values")+
+      ggthemes::theme_clean()+
       ggtitle(plot_title)
       return(p1)
   }
@@ -592,6 +609,7 @@ pAddBinplot<-function(p,alpha,plot_title,p_seq)
       geom_line()+guides(fill=FALSE,color=FALSE)+
       xlab("Binomial Random Variable")+
       ylab("Cpmf values")+
+      ggthemes::theme_clean()+
       ggtitle(plot_title)
       return(p1)
   }
@@ -599,16 +617,16 @@ pAddBinplot<-function(p,alpha,plot_title,p_seq)
 ```
 
 ```{r Additive Binomial Distributon plotting, fig.width=9,fig.height=7}
-alpha0.015 <- pAddBinplot(p=seq(0.35,0.65,by=0.0001),alpha=-0.015,
-                       plot_title="and when alpha=-0.015",p_seq= T)
-alpha0.003 <- pAddBinplot(p=seq(0.35,0.65,by=0.0001),alpha=-0.003,
+ alpha.001 <- pAddBinplot(p=seq(0.35,0.65,by=0.0001),alpha=-0.001,
+                       plot_title="and when alpha=-0.001",p_seq= T)
+ alpha.003 <- pAddBinplot(p=seq(0.35,0.65,by=0.0001),alpha=-0.003,
                        plot_title="and when alpha=-0.003",p_seq= T)
 alpha0.005 <- pAddBinplot(p=seq(0.35,0.65,by=0.0001),alpha=0.005,
                         plot_title="and when alpha=0.005",p_seq= T)
 alpha0.008 <- pAddBinplot(p=seq(0.35,0.65,by=0.0001),alpha=0.008,
                         plot_title="and when alpha=0.008",p_seq= T)
 
-grid.arrange(alpha0.015,alpha0.003,alpha0.005,alpha0.008,nrow=2,
+grid.arrange(alpha0.001,alpha0.003,alpha0.005,alpha0.008,nrow=2,
              top="Cpmf values changing when p=seq(0.35,0.65,by=0.0001)")
 
 p.015 <- pAddBinplot(alpha=seq(0.0001,0.05,by=0.0001),p=0.015,
@@ -651,6 +669,7 @@ pBetaCorrBinplot<-function(a,b,cov,plot_title,a_seq,b_seq)
       geom_line()+guides(fill=FALSE,color=FALSE)+
       xlab("Binomial Random Variable")+
       ylab("Cpmf values")+
+      ggthemes::theme_clean()+
       ggtitle(plot_title)
       return(p1)
   }
@@ -668,6 +687,7 @@ pBetaCorrBinplot<-function(a,b,cov,plot_title,a_seq,b_seq)
       geom_line()+guides(fill=FALSE,color=FALSE)+
       xlab("Binomial Random Variables")+
       ylab("Cpmf values")+
+      ggthemes::theme_clean()+
       ggtitle(plot_title)
       return(p1)
   }
@@ -685,6 +705,7 @@ pBetaCorrBinplot<-function(a,b,cov,plot_title,a_seq,b_seq)
       geom_line()+guides(fill=FALSE,color=FALSE)+
       xlab("Binomial Random Variable")+
       ylab("Cpmf values")+
+      ggthemes::theme_clean()+
       ggtitle(plot_title)
       return(p1)
   }
@@ -743,6 +764,7 @@ pCOMPBinplot<-function(p,v,plot_title,p_seq)
       geom_line()+guides(fill=FALSE,color=FALSE)+
       xlab("Binomial Random Variable")+
       ylab("Cpmf values")+
+      ggthemes::theme_clean()+
       ggtitle(plot_title)
       return(p1)
   }
@@ -760,6 +782,7 @@ pCOMPBinplot<-function(p,v,plot_title,p_seq)
       geom_line()+guides(fill=FALSE,color=FALSE)+
       xlab("Binomial Random Variable")+
       ylab("Cpmf values")+
+      ggthemes::theme_clean()+
       ggtitle(plot_title)
       return(p1)
   }
@@ -820,6 +843,7 @@ pCorrBinplot<-function(p,cov,plot_title,p_seq)
       geom_line()+guides(fill=FALSE,color=FALSE)+
       xlab("Binomial Random Variable")+
       ylab("Cpmf values")+
+      ggthemes::theme_clean()+
       ggtitle(plot_title)
       return(p1)
   }
@@ -837,6 +861,7 @@ pCorrBinplot<-function(p,cov,plot_title,p_seq)
       geom_line()+guides(fill=FALSE,color=FALSE)+
       xlab("Binomial Random Variable")+
       ylab("Cpmf values")+
+      ggthemes::theme_clean()+
       ggtitle(plot_title)
       return(p1)
   }
@@ -895,6 +920,7 @@ pMultiBinplot<-function(p,theta,plot_title,p_seq)
       geom_line()+guides(fill=FALSE,color=FALSE)+
       xlab("Binomial Random Variable")+
       ylab("Cpmf values")+
+      ggthemes::theme_clean()+
       ggtitle(plot_title)
       return(p1)
   }
@@ -912,6 +938,7 @@ pMultiBinplot<-function(p,theta,plot_title,p_seq)
       geom_line()+guides(fill=FALSE,color=FALSE)+
       xlab("Binomial Random Variable")+
       ylab("Cpmf values")+
+      ggthemes::theme_clean()+
       ggtitle(plot_title)
       return(p1)
   }
@@ -970,6 +997,7 @@ pLMBinplot<-function(p,phi,plot_title,p_seq)
       geom_line()+guides(fill=FALSE,color=FALSE)+
       xlab("Binomial Random Variable")+
       ylab("Cpmf values")+
+      ggthemes::theme_clean()+
       ggtitle(plot_title)
     return(p1)
   }
@@ -987,6 +1015,7 @@ pLMBinplot<-function(p,phi,plot_title,p_seq)
       geom_line()+guides(fill=FALSE,color=FALSE)+
       xlab("Binomial Random Variable")+
       ylab("Cpmf values")+
+      ggthemes::theme_clean()+
       ggtitle(plot_title)
     return(p1)
   }

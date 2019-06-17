@@ -199,7 +199,7 @@ Two parameters to be estimated which are a and b. Together they have to represen
 Here the number of iterations has to be estimated as well, which is time consuming. 
 therefore I haven't estimated it. 
 
-```{r printing estimated parameters for Kumaraswamy Binomial Distribution, echo=FALSE,eval=FALSE}
+```{r printing estimated parameters for Kumaraswamy Binomial Distribution, echo=FALSE}
 #estimating parameters for Kumaraswamy Binomial Distribution of Chromosome data
 Est_para<-EstMLEKumBin(x=Chromosome_data$No.of.Asso,freq=Chromosome_data$fre,
                        a=15,b=10,it=7500)
