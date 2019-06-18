@@ -19,5 +19,7 @@ Imports: hypergeo,
     bbmle
 Suggests: testthat,
       devtools,
-      covr
+      covr,
+      knitr
 Encoding: UTF-8
+VignetteBuilder: knitr

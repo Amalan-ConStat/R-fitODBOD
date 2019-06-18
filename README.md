@@ -56,8 +56,7 @@ install.packages("fitODBOD")
 ## What does “fitODBOD” ?
 
 You can understand BMD & ABD with PMF & CPMF. Further, BOD can be
-modeled using these
-Distributions
+modeled using these Distributions
 
 ## Distributions
 
@@ -97,8 +96,7 @@ Hypothesis to check if above data follows Binomial Distribution
 
 H<sub>0</sub> : The Data follows the Binomial Distribution.
 
-H<sub>1</sub> : The Data does not follow the Binomial
-Distribution.
+H<sub>1</sub> : The Data does not follow the Binomial Distribution.
 
 ``` r
 #Checking if the above data  of Days and week2 follows Binomial Distribution
@@ -124,9 +122,9 @@ According to p-value= 0, H<sub>0</sub> is rejected at 5% significance
 level.
 
 ``` r
-#Estimating the parameters a and b using bbmle package mle2 function
-BetaBin=bbmle::mle2(EstMLEBetaBin,data=list(x=Alcohol_data$Days,
-                        freq=Alcohol_data$week2), start=list(a=100.1,b=100.1))
+#Estimating the parameters a and b 
+BetaBin=EstMLEBetaBin(x=Alcohol_data$Days,freq=Alcohol_data$week2,
+                      a=100.1,b=100.1)
 a_est=bbmle::coef(BetaBin)[1]                    
 b_est=bbmle::coef(BetaBin)[2]
 ```
@@ -190,8 +188,7 @@ variance(1.6945) of expected frequencies by Binomial Distribution.
 According to the plot, it is clearly seen that Beta-Binomial estimated
 frequencies behave very close to actual frequency values than the
 estimate frequencies from Binomial distribution. Or the Red line is very
-similar and close to the Blue line than the Green
-line.
+similar and close to the Blue line than the Green line.
 
 ## Thank You
 

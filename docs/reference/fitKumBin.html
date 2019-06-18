@@ -77,7 +77,7 @@ over dispersion value so that it can be seen if this distribution fits the data.
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">fitODBOD</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.4.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.4.1</span>
       </span>
     </div>
 
@@ -253,41 +253,27 @@ of Applied Probability and Statistics, 27(5), 511-521.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>No.D.D</span><span class='kw'>=</span><span class='fl'>0</span>:<span class='fl'>7</span>   <span class='co'>#assigning the random variables</span>
-<span class='no'>Obs.fre.1</span><span class='kw'>=</span><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>47</span>,<span class='fl'>54</span>,<span class='fl'>43</span>,<span class='fl'>40</span>,<span class='fl'>40</span>,<span class='fl'>41</span>,<span class='fl'>39</span>,<span class='fl'>95</span>)   <span class='co'>#assigning the corresponding frequencies</span>
-
+    <pre class="examples"><div class='input'><span class='no'>No.D.D</span> <span class='kw'>&lt;-</span> <span class='fl'>0</span>:<span class='fl'>7</span>   <span class='co'>#assigning the random variables</span>
+<span class='no'>Obs.fre.1</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>47</span>,<span class='fl'>54</span>,<span class='fl'>43</span>,<span class='fl'>40</span>,<span class='fl'>40</span>,<span class='fl'>41</span>,<span class='fl'>39</span>,<span class='fl'>95</span>)   <span class='co'>#assigning the corresponding frequencies</span></div><span class='co'># NOT RUN {</span>
 <span class='co'>#estimating the parameters using maximum log likelihood value and assigning it</span>
-<span class='co'>#dontrun{}</span>
-<span class='no'>parameters</span><span class='kw'>=</span><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/warning'>suppressWarnings</a></span>(<span class='kw pkg'>bbmle</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/bbmle/topics/mle2'>mle2</a></span>(<span class='no'>EstMLEKumBin</span>,<span class='kw'>start</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/list'>list</a></span>(<span class='kw'>a</span><span class='kw'>=</span><span class='fl'>10.1</span>,<span class='kw'>b</span><span class='kw'>=</span><span class='fl'>1.1</span>,<span class='kw'>it</span><span class='kw'>=</span><span class='fl'>10000</span>),
-          <span class='kw'>data</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/list'>list</a></span>(<span class='kw'>x</span><span class='kw'>=</span><span class='no'>No.D.D</span>,<span class='kw'>freq</span><span class='kw'>=</span><span class='no'>Obs.fre.1</span>)))
+<span class='no'>parameters</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='EstMLEKumBin.html'>EstMLEKumBin</a></span>(<span class='kw'>x</span><span class='kw'>=</span><span class='no'>No.D.D</span>,<span class='kw'>freq</span><span class='kw'>=</span><span class='no'>Obs.fre.1</span>,<span class='kw'>a</span><span class='kw'>=</span><span class='fl'>10.1</span>,<span class='kw'>b</span><span class='kw'>=</span><span class='fl'>1.1</span>,<span class='kw'>it</span><span class='kw'>=</span><span class='fl'>10000</span>)
 
-<span class='kw pkg'>bbmle</span><span class='kw ns'>::</span><span class='fu'>coef</span>(<span class='no'>parameters</span>)    <span class='co'>#extracting the parameters</span></div><div class='output co'>#&gt;            a            b           it 
-#&gt;    0.7302994    0.6162630 9999.9957297 </div><div class='input'><span class='no'>aKumBin</span><span class='kw'>=</span><span class='kw pkg'>bbmle</span><span class='kw ns'>::</span><span class='fu'>coef</span>(<span class='no'>parameters</span>)[<span class='fl'>1</span>] <span class='co'>#assigning the estimated a</span>
-<span class='no'>bKumBin</span><span class='kw'>=</span><span class='kw pkg'>bbmle</span><span class='kw ns'>::</span><span class='fu'>coef</span>(<span class='no'>parameters</span>)[<span class='fl'>2</span>] <span class='co'>#assigning the estimated b</span>
-<span class='no'>itKumBin</span><span class='kw'>=</span><span class='kw pkg'>bbmle</span><span class='kw ns'>::</span><span class='fu'>coef</span>(<span class='no'>parameters</span>)[<span class='fl'>3</span>] <span class='co'>#assigning the estimated iterations</span>
+<span class='kw pkg'>bbmle</span><span class='kw ns'>::</span><span class='fu'>coef</span>(<span class='no'>parameters</span>)    <span class='co'>#extracting the parameters</span>
+<span class='no'>aKumBin</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>bbmle</span><span class='kw ns'>::</span><span class='fu'>coef</span>(<span class='no'>parameters</span>)[<span class='fl'>1</span>] <span class='co'>#assigning the estimated a</span>
+<span class='no'>bKumBin</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>bbmle</span><span class='kw ns'>::</span><span class='fu'>coef</span>(<span class='no'>parameters</span>)[<span class='fl'>2</span>] <span class='co'>#assigning the estimated b</span>
+<span class='no'>itKumBin</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>bbmle</span><span class='kw ns'>::</span><span class='fu'>coef</span>(<span class='no'>parameters</span>)[<span class='fl'>3</span>] <span class='co'>#assigning the estimated iterations</span>
 
 <span class='co'>#fitting when the random variable,frequencies,shape parameter values are given.</span>
-<span class='no'>results</span><span class='kw'>&lt;-</span><span class='fu'>fitKumBin</span>(<span class='no'>No.D.D</span>,<span class='no'>Obs.fre.1</span>,<span class='no'>aKumBin</span>,<span class='no'>bKumBin</span>,<span class='no'>itKumBin</span>*<span class='fl'>100</span>)
-<span class='no'>results</span></div><div class='output co'>#&gt; Call: 
-#&gt; fitKumBin(x = No.D.D, obs.freq = Obs.fre.1, a = aKumBin, b = bKumBin, 
-#&gt;     it = itKumBin * 100)
-#&gt; 
-#&gt; Chi-squared test for Kumaraswamy Binomial Distribution 
-#&gt; 	
-#&gt;       Observed Frequency :  47 54 43 40 40 41 39 95 
-#&gt; 	
-#&gt;       expected Frequency :  53.33 42.16 39.59 39.52 41.19 45.09 53.71 84.37 
-#&gt; 	
-#&gt;       estimated a parameter : 0.7302994   ,estimated b parameter : 0.616263  ,estimated it value : 999999.6 
-#&gt; 	
-#&gt;       X-squared : 10.1494   ,df : 5   ,p-value : 0.0711 
-#&gt; 	
-#&gt;       over dispersion : 0.4230119 </div><div class='input'>
-<span class='co'>#extracting the expected frequencies</span>
-<span class='fu'><a href='https://www.rdocumentation.org/packages/stats/topics/fitted.values'>fitted</a></span>(<span class='no'>results</span>)</div><div class='output co'>#&gt; [1] 53.33 42.16 39.59 39.52 41.19 45.09 53.71 84.37</div><div class='input'>
-<span class='co'>#extracting the residuals</span>
-<span class='fu'><a href='https://www.rdocumentation.org/packages/stats/topics/residuals'>residuals</a></span>(<span class='no'>results</span>)</div><div class='output co'>#&gt; [1]  -6.33  11.84   3.41   0.48  -1.19  -4.09 -14.71  10.63</div><div class='input'>
+<span class='no'>results</span> <span class='kw'>&lt;-</span> <span class='fu'>fitKumBin</span>(<span class='no'>No.D.D</span>,<span class='no'>Obs.fre.1</span>,<span class='no'>aKumBin</span>,<span class='no'>bKumBin</span>,<span class='no'>itKumBin</span>*<span class='fl'>100</span>)
+<span class='no'>results</span>
 
+<span class='co'>#extracting the expected frequencies</span>
+<span class='fu'><a href='https://www.rdocumentation.org/packages/stats/topics/fitted.values'>fitted</a></span>(<span class='no'>results</span>)
+
+<span class='co'>#extracting the residuals</span>
+<span class='fu'><a href='https://www.rdocumentation.org/packages/stats/topics/residuals'>residuals</a></span>(<span class='no'>results</span>)
+
+<span class='co'># }</span><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

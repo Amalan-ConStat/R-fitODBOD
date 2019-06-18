@@ -73,7 +73,7 @@ cumulative probability function values for the Gamma Binomial Distribution." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">fitODBOD</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.4.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.4.1</span>
       </span>
     </div>
 
@@ -233,8 +233,8 @@ Australian Journal of Statistics, 19(2), pp.108-114.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'>#plotting the random variables and probability values</span>
-<span class='no'>col</span><span class='kw'>&lt;-</span><span class='fu'><a href='https://www.rdocumentation.org/packages/grDevices/topics/palettes'>rainbow</a></span>(<span class='fl'>5</span>)
-<span class='no'>a</span><span class='kw'>&lt;-</span><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>1</span>,<span class='fl'>2</span>,<span class='fl'>5</span>,<span class='fl'>10</span>,<span class='fl'>0.2</span>)
+<span class='no'>col</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/grDevices/topics/palettes'>rainbow</a></span>(<span class='fl'>5</span>)
+<span class='no'>a</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>1</span>,<span class='fl'>2</span>,<span class='fl'>5</span>,<span class='fl'>10</span>,<span class='fl'>0.2</span>)
 <span class='fu'><a href='https://www.rdocumentation.org/packages/graphics/topics/plot'>plot</a></span>(<span class='fl'>0</span>,<span class='fl'>0</span>,<span class='kw'>main</span><span class='kw'>=</span><span class='st'>"Gamma Binomial probability function graph"</span>,<span class='kw'>xlab</span><span class='kw'>=</span><span class='st'>"Binomial random variable"</span>,
 <span class='kw'>ylab</span><span class='kw'>=</span><span class='st'>"Probability function values"</span>,<span class='kw'>xlim</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>0</span>,<span class='fl'>10</span>),<span class='kw'>ylim</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>0</span>,<span class='fl'>0.5</span>))</div><div class='input'><span class='kw'>for</span> (<span class='no'>i</span> <span class='kw'>in</span> <span class='fl'>1</span>:<span class='fl'>5</span>)
 {
@@ -245,8 +245,8 @@ Australian Journal of Statistics, 19(2), pp.108-114.</p>
 #&gt;  [6] 7.579979e-03 1.409128e-02 2.611031e-02 5.066078e-02 1.162261e-01
 #&gt; [11] 7.783705e-01</div><div class='input'><span class='fu'>dGammaBin</span>(<span class='fl'>0</span>:<span class='fl'>10</span>,<span class='fl'>10</span>,<span class='fl'>4</span>,<span class='fl'>.2</span>)$<span class='no'>mean</span>   <span class='co'>#extracting the mean</span></div><div class='output co'>#&gt; [1] 9.563525</div><div class='input'><span class='fu'>dGammaBin</span>(<span class='fl'>0</span>:<span class='fl'>10</span>,<span class='fl'>10</span>,<span class='fl'>4</span>,<span class='fl'>.2</span>)$<span class='no'>var</span>    <span class='co'>#extracting the variance</span></div><div class='output co'>#&gt; [1] 1.092227</div><div class='input'><span class='fu'>dGammaBin</span>(<span class='fl'>0</span>:<span class='fl'>10</span>,<span class='fl'>10</span>,<span class='fl'>4</span>,<span class='fl'>.2</span>)$<span class='no'>over.dis.para</span>  <span class='co'>#extracting the over dispersion value</span></div><div class='output co'>#&gt; [1] 0.1796209</div><div class='input'>
 <span class='co'>#plotting the random variables and cumulative probability values</span>
-<span class='no'>col</span><span class='kw'>&lt;-</span><span class='fu'><a href='https://www.rdocumentation.org/packages/grDevices/topics/palettes'>rainbow</a></span>(<span class='fl'>4</span>)
-<span class='no'>a</span><span class='kw'>&lt;-</span><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>1</span>,<span class='fl'>2</span>,<span class='fl'>5</span>,<span class='fl'>10</span>)
+<span class='no'>col</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/grDevices/topics/palettes'>rainbow</a></span>(<span class='fl'>4</span>)
+<span class='no'>a</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>1</span>,<span class='fl'>2</span>,<span class='fl'>5</span>,<span class='fl'>10</span>)
 <span class='fu'><a href='https://www.rdocumentation.org/packages/graphics/topics/plot'>plot</a></span>(<span class='fl'>0</span>,<span class='fl'>0</span>,<span class='kw'>main</span><span class='kw'>=</span><span class='st'>"Cumulative probability function graph"</span>,<span class='kw'>xlab</span><span class='kw'>=</span><span class='st'>"Binomial random variable"</span>,
 <span class='kw'>ylab</span><span class='kw'>=</span><span class='st'>"Cumulative probability function values"</span>,<span class='kw'>xlim</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>0</span>,<span class='fl'>10</span>),<span class='kw'>ylim</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>0</span>,<span class='fl'>1</span>))</div><div class='input'><span class='kw'>for</span> (<span class='no'>i</span> <span class='kw'>in</span> <span class='fl'>1</span>:<span class='fl'>4</span>)
 {

@@ -74,7 +74,7 @@ random variables and corresponding frequencies are given." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">fitODBOD</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.4.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.4.1</span>
       </span>
     </div>
 
@@ -180,7 +180,7 @@ random variables and corresponding frequencies are given.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>EstMLEBetaBin</span>(<span class='no'>x</span>,<span class='no'>freq</span>,<span class='no'>a</span>,<span class='no'>b</span>)</pre>
+    <pre class="usage"><span class='fu'>EstMLEBetaBin</span>(<span class='no'>x</span>,<span class='no'>freq</span>,<span class='no'>a</span>,<span class='no'>b</span>,<span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -201,11 +201,15 @@ random variables and corresponding frequencies are given.</p>
       <th>b</th>
       <td><p>single value for shape parameter beta representing as b.</p></td>
     </tr>
+    <tr>
+      <th>...</th>
+      <td><p>mle2 function inputs except data and estimating parameter.</p></td>
+    </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p><code>EstMLEBetaBin</code> here is used as a input parameter for the <code>mle2</code> function of <span class="pkg">bbmle</span> package
+    <p><code>EstMLEBetaBin</code> here is used as a wrapper for the <code>mle2</code> function of <span class="pkg">bbmle</span> package
 therefore output is of class of mle2.</p>
     
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
@@ -233,14 +237,13 @@ Incidence. Phytopathology, 83(9), p.759.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>No.D.D</span><span class='kw'>=</span><span class='fl'>0</span>:<span class='fl'>7</span>        <span class='co'>#assigning the random variables</span>
-<span class='no'>Obs.fre.1</span><span class='kw'>=</span><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>47</span>,<span class='fl'>54</span>,<span class='fl'>43</span>,<span class='fl'>40</span>,<span class='fl'>40</span>,<span class='fl'>41</span>,<span class='fl'>39</span>,<span class='fl'>95</span>)   <span class='co'>#assigning the corresponding frequencies</span>
+    <pre class="examples"><div class='input'><span class='no'>No.D.D</span> <span class='kw'>&lt;-</span> <span class='fl'>0</span>:<span class='fl'>7</span>        <span class='co'>#assigning the random variables</span>
+<span class='no'>Obs.fre.1</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>47</span>,<span class='fl'>54</span>,<span class='fl'>43</span>,<span class='fl'>40</span>,<span class='fl'>40</span>,<span class='fl'>41</span>,<span class='fl'>39</span>,<span class='fl'>95</span>)   <span class='co'>#assigning the corresponding frequencies</span>
 
 <span class='co'>#estimating the parameters using maximum log likelihood value and assigning it</span>
-<span class='no'>parameters</span><span class='kw'>=</span><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/warning'>suppressWarnings</a></span>(<span class='kw pkg'>bbmle</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/bbmle/topics/mle2'>mle2</a></span>(<span class='no'>EstMLEBetaBin</span>,<span class='kw'>start</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/list'>list</a></span>(<span class='kw'>a</span><span class='kw'>=</span><span class='fl'>0.1</span>,<span class='kw'>b</span><span class='kw'>=</span><span class='fl'>0.1</span>),
-<span class='kw'>data</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/list'>list</a></span>(<span class='kw'>x</span><span class='kw'>=</span><span class='no'>No.D.D</span>,<span class='kw'>freq</span><span class='kw'>=</span><span class='no'>Obs.fre.1</span>)))
+<span class='no'>estimate</span> <span class='kw'>&lt;-</span> <span class='fu'>EstMLEBetaBin</span>(<span class='no'>No.D.D</span>,<span class='no'>Obs.fre.1</span>,<span class='kw'>a</span><span class='kw'>=</span><span class='fl'>0.1</span>,<span class='kw'>b</span><span class='kw'>=</span><span class='fl'>0.1</span>)
 
-<span class='kw pkg'>bbmle</span><span class='kw ns'>::</span><span class='fu'>coef</span>(<span class='no'>parameters</span>)   <span class='co'>#extracting the parameters</span></div><div class='output co'>#&gt;         a         b 
+<span class='kw pkg'>bbmle</span><span class='kw ns'>::</span><span class='fu'>coef</span>(<span class='no'>estimate</span>)   <span class='co'>#extracting the parameters</span></div><div class='output co'>#&gt;         a         b 
 #&gt; 0.7229420 0.5808483 </div><div class='input'>
 <span class='co'>#estimating the parameters using moment generating function methods</span>
 <span class='fu'><a href='EstMGFBetaBin.html'>EstMGFBetaBin</a></span>(<span class='no'>No.D.D</span>,<span class='no'>Obs.fre.1</span>)</div><div class='output co'>#&gt; Call: 

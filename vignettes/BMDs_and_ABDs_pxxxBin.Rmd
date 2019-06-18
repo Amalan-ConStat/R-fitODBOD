@@ -7,7 +7,7 @@ vignette: >
   \usepackage[utf8]{inputenc}
 ---
 
-```{r setup, include=FALSE}
+```{r setup,include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 library(fitODBOD)
 library(ggplot2)
@@ -163,7 +163,7 @@ change
 
 * a,b are in the domain region of above zero.
 
-```{r Kumaraswamy Binomial distribution plot function, include=FALSE}
+```{r Kumaraswamy Binomial distribution plot function,include=FALSE}
 pKumBinplot<-function(a,b,plot_title,a_seq)
 {
   if(a_seq==TRUE)
@@ -229,7 +229,7 @@ Cpmf values plotted with respective to shape parameters
 
 * a,b,c are in the domain region of above zero.
 
-```{r GHGBB distribution plot function, include=FALSE}
+```{r GHGBB distribution plot function,include=FALSE}
 pGHGBBplot<-function(a,b,c,plot_title,a_seq,b_seq)
 {
   if(a_seq==TRUE && b_seq==FALSE)
@@ -322,7 +322,7 @@ very useful in generating vivid Cpmf values. Below given plots describes them mo
 
 * a,b,c are in the domain region of above zero.
 
-```{r McGBB distribution plot function, include=FALSE}
+```{r McGBB distribution plot function,include=FALSE}
 pMcGBBplot<-function(a,b,c,plot_title,a_seq,b_seq)
 {
   if(a_seq==TRUE && b_seq==FALSE)
@@ -616,7 +616,7 @@ pAddBinplot<-function(p,alpha,plot_title,p_seq)
 }
 ```
 
-```{r Additive Binomial Distributon plotting, fig.width=9,fig.height=7}
+```{r Additive Binomial Distributon plotting,fig.width=9,fig.height=7}
  alpha.001 <- pAddBinplot(p=seq(0.35,0.65,by=0.0001),alpha=-0.001,
                        plot_title="and when alpha=-0.001",p_seq= T)
  alpha.003 <- pAddBinplot(p=seq(0.35,0.65,by=0.0001),alpha=-0.003,
@@ -626,7 +626,7 @@ alpha0.005 <- pAddBinplot(p=seq(0.35,0.65,by=0.0001),alpha=0.005,
 alpha0.008 <- pAddBinplot(p=seq(0.35,0.65,by=0.0001),alpha=0.008,
                         plot_title="and when alpha=0.008",p_seq= T)
 
-grid.arrange(alpha0.001,alpha0.003,alpha0.005,alpha0.008,nrow=2,
+grid.arrange(alpha.001,alpha.003,alpha0.005,alpha0.008,nrow=2,
              top="Cpmf values changing when p=seq(0.35,0.65,by=0.0001)")
 
 p.015 <- pAddBinplot(alpha=seq(0.0001,0.05,by=0.0001),p=0.015,
@@ -652,7 +652,7 @@ how Cpmf values with related to cov, a and b parameters.
 * cov is the covariance value in between negative infinity and positive infinity.
 * a, b are in the domain region of above zero.
 
-```{r Beta-Correlated Binomial Distribution plot function, include=FALSE}
+```{r Beta-Correlated Binomial Distribution plot function,include=FALSE}
 pBetaCorrBinplot<-function(a,b,cov,plot_title,a_seq,b_seq)
 {
   if(a_seq==TRUE && b_seq==FALSE)
@@ -826,7 +826,7 @@ plot elaborating that.
 * p is the probability value in between zero and one.
 * cov is the covariance value in between negative infinity and positive infinity.
 
-```{r Correlated Binomial distribution plot function}
+```{r Correlated Binomial distribution plot function,include=FALSE}
 pCorrBinplot<-function(p,cov,plot_title,p_seq)
 {
   if(p_seq==TRUE)
@@ -903,7 +903,7 @@ how Cpmf values change with respective to p and theta.
 * p is the probability value in between zero and one.
 * theta parameter is in the domain region of above zero. 
 
-```{r Multiplicative Binomial distribution plot function, include=FALSE}
+```{r Multiplicative Binomial distribution plot function,include=FALSE}
 pMultiBinplot<-function(p,theta,plot_title,p_seq)
 {
   if(p_seq==TRUE)
@@ -980,7 +980,7 @@ how Cpmf values change with respective to p and phi.
 * p is the probability value in between zero and one.
 * phi parameter is in the domain region of above zero. 
 
-```{r Lovinson Multiplicative Binomial distribution plot function, include=FALSE}
+```{r Lovinson Multiplicative Binomial distribution plot function,include=FALSE}
 pLMBinplot<-function(p,phi,plot_title,p_seq)
 {
   if(p_seq==TRUE)

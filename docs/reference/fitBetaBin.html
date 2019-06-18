@@ -77,7 +77,7 @@ seen if this distribution fits the data." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">fitODBOD</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.4.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.4.1</span>
       </span>
     </div>
 
@@ -252,16 +252,15 @@ Incidence. Phytopathology, 83(9), p.759.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>No.D.D</span><span class='kw'>=</span><span class='fl'>0</span>:<span class='fl'>7</span>    <span class='co'>#assigning the random variables</span>
-<span class='no'>Obs.fre.1</span><span class='kw'>=</span><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>47</span>,<span class='fl'>54</span>,<span class='fl'>43</span>,<span class='fl'>40</span>,<span class='fl'>40</span>,<span class='fl'>41</span>,<span class='fl'>39</span>,<span class='fl'>95</span>)  <span class='co'>#assigning the corresponding frequencies</span>
+    <pre class="examples"><div class='input'><span class='no'>No.D.D</span> <span class='kw'>&lt;-</span> <span class='fl'>0</span>:<span class='fl'>7</span>    <span class='co'>#assigning the random variables</span>
+<span class='no'>Obs.fre.1</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>47</span>,<span class='fl'>54</span>,<span class='fl'>43</span>,<span class='fl'>40</span>,<span class='fl'>40</span>,<span class='fl'>41</span>,<span class='fl'>39</span>,<span class='fl'>95</span>)  <span class='co'>#assigning the corresponding frequencies</span>
 
 <span class='co'>#estimating the parameters using maximum log likelihood value and assigning it</span>
-<span class='no'>parameters</span><span class='kw'>=</span><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/warning'>suppressWarnings</a></span>(<span class='kw pkg'>bbmle</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/bbmle/topics/mle2'>mle2</a></span>(<span class='no'>EstMLEBetaBin</span>,<span class='kw'>start</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/list'>list</a></span>(<span class='kw'>a</span><span class='kw'>=</span><span class='fl'>0.1</span>,<span class='kw'>b</span><span class='kw'>=</span><span class='fl'>0.1</span>),
-<span class='kw'>data</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/list'>list</a></span>(<span class='kw'>x</span><span class='kw'>=</span><span class='no'>No.D.D</span>,<span class='kw'>freq</span><span class='kw'>=</span><span class='no'>Obs.fre.1</span>)))
+<span class='no'>parameters</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='EstMLEBetaBin.html'>EstMLEBetaBin</a></span>(<span class='no'>No.D.D</span>,<span class='no'>Obs.fre.1</span>,<span class='fl'>0.1</span>,<span class='fl'>0.1</span>)
 
 <span class='kw pkg'>bbmle</span><span class='kw ns'>::</span><span class='fu'>coef</span>(<span class='no'>parameters</span>)   <span class='co'>#extracting the parameters a and b</span></div><div class='output co'>#&gt;         a         b 
-#&gt; 0.7229420 0.5808483 </div><div class='input'><span class='no'>aBetaBin</span><span class='kw'>=</span><span class='kw pkg'>bbmle</span><span class='kw ns'>::</span><span class='fu'>coef</span>(<span class='no'>parameters</span>)[<span class='fl'>1</span>]  <span class='co'>#assigning the parameter a</span>
-<span class='no'>bBetaBin</span><span class='kw'>=</span><span class='kw pkg'>bbmle</span><span class='kw ns'>::</span><span class='fu'>coef</span>(<span class='no'>parameters</span>)[<span class='fl'>2</span>]  <span class='co'>#assigning the parameter b</span>
+#&gt; 0.7229420 0.5808483 </div><div class='input'><span class='no'>aBetaBin</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>bbmle</span><span class='kw ns'>::</span><span class='fu'>coef</span>(<span class='no'>parameters</span>)[<span class='fl'>1</span>]  <span class='co'>#assigning the parameter a</span>
+<span class='no'>bBetaBin</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>bbmle</span><span class='kw ns'>::</span><span class='fu'>coef</span>(<span class='no'>parameters</span>)[<span class='fl'>2</span>]  <span class='co'>#assigning the parameter b</span>
 
 <span class='co'>#fitting when the random variable,frequencies,shape parameter values are given.</span>
 <span class='fu'>fitBetaBin</span>(<span class='no'>No.D.D</span>,<span class='no'>Obs.fre.1</span>,<span class='no'>aBetaBin</span>,<span class='no'>bBetaBin</span>)</div><div class='output co'>#&gt; Call: 
@@ -279,18 +278,18 @@ Incidence. Phytopathology, 83(9), p.759.</p>
 #&gt; 	
 #&gt;           over dispersion : 0.4340673 </div><div class='input'>
 <span class='co'>#estimating the parameters using moment generating function methods</span>
-<span class='no'>results</span><span class='kw'>&lt;-</span><span class='fu'><a href='EstMGFBetaBin.html'>EstMGFBetaBin</a></span>(<span class='no'>No.D.D</span>,<span class='no'>Obs.fre.1</span>)
+<span class='no'>results</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='EstMGFBetaBin.html'>EstMGFBetaBin</a></span>(<span class='no'>No.D.D</span>,<span class='no'>Obs.fre.1</span>)
 <span class='no'>results</span></div><div class='output co'>#&gt; Call: 
 #&gt; EstMGFBetaBin(x = No.D.D, freq = Obs.fre.1)
 #&gt; 
 #&gt; Coefficients: 
 #&gt;         a         b 
 #&gt; 0.7161628 0.5963324 </div><div class='input'>
-<span class='no'>aBetaBin1</span><span class='kw'>=</span><span class='no'>results</span>$<span class='no'>a</span>  <span class='co'>#assigning the estimated a</span>
-<span class='no'>bBetaBin1</span><span class='kw'>=</span><span class='no'>results</span>$<span class='no'>b</span>  <span class='co'>#assigning the estimated b</span>
+<span class='no'>aBetaBin1</span> <span class='kw'>&lt;-</span> <span class='no'>results</span>$<span class='no'>a</span>  <span class='co'>#assigning the estimated a</span>
+<span class='no'>bBetaBin1</span> <span class='kw'>&lt;-</span> <span class='no'>results</span>$<span class='no'>b</span>  <span class='co'>#assigning the estimated b</span>
 
 <span class='co'>#fitting when the random variable,frequencies,shape parameter values are given.</span>
-<span class='no'>BB</span><span class='kw'>&lt;-</span><span class='fu'>fitBetaBin</span>(<span class='no'>No.D.D</span>,<span class='no'>Obs.fre.1</span>,<span class='no'>aBetaBin1</span>,<span class='no'>bBetaBin1</span>)
+<span class='no'>BB</span> <span class='kw'>&lt;-</span> <span class='fu'>fitBetaBin</span>(<span class='no'>No.D.D</span>,<span class='no'>Obs.fre.1</span>,<span class='no'>aBetaBin1</span>,<span class='no'>bBetaBin1</span>)
 
 <span class='co'>#extracting the expected frequencies</span>
 <span class='fu'><a href='https://www.rdocumentation.org/packages/stats/topics/fitted.values'>fitted</a></span>(<span class='no'>BB</span>)</div><div class='output co'>#&gt; [1] 56.60 43.01 39.57 38.97 40.27 43.89 52.39 84.29</div><div class='input'>

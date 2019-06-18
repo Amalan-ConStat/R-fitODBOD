@@ -76,7 +76,7 @@ variables and corresponding frequencies are given." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">fitODBOD</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.4.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.4.1</span>
       </span>
     </div>
 
@@ -228,26 +228,18 @@ Experiments. Biometrics, 34(1), pp.69-76.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>No.D.D</span><span class='kw'>=</span><span class='fl'>0</span>:<span class='fl'>7</span>         <span class='co'>#assigning the random variables</span>
-<span class='no'>Obs.fre.1</span><span class='kw'>=</span><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>47</span>,<span class='fl'>54</span>,<span class='fl'>43</span>,<span class='fl'>40</span>,<span class='fl'>40</span>,<span class='fl'>41</span>,<span class='fl'>39</span>,<span class='fl'>95</span>)     <span class='co'>#assigning the corresponding frequencies</span>
-
-<span class='co'>#dontrun{}</span>
+    <pre class="examples"><div class='input'><span class='no'>No.D.D</span> <span class='kw'>&lt;-</span> <span class='fl'>0</span>:<span class='fl'>7</span>         <span class='co'>#assigning the random variables</span>
+<span class='no'>Obs.fre.1</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>47</span>,<span class='fl'>54</span>,<span class='fl'>43</span>,<span class='fl'>40</span>,<span class='fl'>40</span>,<span class='fl'>41</span>,<span class='fl'>39</span>,<span class='fl'>95</span>)     <span class='co'>#assigning the corresponding frequencies</span></div><span class='co'># NOT RUN {</span>
 <span class='co'>#estimating the probability value and alpha value</span>
-<span class='no'>results</span><span class='kw'>&lt;-</span><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/warning'>suppressWarnings</a></span>(<span class='fu'>EstMLEAddBin</span>(<span class='no'>No.D.D</span>,<span class='no'>Obs.fre.1</span>))
+<span class='no'>results</span> <span class='kw'>&lt;-</span> <span class='fu'>EstMLEAddBin</span>(<span class='no'>No.D.D</span>,<span class='no'>Obs.fre.1</span>)
 
 <span class='co'>#printing the summary of results</span>
-<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/summary'>summary</a></span>(<span class='no'>results</span>)</div><div class='output co'>#&gt; Coefficients: 
-#&gt;  	 p 	 alpha 
-#&gt;  0.546923 0.230644
-#&gt; 
-#&gt; Negative Log-likelihood :  926.6631
-#&gt; 
-#&gt; AIC :  1857.326</div><div class='input'>
-<span class='co'>#extracting the estimated parameters</span>
-<span class='fu'><a href='https://www.rdocumentation.org/packages/stats/topics/coef'>coef</a></span>(<span class='no'>results</span>)</div><div class='output co'>#&gt;  	 p  	 alpha  
-#&gt;  0.546923 0.230644</div><div class='input'>
+<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/summary'>summary</a></span>(<span class='no'>results</span>)
 
-</div></pre>
+<span class='co'>#extracting the estimated parameters</span>
+<span class='fu'><a href='https://www.rdocumentation.org/packages/stats/topics/coef'>coef</a></span>(<span class='no'>results</span>)
+
+<span class='co'># }</span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

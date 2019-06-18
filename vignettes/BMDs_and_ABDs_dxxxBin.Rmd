@@ -4,11 +4,11 @@ output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Binomial Mixture and Alternate Binomial Distributions PMF values}
   %\VignetteEngine{knitr::rmarkdown}
-  \usepackage[utf8]{inputenc}
+  %\VignetteEncoding{UTF-8}
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+```{r setup,include=FALSE}
+knitr::opts_chunk$set(echo=TRUE)
 library(fitODBOD)
 library(ggplot2)
 library(reshape2)
@@ -240,7 +240,7 @@ change in shape parameters.
 
 * a,b,c are in the domain region of above zero.
 
-```{r GHGBB Distribution plot function, include=FALSE}
+```{r GHGBB Distribution plot function,include=FALSE}
 dGHGBBplot<-function(a,b,c,plot_title,a_seq,b_seq)
 {
   if(a_seq==TRUE && b_seq==FALSE)
@@ -335,7 +335,7 @@ possible to produce very vivid pmf values. Below are few plots explaining those 
 
 * a,b,c are in the domain region of above zero. 
 
-```{r McGBB Distribution plot function, include=FALSE}
+```{r McGBB Distribution plot function,include=FALSE}
 dMcGBBplot<-function(a,b,c,plot_title,a_seq,b_seq)
 {
   if(a_seq==TRUE && b_seq==FALSE)
@@ -588,7 +588,7 @@ Distribution. Below is the plot generated to understand how its pmf values chang
 * p value in-between zero and one.
 * alpha value in-between negative one and positive one.
 
-```{r Additive Binomial Distribution plot function, include=FALSE}
+```{r Additive Binomial Distribution plot function,include=FALSE}
 dAddBinplot<-function(p,alpha,plot_title,p_seq)
 {
   if(p_seq==TRUE)
@@ -667,7 +667,7 @@ explaining how their Pmf values change with respective to cov, a and b parameter
 * cov is the covariance value in between negative infinity and positive infinity.
 * a, b are in the domain region of above zero.
 
-```{r Beta-Correlated Binomial Distribution plot function, include=FALSE}
+```{r Beta-Correlated Binomial Distribution plot function,include=FALSE}
 dBetaCorrBinplot<-function(a,b,cov,plot_title,a_seq,b_seq)
 {
   if(a_seq==TRUE && b_seq==FALSE)
@@ -762,7 +762,7 @@ Given below is the plot of how Pmf changes with relative to p and v.
 * p is the probability value in between zero and one.
 * v is the covariance value in between negative infinity and positive infinity.
 
-```{r COM Poisson Binomial Distribution, include=FALSE}
+```{r COM Poisson Binomial Distribution,include=FALSE}
 dCOMPBinplot<-function(p,v,plot_title,p_seq)
 {
   if(p_seq==TRUE)
@@ -1061,4 +1061,3 @@ p0.75 <- dLMBinplot(phi=seq(1,20,by=0.01),p=0.925,
 grid.arrange(p0.10,p0.25,p0.50,p0.75,nrow=2,
              top="Pmf values changing when phi=seq(1,20,by=0.01)")
 ```
-

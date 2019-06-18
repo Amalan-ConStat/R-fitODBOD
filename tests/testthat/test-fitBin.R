@@ -14,8 +14,8 @@ test_that("NAN values are avoided",{
 
 context("Chi-squared issues")
 test_that("Chi-squared approximation issues",{
-        expect_that(fitBin(1:7,c(147,94,83,40,18,5,1)),
-        shows_message("Chi-squared approximation is not suitable because expected frequency approximates to zero"))
+        expect_that(fitBin(1:7,c(147,94,83,40,8,5,1)),
+        shows_message("Chi-squared approximation may be doubtful because expected frequency is less than 5"))
         })
 
 context("Degree of Freedom")

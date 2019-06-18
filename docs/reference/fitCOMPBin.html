@@ -77,7 +77,7 @@ and degree of freedom so that it can be seen if this distribution fits the data.
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">fitODBOD</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.4.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.4.1</span>
       </span>
     </div>
 
@@ -244,18 +244,17 @@ Statistics &amp; Probability Letters, 87, pp.158-166.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>No.D.D</span><span class='kw'>=</span><span class='fl'>0</span>:<span class='fl'>7</span>                    <span class='co'>#assigning the random variables</span>
-<span class='no'>Obs.fre.1</span><span class='kw'>=</span><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>47</span>,<span class='fl'>54</span>,<span class='fl'>43</span>,<span class='fl'>40</span>,<span class='fl'>40</span>,<span class='fl'>41</span>,<span class='fl'>39</span>,<span class='fl'>95</span>)      <span class='co'>#assigning the corresponding frequencies</span>
+    <pre class="examples"><div class='input'><span class='no'>No.D.D</span> <span class='kw'>&lt;-</span> <span class='fl'>0</span>:<span class='fl'>7</span>                    <span class='co'>#assigning the random variables</span>
+<span class='no'>Obs.fre.1</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>47</span>,<span class='fl'>54</span>,<span class='fl'>43</span>,<span class='fl'>40</span>,<span class='fl'>40</span>,<span class='fl'>41</span>,<span class='fl'>39</span>,<span class='fl'>95</span>)      <span class='co'>#assigning the corresponding frequencies</span>
 
 <span class='co'>#estimating the parameters using maximum log likelihood value and assigning it</span>
-<span class='no'>parameters</span><span class='kw'>=</span><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/warning'>suppressWarnings</a></span>(<span class='kw pkg'>bbmle</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/bbmle/topics/mle2'>mle2</a></span>(<span class='no'>EstMLECOMPBin</span>,<span class='kw'>start</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/list'>list</a></span>(<span class='kw'>p</span><span class='kw'>=</span><span class='fl'>0.5</span>,<span class='kw'>v</span><span class='kw'>=</span><span class='fl'>0.050</span>),
-           <span class='kw'>data</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/list'>list</a></span>(<span class='kw'>x</span><span class='kw'>=</span><span class='no'>No.D.D</span>,<span class='kw'>freq</span><span class='kw'>=</span><span class='no'>Obs.fre.1</span>)))
+<span class='no'>parameters</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='EstMLECOMPBin.html'>EstMLECOMPBin</a></span>(<span class='kw'>x</span><span class='kw'>=</span><span class='no'>No.D.D</span>,<span class='kw'>freq</span><span class='kw'>=</span><span class='no'>Obs.fre.1</span>,<span class='kw'>p</span><span class='kw'>=</span><span class='fl'>0.5</span>,<span class='kw'>v</span><span class='kw'>=</span><span class='fl'>0.050</span>)
 
-<span class='no'>pCOMPBin</span><span class='kw'>=</span><span class='kw pkg'>bbmle</span><span class='kw ns'>::</span><span class='fu'>coef</span>(<span class='no'>parameters</span>)[<span class='fl'>1</span>]
-<span class='no'>vCOMPBin</span><span class='kw'>=</span><span class='kw pkg'>bbmle</span><span class='kw ns'>::</span><span class='fu'>coef</span>(<span class='no'>parameters</span>)[<span class='fl'>2</span>]
+<span class='no'>pCOMPBin</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>bbmle</span><span class='kw ns'>::</span><span class='fu'>coef</span>(<span class='no'>parameters</span>)[<span class='fl'>1</span>]
+<span class='no'>vCOMPBin</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>bbmle</span><span class='kw ns'>::</span><span class='fu'>coef</span>(<span class='no'>parameters</span>)[<span class='fl'>2</span>]
 
 <span class='co'>#fitting when the random variable,frequencies,probability and v parameter are given</span>
-<span class='no'>results</span><span class='kw'>&lt;-</span><span class='fu'>fitCOMPBin</span>(<span class='no'>No.D.D</span>,<span class='no'>Obs.fre.1</span>,<span class='no'>pCOMPBin</span>,<span class='no'>vCOMPBin</span>)
+<span class='no'>results</span> <span class='kw'>&lt;-</span> <span class='fu'>fitCOMPBin</span>(<span class='no'>No.D.D</span>,<span class='no'>Obs.fre.1</span>,<span class='no'>pCOMPBin</span>,<span class='no'>vCOMPBin</span>)
 <span class='no'>results</span></div><div class='output co'>#&gt; Call: 
 #&gt; fitCOMPBin(x = No.D.D, obs.freq = Obs.fre.1, p = pCOMPBin, v = vCOMPBin)
 #&gt; 

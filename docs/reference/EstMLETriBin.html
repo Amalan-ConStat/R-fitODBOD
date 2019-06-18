@@ -74,7 +74,7 @@ are given." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">fitODBOD</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.4.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.4.1</span>
       </span>
     </div>
 
@@ -228,23 +228,18 @@ Transformation, and Its Approximant via the Continuous Uniform Distribution. Bri
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>No.D.D</span><span class='kw'>=</span><span class='fl'>0</span>:<span class='fl'>7</span>   <span class='co'>#assigning the random variables</span>
-<span class='no'>Obs.fre.1</span><span class='kw'>=</span><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>47</span>,<span class='fl'>54</span>,<span class='fl'>43</span>,<span class='fl'>40</span>,<span class='fl'>40</span>,<span class='fl'>41</span>,<span class='fl'>39</span>,<span class='fl'>95</span>)   <span class='co'>#assigning the corresponding frequencies</span>
-
-<span class='co'>#dontrun{}</span>
-<span class='no'>results</span><span class='kw'>&lt;-</span><span class='fu'>EstMLETriBin</span>(<span class='no'>No.D.D</span>,<span class='no'>Obs.fre.1</span>)    <span class='co'>#estimating the mode value and extracting the mode value</span>
+    <pre class="examples"><div class='input'><span class='no'>No.D.D</span> <span class='kw'>&lt;-</span> <span class='fl'>0</span>:<span class='fl'>7</span>   <span class='co'>#assigning the random variables</span>
+<span class='no'>Obs.fre.1</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>47</span>,<span class='fl'>54</span>,<span class='fl'>43</span>,<span class='fl'>40</span>,<span class='fl'>40</span>,<span class='fl'>41</span>,<span class='fl'>39</span>,<span class='fl'>95</span>)   <span class='co'>#assigning the corresponding frequencies</span></div><span class='co'># NOT RUN {</span>
+<span class='co'>#estimating the mode value and extracting the mode value</span>
+<span class='no'>results</span> <span class='kw'>&lt;-</span> <span class='fu'>EstMLETriBin</span>(<span class='no'>No.D.D</span>,<span class='no'>Obs.fre.1</span>)
 
 <span class='co'># extract the mode value and summary</span>
-<span class='fu'><a href='https://www.rdocumentation.org/packages/stats/topics/coef'>coef</a></span>(<span class='no'>results</span>)</div><div class='output co'>#&gt;  mode 
-#&gt;  0.944444</div><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/summary'>summary</a></span>(<span class='no'>results</span>)</div><div class='output co'>#&gt; Coefficients: 
-#&gt;  mode 
-#&gt;  0.944444
-#&gt; 
-#&gt; Negative Log-likelihood :  880.6167
-#&gt; 
-#&gt; AIC :  1763.233</div><div class='input'>
-<span class='fu'><a href='https://www.rdocumentation.org/packages/stats/topics/AIC'>AIC</a></span>(<span class='no'>results</span>)  <span class='co'>#show the AIC value</span></div><div class='output co'>#&gt; [1] 1763.233</div><div class='input'>
+<span class='fu'><a href='https://www.rdocumentation.org/packages/stats/topics/coef'>coef</a></span>(<span class='no'>results</span>)
+<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/summary'>summary</a></span>(<span class='no'>results</span>)
 
+<span class='fu'><a href='https://www.rdocumentation.org/packages/stats/topics/AIC'>AIC</a></span>(<span class='no'>results</span>)  <span class='co'>#show the AIC value</span>
+
+<span class='co'># }</span><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

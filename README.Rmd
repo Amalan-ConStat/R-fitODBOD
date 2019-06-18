@@ -90,9 +90,9 @@ print(fitB)
 According to p-value= 0, H~0~ is rejected at 5\% significance level.
 
 ```{r Estimating shape parameters a,b using given BOD,warning=FALSE}
-#Estimating the parameters a and b using bbmle package mle2 function
-BetaBin=bbmle::mle2(EstMLEBetaBin,data=list(x=Alcohol_data$Days,
-                        freq=Alcohol_data$week2), start=list(a=100.1,b=100.1))
+#Estimating the parameters a and b 
+BetaBin=EstMLEBetaBin(x=Alcohol_data$Days,freq=Alcohol_data$week2,
+                      a=100.1,b=100.1)
 a_est=bbmle::coef(BetaBin)[1]                    
 b_est=bbmle::coef(BetaBin)[2]
 ```
@@ -150,6 +150,7 @@ plotBOD<-ggplot(results_data)+theme_get()+
                      ylab("Frequency Values Estimated and Actual")+
                      scale_y_continuous(breaks=seq(0,120,10))+
                      scale_x_continuous(breaks=seq(0,7,1))+
+                     ggthemes::theme_clean()+
                      annotate("text",x=1.5,y=55,label="Actual",color="Red")+
                      annotate("text",x=4.5,y=115,label="Binomial",color="Green")+
                      annotate("text",x=4.75,y=55,label="Beta-Binomial",color="Blue")

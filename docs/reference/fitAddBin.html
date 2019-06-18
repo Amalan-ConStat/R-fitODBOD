@@ -77,7 +77,7 @@ and degree of freedom value so that it can be seen if this distribution fits the
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">fitODBOD</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.4.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.4.1</span>
       </span>
     </div>
 
@@ -246,36 +246,25 @@ Experiments. Biometrics, 34(1), pp.69-76.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>No.D.D</span><span class='kw'>=</span><span class='fl'>0</span>:<span class='fl'>7</span>         <span class='co'>#assigning the random variables</span>
-<span class='no'>Obs.fre.1</span><span class='kw'>=</span><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>47</span>,<span class='fl'>54</span>,<span class='fl'>43</span>,<span class='fl'>40</span>,<span class='fl'>40</span>,<span class='fl'>41</span>,<span class='fl'>39</span>,<span class='fl'>95</span>)            <span class='co'>#assigning the corresponding the frequencies</span>
-
+    <pre class="examples"><div class='input'><span class='no'>No.D.D</span> <span class='kw'>&lt;-</span> <span class='fl'>0</span>:<span class='fl'>7</span>         <span class='co'>#assigning the random variables</span>
+<span class='no'>Obs.fre.1</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>47</span>,<span class='fl'>54</span>,<span class='fl'>43</span>,<span class='fl'>40</span>,<span class='fl'>40</span>,<span class='fl'>41</span>,<span class='fl'>39</span>,<span class='fl'>95</span>)            <span class='co'>#assigning the corresponding the frequencies</span></div><span class='co'># NOT RUN {</span>
 <span class='co'>#assigning the estimated probability value</span>
-
-<span class='co'>#dontrun{}</span>
-<span class='no'>paddbin</span><span class='kw'>=</span><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/warning'>suppressWarnings</a></span>(<span class='fu'><a href='EstMLEAddBin.html'>EstMLEAddBin</a></span>(<span class='no'>No.D.D</span>,<span class='no'>Obs.fre.1</span>)$<span class='no'>p</span>)
+<span class='no'>paddbin</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='EstMLEAddBin.html'>EstMLEAddBin</a></span>(<span class='no'>No.D.D</span>,<span class='no'>Obs.fre.1</span>)$<span class='no'>p</span>
 
 <span class='co'>#assigning the estimated alpha value</span>
-<span class='no'>alphaaddbin</span><span class='kw'>=</span><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/warning'>suppressWarnings</a></span>(<span class='fu'><a href='EstMLEAddBin.html'>EstMLEAddBin</a></span>(<span class='no'>No.D.D</span>,<span class='no'>Obs.fre.1</span>)$<span class='no'>alpha</span>)
+<span class='no'>alphaaddbin</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='EstMLEAddBin.html'>EstMLEAddBin</a></span>(<span class='no'>No.D.D</span>,<span class='no'>Obs.fre.1</span>)$<span class='no'>alpha</span>
 
 <span class='co'>#fitting when the random variable,frequencies,probability and alpha are given</span>
-<span class='no'>results</span><span class='kw'>&lt;-</span><span class='fu'>fitAddBin</span>(<span class='no'>No.D.D</span>,<span class='no'>Obs.fre.1</span>,<span class='no'>paddbin</span>,<span class='no'>alphaaddbin</span>)
-<span class='no'>results</span></div><div class='output co'>#&gt; Call: 
-#&gt; fitAddBin(x = No.D.D, obs.freq = Obs.fre.1, p = paddbin, alpha = alphaaddbin)
-#&gt; 
-#&gt; Chi-squared test for Additive Binomial Distribution 
-#&gt; 	
-#&gt;       Observed Frequency :  47 54 43 40 40 41 39 95 
-#&gt; 	
-#&gt;       expected Frequency :  10.71 50.11 79.86 45.82 24.86 74.29 84.07 29.28 
-#&gt; 	
-#&gt;       estimated p value : 0.546923  ,estimated alpha parameter : 0.230644 
-#&gt; 	
-#&gt;       X-squared : 336.831   ,df : 5   ,p-value : 0 </div><div class='input'>
-<span class='co'>#extracting the AIC value</span>
-<span class='fu'><a href='https://www.rdocumentation.org/packages/stats/topics/AIC'>AIC</a></span>(<span class='no'>results</span>)</div><div class='output co'>#&gt; [1] 930.6631</div><div class='input'>
-<span class='co'>#extract fitted values</span>
-<span class='fu'><a href='https://www.rdocumentation.org/packages/stats/topics/fitted.values'>fitted</a></span>(<span class='no'>results</span>)</div><div class='output co'>#&gt; [1] 10.71 50.11 79.86 45.82 24.86 74.29 84.07 29.28</div><div class='input'>
+<span class='no'>results</span> <span class='kw'>&lt;-</span> <span class='fu'>fitAddBin</span>(<span class='no'>No.D.D</span>,<span class='no'>Obs.fre.1</span>,<span class='no'>paddbin</span>,<span class='no'>alphaaddbin</span>)
+<span class='no'>results</span>
 
+<span class='co'>#extracting the AIC value</span>
+<span class='fu'><a href='https://www.rdocumentation.org/packages/stats/topics/AIC'>AIC</a></span>(<span class='no'>results</span>)
+
+<span class='co'>#extract fitted values</span>
+<span class='fu'><a href='https://www.rdocumentation.org/packages/stats/topics/fitted.values'>fitted</a></span>(<span class='no'>results</span>)
+
+<span class='co'># }</span><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

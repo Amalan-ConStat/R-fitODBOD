@@ -16,6 +16,7 @@ library(grid)
 library(gridExtra)
 library(bbmle)
 library(tibble)
+library(ggthemes)
 ```
 
 >IT WOULD BE CLEARLY BENEFICIAL FOR YOU BY USING THE RMD FILES IN THE GITHUB DIRECTORY FOR FURTHER EXPLANATION
@@ -229,7 +230,7 @@ ABD_freq <- ggplot(ABD_Data)+theme_get()+
                      ggtitle("Plot of fitted and actual frequencies of Alcohol BOD week2")+
                      xlab("Binomial Random Variables from 0 to 7")+
                      ylab("Frequency Values Estimated and Actual")+
-                     ggthemes::theme_clean()+
+                     theme_clean()+
                      scale_y_continuous(breaks=seq(0,120,5))+
                      scale_x_continuous(breaks=seq(0,7,1))+
                      annotate("text",x=0,y=120,label="Actual",color="red")+
@@ -264,7 +265,7 @@ with actual frequency.
 
 ### Triangular Binomial Distribution
 
-```{r plotting Expected frequencies with actual frequency for Triangular Binomial Distribution, warning=FALSE}
+```{r plotting Expected frequencies with actual frequency for Triangular Binomial Distribution,warning=FALSE}
 # Estimating and fitting Triangular Binomial distribution
 Para_TriBin <- EstMLETriBin(BinRanVar,ActFreq)
 
@@ -282,7 +283,7 @@ print(TriBinFreq)
 
 ### Beta-Binomial Distribution
 
-```{r plotting Expected frequencies with actual frequency for Beta-Binomial Distribution, warning=FALSE}
+```{r plotting Expected frequencies with actual frequency for Beta-Binomial Distribution,warning=FALSE}
 # Estimating and fitting Beta Correlated Binoial Distribution
 Para_BetaBin <- EstMLEBetaBin(x=BinRanVar, freq=ActFreq,
                             a=10,b=10)
@@ -301,7 +302,7 @@ print(BetaBinFreq)
 
 ### Kumaraswamy Binomial Distribution
 
-```{r plotting Expected frequencies with actual frequency for Kumaraswamy Binomial Distribution, warning=FALSE}
+```{r plotting Expected frequencies with actual frequency for Kumaraswamy Binomial Distribution,warning=FALSE}
 # Estimating and fitting Kumaraswamy Binomial Distribution
 Para_KumBin <- EstMLEKumBin(x=BinRanVar, freq=ActFreq,
                           a=12.1,b=0.9,it=10000)
@@ -322,7 +323,7 @@ print(KumBinFreq)
 
 ### GHGBB Distribution
 
-```{r plotting Expected frequencies with actual frequency for GHGBB Distribution, warning=FALSE}
+```{r plotting Expected frequencies with actual frequency for GHGBB Distribution,warning=FALSE}
 # Estimating and fitting GHGBB Distribution
 Para_GHGBB <- EstMLEGHGBB(x=BinRanVar, freq=ActFreq,
                         a=0.0021,b=0.19,c=0.3)
@@ -343,7 +344,7 @@ print(GHGBBFreq)
 
 ### McGBB Distribution
 
-```{r plotting Expected frequencies with actual frequency for McGBB Distribution, warning=FALSE}
+```{r plotting Expected frequencies with actual frequency for McGBB Distribution,warning=FALSE}
 # Estimating and fitting McGBB Distribution
 Para_McGBB <- EstMLEMcGBB(x=BinRanVar, freq=ActFreq,
                         a=21,b=0.19,c=0.1)
@@ -364,7 +365,7 @@ print(McGBBFreq)
 
 ### Gamma Binomial Distribution
 
-```{r plotting Expected frequencies with actual frequency for Gamma Binomial Distribution, warning=FALSE}
+```{r plotting Expected frequencies with actual frequency for Gamma Binomial Distribution,warning=FALSE}
 # Estimating and fitting Gamma Binoial Distribution
 Para_GammaBin <- EstMLEGammaBin(x=BinRanVar, freq=ActFreq,
                               c=10,l=10)
@@ -384,7 +385,7 @@ print(GammaBinFreq)
 
 ### Grassia II Binomial Distribution
 
-```{r plotting Expected frequencies with actual frequency for Grassia II Binomial Distribution, warning=FALSE}
+```{r plotting Expected frequencies with actual frequency for Grassia II Binomial Distribution,warning=FALSE}
 # Estimating and fitting Grassia II Binoial Distribution
 Para_GrassiaIIBin <- EstMLEGrassiaIIBin(x=BinRanVar, freq=ActFreq,
                                       a=10,b=10)
@@ -441,7 +442,7 @@ BMD_freq <- ggplot(BMD_Data)+theme_get()+
                      ggtitle("Plot of fitted and actual frequencies of Alcohol BOD week2")+
                      xlab("Binomial Random Variables from 0 to 7")+
                      ylab("Frequency Values Estimated and Actual")+
-                     ggthemes::theme_clean()+
+                     theme_clean()+
                      scale_y_continuous(breaks=seq(0,120,5))+
                      scale_x_continuous(breaks=seq(0,7,1))+
                      annotate("text",x=0,y=120,label="Actual",color="red")+

@@ -37,7 +37,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">fitODBOD</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.4.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.4.1</span>
       </span>
     </div>
 
@@ -152,8 +152,8 @@
 <h2 class="hasAnchor">
 <a href="#functions-which-does-not-need-bbmle-package" class="anchor"></a>Functions which does not need <code>bbmle</code> package</h2>
 <p>These situations occurring are very less in comparing to the number of distributions we have in <code>fitODBOD</code>. They genuinely occur when the parameter in need of estimation has a closed domain and that domain is very small. Here by small it is indicating a scenario of such as in-between zero and one or greater than zero.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="co"># estimating parameter for p and alpha using Additive Binomial Distribution of Chromosome data</span></a>
-<a class="sourceLine" id="cb1-2" title="2">Chromosome_data</a></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="co"># estimating parameter for p and alpha using Additive Binomial Distribution of Chromosome data</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a>Chromosome_data</span></code></pre></div>
 <pre><code>##   No.of.Asso fre
 ## 1          0  32
 ## 2          1 103
@@ -264,7 +264,7 @@
 <p>Here the number of iterations has to be estimated as well, which is time consuming. therefore I haven’t estimated it.</p>
 <pre><code>## Estimated parameter a for Chromosome data= 4.220499</code></pre>
 <pre><code>## Estimated parameter b for Chromosome data= 6.008058</code></pre>
-<pre><code>## Estimated parameter iteration for Chromosome data= 5000</code></pre>
+<pre><code>## Estimated parameter iteration for Chromosome data= 7500</code></pre>
 <ol start="3" style="list-style-type: decimal">
 <li>GHGBB distribution</li>
 </ol>
@@ -282,9 +282,9 @@
 <ul>
 <li>a,b,c in the domain region of greater than zero.</li>
 </ul>
-<pre><code>## Estimated parameter a for Chromosome data= 0.4210067</code></pre>
-<pre><code>## Estimated parameter b for Chromosome data= 14.38578</code></pre>
-<pre><code>## Estimated parameter c for Chromosome data= 8.735598</code></pre>
+<pre><code>## Estimated parameter a for Chromosome data= 0.3865119</code></pre>
+<pre><code>## Estimated parameter b for Chromosome data= 16.20521</code></pre>
+<pre><code>## Estimated parameter c for Chromosome data= 9.362786</code></pre>
 <ol start="5" style="list-style-type: decimal">
 <li>Gamma Binomial distribution</li>
 </ol>
