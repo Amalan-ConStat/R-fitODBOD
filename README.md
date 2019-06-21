@@ -30,6 +30,8 @@ status](https://ci.appveyor.com/api/projects/status/github/Amalan-ConStat/R-fitO
 coverage](https://codecov.io/gh/Amalan-ConStat/R-fitODBOD/branch/master/graph/badge.svg)](https://codecov.io/gh/Amalan-ConStat/R-fitODBOD?branch=master)
 
 [![status](http://joss.theoj.org/papers/388fc2f4d7c1e0ae83cf0de13ac038a4/status.svg)](http://joss.theoj.org/papers/388fc2f4d7c1e0ae83cf0de13ac038a4)
+[![cran
+checks](https://cranchecks.info/badges/summary/fitODBOD)](https://cranchecks.info/pkgs/fitODBOD)
 
 # fitODBOD <img src="man/figures/logo.png" align="right" alt="" width="150" />
 
@@ -71,126 +73,196 @@ modeled using these Distributions
 |                                                 | 7.Gamma Binomial Distribution                                    |
 |                                                 | 8.Grassia II Binomial Distribution                               |
 
-## Just an example
+## Modelling
 
-### Modelling BOD using Beta-Binomial Distribution
+To demonstrate the process the Alcohol Consumption Data, which is the
+most commonly used dataset by the researchers to explain Over-dispersion
+will be taken {lemmens1988}. In this dataset, the number of alcohol
+consumption days in two reference weeks is separately self-reported by a
+randomly selected sample of \(399\) respondents from the Netherlands in
+\(1983\). Here, the number of days a given individual consumes alcohol
+out of seven days a week can be treated as a Binomial variable. The
+collection of all such variables from all respondents would be defined
+as “Binomial Outcome Data”.
 
-``` r
-library(fitODBOD)
+### Step 1
 
-#Looking at the BOD
-Alcohol_data
-```
-
-    ##   Days week1 week2
-    ## 1    0    47    42
-    ## 2    1    54    47
-    ## 3    2    43    54
-    ## 4    3    40    40
-    ## 5    4    40    49
-    ## 6    5    41    40
-    ## 7    6    39    43
-    ## 8    7    95    84
-
-Hypothesis to check if above data follows Binomial Distribution
-
-H<sub>0</sub> : The Data follows the Binomial Distribution.
-
-H<sub>1</sub> : The Data does not follow the Binomial Distribution.
+The Alcohol consumption data is already in the necessary format to apply
+steps \(2\) to \(5\) and hence, step \(1\) can be avoided. The steps
+\(2\) to \(5\) can be applied only if the dataset is in the form of a
+frequency table as follows.
 
 ``` r
-#Checking if the above data  of Days and week2 follows Binomial Distribution
-fitB<-fitBin(Alcohol_data$Days,Alcohol_data$week2)
-
-print(fitB)
+library("fitODBOD")   #Loading packages
+# Hello, This is Amalan. For more details refer --> https://amalan-constat.github.io/R-fitODBOD/index.html
+print(Alcohol_data)     #print the alcohol consumption data set
+#   Days week1 week2
+# 1    0    47    42
+# 2    1    54    47
+# 3    2    43    54
+# 4    3    40    40
+# 5    4    40    49
+# 6    5    41    40
+# 7    6    39    43
+# 8    7    95    84
+sum(Alcohol_data$week1) #No of respondents or N
+# [1] 399
+Alcohol_data$Days       #Binomial random variables or x 
+# [1] 0 1 2 3 4 5 6 7
 ```
 
-    ## Call: 
-    ## fitBin(x = Alcohol_data$Days, obs.freq = Alcohol_data$week2)
-    ## 
-    ## Chi-squared test for Binomial Distribution 
-    ##  
-    ##       Observed Frequency :  42 47 54 40 49 40 43 84 
-    ##  
-    ##       expected Frequency :  1.66 13.79 49.19 97.48 115.89 82.67 32.76 5.56 
-    ##  
-    ##       estimated probability value : 0.5431436 
-    ##  
-    ##       X-squared : 2265.111   ,df : 6   ,p-value : 0
-
-According to p-value= 0, H<sub>0</sub> is rejected at 5% significance
-level.
+Suppose your dataset is not a frequency table as shown in the following
+dataset called `datapoints`. Then the function `BODextract` can be used
+to prepare the appropriate format as follows.
 
 ``` r
-#Estimating the parameters a and b 
-BetaBin=EstMLEBetaBin(x=Alcohol_data$Days,freq=Alcohol_data$week2,
-                      a=100.1,b=100.1)
-a_est=bbmle::coef(BetaBin)[1]                    
-b_est=bbmle::coef(BetaBin)[2]
+datapoints <- sample(0:7, 340, replace = TRUE) #creating a set of raw BOD 
+head(datapoints)  #first few observations of datapoints dataset
+# [1] 7 1 7 3 6 7
+    
+#extracting and printing BOD in a usable way for the package
+new_data <- BODextract(datapoints)
+matrix(c(new_data$RV, new_data$Freq), ncol=2, byrow = FALSE)
+#      [,1] [,2]
+# [1,]    0   34
+# [2,]    1   39
+# [3,]    2   37
+# [4,]    3   41
+# [5,]    4   42
+# [6,]    5   45
+# [7,]    6   50
+# [8,]    7   52
 ```
 
-Now, Checking if above data follows Beta-Binomial Distribution
+### Step 2
 
-H<sub>0</sub> : The Data follows the Beta-Binomial Distribution.
+As in the second step we test whether the Alcohol Consumption data
+follows the Binomial distribution based on the hypothesis given below:
 
-H<sub>1</sub> : The Data does not follow the Beta-Binomial Distribution.
+Null Hypothesis : The data follows Binomial Distribution.
+
+Alternate Hypothesis : The data does not follow Binomial Distribution.
+
+Alcohol Consumption data consists of frequency information for two weeks
+but only the first week is considered for computation. By doing so the
+researcher can verify if the results acquired from the functions are
+similar to the results acquired from previous researchers work.
 
 ``` r
-#Checking if the above data follows Beta-Binomial Distribution
-fitBB<-fitBetaBin(Alcohol_data$Days,Alcohol_data$week2,a_est,b_est)
-
-print(fitBB)
+BinFreq<-fitBin(Alcohol_data$Days, Alcohol_data$week1)
+# Warning in fitBin(Alcohol_data$Days, Alcohol_data$week1): Chi-squared
+# approximation may be doubtful because expected frequency is less than 5
+print(BinFreq)
+# Call: 
+# fitBin(x = Alcohol_data$Days, obs.freq = Alcohol_data$week1)
+# 
+# Chi-squared test for Binomial Distribution 
+#   
+#       Observed Frequency :  47 54 43 40 40 41 39 95 
+#   
+#       expected Frequency :  1.59 13.41 48.3 96.68 116.11 83.66 33.49 5.75 
+#   
+#       estimated probability value : 0.5456498 
+#   
+#       X-squared : 2911.434   ,df : 6   ,p-value : 0
 ```
 
-    ## Call: 
-    ## fitBetaBin(x = Alcohol_data$Days, obs.freq = Alcohol_data$week2, 
-    ##     a = a_est, b = b_est)
-    ## 
-    ## Chi-squared test for Beta-Binomial Distribution 
-    ##  
-    ##           Observed Frequency :  42 47 54 40 49 40 43 84 
-    ##  
-    ##           expected Frequency :  47.91 42.92 41.95 42.5 44.3 47.81 54.89 76.73 
-    ##  
-    ##           estimated a parameter : 0.8575354   ,estimated b parameter : 0.7007619 
-    ##  
-    ##           X-squared : 9.7641   ,df : 5   ,p-value : 0.0822 
-    ##  
-    ##           over dispersion : 0.390885
-
-p-value=0.1524 indicates H<sub>0</sub> is not rejected at 5%
-significance level. Clearly Beta-Binomial Distribution is a better suit
-for the Alcohol BOD.
-
-Further
+Looking at the p-value it is clear that null hypothesis is rejected at
+\(5\%\) significance level. This indicates that data doesn’t fit the
+Binomial distribution. The reason for a Warning message is that one of
+the expected frequencies in the results is less than five. Now we
+compare the actual and the fitted Binomial variances.
 
 ``` r
-#Actual Variance
-Act_Var<-var(rep(Alcohol_data$Days,Alcohol_data$week2))
-#Estimated Variance of Binomial Distribution
-Est_Var_Bin<-var(rep(Alcohol_data$Days,fitted(fitB)))
-#Estimated Variance of Beta-Binomial Distribution
-Est_Var_BetaBin<-var(rep(Alcohol_data$Days,fitted(fitBB)))
+#Actual variance of observed frequencies
+var(rep(Alcohol_data$Days, times = Alcohol_data$week1))
+# [1] 6.253788
+#Calculated variance for frequencies of  fitted Binomial distribution 
+var(rep(BinFreq$bin.ran.var, times = fitted(BinFreq)))
+# [1] 1.696035
 ```
 
-| Type of Variance                                                  |   Values |
-| :---------------------------------------------------------------- | -------: |
-| Actual                                                            | 5.787333 |
-| From Expected frequencies of estimated Binomial Distribution      | 1.694534 |
-| From Expected frequencies of estimated Beta-Binomial Distribution | 5.804344 |
+The variance of observed frequencies and the variance of fitted
+frequencies are \(6.253788\) and \(1.696035\) respectively, which
+indicates Over-dispersion.
 
-![](README_files/figure-gfm/Printing%20variance%20and%20plotting%20frequencies-1.png)<!-- -->
+### Step 3 and 4
 
-Variance(5.8043) from Beta-Binomial Distribution’s estimated frequencies
-is closer to the Actual Variance(5.7873) of Alcohol BOD week 2 than
-variance(1.6945) of expected frequencies by Binomial Distribution.
+Since the Over-dispersion exists in the data now it is necessary to fit
+the Binomial Mixture distributions Triangular Binomial, Beta-Binomial,
+Kumaraswamy Binomial, Gamma Binomial, Grassia II Binomial, GHGBB and
+McGBB using the package, and select the best-fitted distribution using
+Negative Log likelihood value, p-value and by comparing observed and
+expected frequencies. Modelling these distributions are given in the
+next sub-sections.
 
-According to the plot, it is clearly seen that Beta-Binomial estimated
-frequencies behave very close to actual frequency values than the
-estimate frequencies from Binomial distribution. Or the Red line is very
-similar and close to the Blue line than the Green line.
+#### a) Triangular Binomial distribution.
 
-## Thank You
+The estimation of the mode parameter \(c\) can be done by using the
+`EstMLETriBin` function, and then the estimated value has to be applied
+to `fitTriBin` function to check whether the data fit the Triangular
+Binomial distribution.
+
+``` r
+#estimating the mode
+modeTB <- EstMLETriBin(Alcohol_data$Days, Alcohol_data$week1) 
+coef(modeTB)  #printing the estimated mode
+#  mode 
+#  0.944444
+
+#printing the Negative log likelihood value which is minimized
+NegLLTriBin(Alcohol_data$Days, Alcohol_data$week1,modeTB$mode)
+# [1] 880.6167
+```
+
+To fit the Triangular Binomial distribution for estimated mode parameter
+the following hypothesis is used
+
+Null Hypothesis :\&The data follows Triangular Binomial Distribution.
+
+Alternate Hypothesis:& The data does not follow Triangular Binomial
+Distribution.
+
+``` r
+#fitting the Triangular Binomial Distribution for the estimated mode value
+fitTriBin(Alcohol_data$Days, Alcohol_data$week1, modeTB$mode)
+# Call: 
+# fitTriBin(x = Alcohol_data$Days, obs.freq = Alcohol_data$week1, 
+#     mode = modeTB$mode)
+# 
+# Chi-squared test for Triangular Binomial Distribution 
+#   
+#       Observed Frequency :  47 54 43 40 40 41 39 95 
+#   
+#       expected Frequency :  11.74 23.47 35.21 46.94 58.66 70.2 79.57 73.21 
+#   
+#       estimated Mode value: 0.944444 
+#   
+#       X-squared : 193.6159   ,df : 6   ,p-value : 0 
+#   
+#       over dispersion : 0.2308269
+```
+
+Since the \(p-value\) is \(0\) which is less than \(0.05\) it is clear
+that the null hypothesis is rejected, and the estimated Over-dispersion
+is \(0.2308269\). Therefore, it is necessary to fit a better flexible
+distribution than the Triangular Binomial distribution.
+
+#### b) Beta-Binomial distribution.
+
+#### c) Kumaraswamy Binomial distribution.
+
+#### d) Gamma Binomial distribution.
+
+#### e) Grassia II Binomial distribution.
+
+#### f) GHGBB distribution.
+
+#### g) McGBB distribution.
+
+### Step 5
+
+#### Thank You
 
 [![Twitter](https://img.shields.io/twitter/url/https/github.com/Amalan-ConStat/R-fitODBOD.svg?style=social)](https://twitter.com/intent/tweet?text=Wow:&url=https%3A%2F%2Fgithub.com%2FAmalan-ConStat%2FR-fitODBOD)
 
