@@ -7,28 +7,26 @@ output: github_document
 knitr::opts_chunk$set(echo = TRUE,comment = "#",collapse = TRUE)
 ```
 
+[![cran checks](https://cranchecks.info/badges/summary/fitODBOD)](https://cranchecks.info/pkgs/fitODBOD)
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version-last-release/fitODBOD)](https://cran.r-project.org/package=fitODBOD)
 [![packageversion](https://img.shields.io/badge/Package%20version-1.4.0-orange.svg?style=flat-square)](commits/master)
 [![Rdoc](http://www.rdocumentation.org/badges/version/fitODBOD)](http://www.rdocumentation.org/packages/fitODBOD)
+[![GitHub license](https://img.shields.io/github/license/Amalan-ConStat/R-fitODBOD.svg?style=popout)](https://github.com/Amalan-ConStat/R-fitODBOD/blob/master/LICENSE)
 
 ![downloads](http://cranlogs.r-pkg.org/badges/grand-total/fitODBOD)
 ![downloads](https://cranlogs.r-pkg.org/badges/fitODBOD)
 ![downloads](http://cranlogs.r-pkg.org/badges/last-week/fitODBOD)
+[![rpackages.io rank](http://www.rpackages.io/badge/fitODBOD.svg)](http://www.rpackages.io/package/fitODBOD)
 
-[![Licence](https://img.shields.io/badge/licence-GPL--2-blue.svg)](https://www.gnu.org/licenses/old-licenses/gpl-2.0.html)
-[![GitHub license](https://img.shields.io/github/license/Amalan-ConStat/R-fitODBOD.svg?style=popout)](https://github.com/Amalan-ConStat/R-fitODBOD/blob/master/LICENSE)
 
 [![Project Status: Active - The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 [![GitHub issues](https://img.shields.io/github/issues/Amalan-ConStat/R-fitODBOD.svg?style=popout)](https://github.com/Amalan-ConStat/R-fitODBOD/issues)
-
-[![rpackages.io rank](http://www.rpackages.io/badge/fitODBOD.svg)](http://www.rpackages.io/package/fitODBOD)
-
 [![Travis build status](https://travis-ci.org/Amalan-ConStat/R-fitODBOD.svg?branch=master)](https://travis-ci.org/Amalan-ConStat/R-fitODBOD)
 [![AppVeyor build status](https://ci.appveyor.com/api/projects/status/github/Amalan-ConStat/R-fitODBOD?branch=master&svg=true)](https://ci.appveyor.com/project/Amalan-ConStat/R-fitODBOD)
 [![Codecov test coverage](https://codecov.io/gh/Amalan-ConStat/R-fitODBOD/branch/master/graph/badge.svg)](https://codecov.io/gh/Amalan-ConStat/R-fitODBOD?branch=master)
 
 [![status](http://joss.theoj.org/papers/388fc2f4d7c1e0ae83cf0de13ac038a4/status.svg)](http://joss.theoj.org/papers/388fc2f4d7c1e0ae83cf0de13ac038a4)
-[![cran checks](https://cranchecks.info/badges/summary/fitODBOD)](https://cranchecks.info/pkgs/fitODBOD)
+
 
 # fitODBOD <img src="man/figures/logo.png" align="right" alt="" width="150" />
 
@@ -81,20 +79,20 @@ The Alcohol consumption data is already in the necessary format to apply steps $
 $2$ to $5$ can be applied only if the dataset is in the form of a frequency table as follows.
 
 ```{r ,Step 1_0}
-library("fitODBOD")   #Loading packages
-print(Alcohol_data)     #print the alcohol consumption data set
-sum(Alcohol_data$week1) #No of respondents or N
-Alcohol_data$Days       #Binomial random variables or x 
+library("fitODBOD")   ## Loading packages
+print(Alcohol_data)     ## print the alcohol consumption data set
+sum(Alcohol_data$week1) ## No of respondents or N
+Alcohol_data$Days       ## Binomial random variables or x 
 ```
 
 Suppose your dataset is not a frequency table as shown in the following dataset called `datapoints`. Then the function `BODextract` 
 can be used to prepare the appropriate format as follows.
 
 ```{r ,Step 1_1}
-datapoints <- sample(0:7, 340, replace = TRUE) #creating a set of raw BOD 
-head(datapoints)  #first few observations of datapoints dataset
+datapoints <- sample(0:7, 340, replace = TRUE) ## creating a set of raw BOD 
+head(datapoints)  ## first few observations of datapoints dataset
 	
-#extracting and printing BOD in a usable way for the package
+## extracting and printing BOD in a usable way for the package
 new_data <- BODextract(datapoints)
 matrix(c(new_data$RV, new_data$Freq), ncol=2, byrow = FALSE)
 ```
@@ -111,7 +109,7 @@ Alcohol Consumption data consists of frequency information for two weeks but onl
 so the researcher can verify if the results acquired from the functions are similar to the results acquired from previous researchers work. 
 
 ```{r,Step 2_1}
-BinFreq<-fitBin(Alcohol_data$Days, Alcohol_data$week1)
+BinFreq <- fitBin(x=Alcohol_data$Days,obs.fre=Alcohol_data$week1)
 print(BinFreq)
 ```
 
@@ -120,9 +118,9 @@ Binomial distribution. The reason for a Warning message is that one of the expec
 compare the actual and the fitted Binomial variances.
 
 ```{r, Step 2_2}
-#Actual variance of observed frequencies
+## Actual variance of observed frequencies
 var(rep(Alcohol_data$Days, times = Alcohol_data$week1))
-#Calculated variance for frequencies of  fitted Binomial distribution 
+## Calculated variance for frequencies of  fitted Binomial distribution 
 var(rep(BinFreq$bin.ran.var, times = fitted(BinFreq)))
 ```
 
@@ -142,12 +140,12 @@ The estimation of the mode parameter $c$ can be done by using the `EstMLETriBin`
 applied to `fitTriBin` function to check whether the data fit the Triangular Binomial distribution. 
 
 ```{r,Step 3_a}
-#estimating the mode
-modeTB <- EstMLETriBin(Alcohol_data$Days, Alcohol_data$week1) 
-coef(modeTB)  #printing the estimated mode
+## estimating the mode
+modeTB <- EstMLETriBin(x=Alcohol_data$Days,freq=Alcohol_data$week1) 
+coef(modeTB)  ## printing the estimated mode
 
-#printing the Negative log likelihood value which is minimized
-NegLLTriBin(Alcohol_data$Days, Alcohol_data$week1,modeTB$mode)
+## printing the Negative log likelihood value which is minimized
+NegLLTriBin(x=Alcohol_data$Days,freq=Alcohol_data$week1,mode=modeTB$mode)
 ```
 
 To fit the Triangular Binomial distribution for estimated mode parameter the following hypothesis is used
@@ -157,8 +155,8 @@ Null Hypothesis :&The data follows Triangular Binomial Distribution.
 Alternate Hypothesis:& The data does not follow Triangular Binomial Distribution.				
 
 ```{r,Step 4_a}
-#fitting the Triangular Binomial Distribution for the estimated mode value
-fitTriBin(Alcohol_data$Days, Alcohol_data$week1, modeTB$mode)
+## fitting the Triangular Binomial Distribution for the estimated mode value
+fitTriBin(x=Alcohol_data$Days,obs.freq=Alcohol_data$week1,mode=modeTB$mode)
 ```
 
 Since the $p-value$ is $0$ which is less than $0.05$ it is clear that the null hypothesis is rejected, and the estimated Over-dispersion is
@@ -173,12 +171,12 @@ initial values have to be in the domain of the shape parameters. Below given is 
 $b=0.1$.
 
 ```{r,step 3_b}
-#estimating the shape parameters a,b
-#estimate = EstMLEBetaBin(x = Alcohol_data$Days,freq = Alcohol_data$week1,a = 0.1, b = 0.1)
-#estimate@min #extracting the minimized Negative log likelihood value 
-#extracting the estimated shape parameter a	, b
-#a1 = bbmle::coef(estimate)[1] ; b1 = bbmle::coef(estimate)[2]  
-#print(c(a1,b1))        #printing the estimated shape parameters
+## estimating the shape parameters a,b
+estimate <- EstMLEBetaBin(x = Alcohol_data$Days,freq = Alcohol_data$week1,a = 0.1, b = 0.1)
+estimate@min ## extracting the minimized Negative log likelihood value 
+## extracting the estimated shape parameter a	, b
+a1 <- bbmle::coef(estimate)[1] ; b1 <- bbmle::coef(estimate)[2]  
+print(c(a1,b1))        ## printing the estimated shape parameters
 ```
 
 To fit the Beta-Binomial distribution for estimated (Maximum Likelihood Estimation method) shape parameters the following hypothesis is used 
@@ -188,21 +186,214 @@ Null Hypothesis : The data follows Beta-Binomial Distribution by the Maximum Lik
 Alternate Hypothesis: The data does not follow Beta-Binomial Distribution by the Maximum Likelihood Estimates.							
 
 ```{r,step 4_b}
-#fitting Beta Binomial Distribution for estimated shape parameters
-fitBetaBin(Alcohol_data$Days, Alcohol_data$week1, a1, b1)
+## fitting Beta Binomial Distribution for estimated shape parameters
+fitBetaBin(x=Alcohol_data$Days,obs.fre=Alcohol_data$week1,a=a1,b=b1)
 ```
+
+The $p-value$ of $0.0901$ $> 0.05$ indicates that the null hypothesis is not rejected. Current estimated shape parameters fit the
+Beta-Binomial distribution. Note that the estimated Over-dispersion parameter is $0.4340673$.
+
+Function `EstMGFBetaBin` is used as below to estimate shape parameters $a$ and $b$ using Methods of Moments.
+
+```{r,step 3_aa}
+## estimating the shape parameter a and b
+estimate <- EstMGFBetaBin(Alcohol_data$Days, Alcohol_data$week1)
+print(c(estimate$a, estimate$b))  ## printing the estimated parameters a,b
+## finding the minimized negative log likelihood value 
+NegLLBetaBin(x=Alcohol_data$Days,freq=Alcohol_data$week1,a=estimate$a,b=estimate$b)
+```
+
+To fit the Beta-Binomial distribution for estimated (Method of Moments) shape parameters the following hypothesis is used
+ 
+Null Hypothesis : The data follows Beta-Binomial Distribution by the Method of Moments.
+
+Alternate Hypothesis: The data does not follow Beta-Binomial Distribution by the Method of Moments.							
+
+```{r,step_3_bb}
+## fitting Beta-Binomial Distribution to estimated shape parameters
+fitBetaBin(x=Alcohol_data$Days,obs.fre=Alcohol_data$week1,a=estimate$a,b=estimate$b)
+```
+
+Results from Method of Moments to estimate the parameters have led to a $p-value$ of $0.0831$ which is greater than $0.05$ indicates that the 
+null hypothesis is not rejected. The parameters estimated through Method of Moments fit the Beta-Binomial distribution for an estimated
+Over-dispersion of $0.4324333$.
 
 #### c) Kumaraswamy Binomial distribution.
 
+The shape parameters $a$, $b$ and `it` are estimated and fitted below. Suppose the selected input parameters are 
+$a=10.1$, $b=1.1$ and $it=20000$.
+
+```{r,step 3_c}
+## estimating the shape parameters and iteration value
+estimate <- EstMLEKumBin(x=Alcohol_data$Days,freq=Alcohol_data$week1,
+                         a=10.1,b=1.1,it=20000)
+estimate@min ## extracting the minimized negative log likelihood value 
+## extracting the shape parameter a and b
+a1 <- bbmle::coef(estimate)[1] ; b1 <- bbmle::coef(estimate)[2]  
+it1 <- bbmle::coef(estimate)[3] 
+print(c(a1, b1, it1))   ## print shape parameters and iteration value
+```
+
+To fit the Kumaraswamy Binomial distribution for estimated shape parameters the following hypothesis is used
+
+Null Hypothesis : The data follows Kumaraswamy Binomial Distribution.
+
+Alternate Hypothesis : The data does not follow Kumaraswamy Binomial Distribution.
+
+```{r,step 4_c}
+## fitting Kumaraswamy Binomial Distribution to estimated shape parameters
+fitKumBin(x=Alcohol_data$Days,obs.fre=Alcohol_data$week1,a=a1,b=b1,it=it1*100)
+```
+
+The null hypothesis is not rejected at $5\%$ significance level ($p-value=0.0732$ )for the estimated parameters $it=20000$, $a=0.7231022$,
+$b=0.6099952$ and the estimated Over-dispersion of $0.4252887$.
+
 #### d) Gamma Binomial distribution.
+
+The shape parameters $c$ and $l$  are estimated and fitted below. Suppose the selected input parameters are 
+$a=10.1$ and $b=5.1$.
+
+```{r,step 3_d}
+## estimating the shape parameters
+estimate <- EstMLEGammaBin(x=Alcohol_data$Days,freq=Alcohol_data$week1,
+                           c=10.1,l=5.1)
+estimate@min ## extracting the minimized negative log likelihood value 
+## extracting the shape parameter c and l
+c1 <- bbmle::coef(estimate)[1] ; l1 <- bbmle::coef(estimate)[2]  
+print(c(c1, l1))   ## print shape parameters
+```
+
+To fit the Gamma Binomial distribution for estimated shape parameters the following hypothesis is used
+
+Null Hypothesis : The data follows Gamma Binomial Distribution.
+
+Alternate Hypothesis : The data does not follow Gamma Binomial Distribution.
+
+```{r,step 4_d}
+## fitting Gamma Binomial Distribution to estimated shape parameters
+fitGammaBin(x=Alcohol_data$Days,obs.fre=Alcohol_data$week1,c=c1,l=l1)
+```
+
+The null hypothesis is not rejected at $5\%$ significance level ($p-value=0.0596$)for the estimated parameters $c=0.6036061$,
+$l=0.6030777$ and the estimated Over-dispersion of $0.4308113$.
 
 #### e) Grassia II Binomial distribution.
 
+The shape parameters $a$ and $b$  are estimated and fitted below. Suppose the selected input parameters are 
+$a=1.1$ and $b=5.1$.
+
+```{r,step 3_e}
+## estimating the shape parameters
+estimate <- EstMLEGrassiaIIBin(x=Alcohol_data$Days,freq=Alcohol_data$week1,
+                               a=1.1,b=5.1)
+estimate@min ## extracting the minimized negative log likelihood value 
+# extracting the shape parameter a and b
+a1 <- bbmle::coef(estimate)[1] ; b1 <- bbmle::coef(estimate)[2]  
+print(c(a1, b1))   #print shape parameters
+```
+
+To fit the Grassia II Binomial distribution for estimated shape parameters the following hypothesis is used
+
+Null Hypothesis : The data follows Grassia II Binomial Distribution.
+
+Alternate Hypothesis : The data does not follow Grassia II Binomial Distribution.
+
+```{r,step 4_e}
+#fitting Grassia II Binomial Distribution to estimated shape parameters
+fitGrassiaIIBin(x=Alcohol_data$Days,obs.fre=Alcohol_data$week1,a=a1,b=b1)
+```
+
+The null hypothesis is not rejected at $5\%$ significance level ($p-value=0.0596$)for the estimated parameters $a=0.7285039$,
+$b=2.0251513$ and the estimated Over-dispersion of $0.259004$.
+
 #### f) GHGBB distribution.
+
+Now we estimate the shape parameters and fit the GHGBB distribution for the first set of randomly selected initial input shape parameters of 
+$a=10.1$, $b=1.1$ and $c=5$.
+
+```{r, step 3_f}
+#estimating the shape parameters 
+estimate = EstMLEGHGBB(x = Alcohol_data$Days,freq = Alcohol_data$week1,
+                       a = 10.1, b = 1.1, c = 5)
+estimate@min #extracting the minimized negative log likelihood value
+#extracting the shape parameter a, b and c
+a1 = bbmle::coef(estimate)[1] ; b1 = bbmle::coef(estimate)[2]   
+c1 = bbmle::coef(estimate)[3]   
+print(c(a1, b1, c1))      #printing the shape parameters
+```
+
+To fit the GHGBB distribution for estimated shape parameters the following hypothesis is used.
+
+Null Hypothesis : The data follows Gaussian Hypergeometric Generalized  Beta-Binomial Distribution.
+
+Alternate Hypothesis : The data does not follow Gaussian Hypergeometric Generalized Beta-Binomial Distribution.							
+
+```{r, step 4_f}
+#fitting GHGBB distribution for estimated shape parameters
+fitGHGBB(Alcohol_data$Days, Alcohol_data$week1, a1, b1, c1)  
+```
+
+The null hypothesis is not rejected at $5\%$ significance level ($p-value=0.8642$). The estimated shape parameters are $a=1.3506836$,
+$b=0.3245421$ and $c=0.7005210$, where the estimated Over-dispersion of $0.4324874$.
 
 #### g) McGBB distribution.
 
+Given below is the results generated for the randomly selected initial 
+input parameters where $a=1.1$, $b=5$ and $c=10$. 
+
+```{r,step 3_g}
+#estimating the shape parameters
+estimate <- EstMLEMcGBB(x = Alcohol_data$Days,freq = Alcohol_data$week1,
+                        a = 1.1, b = 5, c = 10)
+estimate@min  #extracting the negative log likelihood value which is minimized
+#extracting the shape parameter a, b and c
+a1 = bbmle::coef(estimate)[1] ; b1 = bbmle::coef(estimate)[2] 
+c1 = bbmle::coef(estimate)[3] 
+print(c(a1, b1, c1))    #printing the shape parameters
+```
+
+To fit the McGBB distribution for estimated shape parameters the following hypothesis is used
+
+Null Hypothesis : The data follows McDonald Generalized Beta-Binomial Distribution.
+	
+Alternate Hypothesis : The data does not follow McDonald Generalized Beta-Binomial Distribution.			
+
+```{r,step 4_g}
+#fitting the MCGBB distribution for estimated shape parameters
+fitMcGBB(Alcohol_data$Days, Alcohol_data$week1, a1, b1, c1)
+```
+
+The null hypothesis is not rejected  at $5\%$ significance level ($p-value=0.695 > 0.05$). The estimated shape parameters are $a=0.04099005$
+$b=0.2108279$ and $c=21.67349$, and the estimated Over-dispersion of $0.4359023$.
+
 ### Step 5
+
+Below table presents the expected frequencies, chi-squared values, p-values, estimated parameters, Negative Log Likelihood values and 
+Over-dispersion of the Binomial Mixture distributions obtained above for the Alcohol Consumption data. Further, for the above fitted
+distributions difference values (the difference between observed frequency and expected frequency) are calculated and included in the 
+table in brackets with next to the most fitted expected frequencies of that distribution.
+
+## Conclusion
+
+The best-fitted distribution is chosen by comparing three main measurements extracted from the results shown in the above table 
+which are p-value, Negative Log Likelihood value and the count of difference between expected and observed frequencies in the range of $\pm5$.
+
+Then the following three criteria will be considered for the selection procedure
+	
+1. The maximum p-value $>0.05$ from the hypothesis test.
+2. The minimum Negative Log Likelihood value. 
+3. The number of difference values within the range of $\pm5$.  
+
+The following table shows the respective values of the above criteria and the corresponding Over-dispersion value for each 
+distribution constructed for Alcohol Consumption data.
+
+The fitted distributions are GHGBB, McGBB, Beta-Binomial distribution and Kumaraswamy Binomial distribution in the order of decreasing
+p-values. Triangular Binomial distribution cannot be fitted since its p-value $<0.05$. The Negative Log Likelihood values of GHGBB and 
+McGBB distributions are the lowest and are quite similar. Based on the count of difference values for the Beta-Binomial distribution it 
+is four out of eight and for Kumaraswamy Binomial distribution also it is four out of eight, but for the McGBB distribution it is seven 
+out of eight counts. Further, Over-dispersion parameters of all four fitted distributions are same for the second decimal point
+(Over-dispersion=0.43).The best-fitted distribution GHGBB has the highest p-value of $0.8642$, the lowest Negative Log Likelihood value 
+of $809.2767$, the count of difference values is eight out of eight and indicates an estimated Over-dispersion of $0.4324875$.
 
 #### Thank You
 
