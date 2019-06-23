@@ -126,7 +126,7 @@ steps have to be used when using this package.
     for the data by using a plot or table.
 
 Series of code to complete the steps from 1 to 5 are thoroughly discussed in 
-the [website.](https://amalan-constat.github.io/R-fitODBOD/articles/BMDs_and_ABDs_fitxxxBin.html) 
+the [Readme file](https://github.com/Amalan-ConStat/R-fitODBOD/blob/master/README.md) 
 
 # Conclusion
 
@@ -144,13 +144,13 @@ Generalized Beta and Generalized Beta of First kind distributions. Using the
 above steps mentioned of the article, the best-fitting Binomial Mixture 
 Distribution and/or Alternate Binomial Distribution is decided.
 
-# Main Dependicies
+# Main Dependencies
 
-**``fitODBOD``** package has two main dependicies from CRAN. Functions from 
+**``fitODBOD``** package has three main dependencies from CRAN. Functions from 
 **``hypergeo``** are used for applications of GHGBB and Gaussian Hypergeometric 
 Generalized Beta distribution. **``stats``** functions are used for integration 
-situations for the Triangular Binoimal distribution. Finally, **``bbmle``** 
-package is not a dependency but a suitable suggestion to complete the parameter 
-estimation of ABD and FBMD.
+situations for the Triangular Binomial distribution. Finally, **``bbmle``** 
+package is used for the parameter estimation of ABD and FBMD under the concept
+of Maximum Likelihood Estimation.
 
 # References
