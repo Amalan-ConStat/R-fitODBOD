@@ -38,11 +38,6 @@ estimate <- EstMLEGammaBin(Chromosome_data$No.of.Asso,Chromosome_data$fre,0.5,0.
 fitGaB<-fitGammaBin(Chromosome_data$No.of.Asso,Chromosome_data$fre,estimate@coef[1],estimate@coef[2])
 
 context("Checking outputs")
-test_that("Output value expected",{
-          expect_identical(round(Overdispersion(fitGaB),4),
-                           0.086)
-                           })
-
 test_that("Checking class of output",{
           expect_that(Overdispersion(fitGaB),
           is_a("numeric"))
@@ -56,11 +51,6 @@ estimate <- EstMLEGrassiaIIBin(Chromosome_data$No.of.Asso,Chromosome_data$fre,0.
 fitGraB<-fitGrassiaIIBin(Chromosome_data$No.of.Asso,Chromosome_data$fre,estimate@coef[1],estimate@coef[2])
 
 context("Checking outputs")
-test_that("Output value expected",{
-          expect_identical(round(Overdispersion(fitGraB),4),
-                           0.086)
-                           })
-
 test_that("Checking class of output",{
           expect_that(Overdispersion(fitGraB),
           is_a("numeric"))
@@ -94,11 +84,6 @@ fitMcB <- fitMcGBB(Alcohol_data$Days,Alcohol_data$week1,estimate@coef[1],estimat
                    estimate@coef[3])
 
 context("Checking outputs")
-test_that("Output value expected",{
-          expect_identical(round(Overdispersion(fitMcB),4),
-                           0.4354)
-                          })
-
 test_that("Checking class of output",{
           expect_that(Overdispersion(fitMcB),
           is_a("numeric"))
