@@ -69,6 +69,20 @@ Overdispersion.fitGB<-function(object)
   return(object$over.dis.para)
 }
 
+#' @method Overdispersion fitGrIIB
+#' @export
+Overdispersion.fitGrIIB<-function(object)
+{
+  return(object$over.dis.para)
+}
+
+#' @method Overdispersion fitGaB
+#' @export
+Overdispersion.fitGaB<-function(object)
+{
+  return(object$over.dis.para)
+}
+
 #' @method Overdispersion fitMB
 #' @export
 Overdispersion.fitMB<-function(object)
