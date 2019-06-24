@@ -31,3 +31,14 @@ test_that("Lesser than 1",{
         expect_that(NegLLTriBin(3,4,-3),
         throws_error("Mode cannot be less than zero or greater than one"))
         })
+
+context("Checking outputs")
+test_that("Output value expected",{
+        expect_identical(round(NegLLTriBin(Chromosome_data$No.of.Asso,Chromosome_data$fre,0.7),4),
+                         440.6691)
+                         })
+
+test_that("Checking class of output",{
+        expect_that(NegLLTriBin(Chromosome_data$No.of.Asso,Chromosome_data$fre,0.7),
+        is_a("numeric"))
+        })

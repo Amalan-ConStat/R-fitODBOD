@@ -33,18 +33,29 @@ test_that("Probability issues",{
           })
 context("Correlation limitations")
 test_that("Correlation above maximum limit",{
-  expect_that(NegLLCorrBin(3,5,0.2,19),
-              throws_error("Correlation cannot be greater than 1 or Lesser than -1 or it cannot be greater than Maximum Correlation or Lesser than Minimum Correlation"))
-})
+          expect_that(NegLLCorrBin(3,5,0.2,19),
+          throws_error("Correlation cannot be greater than 1 or Lesser than -1 or it cannot be greater than Maximum Correlation or Lesser than Minimum Correlation"))
+          })
 test_that("Correlation above 1",{
-  expect_that(NegLLCorrBin(3,5,0.2,9),
-              throws_error("Correlation cannot be greater than 1 or Lesser than -1 or it cannot be greater than Maximum Correlation or Lesser than Minimum Correlation"))
-})
+          expect_that(NegLLCorrBin(3,5,0.2,9),
+          throws_error("Correlation cannot be greater than 1 or Lesser than -1 or it cannot be greater than Maximum Correlation or Lesser than Minimum Correlation"))
+          })
 test_that("Correlation below minimum limit",{
-  expect_that(NegLLCorrBin(3,5,0.2,-19),
-              throws_error("Correlation cannot be greater than 1 or Lesser than -1 or it cannot be greater than Maximum Correlation or Lesser than Minimum Correlation"))
-})
+          expect_that(NegLLCorrBin(3,5,0.2,-19),
+          throws_error("Correlation cannot be greater than 1 or Lesser than -1 or it cannot be greater than Maximum Correlation or Lesser than Minimum Correlation"))
+          })
 test_that("Correlation below -1",{
-  expect_that(NegLLCorrBin(3,5,0.2,-9),
-              throws_error("Correlation cannot be greater than 1 or Lesser than -1 or it cannot be greater than Maximum Correlation or Lesser than Minimum Correlation"))
-})
+          expect_that(NegLLCorrBin(3,5,0.2,-9),
+          throws_error("Correlation cannot be greater than 1 or Lesser than -1 or it cannot be greater than Maximum Correlation or Lesser than Minimum Correlation"))
+          })
+
+context("Checking outputs")
+test_that("Output value expected",{
+          expect_identical(round(NegLLCorrBin(Chromosome_data$No.of.Asso,Chromosome_data$fre,0.7,0.01),4),
+                           466.572)
+                           })
+
+test_that("Checking class of output",{
+          expect_that(NegLLCorrBin(Chromosome_data$No.of.Asso,Chromosome_data$fre,0.7,0.01),
+          is_a("numeric"))
+          })

@@ -30,3 +30,14 @@ test_that("Probability issues",{
           expect_that(NegLLCOMPBin(3,5,-3,0.4),
           throws_error("Probability value doesnot satisfy conditions"))
           })
+
+context("Checking outputs")
+test_that("Output value expected",{
+          expect_identical(round(NegLLCOMPBin(Chromosome_data$No.of.Asso,Chromosome_data$fre,0.7,1),4),
+                          472.6649)
+                          })
+
+test_that("Checking class of output",{
+          expect_that(NegLLCOMPBin(Chromosome_data$No.of.Asso,Chromosome_data$fre,0.7,1),
+          is_a("numeric"))
+          })

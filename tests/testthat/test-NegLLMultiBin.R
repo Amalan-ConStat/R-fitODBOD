@@ -35,3 +35,14 @@ test_that("Theta issues",{
           expect_that(NegLLMultiBin(3,5,0.3,-1),
           throws_error("Probability or Theta parameter value doesnot satisfy conditions"))
           })
+
+context("Checking outputs")
+test_that("Output value expected",{
+          expect_identical(round(NegLLMultiBin(Chromosome_data$No.of.Asso,Chromosome_data$fre,0.7,1),4),
+                          472.6649)
+                          })
+
+test_that("Checking class of output",{
+  expect_that(NegLLMultiBin(Chromosome_data$No.of.Asso,Chromosome_data$fre,0.7,1),
+              is_a("numeric"))
+              })

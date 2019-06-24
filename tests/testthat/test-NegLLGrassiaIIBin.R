@@ -31,3 +31,14 @@ test_that("Negativity Binomial random variable",{
           expect_that(NegLLGrassiaIIBin(3,-4,0.2,4),
           throws_error("Binomial random variable or frequency values cannot be negative"))
           })
+
+context("Checking outputs")
+test_that("Output value expected",{
+          expect_identical(round(NegLLGrassiaIIBin(Chromosome_data$No.of.Asso,Chromosome_data$fre,0.7,1),4),
+                           511.3372)
+                           })
+
+test_that("Checking class of output",{
+          expect_that(NegLLGrassiaIIBin(Chromosome_data$No.of.Asso,Chromosome_data$fre,0.7,1),
+          is_a("numeric"))
+          })

@@ -49,3 +49,14 @@ test_that("Alpha value greater than left side",{
           expect_that(NegLLAddBin(5,1,0.2,-0.4),
           throws_error("alpha parameter doesnot satisfy the conditions"))
           })
+
+context("Checking outputs")
+test_that("Output value expected",{
+          expect_identical(round(NegLLAddBin(Chromosome_data$No.of.Asso,Chromosome_data$fre,0.7,0.1),4),
+                           463.4881)
+                           })
+
+test_that("Checking class of output",{
+          expect_that(NegLLAddBin(Chromosome_data$No.of.Asso,Chromosome_data$fre,0.7,0.1),
+          is_a("numeric"))
+          })

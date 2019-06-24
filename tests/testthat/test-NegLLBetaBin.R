@@ -31,3 +31,14 @@ test_that("Shape parameter b",{
           expect_that(NegLLBetaBin(3,4,1,-3),
           throws_error("Shape parameters cannot be less than or equal to zero"))
           })
+
+context("Checking outputs")
+test_that("Output value expected",{
+          expect_identical(round(NegLLBetaBin(Chromosome_data$No.of.Asso,Chromosome_data$fre,0.7,1),4),
+                           500.6763)
+                           })
+
+test_that("Checking class of output",{
+          expect_that(NegLLBetaBin(Chromosome_data$No.of.Asso,Chromosome_data$fre,0.7,1),
+          is_a("numeric"))
+          })

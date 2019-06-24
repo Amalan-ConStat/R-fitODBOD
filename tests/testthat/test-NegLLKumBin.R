@@ -36,3 +36,14 @@ test_that("Less than one",{
           expect_that(NegLLKumBin(2,4,0.4,0.5,-1),
           throws_error("Number of iterations cannot be less than one"))
           })
+
+context("Checking outputs")
+test_that("Output value expected",{
+          expect_identical(round(NegLLKumBin(Chromosome_data$No.of.Asso,Chromosome_data$fre,1,2),4),
+                           533.8887)
+                           })
+
+test_that("Checking class of output",{
+          expect_that(NegLLKumBin(Chromosome_data$No.of.Asso,Chromosome_data$fre,1,2),
+          is_a("numeric"))
+          })
