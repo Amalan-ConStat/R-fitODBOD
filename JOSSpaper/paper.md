@@ -126,7 +126,7 @@ steps have to be used when using this package.
     for the data by using a plot or table.
 
 Series of code to complete the steps from 1 to 5 are thoroughly discussed in 
-the [Readme file](https://github.com/Amalan-ConStat/R-fitODBOD/blob/master/README.md) 
+the [README file](https://github.com/Amalan-ConStat/R-fitODBOD/blob/master/README.md) in the GitHub repository.
 
 # Conclusion
 
@@ -141,8 +141,8 @@ Multiplicative Binomial distributions. Further, there are
 functions for probability density, cumulative density and moment about
 zero values for Triangular, Beta, Kumaraswamy, Gamma, Gaussian Hypergeometric 
 Generalized Beta and Generalized Beta of First kind distributions. Using the 
-above steps mentioned of the article, the best-fitting Binomial Mixture 
-Distribution and/or Alternate Binomial Distribution is decided.
+steps outlined above, the best-fitting Binomial Mixture 
+Distribution and/or Alternate Binomial Distribution is determined.
 
 # Main Dependencies
 
