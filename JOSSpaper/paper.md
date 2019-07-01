@@ -97,7 +97,7 @@ research to form the Lovinson Multiplicative Binomial distribution. COM
 Poisson Binomial distribution was introduced first by @COMPoisson. 
 The comparison of Beta-Correlated Binomial distribution with
 Correlated Binomial distribution was done by @Correlated.
-Version 1.4.0 of **``fitODBOD``** (@fitODBOD) holds all the distributions mentioned 
+Version 1.4.1 of **``fitODBOD``** (@fitODBOD) holds all the distributions mentioned 
 above and in the future more distributions developed to fit the BOD will
 be added to the package as major version updates.
 

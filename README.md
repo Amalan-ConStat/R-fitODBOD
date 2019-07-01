@@ -1,10 +1,8 @@
 R-fitODBOD
 ================
 
-[![cran
-checks](https://cranchecks.info/badges/summary/fitODBOD)](https://cranchecks.info/pkgs/fitODBOD)
 [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version-last-release/fitODBOD)](https://cran.r-project.org/package=fitODBOD)
-[![packageversion](https://img.shields.io/badge/Package%20version-1.4.0-orange.svg?style=flat-square)](commits/master)
+[![packageversion](https://img.shields.io/badge/Package%20version-1.4.1-orange.svg?style=flat-square)](commits/master)
 [![Rdoc](http://www.rdocumentation.org/badges/version/fitODBOD)](http://www.rdocumentation.org/packages/fitODBOD)
 [![GitHub
 license](https://img.shields.io/github/license/Amalan-ConStat/R-fitODBOD.svg?style=popout)](https://github.com/Amalan-ConStat/R-fitODBOD/blob/master/LICENSE)
@@ -111,20 +109,20 @@ to prepare the appropriate format as follows.
 ``` r
 datapoints <- sample(0:7, 340, replace = TRUE) ## creating a set of raw BOD 
 head(datapoints)  ## first few observations of datapoints dataset
-# [1] 2 3 3 7 4 4
+# [1] 6 0 5 6 6 7
     
 ## extracting and printing BOD in a usable way for the package
 new_data <- BODextract(datapoints)
 matrix(c(new_data$RV, new_data$Freq), ncol=2, byrow = FALSE)
 #      [,1] [,2]
-# [1,]    0   45
-# [2,]    1   53
+# [1,]    0   46
+# [2,]    1   34
 # [3,]    2   48
-# [4,]    3   48
-# [5,]    4   40
-# [6,]    5   31
-# [7,]    6   44
-# [8,]    7   31
+# [4,]    3   39
+# [5,]    4   45
+# [6,]    5   41
+# [7,]    6   45
+# [8,]    7   42
 ```
 
 ### Step 2
