@@ -23,6 +23,7 @@ status](https://travis-ci.org/Amalan-ConStat/R-fitODBOD.svg?branch=master)](http
 status](https://ci.appveyor.com/api/projects/status/github/Amalan-ConStat/R-fitODBOD?branch=master&svg=true)](https://ci.appveyor.com/project/Amalan-ConStat/R-fitODBOD)
 [![Codecov test
 coverage](https://codecov.io/gh/Amalan-ConStat/R-fitODBOD/branch/master/graph/badge.svg)](https://codecov.io/gh/Amalan-ConStat/R-fitODBOD?branch=master)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3265356.svg)](https://doi.org/10.5281/zenodo.3265356)
 
 # fitODBOD <img src="man/figures/logo.png" align="right" alt="" width="150" />
 
@@ -109,20 +110,20 @@ to prepare the appropriate format as follows.
 ``` r
 datapoints <- sample(0:7, 340, replace = TRUE) ## creating a set of raw BOD 
 head(datapoints)  ## first few observations of datapoints dataset
-# [1] 6 0 5 6 6 7
+# [1] 5 5 6 0 7 0
     
 ## extracting and printing BOD in a usable way for the package
 new_data <- BODextract(datapoints)
 matrix(c(new_data$RV, new_data$Freq), ncol=2, byrow = FALSE)
 #      [,1] [,2]
-# [1,]    0   46
-# [2,]    1   34
-# [3,]    2   48
-# [4,]    3   39
-# [5,]    4   45
-# [6,]    5   41
-# [7,]    6   45
-# [8,]    7   42
+# [1,]    0   40
+# [2,]    1   47
+# [3,]    2   39
+# [4,]    3   40
+# [5,]    4   37
+# [6,]    5   50
+# [7,]    6   35
+# [8,]    7   52
 ```
 
 ### Step 2
